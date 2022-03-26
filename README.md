@@ -24,3 +24,4 @@ These kaggle resources outline how to perform an ELO rating
 - automate predictions 
 - receive predictions via email
 - add machine learning to better predict fixture outcomes
+- add features for players, so we can take into account injuries etc
