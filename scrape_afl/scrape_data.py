@@ -64,8 +64,10 @@ def get_info_from_match_soup(soup):
     # get team names
     match_title = soup.find('div', class_='mc-header__round-wrapper').text
     match_title = match_title.replace('\n','')
+
     match_title_split = match_title.split('•')
     match_round = match_title_split[0].strip()
+    
     team_names = match_title_split[1].split('v')
     home_team_name = team_names[0].strip()
     away_team_name = team_names[1].strip()
