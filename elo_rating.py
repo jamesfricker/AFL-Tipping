@@ -34,6 +34,7 @@ df_games['yearRoundId'] = df_games.apply(lambda x: x.gameId[:-2],axis=1)
 
 # create margin column
 df_games['margin'] = df_games.apply(lambda x: abs(x.homeTeamScore - x.awayTeamScore),axis=1)
+
 # convert date to a date object so we can sort
 df_games['date'] = pd.to_datetime(df_games['date'])
 
