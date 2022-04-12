@@ -3,12 +3,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df_games = pd.read_csv("games.csv")
+df_games = pd.read_csv("games_current.csv")
 df_players = pd.read_csv("players.csv")
 df_stats = pd.read_csv("stats.csv")
 
-print(df_games.columns)
+#print(df_games.columns)
 
+# margin method for elo rating
+# https://sci-hub.st/10.1016/j.ijforecast.2020.01.006
 
 # we need to get 
 # team A
@@ -41,29 +43,36 @@ df_games['date'] = pd.to_datetime(df_games['date'])
 # earliest games are now first
 df_games = df_games.sort_values(by=['date'],ascending=True)
 
-print(df_games.columns)
+#print(df_games.columns)
 teams = df_games['homeTeam'].unique()
 teams.sort()
 teams = teams.tolist()
 teams.append('NA')
-print(teams.index('Adelaide'))
-print(df_games)
+#print(teams.index('Adelaide'))
+#print(df_games)
 # now we can run our algorithm to get the ELO ratings
 # ELO consists of 1. ESTIMATION 2. UPDATE
 
 # from https://www.kaggle.com/code/kplauritzen/elo-ratings-in-python/notebook
 # and https://www.kaggle.com/code/andreiavadanei/elo-predicting-against-dataset
 
-sigma = 20000000
+alpha = 12
+#sigma_1 = df_games['margin'].std() # 26.62
+sigma_1 = 26
+sigma_2 = 400
 
 
 def update_elo(winner_elo, loser_elo,margin):
     """
     update the ELO ratings
     """
-    expected_win = expected_result(winner_elo, loser_elo)
-    expected_win_margin = expected_margin(winner_elo, loser_elo)
-    change_in_elo = k_factor * (1-expected_win)
+    # expected_win = expected_result(winner_elo, loser_elo)
+    # change_in_elo = k_factor * (margin-expected_win)
+
+    # use margin method
+    expected_marg = expected_margin(winner_elo, loser_elo)
+    l_step = 1.0/(1+alpha**((-margin)/sigma_1))
+    change_in_elo = k_factor * (l_step-expected_marg)
     winner_elo += change_in_elo
     loser_elo -= change_in_elo
     return winner_elo, loser_elo
@@ -79,8 +88,7 @@ def expected_margin(elo_a, elo_b):
     """
     https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details
     """
-    expect_a = (elo_a - elo_b)/sigma
-    print(expect_a)
+    expect_a = 1.0/(1+alpha**((elo_b - elo_a)/sigma_2))
     return expect_a
 
 def update_end_of_season(elos):
@@ -95,8 +103,8 @@ def update_end_of_season(elos):
 
 # these are also from this kaggle notebook
 #default settings for elo
-mean_elo = 1500.
-elo_width = 400.
+mean_elo = 1500
+elo_width = 400
 n_samples = 8000 #used for predicting
 std_margin = df_games['margin'].std()
 k_factor = 32 
@@ -157,11 +165,12 @@ cols.sort()
 cols.append("NA")
 df_team_elos.columns = cols
 df_team_elos
-#plt.plot(df_team_elos)
-#plt.legend(cols)
-
+plt.plot(df_team_elos)
+plt.legend(cols)
 #plt.show()
-print(df_team_elos.loc['2021R22'])
+
+final_elos = df_team_elos.drop("NA",axis=1).dropna().iloc[-1]
+print(final_elos.sort_values(ascending=False))
 
 n_samples = 1000
 samples = df_games[df_games.year > 2015].sample(n_samples)
@@ -170,14 +179,16 @@ expected_list = []
 for row in samples.itertuples():
     w_elo = row.w_elo_before_game
     l_elo = row.l_elo_before_game
-    w_expected = expected_result(w_elo, l_elo)
+    w_expected = expected_margin(w_elo, l_elo)
     expected_list.append(w_expected)
     loss += np.log(w_expected)
-print(loss/n_samples)
 
-sns.distplot(expected_list, kde=False, bins=20)
+
+print(sigma_1,sigma_2,loss/n_samples)
+
+sns.displot(expected_list, kde=False, bins=20)
 plt.xlabel('Elo Expected Wins for Actual Winner')
 plt.ylabel('Counts')
-plt.show()
+#plt.show()
 
 df_team_elos.fillna(method='ffill', inplace=True)
