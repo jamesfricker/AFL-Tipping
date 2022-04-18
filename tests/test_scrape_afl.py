@@ -23,6 +23,7 @@ def test_get_info_from_match():
                 "away_team_score": '60',
                 "away_team_goals": '9',
                 "away_team_behinds": '6',
+                "venue": 'Marvel Stadium',
                 "match_date": 'Thursday 31 March 2022 • 7:20 PM (GMT+11)'
     }
     assert scrape_data.get_info_from_match_soup(soup) == match_information
