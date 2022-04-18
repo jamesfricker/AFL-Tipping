@@ -18,6 +18,17 @@ df_stats = pd.read_csv("stats.csv")
 # winning Team
 # these will be used to create the ELO ratings
 
+# create this as a twitter bot?
+# https://twitter.com/thecruncherau
+# https://twitter.com/AFLxScore
+# https://twitter.com/AflLadder
+# https://twitter.com/AFLLab
+# https://twitter.com/SquiggleAFL
+# https://twitter.com/AFLalytics
+
+# there is an AFL algorithm competition
+# https://squiggle.com.au/leaderboard/
+
 def find_winner(x):
     if x.homeTeamScore > x.awayTeamScore:
         return x.homeTeam
@@ -61,7 +72,6 @@ alpha = 12
 sigma_1 = 26
 sigma_2 = 400
 
-
 def update_elo(winner_elo, loser_elo,margin):
     """
     update the ELO ratings
@@ -88,6 +98,7 @@ def expected_margin(elo_a, elo_b):
     """
     https://en.wikipedia.org/wiki/Elo_rating_system#Mathematical_details
     """
+    sigma_2 = 400
     expect_a = 1.0/(1+alpha**((elo_b - elo_a)/sigma_2))
     return expect_a
 
@@ -143,6 +154,7 @@ for row in df_games.itertuples():
     # Get current elos
     w_elo_before = current_elos[w_id]
     l_elo_before = current_elos[l_id]
+
     # Update on game results
     w_elo_after, l_elo_after = update_elo(w_elo_before, l_elo_before,row.margin)
         
@@ -170,7 +182,18 @@ plt.legend(cols)
 #plt.show()
 
 final_elos = df_team_elos.drop("NA",axis=1).dropna().iloc[-1]
-print(final_elos.sort_values(ascending=False))
+#print(final_elos)
+print(final_elos.iloc[0])
+print(df_team_elos.columns)
+team_names = [i for i in df_team_elos.columns if i != 'NA']
+final_elos = [i for i in final_elos]
+
+zipped = list(zip(team_names,final_elos))
+
+elos_df = pd.DataFrame(zipped, columns=['team','elo'])
+
+elos_df.to_csv('elo_ratings/elo_ratings.csv')
+#print(final_elos.sort_values(ascending=False))
 
 n_samples = 1000
 samples = df_games[df_games.year > 2015].sample(n_samples)
