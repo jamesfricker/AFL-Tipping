@@ -19,12 +19,18 @@ def get_team_elo(team_name,team_elos):
 def predict_matches():
     matches = get_predict_round_matches()
     team_elos = read_elo_csv()
-
+    match_predictions = []
     for match in matches:
         home_team_elo = get_team_elo(match['home_team_name'],team_elos)
         away_team_elo = get_team_elo(match['away_team_name'],team_elos)
         home_win_prob = CALCULATE_ELO.expected_margin(home_team_elo, away_team_elo)
-        print(match['home_team_name'],match['away_team_name'],home_win_prob)
+        match_prediction = {
+            'home_team_name': match['home_team_name'],
+            'away_team_name': match['away_team_name'],
+            'home_win_prob': home_win_prob
+        }
+        match_predictions.append(match_prediction)
+    return match_predictions
 
 if __name__ == '__main__':
-    predict_matches()
+    print(predict_matches())

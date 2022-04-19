@@ -183,8 +183,7 @@ plt.legend(cols)
 
 final_elos = df_team_elos.drop("NA",axis=1).dropna().iloc[-1]
 #print(final_elos)
-print(final_elos.iloc[0])
-print(df_team_elos.columns)
+
 team_names = [i for i in df_team_elos.columns if i != 'NA']
 final_elos = [i for i in final_elos]
 
