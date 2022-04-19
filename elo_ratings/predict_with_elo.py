@@ -33,4 +33,4 @@ def predict_matches():
     return match_predictions
 
 if __name__ == '__main__':
-    print(predict_matches())
+    print(pd.DataFrame(predict_matches()))
