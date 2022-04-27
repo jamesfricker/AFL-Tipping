@@ -128,7 +128,6 @@ def get_all_matches_from_afl_homepage(homepage_soup):
     return matches
 
 def get_gameweek_matches(GAMEWEEK):
-    YEAR = 2022
     COMPETITION = 1
     COMP_SEASON = 43    
     url = "https://www.afl.com.au/fixture?Competition=%s&CompSeason=%s&MatchTimezone=VENUE_TIME&Regions=2&GameWeeks=%s&Teams=1&Venues=12" % (COMPETITION,COMP_SEASON, GAMEWEEK)
@@ -136,7 +135,10 @@ def get_gameweek_matches(GAMEWEEK):
     return get_all_matches_from_afl_homepage(s)
 
 if __name__ == '__main__':
-    matches = get_gameweek_matches(5)
+    GAMEWEEK = 6
+    YEAR = 2022
+
+    matches = get_gameweek_matches(GAMEWEEK)
     count = 1
     for match in matches:
         rnd = "R"+str(GAMEWEEK)
