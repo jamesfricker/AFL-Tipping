@@ -190,7 +190,7 @@ final_elos = [i for i in final_elos]
 zipped = list(zip(team_names,final_elos))
 
 elos_df = pd.DataFrame(zipped, columns=['team','elo'])
-
+elos_df = elos_df.sort_values(by='elo',ascending=False)
 elos_df.to_csv('elo_ratings/elo_ratings.csv')
 #print(final_elos.sort_values(ascending=False))
 

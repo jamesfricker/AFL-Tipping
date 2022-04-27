@@ -44,6 +44,15 @@ gameId,year,round,date,venue,startTime,attendance,homeTeam,homeTeamScore,awayTea
 2022R507,2022,R5,17-Apr-2022,MCG,7:25 PM,0,Carlton,94,Port Adelaide,91,0.0
 2022R508,2022,R5,17-Apr-2022,Marvel Stadium,7:25 PM,0,Essendon,59,Fremantle,107,0.0
 2022R509,2022,R5,18-Apr-2022,MCG,7:25 PM,0,Hawthorn,92,Geelong,80,0.0
+2022R601,2022,R6,22-Apr-2022,Manuka Oval,7:25 PM,0,Greater Western Sydney,60,St Kilda,77,0.0
+2022R602,2022,R6,23-Apr-2022,Mars Stadium,7:25 PM,0,Western Bulldogs,62,Adelaide,63,0.0
+2022R603,2022,R6,23-Apr-2022,Adelaide Oval,7:25 PM,0,Port Adelaide,117,West Coast,33,0.0
+2022R604,2022,R6,23-Apr-2022,Optus Stadium,7:25 PM,0,Fremantle,97,Carlton,62,0.0
+2022R605,2022,R6,24-Apr-2022,Blundstone Arena,7:25 PM,0,North Melbourne,61,Geelong,121,0.0
+2022R606,2022,R6,24-Apr-2022,Metricon Stadium,7:25 PM,0,Gold Coast,80,Brisbane Lions,132,0.0
+2022R607,2022,R6,24-Apr-2022,MCG,7:25 PM,0,Richmond,54,Melbourne,76,0.0
+2022R608,2022,R6,25-Apr-2022,University of Tasmania Stadium,7:25 PM,0,Hawthorn,68,Sydney,109,0.0
+2022R609,2022,R6,25-Apr-2022,MCG,7:25 PM,0,Essendon,82,Collingwood,93,0.0
 2021R101,2021,R1,18-Mar-2021,M.C.G.,7:25 PM,49218,Richmond,105,Carlton,80,0.0
 2021R102,2021,R1,19-Mar-2021,M.C.G.,7:50 PM,46051,Collingwood,53,Western Bulldogs,69,0.0
 2021R103,2021,R1,20-Mar-2021,M.C.G.,1:45 PM,21365,Melbourne,80,Fremantle,58,0.0

@@ -4,7 +4,7 @@ import elo_ratings.calculate_elo_rating as CALCULATE_ELO
 import pandas as pd
 import numpy as np
 
-ROUND_TO_PREDICT = 6
+ROUND_TO_PREDICT = 7
 
 def read_elo_csv():
     df_elo = pd.read_csv("elo_ratings/elo_ratings.csv")
