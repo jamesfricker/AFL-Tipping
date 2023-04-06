@@ -38,12 +38,11 @@ def update_elo_ratings(
 
 def compute_elo_ratings(games):
     elo_ratings = {}
-
     for _, game in games.iterrows():
-        home_team = game["homeTeam"]
-        away_team = game["awayTeam"]
-        home_team_score = game["homeTeamScore"]
-        away_team_score = game["awayTeamScore"]
+        home_team = game["HomeTeam"]
+        away_team = game["AwayTeam"]
+        home_team_score = game["HomeScore"]
+        away_team_score = game["AwayScore"]
 
         if home_team not in elo_ratings:
             elo_ratings[home_team] = 1500
@@ -63,9 +62,9 @@ def compute_elo_ratings(games):
     return elo_ratings
 
 
-games = pd.read_csv("../games.csv")
+games = pd.read_csv("../scrape_afl/afl.csv")
 # Sort the DataFrame by year and round
-games = games.sort_values(by=["year", "round"], ascending=[True, True])
+games = games.sort_values(by=["Year", "Round"], ascending=[True, True])
 
 # Reset the index of the DataFrame
 games = games.reset_index(drop=True)

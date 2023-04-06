@@ -19,6 +19,7 @@ import time
 from selenium import webdriver
 import pytest
 from datetime import datetime
+import csv
 
 
 def get_soup_data(url):
@@ -143,50 +144,121 @@ def get_all_matches_from_afl_homepage(homepage_soup):
         match_information["away_team_name"] = map_team_name(
             match_information["away_team_name"]
         )
+        original_match_date = match_information["match_date"]
         # fix match date
         datetimeobject = datetime.strptime(
-            match_information["match_date"].split("•")[0].strip(), "%A %d %B %Y"
+            original_match_date.split("•")[0].strip(), "%A %d %B %Y"
         )
         match_information["match_date"] = datetimeobject.strftime("%d-%b-%Y")
+        match_information["match_time"] = original_match_date.split("•")[1].strip()
+
         matches.append(match_information)
     return matches
 
 
-def get_gameweek_matches(GAMEWEEK):
+def year_to_comp_season_map(year):
+    return {
+        2012: 2,
+        2013: 4,
+        2014: 5,
+        2015: 7,
+        2016: 9,
+        2017: 11,
+        2018: 14,
+        2019: 18,
+        2020: 20,
+        2021: 34,
+        2022: 43,
+        2023: 52,
+    }[year]
+
+
+def get_gameweek_matches(gameweek, year):
     COMPETITION = 1
-    # TODO
-    # create a map of COMP_SEASON to YEAR
-    COMP_SEASON = 43
-    url = f"https://www.afl.com.au/fixture?Competition={COMPETITION}&CompSeason={COMP_SEASON}&MatchTimezone=VENUE_TIME&Regions=2&GameWeeks={GAMEWEEK}&Teams=1&Venues=12"
-    print(url)
+    COMP_SEASON = year_to_comp_season_map(year)
+    GAMEWEEK = gameweek
+    url = f"https://www.afl.com.au/fixture?Competition={COMPETITION}&CompSeason={COMP_SEASON}&MatchTimezone=VENUE_TIME&Regions=2&GameWeeks={GAMEWEEK}&Teams=1&Venues=13"
     s = get_soup_data(url)
     return get_all_matches_from_afl_homepage(s)
 
 
-if __name__ == "__main__":
-    GAMEWEEK = 2
-    YEAR = 2023
+def get_all_matches(year):
+    COMPETITION = 1
+    COMP_SEASON = year_to_comp_season_map(year)
+    matches = []
+    for GAMEWEEK in range(1, 28):
+        url = f"https://www.afl.com.au/fixture?Competition={COMPETITION}&CompSeason={COMP_SEASON}&MatchTimezone=VENUE_TIME&Regions=2&GameWeeks={GAMEWEEK}&Teams=1&Venues=13"
+        s = get_soup_data(url)
+        matches.extend(get_all_matches_from_afl_homepage(s))
+    return matches
 
-    matches = get_gameweek_matches(GAMEWEEK)
-    count = 1
-    for match in matches:
-        rnd = "R" + str(GAMEWEEK)
-        # 2022R101,2022,R1,16-Mar-2022,MCG,7:25 PM,0,Melbourne,97,Western Bulldogs,71,0.0
-        print(
-            "%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s"
-            % (
-                str(YEAR) + rnd + "0" + str(count),
-                YEAR,
-                rnd,
-                match["match_date"],
-                match["venue"],
-                "7:25 PM",
-                0,
-                match["home_team_name"],
-                match["home_team_score"],
-                match["away_team_name"],
-                match["away_team_score"],
-                0.0,
+
+def write_data_to_csv(csv_name):
+    # read scraping index txt
+    with open("scraping_index.txt", "r") as f:
+        f = f.read()
+        index_year = int(f.split(" ")[0])
+        index_gameweek = int(f.split(" ")[1])
+
+    if index_year:
+        print("Scraping has already been done. Don't write a header")
+    else:
+        # write header
+        with open(csv_name, "w") as f:
+            writer = csv.writer(f)
+            writer.writerow(
+                [
+                    "match_id",
+                    "year",
+                    "round",
+                    "date",
+                    "venue",
+                    "time",
+                    "home_team",
+                    "home_team_score",
+                    "away_team",
+                    "away_team_score",
+                    "home_team_goals",
+                    "home_team_behinds",
+                    "away_team_goals",
+                    "away_team_behinds",
+                ]
             )
-        )
-        count += 1
+    for year in range(2012, 2024):
+        for gameweek in range(1, 28):
+            if year <= index_year and gameweek <= index_gameweek:
+                continue
+            matches = get_gameweek_matches(gameweek, year)
+            rnd = "R" + str(gameweek)
+            count = 1
+            for match in matches:
+                # 2022R101,2022,R1,16-Mar-2022,MCG,7:25 PM,0,Melbourne,97,Western Bulldogs,71,0.0
+                with open(csv_name, "a") as f:
+                    writer = csv.writer(f)
+                    writer.writerow(
+                        [
+                            str(year) + rnd + "0" + str(count),
+                            year,
+                            rnd,
+                            match["match_date"],
+                            match["venue"],
+                            match["match_time"],
+                            match["home_team_name"],
+                            match["home_team_score"],
+                            match["away_team_name"],
+                            match["away_team_score"],
+                            abs(
+                                int(match["home_team_score"])
+                                - int(match["away_team_score"])
+                            ),
+                        ]
+                    )
+                count += 1
+            # write current position to file
+            # so we can save our progress
+            with open("scraping_index.txt", "w") as f:
+                f.write(str(year) + " " + str(gameweek))
+
+
+if __name__ == "__main__":
+    write_data_to_csv("../outputs/afl.csv")
