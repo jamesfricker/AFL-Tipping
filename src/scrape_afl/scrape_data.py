@@ -154,8 +154,7 @@ def get_all_matches_from_afl_homepage(homepage_soup):
 
 def get_gameweek_matches(GAMEWEEK):
     COMPETITION = 1
-    # TODO
-    # create a map of COMP_SEASON to YEAR
+    # TODO: #3 create a map of COMP_SEASON to YEAR
     COMP_SEASON = 43
     url = f"https://www.afl.com.au/fixture?Competition={COMPETITION}&CompSeason={COMP_SEASON}&MatchTimezone=VENUE_TIME&Regions=2&GameWeeks={GAMEWEEK}&Teams=1&Venues=12"
     print(url)
