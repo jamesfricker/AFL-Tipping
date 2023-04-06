@@ -1,0 +1,208 @@
+MatchID,Year,Round,Date,Venue,Time,HomeTeam,HomeScore,AwayTeam,AwayScore,Margin
+2012R101,2012,R1,24-Mar-2012,Accor Stadium,7:20 PM (AEDT),Greater Western Sydney,37,Sydney,100,63
+2012R102,2012,R1,29-Mar-2012,MCG,7:45 PM (AEDT),Richmond,81,Carlton,125,44
+2012R103,2012,R1,30-Mar-2012,MCG,7:50 PM (AEDT),Hawthorn,137,Collingwood,115,22
+2012R104,2012,R1,31-Mar-2012,MCG,1:45 PM (AEDT),Melbourne,78,Brisbane Lions,119,41
+2012R105,2012,R1,31-Mar-2012,Heritage Bank Stadium,4:45 PM (AEDT),Gold Coast,68,Adelaide,137,69
+2012R106,2012,R1,31-Mar-2012,Domain Stadium,7:45 PM (AEDT),Fremantle,105,Geelong,101,4
+2012R107,2012,R1,31-Mar-2012,Marvel Stadium,7:45 PM (AEDT),North Melbourne,102,Essendon,104,2
+2012R108,2012,R1,01-Apr-2012,Marvel Stadium,1:10 PM (AEST),Western Bulldogs,87,West Coast,136,49
+2012R109,2012,R1,01-Apr-2012,AAMI Stadium,4:40 PM (AEST),Port Adelaide,89,St Kilda,85,4
+2012R201,2012,R2,05-Apr-2012,Gabba,7:40 PM (AEST),Brisbane Lions,63,Carlton,154,91
+2012R202,2012,R2,07-Apr-2012,Marvel Stadium,1:45 PM (AEST),Essendon,111,Port Adelaide,86,25
+2012R203,2012,R2,07-Apr-2012,SCG,2:10 PM (AEST),Sydney,94,Fremantle,81,13
+2012R204,2012,R2,07-Apr-2012,Domain Stadium,4:40 PM (AEST),West Coast,166,Melbourne,58,108
+2012R205,2012,R2,07-Apr-2012,MCG,7:40 PM (AEST),Collingwood,85,Richmond,64,21
+2012R206,2012,R2,07-Apr-2012,AAMI Stadium,7:40 PM (AEST),Adelaide,82,Western Bulldogs,64,18
+2012R207,2012,R2,08-Apr-2012,Blundstone Arena,1:10 PM (AEST),North Melbourne,183,Greater Western Sydney,54,129
+2012R208,2012,R2,08-Apr-2012,Marvel Stadium,4:40 PM (AEST),St Kilda,139,Gold Coast,47,92
+2012R209,2012,R2,09-Apr-2012,MCG,3:10 PM (AEST),Geelong,92,Hawthorn,90,2
+2012R301,2012,R3,13-Apr-2012,MCG,7:50 PM (AEST),Carlton,122,Collingwood,62,60
+2012R302,2012,R3,14-Apr-2012,MCG,1:45 PM (AEST),Richmond,133,Melbourne,74,59
+2012R303,2012,R3,14-Apr-2012,AAMI Stadium,2:10 PM (AEST),Port Adelaide,83,Sydney,105,22
+2012R304,2012,R3,14-Apr-2012,Domain Stadium,4:40 PM (AEST),Fremantle,64,Brisbane Lions,35,29
+2012R305,2012,R3,14-Apr-2012,Heritage Bank Stadium,7:40 PM (AEST),Gold Coast,88,Essendon,105,17
+2012R306,2012,R3,14-Apr-2012,Marvel Stadium,7:40 PM (AEST),Western Bulldogs,40,St Kilda,103,63
+2012R307,2012,R3,15-Apr-2012,Blacktown ISP,1:10 PM (AEST),Greater Western Sydney,69,West Coast,150,81
+2012R308,2012,R3,15-Apr-2012,MCG,3:15 PM (AEST),Hawthorn,140,Adelaide,84,56
+2012R309,2012,R3,15-Apr-2012,Marvel Stadium,4:40 PM (AEST),North Melbourne,131,Geelong,114,17
+2012R401,2012,R4,20-Apr-2012,Marvel Stadium,7:50 PM (AEST),St Kilda,79,Fremantle,92,13
+2012R402,2012,R4,21-Apr-2012,MCG,1:45 PM (AEST),Carlton,79,Essendon,109,30
+2012R403,2012,R4,21-Apr-2012,Marvel Stadium,2:10 PM (AEST),Collingwood,97,Port Adelaide,73,24
+2012R404,2012,R4,21-Apr-2012,AAMI Stadium,4:40 PM (AEST),Adelaide,96,Greater Western Sydney,50,46
+2012R405,2012,R4,21-Apr-2012,Domain Stadium,7:40 PM (AEST),West Coast,51,Hawthorn,46,5
+2012R406,2012,R4,21-Apr-2012,Gabba,7:40 PM (AEST),Brisbane Lions,111,Gold Coast,46,65
+2012R407,2012,R4,22-Apr-2012,GMHBA Stadium,1:10 PM (AEST),Geelong,75,Richmond,65,10
+2012R408,2012,R4,22-Apr-2012,SCG,3:15 PM (AEST),Sydney,113,North Melbourne,77,36
+2012R409,2012,R4,22-Apr-2012,MCG,4:40 PM (AEST),Melbourne,67,Western Bulldogs,88,21
+2012R501,2012,R5,25-Apr-2012,MCG,2:40 PM (AEST),Collingwood,80,Essendon,79,1
+2012R502,2012,R5,27-Apr-2012,Domain Stadium,8:45 PM (AEST),Fremantle,57,Carlton,65,8
+2012R503,2012,R5,28-Apr-2012,Manuka Oval,1:45 PM (AEST),Greater Western Sydney,62,Western Bulldogs,104,42
+2012R504,2012,R5,28-Apr-2012,Marvel Stadium,4:40 PM (AEST),North Melbourne,127,Gold Coast,93,34
+2012R505,2012,R5,28-Apr-2012,MCG,7:40 PM (AEST),Melbourne,66,St Kilda,84,18
+2012R506,2012,R5,28-Apr-2012,Gabba,7:45 PM (AEST),Brisbane Lions,41,Geelong,79,38
+2012R507,2012,R5,29-Apr-2012,UTAS Stadium,1:10 PM (AEST),Hawthorn,69,Sydney,106,37
+2012R508,2012,R5,29-Apr-2012,Marvel Stadium,3:15 PM (AEST),Richmond,97,West Coast,107,10
+2012R509,2012,R5,29-Apr-2012,AAMI Stadium,4:40 PM (AEST),Adelaide,110,Port Adelaide,91,19
+2012R601,2012,R6,04-May-2012,Marvel Stadium,7:50 PM (AEST),Western Bulldogs,77,Collingwood,98,21
+2012R602,2012,R6,05-May-2012,Marvel Stadium,1:40 PM (AEST),Essendon,129,Brisbane Lions,62,67
+2012R603,2012,R6,05-May-2012,GMHBA Stadium,1:45 PM (AEST),Geelong,119,Melbourne,76,43
+2012R604,2012,R6,05-May-2012,Heritage Bank Stadium,4:40 PM (AEST),Gold Coast,87,Fremantle,94,7
+2012R605,2012,R6,05-May-2012,MCG,7:40 PM (AEST),St Kilda,88,Hawthorn,123,35
+2012R606,2012,R6,05-May-2012,SCG,7:40 PM (AEST),Sydney,94,Adelaide,99,5
+2012R607,2012,R6,06-May-2012,Marvel Stadium,1:10 PM (AEST),Carlton,110,Greater Western Sydney,43,67
+2012R608,2012,R6,06-May-2012,AAMI Stadium,3:15 PM (AEST),Port Adelaide,54,Richmond,91,37
+2012R609,2012,R6,06-May-2012,Domain Stadium,4:40 PM (AEST),West Coast,120,North Melbourne,95,25
+2012R701,2012,R7,11-May-2012,MCG,7:50 PM (AEST),Melbourne,49,Hawthorn,115,66
+2012R702,2012,R7,12-May-2012,AAMI Stadium,1:15 PM (AEST),Adelaide,122,Geelong,72,50
+2012R703,2012,R7,12-May-2012,Manuka Oval,1:40 PM (AEST),Greater Western Sydney,94,Gold Coast,67,27
+2012R704,2012,R7,12-May-2012,MCG,4:40 PM (AEST),Richmond,91,Sydney,62,29
+2012R705,2012,R7,12-May-2012,Marvel Stadium,7:40 PM (AEST),Essendon,113,West Coast,52,61
+2012R706,2012,R7,12-May-2012,Gabba,7:40 PM (AEST),Brisbane Lions,58,Collingwood,116,58
+2012R707,2012,R7,13-May-2012,Marvel Stadium,1:10 PM (AEST),North Melbourne,83,Western Bulldogs,101,18
+2012R708,2012,R7,13-May-2012,Domain Stadium,4:40 PM (AEST),Fremantle,87,Port Adelaide,47,40
+2012R709,2012,R7,14-May-2012,Marvel Stadium,7:40 PM (AEST),St Kilda,122,Carlton,98,24
+2012R801,2012,R8,18-May-2012,MCG,7:50 PM (AEST),Collingwood,96,Geelong,84,12
+2012R802,2012,R8,19-May-2012,AAMI Stadium,1:45 PM (AEST),Port Adelaide,95,North Melbourne,93,2
+2012R803,2012,R8,19-May-2012,UTAS Stadium,2:10 PM (AEST),Hawthorn,119,Fremantle,63,56
+2012R804,2012,R8,19-May-2012,SCG,4:40 PM (AEST),Sydney,138,Melbourne,37,101
+2012R805,2012,R8,19-May-2012,TIO Stadium,7:40 PM (AEST),Western Bulldogs,72,Gold Coast,34,38
+2012R806,2012,R8,19-May-2012,MCG,7:50 PM (AEST),Essendon,128,Richmond,109,19
+2012R807,2012,R8,20-May-2012,Gabba,1:10 PM (AEST),Brisbane Lions,132,Greater Western Sydney,40,92
+2012R808,2012,R8,20-May-2012,Marvel Stadium,3:15 PM (AEST),Carlton,55,Adelaide,124,69
+2012R809,2012,R8,20-May-2012,Domain Stadium,4:40 PM (AEST),West Coast,121,St Kilda,91,30
+2012R901,2012,R9,25-May-2012,Marvel Stadium,7:50 PM (AEST),Western Bulldogs,75,Geelong,95,20
+2012R902,2012,R9,26-May-2012,MCG,1:45 PM (AEST),Richmond,137,Hawthorn,75,62
+2012R903,2012,R9,26-May-2012,Heritage Bank Stadium,2:10 PM (AEST),Gold Coast,70,Port Adelaide,118,48
+2012R904,2012,R9,26-May-2012,Marvel Stadium,4:40 PM (AEST),St Kilda,111,Sydney,83,28
+2012R905,2012,R9,26-May-2012,GIANTS Stadium,7:40 PM (AEST),Greater Western Sydney,53,Essendon,119,66
+2012R906,2012,R9,26-May-2012,AAMI Stadium,7:40 PM (AEST),Adelaide,49,Collingwood,75,26
+2012R907,2012,R9,27-May-2012,Marvel Stadium,1:10 PM (AEST),North Melbourne,112,Brisbane Lions,96,16
+2012R908,2012,R9,27-May-2012,MCG,3:15 PM (AEST),Carlton,107,Melbourne,49,58
+2012R909,2012,R9,27-May-2012,Domain Stadium,4:40 PM (AEST),West Coast,84,Fremantle,36,48
+2012R1001,2012,R10,01-Jun-2012,Marvel Stadium,7:50 PM (AEST),St Kilda,113,Richmond,121,8
+2012R1002,2012,R10,02-Jun-2012,GMHBA Stadium,1:45 PM (AEST),Geelong,126,Greater Western Sydney,61,65
+2012R1003,2012,R10,02-Jun-2012,UTAS Stadium,2:10 PM (AEST),Hawthorn,174,North Melbourne,59,115
+2012R1004,2012,R10,02-Jun-2012,Domain Stadium,4:40 PM (AEST),Fremantle,82,Adelaide,111,29
+2012R1005,2012,R10,02-Jun-2012,MCG,7:40 PM (AEST),Essendon,52,Melbourne,58,6
+2012R1006,2012,R10,02-Jun-2012,AAMI Stadium,7:40 PM (AEST),Port Adelaide,99,Carlton,45,54
+2012R1007,2012,R10,03-Jun-2012,Gabba,1:10 PM (AEST),Brisbane Lions,102,West Coast,100,2
+2012R1008,2012,R10,03-Jun-2012,SCG,3:15 PM (AEST),Sydney,132,Western Bulldogs,40,92
+2012R1009,2012,R10,03-Jun-2012,MCG,4:40 PM (AEST),Collingwood,149,Gold Coast,52,97
+2012R1101,2012,R11,08-Jun-2012,Marvel Stadium,7:50 PM (AEST),Carlton,85,Geelong,97,12
+2012R1102,2012,R11,09-Jun-2012,MCG,1:40 PM (AEST),Richmond,66,Fremantle,78,12
+2012R1103,2012,R11,09-Jun-2012,Heritage Bank Stadium,4:40 PM (AEST),Gold Coast,49,St Kilda,144,95
+2012R1104,2012,R11,09-Jun-2012,Marvel Stadium,7:40 PM (AEST),Essendon,82,Sydney,86,4
+2012R1105,2012,R11,10-Jun-2012,AAMI Stadium,4:40 PM (AEST),Port Adelaide,62,Hawthorn,108,46
+2012R1106,2012,R11,11-Jun-2012,MCG,3:15 PM (AEST),Melbourne,87,Collingwood,129,42
+2012R1201,2012,R12,14-Jun-2012,Domain Stadium,7:40 PM (AEST),West Coast,79,Carlton,69,10
+2012R1202,2012,R12,15-Jun-2012,AAMI Stadium,8:40 PM (AEST),Adelaide,115,St Kilda,111,4
+2012R1203,2012,R12,16-Jun-2012,GIANTS Stadium,2:10 PM (AEST),Greater Western Sydney,74,Richmond,86,12
+2012R1204,2012,R12,16-Jun-2012,Heritage Bank Stadium,7:40 PM (AEST),Gold Coast,80,North Melbourne,87,7
+2012R1205,2012,R12,17-Jun-2012,MCG,1:10 PM (AEST),Hawthorn,135,Brisbane Lions,70,65
+2012R1206,2012,R12,17-Jun-2012,Marvel Stadium,4:40 PM (AEST),Western Bulldogs,95,Port Adelaide,57,38
+2012R1301,2012,R13,22-Jun-2012,SCG,7:50 PM (AEST),Sydney,80,Geelong,74,6
+2012R1302,2012,R13,23-Jun-2012,Marvel Stadium,1:40 PM (AEST),Western Bulldogs,56,Brisbane Lions,114,58
+2012R1303,2012,R13,23-Jun-2012,MCG,4:40 PM (AEST),Collingwood,85,West Coast,82,3
+2012R1304,2012,R13,23-Jun-2012,Domain Stadium,7:40 PM (AEST),Fremantle,89,Essendon,113,24
+2012R1305,2012,R13,24-Jun-2012,MCG,3:15 PM (AEST),Melbourne,135,Greater Western Sydney,57,78
+2012R1306,2012,R13,24-Jun-2012,Marvel Stadium,4:40 PM (AEST),North Melbourne,121,Adelaide,89,32
+2012R1401,2012,R14,29-Jun-2012,MCG,7:50 PM (AEST),Carlton,70,Hawthorn,120,50
+2012R1402,2012,R14,30-Jun-2012,MCG,1:45 PM (AEST),Collingwood,107,Fremantle,78,29
+2012R1403,2012,R14,30-Jun-2012,AAMI Stadium,2:10 PM (AEST),Adelaide,106,Richmond,87,19
+2012R1404,2012,R14,30-Jun-2012,Domain Stadium,4:40 PM (AEST),West Coast,166,Gold Coast,40,126
+2012R1405,2012,R14,30-Jun-2012,Marvel Stadium,7:40 PM (AEST),Essendon,140,Western Bulldogs,56,84
+2012R1406,2012,R14,30-Jun-2012,Accor Stadium,7:40 PM (AEST),Sydney,132,Greater Western Sydney,38,94
+2012R1407,2012,R14,01-Jul-2012,GMHBA Stadium,1:10 PM (AEST),Geelong,99,Port Adelaide,61,38
+2012R1408,2012,R14,01-Jul-2012,Gabba,3:15 PM (AEST),Brisbane Lions,122,Melbourne,61,61
+2012R1409,2012,R14,01-Jul-2012,Marvel Stadium,4:40 PM (AEST),St Kilda,103,North Melbourne,136,33
+2012R1501,2012,R15,06-Jul-2012,MCG,7:50 PM (AEST),Collingwood,62,Carlton,85,23
+2012R1502,2012,R15,07-Jul-2012,Blundstone Arena,1:45 PM (AEST),North Melbourne,84,West Coast,86,2
+2012R1503,2012,R15,07-Jul-2012,MCG,2:10 PM (AEST),Melbourne,78,Richmond,101,23
+2012R1504,2012,R15,07-Jul-2012,SCG,4:40 PM (AEST),Sydney,110,Brisbane Lions,63,47
+2012R1505,2012,R15,07-Jul-2012,Marvel Stadium,7:40 PM (AEST),St Kilda,133,Essendon,62,71
+2012R1506,2012,R15,07-Jul-2012,AAMI Stadium,7:40 PM (AEST),Port Adelaide,58,Adelaide,116,58
+2012R1507,2012,R15,08-Jul-2012,MCG,1:10 PM (AEST),Hawthorn,193,Greater Western Sydney,31,162
+2012R1508,2012,R15,08-Jul-2012,Heritage Bank Stadium,3:15 PM (AEST),Gold Coast,96,Geelong,110,14
+2012R1509,2012,R15,08-Jul-2012,Domain Stadium,4:40 PM (AEST),Fremantle,95,Western Bulldogs,57,38
+2012R1601,2012,R16,13-Jul-2012,Marvel Stadium,7:50 PM (AEST),North Melbourne,149,Carlton,96,53
+2012R1602,2012,R16,14-Jul-2012,Marvel Stadium,1:45 PM (AEST),Melbourne,83,Fremantle,117,34
+2012R1603,2012,R16,14-Jul-2012,AAMI Stadium,2:10 PM (AEST),Port Adelaide,77,Essendon,127,50
+2012R1604,2012,R16,14-Jul-2012,Cazalys Stadium,4:40 PM (AEST),Richmond,88,Gold Coast,90,2
+2012R1605,2012,R16,14-Jul-2012,MCG,7:40 PM (AEST),Geelong,79,Collingwood,110,31
+2012R1606,2012,R16,14-Jul-2012,Gabba,7:40 PM (AEST),Brisbane Lions,92,St Kilda,105,13
+2012R1607,2012,R16,15-Jul-2012,GIANTS Stadium,1:10 PM (AEST),Greater Western Sydney,59,Adelaide,178,119
+2012R1608,2012,R16,15-Jul-2012,Marvel Stadium,3:15 PM (AEST),Western Bulldogs,44,Hawthorn,116,72
+2012R1609,2012,R16,15-Jul-2012,Domain Stadium,4:40 PM (AEST),West Coast,69,Sydney,121,52
+2012R1701,2012,R17,20-Jul-2012,Marvel Stadium,7:50 PM (AEST),Geelong,134,Essendon,67,67
+2012R1702,2012,R17,21-Jul-2012,MCG,1:45 PM (AEST),Collingwood,91,Hawthorn,138,47
+2012R1703,2012,R17,21-Jul-2012,AAMI Stadium,2:10 PM (AEST),Adelaide,124,West Coast,75,49
+2012R1704,2012,R17,21-Jul-2012,Heritage Bank Stadium,4:40 PM (AEST),Gold Coast,48,Brisbane Lions,59,11
+2012R1705,2012,R17,21-Jul-2012,Marvel Stadium,7:40 PM (AEST),Western Bulldogs,84,Carlton,102,18
+2012R1706,2012,R17,21-Jul-2012,TIO Stadium,7:40 PM (AEST),Melbourne,56,Port Adelaide,84,28
+2012R1707,2012,R17,22-Jul-2012,SCG,1:10 PM (AEST),Sydney,105,St Kilda,76,29
+2012R1708,2012,R17,22-Jul-2012,MCG,3:15 PM (AEST),Richmond,99,North Melbourne,103,4
+2012R1709,2012,R17,22-Jul-2012,Domain Stadium,4:40 PM (AEST),Fremantle,132,Greater Western Sydney,37,95
+2012R1801,2012,R18,27-Jul-2012,Marvel Stadium,7:50 PM (AEST),Essendon,86,Hawthorn,180,94
+2012R1802,2012,R18,28-Jul-2012,GMHBA Stadium,1:45 PM (AEST),Geelong,102,Adelaide,75,27
+2012R1803,2012,R18,28-Jul-2012,Marvel Stadium,2:10 PM (AEST),North Melbourne,127,Melbourne,73,54
+2012R1804,2012,R18,28-Jul-2012,GIANTS Stadium,4:40 PM (AEST),Greater Western Sydney,54,Collingwood,174,120
+2012R1805,2012,R18,28-Jul-2012,MCG,7:40 PM (AEST),Carlton,95,Richmond,91,4
+2012R1806,2012,R18,28-Jul-2012,Heritage Bank Stadium,7:40 PM (AEST),Gold Coast,54,Sydney,126,72
+2012R1807,2012,R18,29-Jul-2012,AAMI Stadium,1:10 PM (AEST),Port Adelaide,48,Fremantle,75,27
+2012R1808,2012,R18,29-Jul-2012,Marvel Stadium,3:15 PM (AEST),St Kilda,118,Western Bulldogs,42,76
+2012R1809,2012,R18,29-Jul-2012,Domain Stadium,4:40 PM (AEST),West Coast,175,Brisbane Lions,77,98
+2012R1901,2012,R19,03-Aug-2012,MCG,7:50 PM (AEST),Hawthorn,116,Geelong,118,2
+2012R1902,2012,R19,04-Aug-2012,Marvel Stadium,1:45 PM (AEST),Western Bulldogs,61,North Melbourne,115,54
+2012R1903,2012,R19,04-Aug-2012,GIANTS Stadium,2:10 PM (AEST),Greater Western Sydney,107,Port Adelaide,73,34
+2012R1904,2012,R19,04-Aug-2012,Domain Stadium,4:40 PM (AEST),Fremantle,113,West Coast,48,65
+2012R1905,2012,R19,04-Aug-2012,MCG,7:40 PM (AEST),Collingwood,91,St Kilda,85,6
+2012R1906,2012,R19,04-Aug-2012,Gabba,7:40 PM (AEST),Brisbane Lions,84,Richmond,132,48
+2012R1907,2012,R19,05-Aug-2012,MCG,1:10 PM (AEST),Melbourne,108,Gold Coast,66,42
+2012R1908,2012,R19,05-Aug-2012,Marvel Stadium,3:15 PM (AEST),Carlton,71,Sydney,93,22
+2012R1909,2012,R19,05-Aug-2012,AAMI Stadium,4:40 PM (AEST),Adelaide,104,Essendon,100,4
+2012R2001,2012,R20,10-Aug-2012,Domain Stadium,8:40 PM (AEST),West Coast,102,Geelong,97,5
+2012R2002,2012,R20,11-Aug-2012,MCG,1:45 PM (AEST),St Kilda,107,Melbourne,82,25
+2012R2003,2012,R20,11-Aug-2012,AAMI Stadium,2:10 PM (AEST),Adelaide,119,Fremantle,91,28
+2012R2004,2012,R20,11-Aug-2012,Heritage Bank Stadium,4:40 PM (AEST),Gold Coast,109,Greater Western Sydney,79,30
+2012R2005,2012,R20,11-Aug-2012,Accor Stadium,7:40 PM (AEST),Sydney,70,Collingwood,78,8
+2012R2006,2012,R20,11-Aug-2012,Marvel Stadium,7:40 PM (AEST),Carlton,113,Brisbane Lions,77,36
+2012R2007,2012,R20,12-Aug-2012,UTAS Stadium,1:10 PM (AEST),Hawthorn,159,Port Adelaide,87,72
+2012R2008,2012,R20,12-Aug-2012,MCG,3:15 PM (AEST),Richmond,150,Western Bulldogs,80,70
+2012R2009,2012,R20,12-Aug-2012,Marvel Stadium,4:40 PM (AEST),Essendon,76,North Melbourne,100,24
+2012R2101,2012,R21,17-Aug-2012,Marvel Stadium,7:50 PM (AEST),Geelong,123,St Kilda,81,42
+2012R2102,2012,R21,18-Aug-2012,MCG,1:45 PM (AEST),Essendon,60,Carlton,156,96
+2012R2103,2012,R21,18-Aug-2012,Manuka Oval,2:10 PM (AEST),Greater Western Sydney,59,Melbourne,84,25
+2012R2104,2012,R21,18-Aug-2012,Domain Stadium,4:40 PM (AEST),Fremantle,94,Richmond,72,22
+2012R2105,2012,R21,18-Aug-2012,Marvel Stadium,7:40 PM (AEST),Collingwood,61,North Melbourne,91,30
+2012R2106,2012,R21,18-Aug-2012,Gabba,7:40 PM (AEST),Brisbane Lions,95,Adelaide,85,10
+2012R2107,2012,R21,19-Aug-2012,AAMI Stadium,1:10 PM (AEST),Port Adelaide,50,West Coast,98,48
+2012R2108,2012,R21,19-Aug-2012,Marvel Stadium,3:15 PM (AEST),Western Bulldogs,85,Sydney,167,82
+2012R2109,2012,R21,19-Aug-2012,MCG,4:40 PM (AEST),Hawthorn,129,Gold Coast,65,64
+2012R2201,2012,R22,24-Aug-2012,MCG,7:50 PM (AEST),Richmond,102,Essendon,57,45
+2012R2202,2012,R22,25-Aug-2012,Marvel Stadium,1:45 PM (AEST),St Kilda,163,Greater Western Sydney,35,128
+2012R2203,2012,R22,25-Aug-2012,AAMI Stadium,2:10 PM (AEST),Port Adelaide,93,Brisbane Lions,104,11
+2012R2204,2012,R22,25-Aug-2012,SCG,4:40 PM (AEST),Sydney,95,Hawthorn,102,7
+2012R2205,2012,R22,25-Aug-2012,Domain Stadium,7:40 PM (AEST),West Coast,107,Collingwood,58,49
+2012R2206,2012,R22,25-Aug-2012,Heritage Bank Stadium,7:40 PM (AEST),Gold Coast,98,Carlton,86,12
+2012R2207,2012,R22,26-Aug-2012,GMHBA Stadium,1:10 PM (AEST),Geelong,107,Western Bulldogs,73,34
+2012R2208,2012,R22,26-Aug-2012,Marvel Stadium,3:15 PM (AEST),North Melbourne,79,Fremantle,132,53
+2012R2209,2012,R22,26-Aug-2012,MCG,4:40 PM (AEST),Melbourne,81,Adelaide,150,69
+2012R2301,2012,R23,31-Aug-2012,MCG,7:50 PM (AEST),Hawthorn,95,West Coast,70,25
+2012R2302,2012,R23,01-Sep-2012,GMHBA Stadium,1:45 PM (AEST),Geelong,112,Sydney,78,34
+2012R2303,2012,R23,01-Sep-2012,AAMI Stadium,2:10 PM (AEST),Adelaide,153,Gold Coast,62,91
+2012R2304,2012,R23,01-Sep-2012,GIANTS Stadium,4:40 PM (AEST),Greater Western Sydney,77,North Melbourne,105,28
+2012R2305,2012,R23,01-Sep-2012,MCG,7:40 PM (AEST),Essendon,72,Collingwood,104,32
+2012R2306,2012,R23,01-Sep-2012,Domain Stadium,7:40 PM (AEST),Fremantle,101,Melbourne,40,61
+2012R2307,2012,R23,02-Sep-2012,Marvel Stadium,1:10 PM (AEST),Carlton,91,St Kilda,106,15
+2012R2308,2012,R23,02-Sep-2012,MCG,3:15 PM (AEST),Richmond,106,Port Adelaide,106,0
+2012R2309,2012,R23,02-Sep-2012,Gabba,4:40 PM (AEST),Brisbane Lions,128,Western Bulldogs,61,67
+2012R2401,2012,R24,07-Sep-2012,MCG,7:50 PM (AEST),Hawthorn,135,Collingwood,97,38
+2012R2402,2012,R24,08-Sep-2012,AAMI Stadium,3:15 PM (AEST),Adelaide,42,Sydney,71,29
+2012R2403,2012,R24,08-Sep-2012,MCG,7:45 PM (AEST),Geelong,80,Fremantle,96,16
+2012R2404,2012,R24,09-Sep-2012,Domain Stadium,3:15 PM (AEST),West Coast,162,North Melbourne,66,96
+2012R2501,2012,R25,14-Sep-2012,AAMI Stadium,8:45 PM (AEST),Adelaide,81,Fremantle,71,10
+2012R2502,2012,R25,15-Sep-2012,MCG,7:45 PM (AEST),Collingwood,73,West Coast,60,13
+2012R2601,2012,R26,21-Sep-2012,Accor Stadium,7:50 PM (AEST),Sydney,96,Collingwood,70,26
+2012R2602,2012,R26,22-Sep-2012,MCG,5:15 PM (AEST),Hawthorn,97,Adelaide,92,5
+2012R2701,2012,R27,29-Sep-2012,MCG,2:30 PM (AEST),Hawthorn,81,Sydney,91,10
