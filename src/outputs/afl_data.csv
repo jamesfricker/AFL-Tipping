@@ -1,0 +1,2259 @@
+match_id,year,round,date,venue,time,home_team_name,home_team_score,away_team_name,away_team_score
+162120120324,2012,1,24-Mar-2012,Stadium Australia,7:20 PM,Greater Western Sydney,37,Sydney,100
+31420120329,2012,1,29-Mar-2012,M.C.G.,7:45 PM,Richmond,81,Carlton,125
+41020120330,2012,1,30-Mar-2012,M.C.G.,7:50 PM,Hawthorn,137,Collingwood,115
+111920120331,2012,1,31-Mar-2012,M.C.G.,1:45 PM,Melbourne,78,Brisbane Lions,119
+12020120331,2012,1,31-Mar-2012,Carrara,3:45 PM,Gold Coast,68,Adelaide,137
+80920120331,2012,1,31-Mar-2012,Subiaco,4:45 PM,Fremantle,105,Geelong,101
+51220120331,2012,1,31-Mar-2012,Docklands,7:45 PM,North Melbourne,102,Essendon,104
+71820120401,2012,1,1-Apr-2012,Docklands,1:10 PM,Western Bulldogs,87,West Coast,136
+131520120401,2012,1,1-Apr-2012,Football Park,4:10 PM,Port Adelaide,89,St Kilda,85
+31920120405,2012,2,5-Apr-2012,Gabba,7:40 PM,Brisbane Lions,63,Carlton,154
+51320120407,2012,2,7-Apr-2012,Docklands,1:45 PM,Essendon,111,Port Adelaide,86
+81620120407,2012,2,7-Apr-2012,S.C.G.,2:10 PM,Sydney,94,Fremantle,81
+111820120407,2012,2,7-Apr-2012,Subiaco,2:40 PM,West Coast,166,Melbourne,58
+10720120407,2012,2,7-Apr-2012,Football Park,7:10 PM,Adelaide,82,Western Bulldogs,64
+41420120407,2012,2,7-Apr-2012,M.C.G.,7:40 PM,Collingwood,85,Richmond,64
+122120120408,2012,2,8-Apr-2012,Bellerive Oval,1:10 PM,North Melbourne,183,Greater Western Sydney,54
+152020120408,2012,2,8-Apr-2012,Docklands,4:40 PM,St Kilda,139,Gold Coast,47
+91020120409,2012,2,9-Apr-2012,M.C.G.,3:10 PM,Geelong,92,Hawthorn,90
+30420120413,2012,3,13-Apr-2012,M.C.G.,7:50 PM,Carlton,122,Collingwood,62
+111420120414,2012,3,14-Apr-2012,M.C.G.,1:45 PM,Richmond,133,Melbourne,74
+131620120414,2012,3,14-Apr-2012,Football Park,1:40 PM,Port Adelaide,83,Sydney,105
+81920120414,2012,3,14-Apr-2012,Subiaco,2:40 PM,Fremantle,64,Brisbane Lions,35
+52020120414,2012,3,14-Apr-2012,Carrara,7:40 PM,Gold Coast,88,Essendon,105
+71520120414,2012,3,14-Apr-2012,Docklands,7:40 PM,Western Bulldogs,40,St Kilda,103
+182120120415,2012,3,15-Apr-2012,Blacktown,1:10 PM,Greater Western Sydney,69,West Coast,150
+11020120415,2012,3,15-Apr-2012,M.C.G.,3:15 PM,Hawthorn,140,Adelaide,84
+91220120415,2012,3,15-Apr-2012,Docklands,4:40 PM,North Melbourne,131,Geelong,114
+81520120420,2012,4,20-Apr-2012,Docklands,7:50 PM,St Kilda,79,Fremantle,92
+30520120421,2012,4,21-Apr-2012,M.C.G.,1:45 PM,Carlton,79,Essendon,109
+41320120421,2012,4,21-Apr-2012,Docklands,2:10 PM,Collingwood,97,Port Adelaide,73
+12120120421,2012,4,21-Apr-2012,Football Park,4:10 PM,Adelaide,96,Greater Western Sydney,50
+101820120421,2012,4,21-Apr-2012,Subiaco,5:40 PM,West Coast,51,Hawthorn,46
+192020120421,2012,4,21-Apr-2012,Gabba,7:40 PM,Brisbane Lions,111,Gold Coast,46
+91420120422,2012,4,22-Apr-2012,Kardinia Park,1:10 PM,Geelong,75,Richmond,65
+121620120422,2012,4,22-Apr-2012,S.C.G.,3:15 PM,Sydney,113,North Melbourne,77
+71120120422,2012,4,22-Apr-2012,M.C.G.,4:40 PM,Melbourne,67,Western Bulldogs,88
+40520120425,2012,5,25-Apr-2012,M.C.G.,2:40 PM,Collingwood,80,Essendon,79
+30820120427,2012,5,27-Apr-2012,Subiaco,6:45 PM,Fremantle,57,Carlton,65
+72120120428,2012,5,28-Apr-2012,Manuka Oval,1:45 PM,Greater Western Sydney,62,Western Bulldogs,104
+122020120428,2012,5,28-Apr-2012,Docklands,4:40 PM,North Melbourne,127,Gold Coast,93
+111520120428,2012,5,28-Apr-2012,M.C.G.,7:40 PM,Melbourne,66,St Kilda,84
+91920120428,2012,5,28-Apr-2012,Gabba,7:45 PM,Brisbane Lions,41,Geelong,79
+101620120429,2012,5,29-Apr-2012,York Park,1:10 PM,Hawthorn,69,Sydney,106
+141820120429,2012,5,29-Apr-2012,Docklands,3:15 PM,Richmond,97,West Coast,107
+11320120429,2012,5,29-Apr-2012,Football Park,4:10 PM,Adelaide,110,Port Adelaide,91
+40720120504,2012,6,4-May-2012,Docklands,7:50 PM,Western Bulldogs,77,Collingwood,98
+51920120505,2012,6,5-May-2012,Docklands,1:40 PM,Essendon,129,Brisbane Lions,62
+91120120505,2012,6,5-May-2012,Kardinia Park,1:45 PM,Geelong,119,Melbourne,76
+82020120505,2012,6,5-May-2012,Carrara,4:40 PM,Gold Coast,87,Fremantle,94
+11620120505,2012,6,5-May-2012,S.C.G.,7:40 PM,Sydney,94,Adelaide,99
+101520120505,2012,6,5-May-2012,M.C.G.,7:40 PM,St Kilda,88,Hawthorn,123
+32120120506,2012,6,6-May-2012,Docklands,1:10 PM,Carlton,110,Greater Western Sydney,43
+131420120506,2012,6,6-May-2012,Football Park,2:45 PM,Port Adelaide,54,Richmond,91
+121820120506,2012,6,6-May-2012,Subiaco,2:40 PM,West Coast,120,North Melbourne,95
+101120120511,2012,7,11-May-2012,M.C.G.,7:50 PM,Melbourne,49,Hawthorn,115
+10920120512,2012,7,12-May-2012,Football Park,12:45 PM,Adelaide,122,Geelong,72
+202120120512,2012,7,12-May-2012,Manuka Oval,1:40 PM,Greater Western Sydney,94,Gold Coast,67
+141620120512,2012,7,12-May-2012,M.C.G.,4:40 PM,Richmond,91,Sydney,62
+41920120512,2012,7,12-May-2012,Gabba,7:40 PM,Brisbane Lions,58,Collingwood,116
+51820120512,2012,7,12-May-2012,Docklands,7:40 PM,Essendon,113,West Coast,52
+71220120513,2012,7,13-May-2012,Docklands,1:10 PM,North Melbourne,83,Western Bulldogs,101
+81320120513,2012,7,13-May-2012,Subiaco,2:40 PM,Fremantle,87,Port Adelaide,47
+31520120514,2012,7,14-May-2012,Docklands,7:40 PM,St Kilda,122,Carlton,98
+40920120518,2012,8,18-May-2012,M.C.G.,7:50 PM,Collingwood,96,Geelong,84
+121320120519,2012,8,19-May-2012,Football Park,1:15 PM,Port Adelaide,95,North Melbourne,93
+81020120519,2012,8,19-May-2012,York Park,2:10 PM,Hawthorn,119,Fremantle,63
+111620120519,2012,8,19-May-2012,S.C.G.,4:40 PM,Sydney,138,Melbourne,37
+72020120519,2012,8,19-May-2012,Marrara Oval,7:10 PM,Western Bulldogs,72,Gold Coast,34
+51420120519,2012,8,19-May-2012,M.C.G.,7:50 PM,Essendon,128,Richmond,109
+192120120520,2012,8,20-May-2012,Gabba,1:10 PM,Brisbane Lions,132,Greater Western Sydney,40
+10320120520,2012,8,20-May-2012,Docklands,3:15 PM,Carlton,55,Adelaide,124
+151820120520,2012,8,20-May-2012,Subiaco,2:40 PM,West Coast,121,St Kilda,91
+70920120525,2012,9,25-May-2012,Docklands,7:50 PM,Western Bulldogs,75,Geelong,95
+101420120526,2012,9,26-May-2012,M.C.G.,1:45 PM,Richmond,137,Hawthorn,75
+132020120526,2012,9,26-May-2012,Carrara,2:10 PM,Gold Coast,70,Port Adelaide,118
+151620120526,2012,9,26-May-2012,Docklands,4:40 PM,St Kilda,111,Sydney,83
+10420120526,2012,9,26-May-2012,Football Park,7:10 PM,Adelaide,49,Collingwood,75
+52120120526,2012,9,26-May-2012,Sydney Showground,7:40 PM,Greater Western Sydney,53,Essendon,119
+121920120527,2012,9,27-May-2012,Docklands,1:10 PM,North Melbourne,112,Brisbane Lions,96
+31120120527,2012,9,27-May-2012,M.C.G.,3:15 PM,Carlton,107,Melbourne,49
+81820120527,2012,9,27-May-2012,Subiaco,2:40 PM,West Coast,84,Fremantle,36
+141520120601,2012,10,1-Jun-2012,Docklands,7:50 PM,St Kilda,113,Richmond,121
+92120120602,2012,10,2-Jun-2012,Kardinia Park,1:45 PM,Geelong,126,Greater Western Sydney,61
+101220120602,2012,10,2-Jun-2012,York Park,2:10 PM,Hawthorn,174,North Melbourne,59
+10820120602,2012,10,2-Jun-2012,Subiaco,2:40 PM,Fremantle,82,Adelaide,111
+31320120602,2012,10,2-Jun-2012,Football Park,7:10 PM,Port Adelaide,99,Carlton,45
+51120120602,2012,10,2-Jun-2012,M.C.G.,7:40 PM,Essendon,52,Melbourne,58
+181920120603,2012,10,3-Jun-2012,Gabba,1:10 PM,Brisbane Lions,102,West Coast,100
+71620120603,2012,10,3-Jun-2012,S.C.G.,3:15 PM,Sydney,132,Western Bulldogs,40
+42020120603,2012,10,3-Jun-2012,M.C.G.,4:40 PM,Collingwood,149,Gold Coast,52
+30920120608,2012,11,8-Jun-2012,Docklands,7:50 PM,Carlton,85,Geelong,97
+81420120609,2012,11,9-Jun-2012,M.C.G.,1:40 PM,Richmond,66,Fremantle,78
+152020120609,2012,11,9-Jun-2012,Carrara,4:40 PM,Gold Coast,49,St Kilda,144
+51620120609,2012,11,9-Jun-2012,Docklands,7:40 PM,Essendon,82,Sydney,86
+101320120610,2012,11,10-Jun-2012,Football Park,4:10 PM,Port Adelaide,62,Hawthorn,108
+41120120611,2012,11,11-Jun-2012,M.C.G.,3:15 PM,Melbourne,87,Collingwood,129
+31820120614,2012,12,14-Jun-2012,Subiaco,5:40 PM,West Coast,79,Carlton,69
+11520120615,2012,12,15-Jun-2012,Football Park,8:10 PM,Adelaide,115,St Kilda,111
+142120120616,2012,12,16-Jun-2012,Sydney Showground,2:10 PM,Greater Western Sydney,74,Richmond,86
+122020120616,2012,12,16-Jun-2012,Carrara,7:40 PM,Gold Coast,80,North Melbourne,87
+101920120617,2012,12,17-Jun-2012,M.C.G.,1:10 PM,Hawthorn,135,Brisbane Lions,70
+71320120617,2012,12,17-Jun-2012,Docklands,4:40 PM,Western Bulldogs,95,Port Adelaide,57
+91620120622,2012,13,22-Jun-2012,S.C.G.,7:50 PM,Sydney,80,Geelong,74
+71920120623,2012,13,23-Jun-2012,Docklands,1:40 PM,Western Bulldogs,56,Brisbane Lions,114
+41820120623,2012,13,23-Jun-2012,M.C.G.,4:40 PM,Collingwood,85,West Coast,82
+50820120623,2012,13,23-Jun-2012,Subiaco,5:40 PM,Fremantle,89,Essendon,113
+112120120624,2012,13,24-Jun-2012,M.C.G.,3:15 PM,Melbourne,135,Greater Western Sydney,57
+11220120624,2012,13,24-Jun-2012,Docklands,4:40 PM,North Melbourne,121,Adelaide,89
+31020120629,2012,14,29-Jun-2012,M.C.G.,7:50 PM,Carlton,70,Hawthorn,120
+40820120630,2012,14,30-Jun-2012,M.C.G.,1:45 PM,Collingwood,107,Fremantle,78
+11420120630,2012,14,30-Jun-2012,Football Park,1:40 PM,Adelaide,106,Richmond,87
+182020120630,2012,14,30-Jun-2012,Subiaco,2:40 PM,West Coast,166,Gold Coast,40
+50720120630,2012,14,30-Jun-2012,Docklands,7:40 PM,Essendon,140,Western Bulldogs,56
+162120120630,2012,14,30-Jun-2012,Stadium Australia,7:40 PM,Sydney,132,Greater Western Sydney,38
+91320120701,2012,14,1-Jul-2012,Kardinia Park,1:10 PM,Geelong,99,Port Adelaide,61
+111920120701,2012,14,1-Jul-2012,Gabba,3:15 PM,Brisbane Lions,122,Melbourne,61
+121520120701,2012,14,1-Jul-2012,Docklands,4:40 PM,St Kilda,103,North Melbourne,136
+30420120706,2012,15,6-Jul-2012,M.C.G.,7:50 PM,Collingwood,62,Carlton,85
+121820120707,2012,15,7-Jul-2012,Bellerive Oval,1:45 PM,North Melbourne,84,West Coast,86
+111420120707,2012,15,7-Jul-2012,M.C.G.,2:10 PM,Melbourne,78,Richmond,101
+161920120707,2012,15,7-Jul-2012,S.C.G.,4:40 PM,Sydney,110,Brisbane Lions,63
+11320120707,2012,15,7-Jul-2012,Football Park,7:10 PM,Port Adelaide,58,Adelaide,116
+51520120707,2012,15,7-Jul-2012,Docklands,7:40 PM,St Kilda,133,Essendon,62
+102120120708,2012,15,8-Jul-2012,M.C.G.,1:10 PM,Hawthorn,193,Greater Western Sydney,31
+92020120708,2012,15,8-Jul-2012,Carrara,3:15 PM,Gold Coast,96,Geelong,110
+70820120708,2012,15,8-Jul-2012,Subiaco,2:40 PM,Fremantle,95,Western Bulldogs,57
+31220120713,2012,16,13-Jul-2012,Docklands,7:50 PM,North Melbourne,149,Carlton,96
+81120120714,2012,16,14-Jul-2012,Docklands,1:45 PM,Melbourne,83,Fremantle,117
+51320120714,2012,16,14-Jul-2012,Football Park,1:40 PM,Port Adelaide,77,Essendon,127
+142020120714,2012,16,14-Jul-2012,Cazaly's Stadium,4:40 PM,Richmond,88,Gold Coast,90
+40920120714,2012,16,14-Jul-2012,M.C.G.,7:40 PM,Geelong,79,Collingwood,110
+151920120714,2012,16,14-Jul-2012,Gabba,7:40 PM,Brisbane Lions,92,St Kilda,105
+12120120715,2012,16,15-Jul-2012,Sydney Showground,1:10 PM,Greater Western Sydney,59,Adelaide,178
+71020120715,2012,16,15-Jul-2012,Docklands,3:15 PM,Western Bulldogs,44,Hawthorn,116
+161820120715,2012,16,15-Jul-2012,Subiaco,2:40 PM,West Coast,69,Sydney,121
+50920120720,2012,17,20-Jul-2012,Docklands,7:50 PM,Geelong,134,Essendon,67
+41020120721,2012,17,21-Jul-2012,M.C.G.,1:45 PM,Collingwood,91,Hawthorn,138
+11820120721,2012,17,21-Jul-2012,Football Park,1:40 PM,Adelaide,124,West Coast,75
+192020120721,2012,17,21-Jul-2012,Carrara,4:40 PM,Gold Coast,48,Brisbane Lions,59
+111320120721,2012,17,21-Jul-2012,Marrara Oval,7:10 PM,Melbourne,56,Port Adelaide,84
+30720120721,2012,17,21-Jul-2012,Docklands,7:40 PM,Western Bulldogs,84,Carlton,102
+151620120722,2012,17,22-Jul-2012,S.C.G.,1:10 PM,Sydney,105,St Kilda,76
+121420120722,2012,17,22-Jul-2012,M.C.G.,3:15 PM,Richmond,99,North Melbourne,103
+82120120722,2012,17,22-Jul-2012,Subiaco,2:40 PM,Fremantle,132,Greater Western Sydney,37
+51020120727,2012,18,27-Jul-2012,Docklands,7:50 PM,Essendon,86,Hawthorn,180
+10920120728,2012,18,28-Jul-2012,Kardinia Park,1:45 PM,Geelong,102,Adelaide,75
+111220120728,2012,18,28-Jul-2012,Docklands,2:10 PM,North Melbourne,127,Melbourne,73
+42120120728,2012,18,28-Jul-2012,Sydney Showground,4:40 PM,Greater Western Sydney,54,Collingwood,174
+31420120728,2012,18,28-Jul-2012,M.C.G.,7:40 PM,Carlton,95,Richmond,91
+162020120728,2012,18,28-Jul-2012,Carrara,7:40 PM,Gold Coast,54,Sydney,126
+81320120729,2012,18,29-Jul-2012,Football Park,12:40 PM,Port Adelaide,48,Fremantle,75
+71520120729,2012,18,29-Jul-2012,Docklands,3:15 PM,St Kilda,118,Western Bulldogs,42
+181920120729,2012,18,29-Jul-2012,Subiaco,2:40 PM,West Coast,175,Brisbane Lions,77
+91020120803,2012,19,3-Aug-2012,M.C.G.,7:50 PM,Hawthorn,116,Geelong,118
+71220120804,2012,19,4-Aug-2012,Docklands,1:45 PM,Western Bulldogs,61,North Melbourne,115
+132120120804,2012,19,4-Aug-2012,Sydney Showground,2:10 PM,Greater Western Sydney,107,Port Adelaide,73
+81820120804,2012,19,4-Aug-2012,Subiaco,2:40 PM,Fremantle,113,West Coast,48
+41520120804,2012,19,4-Aug-2012,M.C.G.,7:40 PM,Collingwood,91,St Kilda,85
+141920120804,2012,19,4-Aug-2012,Gabba,7:40 PM,Brisbane Lions,84,Richmond,132
+112020120805,2012,19,5-Aug-2012,M.C.G.,1:10 PM,Melbourne,108,Gold Coast,66
+31620120805,2012,19,5-Aug-2012,Docklands,3:15 PM,Carlton,71,Sydney,93
+10520120805,2012,19,5-Aug-2012,Football Park,4:10 PM,Adelaide,104,Essendon,100
+91820120810,2012,20,10-Aug-2012,Subiaco,6:40 PM,West Coast,102,Geelong,97
+111520120811,2012,20,11-Aug-2012,M.C.G.,1:45 PM,St Kilda,107,Melbourne,82
+10820120811,2012,20,11-Aug-2012,Football Park,1:40 PM,Adelaide,119,Fremantle,91
+202120120811,2012,20,11-Aug-2012,Carrara,4:40 PM,Gold Coast,109,Greater Western Sydney,79
+31920120811,2012,20,11-Aug-2012,Docklands,7:40 PM,Carlton,113,Brisbane Lions,77
+41620120811,2012,20,11-Aug-2012,Stadium Australia,7:40 PM,Sydney,70,Collingwood,78
+101320120812,2012,20,12-Aug-2012,York Park,1:10 PM,Hawthorn,159,Port Adelaide,87
+71420120812,2012,20,12-Aug-2012,M.C.G.,3:15 PM,Richmond,150,Western Bulldogs,80
+51220120812,2012,20,12-Aug-2012,Docklands,4:40 PM,Essendon,76,North Melbourne,100
+91520120817,2012,21,17-Aug-2012,Docklands,7:50 PM,Geelong,123,St Kilda,81
+30520120818,2012,21,18-Aug-2012,M.C.G.,1:45 PM,Essendon,60,Carlton,156
+112120120818,2012,21,18-Aug-2012,Manuka Oval,2:10 PM,Greater Western Sydney,59,Melbourne,84
+81420120818,2012,21,18-Aug-2012,Subiaco,2:40 PM,Fremantle,94,Richmond,72
+11920120818,2012,21,18-Aug-2012,Gabba,7:40 PM,Brisbane Lions,95,Adelaide,85
+41220120818,2012,21,18-Aug-2012,Docklands,7:40 PM,Collingwood,61,North Melbourne,91
+131820120819,2012,21,19-Aug-2012,Football Park,12:40 PM,Port Adelaide,50,West Coast,98
+71620120819,2012,21,19-Aug-2012,Docklands,3:15 PM,Western Bulldogs,85,Sydney,167
+102020120819,2012,21,19-Aug-2012,M.C.G.,4:40 PM,Hawthorn,129,Gold Coast,65
+51420120824,2012,22,24-Aug-2012,M.C.G.,7:50 PM,Richmond,102,Essendon,57
+152120120825,2012,22,25-Aug-2012,Docklands,1:45 PM,St Kilda,163,Greater Western Sydney,35
+131920120825,2012,22,25-Aug-2012,Football Park,1:40 PM,Port Adelaide,93,Brisbane Lions,104
+101620120825,2012,22,25-Aug-2012,S.C.G.,4:40 PM,Sydney,95,Hawthorn,102
+41820120825,2012,22,25-Aug-2012,Subiaco,5:40 PM,West Coast,107,Collingwood,58
+32020120825,2012,22,25-Aug-2012,Carrara,7:40 PM,Gold Coast,98,Carlton,86
+70920120826,2012,22,26-Aug-2012,Kardinia Park,1:10 PM,Geelong,107,Western Bulldogs,73
+81220120826,2012,22,26-Aug-2012,Docklands,3:15 PM,North Melbourne,79,Fremantle,132
+11120120826,2012,22,26-Aug-2012,M.C.G.,4:40 PM,Melbourne,81,Adelaide,150
+101820120831,2012,23,31-Aug-2012,M.C.G.,7:50 PM,Hawthorn,95,West Coast,70
+91620120901,2012,23,1-Sep-2012,Kardinia Park,1:45 PM,Geelong,112,Sydney,78
+12020120901,2012,23,1-Sep-2012,Football Park,1:40 PM,Adelaide,153,Gold Coast,62
+122120120901,2012,23,1-Sep-2012,Sydney Showground,4:40 PM,Greater Western Sydney,77,North Melbourne,105
+81120120901,2012,23,1-Sep-2012,Subiaco,5:40 PM,Fremantle,101,Melbourne,40
+40520120901,2012,23,1-Sep-2012,M.C.G.,7:40 PM,Essendon,72,Collingwood,104
+31520120902,2012,23,2-Sep-2012,Docklands,1:10 PM,Carlton,91,St Kilda,106
+131420120902,2012,23,2-Sep-2012,M.C.G.,3:15 PM,Richmond,106,Port Adelaide,106
+71920120902,2012,23,2-Sep-2012,Gabba,4:40 PM,Brisbane Lions,128,Western Bulldogs,61
+41020120907,2012,Qualifying Final,7-Sep-2012,M.C.G.,7:50 PM,Hawthorn,135,Collingwood,97
+11620120908,2012,Qualifying Final,8-Sep-2012,Football Park,2:45 PM,Adelaide,42,Sydney,71
+80920120908,2012,Elimination Final,8-Sep-2012,M.C.G.,7:45 PM,Geelong,80,Fremantle,96
+121820120909,2012,Elimination Final,9-Sep-2012,Subiaco,1:15 PM,West Coast,162,North Melbourne,66
+10820120914,2012,Semi Final,14-Sep-2012,Football Park,8:15 PM,Adelaide,81,Fremantle,71
+41820120915,2012,Semi Final,15-Sep-2012,M.C.G.,7:45 PM,Collingwood,73,West Coast,60
+41620120921,2012,Preliminary Final,21-Sep-2012,Stadium Australia,7:50 PM,Sydney,96,Collingwood,70
+11020120922,2012,Preliminary Final,22-Sep-2012,M.C.G.,5:15 PM,Hawthorn,97,Adelaide,92
+101620120929,2012,Grand Final,29-Sep-2012,M.C.G.,2:30 PM,Hawthorn,81,Sydney,91
+10520130322,2013,1,22-Mar-2013,Football Park,8:10 PM,Adelaide,82,Essendon,117
+81820130323,2013,1,23-Mar-2013,Subiaco,4:40 PM,Fremantle,108,West Coast,80
+31420130328,2013,1,28-Mar-2013,M.C.G.,7:45 PM,Carlton,101,Richmond,106
+71920130330,2013,1,30-Mar-2013,Docklands,1:40 PM,Western Bulldogs,127,Brisbane Lions,59
+162120130330,2013,1,30-Mar-2013,Stadium Australia,4:40 PM,Greater Western Sydney,76,Sydney,106
+152020130330,2013,1,30-Mar-2013,Carrara,6:45 PM,Gold Coast,90,St Kilda,77
+111320130331,2013,1,31-Mar-2013,M.C.G.,1:10 PM,Melbourne,54,Port Adelaide,133
+41220130331,2013,1,31-Mar-2013,Docklands,4:40 PM,North Melbourne,87,Collingwood,103
+91020130401,2013,1,1-Apr-2013,M.C.G.,3:20 PM,Hawthorn,86,Geelong,93
+141520130405,2013,2,5-Apr-2013,M.C.G.,7:50 PM,St Kilda,82,Richmond,99
+162020130406,2013,2,6-Apr-2013,S.C.G.,1:45 PM,Sydney,114,Gold Coast,73
+70820130406,2013,2,6-Apr-2013,Docklands,2:10 PM,Western Bulldogs,78,Fremantle,106
+11920130406,2013,2,6-Apr-2013,Gabba,3:40 PM,Brisbane Lions,77,Adelaide,96
+132120130406,2013,2,6-Apr-2013,Football Park,7:10 PM,Port Adelaide,134,Greater Western Sydney,78
+51120130406,2013,2,6-Apr-2013,M.C.G.,7:40 PM,Essendon,184,Melbourne,36
+91220130407,2013,2,7-Apr-2013,Docklands,1:10 PM,Geelong,112,North Melbourne,108
+30420130407,2013,2,7-Apr-2013,M.C.G.,3:20 PM,Collingwood,117,Carlton,100
+101820130407,2013,2,7-Apr-2013,Subiaco,2:40 PM,West Coast,98,Hawthorn,148
+50820130412,2013,3,12-Apr-2013,Subiaco,6:40 PM,Fremantle,68,Essendon,72
+121620130413,2013,3,13-Apr-2013,Bellerive Oval,1:45 PM,North Melbourne,92,Sydney,131
+111820130413,2013,3,13-Apr-2013,M.C.G.,2:10 PM,Melbourne,83,West Coast,177
+152120130413,2013,3,13-Apr-2013,Manuka Oval,4:40 PM,Greater Western Sydney,68,St Kilda,140
+30920130413,2013,3,13-Apr-2013,Docklands,7:40 PM,Geelong,119,Carlton,103
+192020130413,2013,3,13-Apr-2013,Carrara,7:40 PM,Gold Coast,92,Brisbane Lions,94
+71420130414,2013,3,14-Apr-2013,Docklands,1:10 PM,Richmond,135,Western Bulldogs,68
+41020130414,2013,3,14-Apr-2013,M.C.G.,3:20 PM,Collingwood,90,Hawthorn,145
+11320130414,2013,3,14-Apr-2013,Football Park,4:10 PM,Port Adelaide,118,Adelaide,109
+91620130419,2013,4,19-Apr-2013,S.C.G.,7:50 PM,Sydney,103,Geelong,124
+81020130420,2013,4,20-Apr-2013,York Park,1:45 PM,Hawthorn,118,Fremantle,76
+41420130420,2013,4,20-Apr-2013,M.C.G.,2:10 PM,Richmond,79,Collingwood,113
+51520130420,2013,4,20-Apr-2013,Docklands,4:40 PM,St Kilda,91,Essendon,128
+31820130420,2013,4,20-Apr-2013,Subiaco,5:40 PM,West Coast,65,Carlton,89
+132020130420,2013,4,20-Apr-2013,Carrara,7:40 PM,Gold Coast,66,Port Adelaide,104
+112120130421,2013,4,21-Apr-2013,M.C.G.,1:10 PM,Melbourne,144,Greater Western Sydney,103
+10720130421,2013,4,21-Apr-2013,Football Park,2:50 PM,Adelaide,80,Western Bulldogs,28
+121920130421,2013,4,21-Apr-2013,Docklands,4:40 PM,North Melbourne,125,Brisbane Lions,62
+40520130425,2013,5,25-Apr-2013,M.C.G.,2:40 PM,Essendon,121,Collingwood,75
+151620130425,2013,5,25-Apr-2013,Wellington,7:50 PM,St Kilda,63,Sydney,79
+81420130426,2013,5,26-Apr-2013,Subiaco,6:45 PM,Fremantle,81,Richmond,80
+202120130427,2013,5,27-Apr-2013,Manuka Oval,1:45 PM,Greater Western Sydney,104,Gold Coast,148
+10320130427,2013,5,27-Apr-2013,M.C.G.,4:40 PM,Carlton,115,Adelaide,83
+70920130427,2013,5,27-Apr-2013,Docklands,7:40 PM,Western Bulldogs,86,Geelong,107
+131820130427,2013,5,27-Apr-2013,Football Park,7:15 PM,Port Adelaide,84,West Coast,79
+111920130428,2013,5,28-Apr-2013,Gabba,3:20 PM,Brisbane Lions,122,Melbourne,94
+101220130428,2013,5,28-Apr-2013,M.C.G.,4:40 PM,Hawthorn,99,North Melbourne,96
+41520130503,2013,6,3-May-2013,Docklands,7:50 PM,Collingwood,103,St Kilda,77
+52120130504,2013,6,4-May-2013,Docklands,1:45 PM,Essendon,120,Greater Western Sydney,81
+121320130504,2013,6,4-May-2013,Bellerive Oval,2:10 PM,North Melbourne,93,Port Adelaide,83
+11020130504,2013,6,4-May-2013,Football Park,4:10 PM,Adelaide,78,Hawthorn,89
+82020130504,2013,6,4-May-2013,Carrara,7:40 PM,Gold Coast,54,Fremantle,99
+91420130504,2013,6,4-May-2013,M.C.G.,7:40 PM,Richmond,87,Geelong,131
+161920130505,2013,6,5-May-2013,S.C.G.,1:10 PM,Sydney,115,Brisbane Lions,55
+31120130505,2013,6,5-May-2013,M.C.G.,3:20 PM,Carlton,121,Melbourne,60
+71820130505,2013,6,5-May-2013,Subiaco,2:40 PM,West Coast,137,Western Bulldogs,67
+50920130510,2013,7,10-May-2013,Docklands,7:50 PM,Geelong,113,Essendon,85
+131420130511,2013,7,11-May-2013,Football Park,1:15 PM,Port Adelaide,73,Richmond,114
+181920130511,2013,7,11-May-2013,Gabba,2:10 PM,Brisbane Lions,82,West Coast,108
+71220130511,2013,7,11-May-2013,Docklands,4:40 PM,Western Bulldogs,97,North Melbourne,151
+40820130511,2013,7,11-May-2013,Subiaco,5:40 PM,Fremantle,100,Collingwood,73
+101620130511,2013,7,11-May-2013,M.C.G.,7:40 PM,Hawthorn,119,Sydney,82
+12120130512,2013,7,12-May-2013,Sydney Showground,1:10 PM,Greater Western Sydney,52,Adelaide,187
+112020130512,2013,7,12-May-2013,M.C.G.,4:40 PM,Melbourne,54,Gold Coast,114
+31520130513,2013,7,13-May-2013,Docklands,7:40 PM,St Kilda,77,Carlton,68
+121820130517,2013,8,17-May-2013,Subiaco,6:40 PM,West Coast,90,North Melbourne,88
+51920130518,2013,8,18-May-2013,Docklands,1:45 PM,Essendon,86,Brisbane Lions,96
+102120130518,2013,8,18-May-2013,York Park,2:10 PM,Hawthorn,140,Greater Western Sydney,57
+72020130518,2013,8,18-May-2013,Carrara,4:40 PM,Gold Coast,93,Western Bulldogs,61
+40920130518,2013,8,18-May-2013,M.C.G.,7:40 PM,Collingwood,102,Geelong,96
+81620130518,2013,8,18-May-2013,S.C.G.,7:40 PM,Sydney,70,Fremantle,70
+31320130519,2013,8,19-May-2013,Docklands,1:10 PM,Carlton,109,Port Adelaide,91
+111420130519,2013,8,19-May-2013,M.C.G.,3:20 PM,Richmond,106,Melbourne,72
+11520130519,2013,8,19-May-2013,Football Park,4:10 PM,Adelaide,87,St Kilda,47
+41620130524,2013,9,24-May-2013,M.C.G.,7:50 PM,Collingwood,55,Sydney,102
+91320130525,2013,9,25-May-2013,Football Park,1:15 PM,Port Adelaide,68,Geelong,116
+182120130525,2013,9,25-May-2013,Sydney Showground,2:10 PM,Greater Western Sydney,55,West Coast,155
+71520130525,2013,9,25-May-2013,Docklands,4:40 PM,St Kilda,101,Western Bulldogs,110
+31920130525,2013,9,25-May-2013,Gabba,7:40 PM,Brisbane Lions,85,Carlton,98
+51420130525,2013,9,25-May-2013,M.C.G.,7:45 PM,Richmond,62,Essendon,91
+102020130526,2013,9,26-May-2013,M.C.G.,1:10 PM,Hawthorn,118,Gold Coast,92
+11220130526,2013,9,26-May-2013,Docklands,3:20 PM,North Melbourne,124,Adelaide,125
+81120130526,2013,9,26-May-2013,Subiaco,2:40 PM,Fremantle,130,Melbourne,40
+41920130531,2013,10,31-May-2013,Gabba,7:50 PM,Brisbane Lions,51,Collingwood,100
+32120130601,2013,10,1-Jun-2013,Docklands,1:45 PM,Carlton,148,Greater Western Sydney,54
+10820130601,2013,10,1-Jun-2013,Football Park,1:40 PM,Adelaide,59,Fremantle,66
+51620130601,2013,10,1-Jun-2013,S.C.G.,4:40 PM,Sydney,115,Essendon,71
+71320130601,2013,10,1-Jun-2013,Marrara Oval,7:10 PM,Western Bulldogs,67,Port Adelaide,58
+92020130601,2013,10,1-Jun-2013,Kardinia Park,7:40 PM,Geelong,123,Gold Coast,71
+101120130602,2013,10,2-Jun-2013,M.C.G.,3:20 PM,Melbourne,48,Hawthorn,143
+121520130602,2013,10,2-Jun-2013,Docklands,4:40 PM,North Melbourne,133,St Kilda,65
+141820130603,2013,10,3-Jun-2013,Subiaco,5:40 PM,West Coast,62,Richmond,103
+30520130607,2013,11,7-Jun-2013,M.C.G.,7:50 PM,Essendon,77,Carlton,72
+92120130608,2013,11,8-Jun-2013,Sydney Showground,1:40 PM,Greater Western Sydney,98,Geelong,157
+11620130608,2013,11,8-Jun-2013,Football Park,4:10 PM,Adelaide,50,Sydney,127
+122020130608,2013,11,8-Jun-2013,Carrara,7:40 PM,Gold Coast,66,North Melbourne,51
+151820130609,2013,11,9-Jun-2013,Docklands,4:40 PM,St Kilda,80,West Coast,84
+41120130610,2013,11,10-Jun-2013,M.C.G.,3:20 PM,Melbourne,39,Collingwood,122
+31020130614,2013,12,14-Jun-2013,Docklands,7:50 PM,Carlton,87,Hawthorn,102
+11420130615,2013,12,15-Jun-2013,M.C.G.,1:40 PM,Richmond,110,Adelaide,72
+81920130615,2013,12,15-Jun-2013,Subiaco,2:40 PM,Fremantle,86,Brisbane Lions,46
+52020130615,2013,12,15-Jun-2013,Docklands,7:40 PM,Essendon,115,Gold Coast,72
+132120130616,2013,12,16-Jun-2013,Sydney Showground,1:10 PM,Greater Western Sydney,50,Port Adelaide,125
+40720130616,2013,12,16-Jun-2013,Docklands,4:40 PM,Collingwood,99,Western Bulldogs,65
+101820130621,2013,13,21-Jun-2013,Docklands,7:50 PM,Hawthorn,123,West Coast,103
+131620130622,2013,13,22-Jun-2013,Football Park,1:10 PM,Port Adelaide,72,Sydney,54
+111520130622,2013,13,22-Jun-2013,M.C.G.,4:40 PM,St Kilda,104,Melbourne,69
+71420130622,2013,13,22-Jun-2013,Docklands,7:40 PM,Western Bulldogs,61,Richmond,121
+81220130623,2013,13,23-Jun-2013,Subiaco,1:20 PM,Fremantle,67,North Melbourne,29
+91920130623,2013,13,23-Jun-2013,Gabba,4:40 PM,Brisbane Lions,103,Geelong,98
+51820130627,2013,14,27-Jun-2013,Subiaco,6:10 PM,West Coast,91,Essendon,98
+31620130628,2013,14,28-Jun-2013,S.C.G.,7:50 PM,Sydney,65,Carlton,43
+12020130629,2013,14,29-Jun-2013,Carrara,1:40 PM,Gold Coast,83,Adelaide,111
+41320130629,2013,14,29-Jun-2013,Football Park,4:10 PM,Port Adelaide,86,Collingwood,51
+71120130629,2013,14,29-Jun-2013,M.C.G.,7:40 PM,Melbourne,103,Western Bulldogs,100
+80920130629,2013,14,29-Jun-2013,Kardinia Park,7:40 PM,Geelong,85,Fremantle,44
+101920130630,2013,14,30-Jun-2013,York Park,1:10 PM,Hawthorn,143,Brisbane Lions,85
+122120130630,2013,14,30-Jun-2013,Docklands,3:20 PM,North Melbourne,130,Greater Western Sydney,44
+141520130630,2013,14,30-Jun-2013,M.C.G.,4:40 PM,Richmond,119,St Kilda,55
+30420130705,2013,15,5-Jul-2013,M.C.G.,7:50 PM,Carlton,77,Collingwood,118
+72120130706,2013,15,6-Jul-2013,Manuka Oval,1:45 PM,Greater Western Sydney,83,Western Bulldogs,87
+121420130706,2013,15,6-Jul-2013,Docklands,2:10 PM,North Melbourne,128,Richmond,66
+192020130706,2013,15,6-Jul-2013,Gabba,4:40 PM,Brisbane Lions,116,Gold Coast,83
+11820130706,2013,15,6-Jul-2013,Football Park,7:10 PM,Adelaide,69,West Coast,75
+91020130706,2013,15,6-Jul-2013,M.C.G.,7:40 PM,Geelong,82,Hawthorn,72
+111620130707,2013,15,7-Jul-2013,M.C.G.,1:10 PM,Melbourne,85,Sydney,116
+81520130707,2013,15,7-Jul-2013,Subiaco,1:20 PM,Fremantle,100,St Kilda,70
+51320130707,2013,15,7-Jul-2013,Docklands,4:40 PM,Essendon,118,Port Adelaide,88
+10420130712,2013,16,12-Jul-2013,M.C.G.,7:50 PM,Collingwood,111,Adelaide,84
+101320130713,2013,16,13-Jul-2013,Football Park,1:15 PM,Port Adelaide,79,Hawthorn,124
+91120130713,2013,16,13-Jul-2013,Kardinia Park,2:10 PM,Geelong,98,Melbourne,30
+142020130713,2013,16,13-Jul-2013,Cazaly's Stadium,4:40 PM,Richmond,53,Gold Coast,44
+31520130713,2013,16,13-Jul-2013,Docklands,7:40 PM,Carlton,110,St Kilda,74
+121920130713,2013,16,13-Jul-2013,Gabba,7:40 PM,Brisbane Lions,117,North Melbourne,105
+162120130714,2013,16,14-Jul-2013,S.C.G.,1:10 PM,Sydney,171,Greater Western Sydney,42
+50720130714,2013,16,14-Jul-2013,Docklands,3:20 PM,Western Bulldogs,90,Essendon,121
+81820130714,2013,16,14-Jul-2013,Subiaco,2:40 PM,West Coast,93,Fremantle,121
+31220130719,2013,17,19-Jul-2013,Docklands,7:50 PM,North Melbourne,108,Carlton,109
+71020130720,2013,17,20-Jul-2013,York Park,1:45 PM,Hawthorn,95,Western Bulldogs,76
+52120130720,2013,17,20-Jul-2013,Sydney Showground,2:10 PM,Greater Western Sydney,77,Essendon,116
+42020130720,2013,17,20-Jul-2013,Carrara,4:40 PM,Gold Coast,85,Collingwood,78
+111920130720,2013,17,20-Jul-2013,Marrara Oval,7:10 PM,Melbourne,75,Brisbane Lions,94
+131520130720,2013,17,20-Jul-2013,Docklands,7:40 PM,St Kilda,92,Port Adelaide,97
+81420130721,2013,17,21-Jul-2013,M.C.G.,1:10 PM,Richmond,84,Fremantle,57
+10920130721,2013,17,21-Jul-2013,Football Park,2:50 PM,Adelaide,94,Geelong,92
+161820130721,2013,17,21-Jul-2013,Subiaco,2:40 PM,West Coast,79,Sydney,113
+51020130726,2013,18,26-Jul-2013,Docklands,7:50 PM,Essendon,87,Hawthorn,143
+32020130727,2013,18,27-Jul-2013,Carrara,1:45 PM,Gold Coast,77,Carlton,120
+111220130727,2013,18,27-Jul-2013,Docklands,2:10 PM,Melbourne,28,North Melbourne,150
+42120130727,2013,18,27-Jul-2013,M.C.G.,4:40 PM,Collingwood,106,Greater Western Sydney,66
+10820130727,2013,18,27-Jul-2013,Subiaco,5:40 PM,Fremantle,75,Adelaide,53
+91520130727,2013,18,27-Jul-2013,Kardinia Park,7:40 PM,Geelong,137,St Kilda,36
+131920130728,2013,18,28-Jul-2013,Football Park,12:40 PM,Port Adelaide,71,Brisbane Lions,62
+71820130728,2013,18,28-Jul-2013,Docklands,3:20 PM,Western Bulldogs,111,West Coast,89
+141620130728,2013,18,28-Jul-2013,S.C.G.,4:40 PM,Sydney,110,Richmond,63
+91220130802,2013,19,2-Aug-2013,Docklands,7:50 PM,North Melbourne,96,Geelong,86
+112120130803,2013,19,3-Aug-2013,Sydney Showground,1:45 PM,Greater Western Sydney,124,Melbourne,87
+101420130803,2013,19,3-Aug-2013,M.C.G.,2:10 PM,Hawthorn,66,Richmond,107
+182020130803,2013,19,3-Aug-2013,Subiaco,2:40 PM,West Coast,130,Gold Coast,113
+30820130803,2013,19,3-Aug-2013,Docklands,7:40 PM,Carlton,80,Fremantle,116
+151920130803,2013,19,3-Aug-2013,Gabba,7:40 PM,Brisbane Lions,108,St Kilda,77
+71620130804,2013,19,4-Aug-2013,Docklands,1:10 PM,Western Bulldogs,99,Sydney,134
+11320130804,2013,19,4-Aug-2013,Football Park,2:50 PM,Adelaide,103,Port Adelaide,107
+40520130804,2013,19,4-Aug-2013,M.C.G.,4:40 PM,Collingwood,133,Essendon,54
+101520130809,2013,20,9-Aug-2013,Docklands,7:50 PM,St Kilda,56,Hawthorn,102
+141920130810,2013,20,10-Aug-2013,M.C.G.,1:45 PM,Richmond,97,Brisbane Lions,74
+91320130810,2013,20,10-Aug-2013,Kardinia Park,2:10 PM,Geelong,129,Port Adelaide,104
+30720130810,2013,20,10-Aug-2013,Docklands,4:40 PM,Carlton,89,Western Bulldogs,117
+41620130810,2013,20,10-Aug-2013,Stadium Australia,7:40 PM,Sydney,71,Collingwood,100
+112020130810,2013,20,10-Aug-2013,Carrara,7:40 PM,Gold Coast,90,Melbourne,77
+51820130811,2013,20,11-Aug-2013,Docklands,1:10 PM,Essendon,67,West Coast,120
+11220130811,2013,20,11-Aug-2013,Football Park,2:50 PM,Adelaide,79,North Melbourne,70
+82120130811,2013,20,11-Aug-2013,Subiaco,2:40 PM,Fremantle,157,Greater Western Sydney,44
+41020130816,2013,21,16-Aug-2013,M.C.G.,7:50 PM,Hawthorn,119,Collingwood,84
+31420130817,2013,21,17-Aug-2013,M.C.G.,1:45 PM,Richmond,96,Carlton,106
+132020130817,2013,21,17-Aug-2013,Football Park,1:40 PM,Port Adelaide,113,Gold Coast,96
+51220130817,2013,21,17-Aug-2013,Docklands,4:40 PM,Essendon,70,North Melbourne,115
+91820130817,2013,21,17-Aug-2013,Subiaco,5:40 PM,West Coast,41,Geelong,107
+192120130817,2013,21,17-Aug-2013,Gabba,7:40 PM,Brisbane Lions,123,Greater Western Sydney,63
+81120130818,2013,21,18-Aug-2013,M.C.G.,1:10 PM,Melbourne,38,Fremantle,133
+151620130818,2013,21,18-Aug-2013,S.C.G.,3:20 PM,Sydney,118,St Kilda,59
+10720130818,2013,21,18-Aug-2013,Docklands,4:40 PM,Western Bulldogs,131,Adelaide,114
+41820130823,2013,22,23-Aug-2013,M.C.G.,7:50 PM,Collingwood,101,West Coast,39
+11120130824,2013,22,24-Aug-2013,Football Park,1:15 PM,Adelaide,120,Melbourne,52
+101220130824,2013,22,24-Aug-2013,Docklands,2:10 PM,North Melbourne,103,Hawthorn,117
+91620130824,2013,22,24-Aug-2013,Kardinia Park,4:40 PM,Geelong,92,Sydney,48
+81320130824,2013,22,24-Aug-2013,Subiaco,5:40 PM,Fremantle,134,Port Adelaide,60
+30520130824,2013,22,24-Aug-2013,M.C.G.,7:40 PM,Carlton,76,Essendon,82
+152020130825,2013,22,25-Aug-2013,Docklands,1:10 PM,St Kilda,116,Gold Coast,70
+142120130825,2013,22,25-Aug-2013,Sydney Showground,3:20 PM,Greater Western Sydney,42,Richmond,163
+71920130825,2013,22,25-Aug-2013,Gabba,4:40 PM,Brisbane Lions,100,Western Bulldogs,93
+101620130830,2013,23,30-Aug-2013,Stadium Australia,7:50 PM,Sydney,100,Hawthorn,112
+81520130831,2013,23,31-Aug-2013,Docklands,1:45 PM,St Kilda,112,Fremantle,41
+91920130831,2013,23,31-Aug-2013,Kardinia Park,2:10 PM,Geelong,112,Brisbane Lions,111
+31320130831,2013,23,31-Aug-2013,Football Park,4:10 PM,Port Adelaide,103,Carlton,104
+51420130831,2013,23,31-Aug-2013,M.C.G.,7:40 PM,Essendon,65,Richmond,104
+11820130831,2013,23,31-Aug-2013,Subiaco,6:10 PM,West Coast,43,Adelaide,129
+202120130901,2013,23,1-Sep-2013,Carrara,1:10 PM,Gold Coast,146,Greater Western Sydney,63
+41220130901,2013,23,1-Sep-2013,M.C.G.,3:20 PM,Collingwood,114,North Melbourne,125
+71120130901,2013,23,1-Sep-2013,Docklands,4:40 PM,Western Bulldogs,107,Melbourne,87
+101620130906,2013,Qualifying Final,6-Sep-2013,M.C.G.,7:50 PM,Hawthorn,105,Sydney,51
+80920130907,2013,Qualifying Final,7-Sep-2013,Kardinia Park,2:20 PM,Geelong,72,Fremantle,87
+41320130907,2013,Elimination Final,7-Sep-2013,M.C.G.,7:45 PM,Collingwood,63,Port Adelaide,87
+31420130908,2013,Elimination Final,8-Sep-2013,M.C.G.,3:20 PM,Richmond,96,Carlton,116
+91320130913,2013,Semi Final,13-Sep-2013,M.C.G.,7:50 PM,Geelong,96,Port Adelaide,80
+31620130914,2013,Semi Final,14-Sep-2013,Stadium Australia,7:45 PM,Sydney,86,Carlton,62
+91020130920,2013,Preliminary Final,20-Sep-2013,M.C.G.,7:50 PM,Hawthorn,102,Geelong,97
+81620130921,2013,Preliminary Final,21-Sep-2013,Subiaco,5:45 PM,Fremantle,99,Sydney,74
+81020130928,2013,Grand Final,28-Sep-2013,M.C.G.,2:30 PM,Hawthorn,77,Fremantle,62
+40820140314,2014,1,14-Mar-2014,Docklands,7:50 PM,Collingwood,46,Fremantle,116
+162120140315,2014,1,15-Mar-2014,Sydney Showground,4:40 PM,Greater Western Sydney,99,Sydney,67
+142020140315,2014,1,15-Mar-2014,Carrara,6:55 PM,Gold Coast,87,Richmond,69
+31320140316,2014,1,16-Mar-2014,Docklands,7:40 PM,Carlton,87,Port Adelaide,120
+10920140320,2014,1,20-Mar-2014,Kardinia Park,7:10 PM,Geelong,119,Adelaide,81
+51220140321,2014,1,21-Mar-2014,Docklands,7:50 PM,North Melbourne,60,Essendon,99
+101920140322,2014,1,22-Mar-2014,York Park,4:40 PM,Hawthorn,139,Brisbane Lions,91
+111520140322,2014,1,22-Mar-2014,Docklands,7:40 PM,St Kilda,68,Melbourne,51
+71820140323,2014,1,23-Mar-2014,Subiaco,4:40 PM,West Coast,134,Western Bulldogs,69
+31420140327,2014,2,27-Mar-2014,M.C.G.,7:45 PM,Richmond,98,Carlton,86
+51020140328,2014,2,28-Mar-2014,Docklands,7:50 PM,Essendon,86,Hawthorn,90
+152120140329,2014,2,29-Mar-2014,Docklands,1:40 PM,St Kilda,95,Greater Western Sydney,88
+11320140329,2014,2,29-Mar-2014,Adelaide Oval,4:15 PM,Port Adelaide,127,Adelaide,73
+82020140329,2014,2,29-Mar-2014,Subiaco,4:40 PM,Fremantle,87,Gold Coast,39
+41620140329,2014,2,29-Mar-2014,Stadium Australia,7:40 PM,Sydney,69,Collingwood,89
+91920140330,2014,2,30-Mar-2014,Gabba,12:10 PM,Brisbane Lions,68,Geelong,93
+111820140330,2014,2,30-Mar-2014,M.C.G.,3:20 PM,Melbourne,30,West Coast,123
+71220140330,2014,2,30-Mar-2014,Docklands,4:40 PM,Western Bulldogs,54,North Melbourne,83
+81020140404,2014,3,4-Apr-2014,M.C.G.,7:50 PM,Hawthorn,137,Fremantle,79
+71420140405,2014,3,5-Apr-2014,Docklands,1:45 PM,Western Bulldogs,100,Richmond,98
+11620140405,2014,3,5-Apr-2014,Adelaide Oval,1:40 PM,Adelaide,71,Sydney,134
+192020140405,2014,3,5-Apr-2014,Carrara,3:40 PM,Gold Coast,114,Brisbane Lions,61
+151820140405,2014,3,5-Apr-2014,Subiaco,4:40 PM,West Coast,83,St Kilda,58
+40920140405,2014,3,5-Apr-2014,M.C.G.,7:40 PM,Collingwood,76,Geelong,87
+112120140406,2014,3,6-Apr-2014,Sydney Showground,1:10 PM,Greater Western Sydney,79,Melbourne,47
+121320140406,2014,3,6-Apr-2014,Docklands,4:10 PM,North Melbourne,97,Port Adelaide,90
+30520140406,2014,3,6-Apr-2014,M.C.G.,7:10 PM,Essendon,138,Carlton,57
+41420140411,2014,4,11-Apr-2014,M.C.G.,7:50 PM,Richmond,72,Collingwood,110
+31120140412,2014,4,12-Apr-2014,M.C.G.,1:45 PM,Carlton,58,Melbourne,81
+131920140412,2014,4,12-Apr-2014,Adelaide Oval,1:40 PM,Port Adelaide,159,Brisbane Lions,46
+72120140412,2014,4,12-Apr-2014,Manuka Oval,4:40 PM,Greater Western Sydney,83,Western Bulldogs,110
+91820140412,2014,4,12-Apr-2014,Kardinia Park,7:40 PM,Geelong,107,West Coast,32
+102020140412,2014,4,12-Apr-2014,Carrara,7:40 PM,Gold Coast,49,Hawthorn,148
+121620140413,2014,4,13-Apr-2014,S.C.G.,1:10 PM,Sydney,48,North Melbourne,91
+11520140413,2014,4,13-Apr-2014,Docklands,3:20 PM,St Kilda,50,Adelaide,136
+50820140413,2014,4,13-Apr-2014,Subiaco,2:40 PM,Fremantle,113,Essendon,60
+141920140417,2014,5,17-Apr-2014,Gabba,7:50 PM,Brisbane Lions,63,Richmond,106
+41220140419,2014,5,19-Apr-2014,M.C.G.,1:40 PM,Collingwood,93,North Melbourne,58
+81620140419,2014,5,19-Apr-2014,S.C.G.,4:40 PM,Sydney,92,Fremantle,75
+131820140419,2014,5,19-Apr-2014,Subiaco,5:40 PM,West Coast,56,Port Adelaide,70
+51520140419,2014,5,19-Apr-2014,Docklands,7:40 PM,Essendon,65,St Kilda,81
+12120140420,2014,5,20-Apr-2014,Adelaide Oval,12:40 PM,Adelaide,137,Greater Western Sydney,72
+112020140420,2014,5,20-Apr-2014,M.C.G.,3:20 PM,Melbourne,78,Gold Coast,86
+30720140420,2014,5,20-Apr-2014,Docklands,4:40 PM,Western Bulldogs,91,Carlton,119
+91020140421,2014,5,21-Apr-2014,M.C.G.,3:20 PM,Geelong,106,Hawthorn,87
+40520140425,2014,6,25-Apr-2014,M.C.G.,2:40 PM,Collingwood,83,Essendon,60
+151920140425,2014,6,25-Apr-2014,Wellington,7:45 PM,St Kilda,79,Brisbane Lions,82
+81220140425,2014,6,25-Apr-2014,Subiaco,6:45 PM,Fremantle,61,North Melbourne,74
+202120140426,2014,6,26-Apr-2014,Carrara,1:40 PM,Gold Coast,134,Greater Western Sydney,94
+31820140426,2014,6,26-Apr-2014,Docklands,4:40 PM,Carlton,92,West Coast,89
+111620140426,2014,6,26-Apr-2014,M.C.G.,7:40 PM,Melbourne,38,Sydney,69
+10720140427,2014,6,27-Apr-2014,Docklands,1:10 PM,Western Bulldogs,83,Adelaide,92
+101420140427,2014,6,27-Apr-2014,M.C.G.,3:20 PM,Richmond,52,Hawthorn,118
+91320140427,2014,6,27-Apr-2014,Adelaide Oval,4:10 PM,Port Adelaide,107,Geelong,67
+30420140502,2014,7,2-May-2014,M.C.G.,7:50 PM,Carlton,70,Collingwood,104
+101520140503,2014,7,3-May-2014,M.C.G.,1:45 PM,Hawthorn,175,St Kilda,30
+132120140503,2014,7,3-May-2014,Manuka Oval,2:10 PM,Greater Western Sydney,97,Port Adelaide,132
+11120140503,2014,7,3-May-2014,Adelaide Oval,4:10 PM,Adelaide,67,Melbourne,70
+50720140503,2014,7,3-May-2014,Docklands,7:40 PM,Essendon,73,Western Bulldogs,65
+161920140503,2014,7,3-May-2014,Gabba,7:40 PM,Brisbane Lions,44,Sydney,123
+122020140504,2014,7,4-May-2014,Docklands,1:10 PM,North Melbourne,77,Gold Coast,120
+91420140504,2014,7,4-May-2014,M.C.G.,3:20 PM,Geelong,81,Richmond,76
+81820140504,2014,7,4-May-2014,Subiaco,2:40 PM,West Coast,54,Fremantle,73
+101620140509,2014,8,9-May-2014,Stadium Australia,7:50 PM,Sydney,107,Hawthorn,88
+81320140510,2014,8,10-May-2014,Adelaide Oval,1:10 PM,Port Adelaide,94,Fremantle,76
+51920140510,2014,8,10-May-2014,Gabba,4:40 PM,Brisbane Lions,57,Essendon,65
+71120140510,2014,8,10-May-2014,M.C.G.,7:40 PM,Melbourne,83,Western Bulldogs,99
+182120140511,2014,8,11-May-2014,Subiaco,2:40 PM,West Coast,188,Greater Western Sydney,77
+31520140512,2014,8,12-May-2014,Docklands,7:20 PM,St Kilda,69,Carlton,101
+10420140515,2014,9,15-May-2014,Adelaide Oval,7:20 PM,Adelaide,76,Collingwood,55
+51620140516,2014,9,16-May-2014,Docklands,7:50 PM,Essendon,64,Sydney,114
+111420140517,2014,9,17-May-2014,M.C.G.,1:40 PM,Richmond,74,Melbourne,91
+121920140517,2014,9,17-May-2014,Docklands,4:40 PM,North Melbourne,125,Brisbane Lions,38
+80920140517,2014,9,17-May-2014,Subiaco,5:40 PM,Fremantle,96,Geelong,64
+152020140518,2014,9,18-May-2014,Docklands,4:40 PM,St Kilda,87,Gold Coast,125
+91220140523,2014,10,23-May-2014,Kardinia Park,7:50 PM,Geelong,111,North Melbourne,91
+142120140524,2014,10,24-May-2014,Sydney Showground,1:40 PM,Greater Western Sydney,41,Richmond,154
+41820140524,2014,10,24-May-2014,M.C.G.,4:40 PM,Collingwood,109,West Coast,101
+101320140524,2014,10,24-May-2014,Adelaide Oval,7:10 PM,Port Adelaide,100,Hawthorn,86
+72020140525,2014,10,25-May-2014,Carrara,3:20 PM,Gold Coast,119,Western Bulldogs,74
+10320140525,2014,10,25-May-2014,M.C.G.,4:40 PM,Carlton,81,Adelaide,76
+91620140529,2014,11,29-May-2014,S.C.G.,7:10 PM,Sydney,148,Geelong,38
+41520140530,2014,11,30-May-2014,Docklands,7:50 PM,St Kilda,54,Collingwood,140
+111320140531,2014,11,31-May-2014,Traeger Park,1:10 PM,Melbourne,75,Port Adelaide,95
+31920140531,2014,11,31-May-2014,Gabba,4:40 PM,Brisbane Lions,98,Carlton,91
+51420140531,2014,11,31-May-2014,M.C.G.,7:45 PM,Essendon,104,Richmond,54
+12020140601,2014,11,1-Jun-2014,Adelaide Oval,12:40 PM,Adelaide,109,Gold Coast,77
+70820140601,2014,11,1-Jun-2014,Docklands,3:20 PM,Western Bulldogs,51,Fremantle,89
+102120140601,2014,11,1-Jun-2014,M.C.G.,4:40 PM,Hawthorn,94,Greater Western Sydney,87
+121820140601,2014,11,1-Jun-2014,Subiaco,5:40 PM,West Coast,44,North Melbourne,82
+30920140606,2014,12,6-Jun-2014,Docklands,7:50 PM,Geelong,107,Carlton,102
+101820140607,2014,12,7-Jun-2014,York Park,1:40 PM,Hawthorn,123,West Coast,79
+131520140607,2014,12,7-Jun-2014,Adelaide Oval,4:10 PM,Port Adelaide,129,St Kilda,59
+52120140607,2014,12,7-Jun-2014,Sydney Showground,7:40 PM,Greater Western Sydney,66,Essendon,81
+71920140607,2014,12,7-Jun-2014,Docklands,7:40 PM,Western Bulldogs,87,Brisbane Lions,95
+162020140608,2014,12,8-Jun-2014,Carrara,3:20 PM,Gold Coast,74,Sydney,109
+10820140608,2014,12,8-Jun-2014,Subiaco,2:10 PM,Fremantle,90,Adelaide,50
+121420140608,2014,12,8-Jun-2014,Docklands,7:10 PM,North Melbourne,116,Richmond,88
+41120140609,2014,12,9-Jun-2014,M.C.G.,3:20 PM,Melbourne,28,Collingwood,61
+31020140613,2014,13,13-Jun-2014,M.C.G.,7:50 PM,Carlton,90,Hawthorn,118
+81420140614,2014,13,14-Jun-2014,M.C.G.,1:45 PM,Richmond,85,Fremantle,105
+131620140614,2014,13,14-Jun-2014,S.C.G.,2:10 PM,Sydney,98,Port Adelaide,94
+182020140614,2014,13,14-Jun-2014,Subiaco,2:40 PM,West Coast,103,Gold Coast,100
+11220140614,2014,13,14-Jun-2014,Adelaide Oval,7:10 PM,Adelaide,109,North Melbourne,73
+192120140614,2014,13,14-Jun-2014,Gabba,7:40 PM,Brisbane Lions,80,Greater Western Sydney,125
+91520140615,2014,13,15-Jun-2014,Kardinia Park,1:10 PM,Geelong,133,St Kilda,37
+40720140615,2014,13,15-Jun-2014,Docklands,3:20 PM,Collingwood,98,Western Bulldogs,106
+51120140615,2014,13,15-Jun-2014,M.C.G.,4:40 PM,Essendon,77,Melbourne,78
+141620140620,2014,14,20-Jun-2014,M.C.G.,7:50 PM,Richmond,51,Sydney,62
+71320140621,2014,14,21-Jun-2014,Adelaide Oval,1:15 PM,Port Adelaide,128,Western Bulldogs,56
+41020140621,2014,14,21-Jun-2014,M.C.G.,2:10 PM,Hawthorn,115,Collingwood,86
+92020140621,2014,14,21-Jun-2014,Carrara,4:40 PM,Gold Coast,118,Geelong,78
+81920140621,2014,14,21-Jun-2014,Subiaco,5:40 PM,Fremantle,105,Brisbane Lions,22
+10520140621,2014,14,21-Jun-2014,Docklands,7:40 PM,Essendon,101,Adelaide,92
+32120140622,2014,14,22-Jun-2014,Sydney Showground,1:10 PM,Greater Western Sydney,100,Carlton,92
+151820140622,2014,14,22-Jun-2014,Docklands,3:20 PM,St Kilda,70,West Coast,103
+111220140622,2014,14,22-Jun-2014,M.C.G.,4:40 PM,Melbourne,66,North Melbourne,107
+50920140627,2014,15,27-Jun-2014,Docklands,7:50 PM,Geelong,89,Essendon,80
+102020140628,2014,15,28-Jun-2014,York Park,1:45 PM,Hawthorn,116,Gold Coast,63
+141520140628,2014,15,28-Jun-2014,Docklands,2:10 PM,St Kilda,73,Richmond,117
+81820140628,2014,15,28-Jun-2014,Subiaco,2:40 PM,Fremantle,88,West Coast,81
+121920140628,2014,15,28-Jun-2014,Gabba,7:40 PM,Brisbane Lions,70,North Melbourne,66
+162120140628,2014,15,28-Jun-2014,S.C.G.,7:40 PM,Sydney,106,Greater Western Sydney,60
+71120140629,2014,15,29-Jun-2014,Docklands,1:10 PM,Western Bulldogs,91,Melbourne,85
+11320140629,2014,15,29-Jun-2014,Adelaide Oval,3:40 PM,Adelaide,99,Port Adelaide,76
+30420140629,2014,15,29-Jun-2014,M.C.G.,7:10 PM,Collingwood,91,Carlton,76
+101220140704,2014,16,4-Jul-2014,Docklands,7:50 PM,North Melbourne,108,Hawthorn,88
+141920140705,2014,16,5-Jul-2014,M.C.G.,1:45 PM,Richmond,79,Brisbane Lions,54
+12120140705,2014,16,5-Jul-2014,Sydney Showground,2:10 PM,Greater Western Sydney,72,Adelaide,140
+42020140705,2014,16,5-Jul-2014,Carrara,4:40 PM,Gold Coast,80,Collingwood,75
+51320140705,2014,16,5-Jul-2014,Adelaide Oval,7:10 PM,Port Adelaide,60,Essendon,62
+81120140705,2014,16,5-Jul-2014,Marrara Oval,7:10 PM,Melbourne,34,Fremantle,97
+31520140706,2014,16,6-Jul-2014,Docklands,1:10 PM,Carlton,151,St Kilda,66
+161820140706,2014,16,6-Jul-2014,Subiaco,1:20 PM,West Coast,51,Sydney,79
+70920140706,2014,16,6-Jul-2014,Kardinia Park,4:40 PM,Geelong,69,Western Bulldogs,56
+11020140711,2014,17,11-Jul-2014,Adelaide Oval,7:20 PM,Adelaide,92,Hawthorn,104
+91120140712,2014,17,12-Jul-2014,M.C.G.,1:45 PM,Melbourne,36,Geelong,102
+121520140712,2014,17,12-Jul-2014,Bellerive Oval,2:10 PM,North Melbourne,92,St Kilda,33
+72020140712,2014,17,12-Jul-2014,Cazaly's Stadium,4:40 PM,Western Bulldogs,94,Gold Coast,66
+31620140712,2014,17,12-Jul-2014,S.C.G.,7:40 PM,Sydney,122,Carlton,51
+181920140712,2014,17,12-Jul-2014,Gabba,7:40 PM,Brisbane Lions,64,West Coast,76
+131420140713,2014,17,13-Jul-2014,Docklands,1:10 PM,Richmond,126,Port Adelaide,106
+40520140713,2014,17,13-Jul-2014,M.C.G.,3:20 PM,Essendon,103,Collingwood,39
+82120140713,2014,17,13-Jul-2014,Subiaco,2:40 PM,Fremantle,136,Greater Western Sydney,60
+31220140718,2014,18,18-Jul-2014,Docklands,7:50 PM,Carlton,109,North Melbourne,86
+81520140719,2014,18,19-Jul-2014,Docklands,4:40 PM,St Kilda,118,Fremantle,60
+92120140719,2014,18,19-Jul-2014,Sydney Showground,7:40 PM,Greater Western Sydney,87,Geelong,94
+111320140720,2014,18,20-Jul-2014,Adelaide Oval,12:40 PM,Port Adelaide,72,Melbourne,69
+50720140720,2014,18,20-Jul-2014,Docklands,4:40 PM,Western Bulldogs,94,Essendon,101
+141820140725,2014,18,25-Jul-2014,Subiaco,6:40 PM,West Coast,42,Richmond,59
+192020140726,2014,18,26-Jul-2014,Gabba,4:40 PM,Brisbane Lions,110,Gold Coast,56
+101620140726,2014,18,26-Jul-2014,M.C.G.,7:40 PM,Hawthorn,104,Sydney,94
+10420140727,2014,18,27-Jul-2014,M.C.G.,4:40 PM,Collingwood,82,Adelaide,98
+30820140731,2014,19,31-Jul-2014,Subiaco,6:10 PM,Fremantle,83,Carlton,78
+51620140801,2014,19,1-Aug-2014,S.C.G.,7:50 PM,Sydney,79,Essendon,57
+11820140802,2014,19,2-Aug-2014,Adelaide Oval,1:10 PM,Adelaide,105,West Coast,136
+142120140802,2014,19,2-Aug-2014,M.C.G.,4:40 PM,Richmond,89,Greater Western Sydney,62
+91220140802,2014,19,2-Aug-2014,Docklands,7:40 PM,North Melbourne,79,Geelong,111
+152020140802,2014,19,2-Aug-2014,Carrara,7:40 PM,Gold Coast,117,St Kilda,64
+111920140803,2014,19,3-Aug-2014,Docklands,1:10 PM,Melbourne,51,Brisbane Lions,74
+71020140803,2014,19,3-Aug-2014,York Park,3:20 PM,Hawthorn,107,Western Bulldogs,45
+41320140803,2014,19,3-Aug-2014,M.C.G.,4:40 PM,Collingwood,76,Port Adelaide,70
+51420140808,2014,20,8-Aug-2014,M.C.G.,7:50 PM,Richmond,95,Essendon,77
+122120140809,2014,20,9-Aug-2014,Manuka Oval,1:45 PM,Greater Western Sydney,51,North Melbourne,126
+32020140809,2014,20,9-Aug-2014,Docklands,2:10 PM,Carlton,97,Gold Coast,58
+101120140809,2014,20,9-Aug-2014,M.C.G.,4:40 PM,Hawthorn,115,Melbourne,65
+131620140809,2014,20,9-Aug-2014,Adelaide Oval,7:10 PM,Port Adelaide,58,Sydney,84
+80920140809,2014,20,9-Aug-2014,Kardinia Park,7:40 PM,Geelong,81,Fremantle,79
+11920140810,2014,20,10-Aug-2014,Gabba,1:10 PM,Brisbane Lions,63,Adelaide,168
+71520140810,2014,20,10-Aug-2014,Docklands,3:20 PM,St Kilda,99,Western Bulldogs,122
+41820140810,2014,20,10-Aug-2014,Subiaco,2:40 PM,West Coast,126,Collingwood,66
+30920140815,2014,21,15-Aug-2014,Docklands,7:50 PM,Carlton,76,Geelong,82
+151620140816,2014,21,16-Aug-2014,S.C.G.,1:45 PM,Sydney,127,St Kilda,56
+132020140816,2014,21,16-Aug-2014,Carrara,2:10 PM,Gold Coast,47,Port Adelaide,56
+51820140816,2014,21,16-Aug-2014,Docklands,4:40 PM,Essendon,77,West Coast,74
+11420140816,2014,21,16-Aug-2014,Adelaide Oval,7:10 PM,Adelaide,69,Richmond,79
+41920140816,2014,21,16-Aug-2014,M.C.G.,7:40 PM,Collingwood,56,Brisbane Lions,123
+71220140817,2014,21,17-Aug-2014,Docklands,1:10 PM,North Melbourne,111,Western Bulldogs,61
+112120140817,2014,21,17-Aug-2014,M.C.G.,3:20 PM,Melbourne,34,Greater Western Sydney,98
+81020140817,2014,21,17-Aug-2014,Subiaco,2:40 PM,Fremantle,110,Hawthorn,91
+31320140822,2014,22,22-Aug-2014,Adelaide Oval,7:20 PM,Port Adelaide,140,Carlton,37
+11220140823,2014,22,23-Aug-2014,Bellerive Oval,1:45 PM,North Melbourne,101,Adelaide,94
+52020140823,2014,22,23-Aug-2014,Docklands,2:10 PM,Essendon,108,Gold Coast,89
+42120140823,2014,22,23-Aug-2014,Sydney Showground,4:40 PM,Greater Western Sydney,67,Collingwood,75
+111820140823,2014,22,23-Aug-2014,Subiaco,5:40 PM,West Coast,119,Melbourne,53
+91020140823,2014,22,23-Aug-2014,M.C.G.,7:40 PM,Hawthorn,94,Geelong,71
+81920140824,2014,22,24-Aug-2014,Gabba,1:10 PM,Brisbane Lions,48,Fremantle,106
+71620140824,2014,22,24-Aug-2014,Docklands,3:20 PM,Western Bulldogs,67,Sydney,130
+141520140824,2014,22,24-Aug-2014,M.C.G.,4:40 PM,Richmond,98,St Kilda,72
+41020140829,2014,23,29-Aug-2014,M.C.G.,7:50 PM,Collingwood,56,Hawthorn,121
+30520140830,2014,23,30-Aug-2014,M.C.G.,1:45 PM,Carlton,90,Essendon,90
+81320140830,2014,23,30-Aug-2014,Subiaco,1:10 PM,Fremantle,105,Port Adelaide,97
+141620140830,2014,23,30-Aug-2014,Stadium Australia,4:40 PM,Sydney,65,Richmond,68
+91920140830,2014,23,30-Aug-2014,Kardinia Park,7:40 PM,Geelong,143,Brisbane Lions,81
+111220140830,2014,23,30-Aug-2014,Docklands,7:40 PM,North Melbourne,123,Melbourne,93
+182020140831,2014,23,31-Aug-2014,Carrara,1:10 PM,Gold Coast,99,West Coast,151
+11520140831,2014,23,31-Aug-2014,Adelaide Oval,2:50 PM,Adelaide,141,St Kilda,62
+72120140831,2014,23,31-Aug-2014,Docklands,4:40 PM,Western Bulldogs,109,Greater Western Sydney,115
+91020140905,2014,Qualifying Final,5-Sep-2014,M.C.G.,7:50 PM,Hawthorn,104,Geelong,68
+81620140906,2014,Qualifying Final,6-Sep-2014,Stadium Australia,2:45 PM,Sydney,93,Fremantle,69
+51220140906,2014,Elimination Final,6-Sep-2014,M.C.G.,7:15 PM,North Melbourne,93,Essendon,81
+131420140907,2014,Elimination Final,7-Sep-2014,Adelaide Oval,2:50 PM,Port Adelaide,132,Richmond,75
+91220140912,2014,Semi Final,12-Sep-2014,M.C.G.,7:50 PM,Geelong,92,North Melbourne,98
+81320140913,2014,Semi Final,13-Sep-2014,Subiaco,5:45 PM,Fremantle,83,Port Adelaide,105
+121620140919,2014,Preliminary Final,19-Sep-2014,Stadium Australia,7:50 PM,Sydney,136,North Melbourne,65
+101320140920,2014,Preliminary Final,20-Sep-2014,M.C.G.,4:45 PM,Hawthorn,97,Port Adelaide,94
+101620140927,2014,Grand Final,27-Sep-2014,M.C.G.,2:30 PM,Sydney,74,Hawthorn,137
+31420150402,2015,1,2-Apr-2015,M.C.G.,7:20 PM,Carlton,78,Richmond,105
+112020150404,2015,1,4-Apr-2015,M.C.G.,1:40 PM,Melbourne,115,Gold Coast,89
+51620150404,2015,1,4-Apr-2015,Stadium Australia,4:35 PM,Sydney,72,Essendon,60
+41920150404,2015,1,4-Apr-2015,Gabba,6:20 PM,Brisbane Lions,74,Collingwood,86
+71820150404,2015,1,4-Apr-2015,Docklands,7:20 PM,Western Bulldogs,97,West Coast,87
+152120150405,2015,1,5-Apr-2015,Docklands,1:10 PM,St Kilda,78,Greater Western Sydney,87
+11220150405,2015,1,5-Apr-2015,Adelaide Oval,2:50 PM,Adelaide,140,North Melbourne,63
+81320150405,2015,1,5-Apr-2015,Subiaco,4:40 PM,Fremantle,75,Port Adelaide,68
+91020150406,2015,1,6-Apr-2015,M.C.G.,3:20 PM,Hawthorn,123,Geelong,61
+31820150410,2015,2,10-Apr-2015,Subiaco,6:10 PM,West Coast,131,Carlton,62
+71420150411,2015,2,11-Apr-2015,M.C.G.,1:45 PM,Richmond,66,Western Bulldogs,85
+112120150411,2015,2,11-Apr-2015,Manuka Oval,2:10 PM,Greater Western Sydney,101,Melbourne,56
+10420150411,2015,2,11-Apr-2015,Docklands,4:35 PM,Collingwood,63,Adelaide,90
+152020150411,2015,2,11-Apr-2015,Carrara,7:20 PM,Gold Coast,76,St Kilda,104
+131620150411,2015,2,11-Apr-2015,Adelaide Oval,7:10 PM,Port Adelaide,44,Sydney,92
+80920150412,2015,2,12-Apr-2015,Kardinia Park,1:10 PM,Geelong,60,Fremantle,104
+51020150412,2015,2,12-Apr-2015,M.C.G.,3:20 PM,Essendon,78,Hawthorn,76
+121920150412,2015,2,12-Apr-2015,Docklands,4:40 PM,North Melbourne,133,Brisbane Lions,51
+41520150417,2015,3,17-Apr-2015,M.C.G.,7:50 PM,Collingwood,140,St Kilda,66
+30520150418,2015,3,18-Apr-2015,M.C.G.,1:45 PM,Carlton,84,Essendon,105
+11120150418,2015,3,18-Apr-2015,Adelaide Oval,1:40 PM,Adelaide,80,Melbourne,55
+162120150418,2015,3,18-Apr-2015,S.C.G.,4:35 PM,Sydney,111,Greater Western Sydney,90
+121320150418,2015,3,18-Apr-2015,Docklands,7:20 PM,North Melbourne,105,Port Adelaide,113
+141920150418,2015,3,18-Apr-2015,Gabba,7:20 PM,Brisbane Lions,58,Richmond,137
+71020150419,2015,3,19-Apr-2015,York Park,1:10 PM,Hawthorn,127,Western Bulldogs,57
+92020150419,2015,3,19-Apr-2015,Kardinia Park,3:20 PM,Geelong,105,Gold Coast,96
+81820150419,2015,3,19-Apr-2015,Subiaco,2:40 PM,West Coast,81,Fremantle,111
+111420150424,2015,4,24-Apr-2015,M.C.G.,7:50 PM,Richmond,51,Melbourne,83
+31520150425,2015,4,25-Apr-2015,Wellington,1:10 PM,St Kilda,81,Carlton,121
+40520150425,2015,4,25-Apr-2015,M.C.G.,2:40 PM,Essendon,49,Collingwood,69
+202120150425,2015,4,25-Apr-2015,Manuka Oval,5:40 PM,Greater Western Sydney,119,Gold Coast,53
+101320150425,2015,4,25-Apr-2015,Adelaide Oval,7:10 PM,Port Adelaide,99,Hawthorn,91
+81620150425,2015,4,25-Apr-2015,Subiaco,6:45 PM,Fremantle,74,Sydney,60
+181920150426,2015,4,26-Apr-2015,Gabba,1:10 PM,Brisbane Lions,65,West Coast,118
+91220150426,2015,4,26-Apr-2015,Kardinia Park,3:20 PM,Geelong,67,North Melbourne,83
+10720150426,2015,4,26-Apr-2015,Docklands,4:40 PM,Western Bulldogs,125,Adelaide,68
+30420150501,2015,5,1-May-2015,M.C.G.,7:50 PM,Carlton,45,Collingwood,120
+91420150502,2015,5,2-May-2015,M.C.G.,1:45 PM,Richmond,76,Geelong,85
+71620150502,2015,5,2-May-2015,S.C.G.,2:10 PM,Sydney,73,Western Bulldogs,77
+192020150502,2015,5,2-May-2015,Carrara,4:35 PM,Gold Coast,118,Brisbane Lions,54
+101220150502,2015,5,2-May-2015,Docklands,7:20 PM,North Melbourne,70,Hawthorn,130
+182120150502,2015,5,2-May-2015,Subiaco,5:40 PM,West Coast,120,Greater Western Sydney,33
+81120150503,2015,5,3-May-2015,M.C.G.,1:10 PM,Melbourne,50,Fremantle,118
+51520150503,2015,5,3-May-2015,Docklands,3:20 PM,St Kilda,80,Essendon,82
+11320150503,2015,5,3-May-2015,Adelaide Oval,4:10 PM,Adelaide,91,Port Adelaide,115
+40920150508,2015,6,8-May-2015,M.C.G.,7:50 PM,Collingwood,59,Geelong,100
+121420150509,2015,6,9-May-2015,Bellerive Oval,1:45 PM,North Melbourne,109,Richmond,74
+71520150509,2015,6,9-May-2015,Docklands,2:10 PM,Western Bulldogs,87,St Kilda,94
+102120150509,2015,6,9-May-2015,Sydney Showground,4:35 PM,Greater Western Sydney,108,Hawthorn,98
+12020150509,2015,6,9-May-2015,Carrara,5:10 PM,Gold Coast,78,Adelaide,119
+111620150509,2015,6,9-May-2015,M.C.G.,7:20 PM,Melbourne,50,Sydney,88
+50820150509,2015,6,9-May-2015,Subiaco,6:10 PM,Fremantle,80,Essendon,52
+31920150510,2015,6,10-May-2015,Docklands,3:20 PM,Carlton,75,Brisbane Lions,84
+131820150510,2015,6,10-May-2015,Adelaide Oval,4:10 PM,Port Adelaide,68,West Coast,78
+51220150515,2015,7,15-May-2015,Docklands,7:50 PM,Essendon,82,North Melbourne,93
+11520150516,2015,7,16-May-2015,Adelaide Oval,1:15 PM,Adelaide,119,St Kilda,73
+101120150516,2015,7,16-May-2015,M.C.G.,2:10 PM,Hawthorn,155,Melbourne,50
+32120150516,2015,7,16-May-2015,Docklands,4:35 PM,Carlton,57,Greater Western Sydney,135
+91620150516,2015,7,16-May-2015,Stadium Australia,7:20 PM,Sydney,120,Geelong,77
+182020150516,2015,7,16-May-2015,Subiaco,5:40 PM,West Coast,135,Gold Coast,43
+70820150517,2015,7,17-May-2015,Docklands,1:10 PM,Western Bulldogs,88,Fremantle,101
+41420150517,2015,7,17-May-2015,M.C.G.,3:20 PM,Richmond,105,Collingwood,100
+131920150517,2015,7,17-May-2015,Gabba,4:40 PM,Brisbane Lions,102,Port Adelaide,65
+30920150522,2015,8,22-May-2015,Docklands,7:50 PM,Geelong,140,Carlton,63
+151820150523,2015,8,23-May-2015,Docklands,1:45 PM,St Kilda,78,West Coast,131
+12120150523,2015,8,23-May-2015,Sydney Showground,2:10 PM,Greater Western Sydney,108,Adelaide,84
+42020150523,2015,8,23-May-2015,Carrara,4:35 PM,Gold Coast,63,Collingwood,132
+101620150523,2015,8,23-May-2015,M.C.G.,7:20 PM,Hawthorn,69,Sydney,73
+81220150523,2015,8,23-May-2015,Subiaco,5:40 PM,Fremantle,115,North Melbourne,42
+51920150524,2015,8,24-May-2015,Docklands,1:10 PM,Essendon,136,Brisbane Lions,78
+71120150524,2015,8,24-May-2015,M.C.G.,3:20 PM,Melbourne,103,Western Bulldogs,64
+131420150524,2015,8,24-May-2015,Adelaide Oval,4:10 PM,Port Adelaide,43,Richmond,76
+31620150529,2015,9,29-May-2015,S.C.G.,7:50 PM,Sydney,122,Carlton,62
+102020150530,2015,9,30-May-2015,York Park,1:45 PM,Hawthorn,93,Gold Coast,40
+111320150530,2015,9,30-May-2015,Traeger Park,1:40 PM,Melbourne,54,Port Adelaide,115
+72120150530,2015,9,30-May-2015,Docklands,4:35 PM,Western Bulldogs,113,Greater Western Sydney,68
+51420150530,2015,9,30-May-2015,M.C.G.,7:20 PM,Richmond,72,Essendon,59
+10820150530,2015,9,30-May-2015,Adelaide Oval,7:10 PM,Adelaide,57,Fremantle,68
+151920150531,2015,9,31-May-2015,Gabba,1:10 PM,Brisbane Lions,86,St Kilda,108
+41220150531,2015,9,31-May-2015,M.C.G.,3:20 PM,Collingwood,112,North Melbourne,95
+91820150531,2015,9,31-May-2015,Subiaco,2:40 PM,West Coast,120,Geelong,64
+81420150605,2015,10,5-Jun-2015,Subiaco,6:10 PM,Fremantle,70,Richmond,97
+10320150606,2015,10,6-Jun-2015,M.C.G.,1:40 PM,Carlton,90,Adelaide,99
+162020150606,2015,10,6-Jun-2015,Carrara,4:35 PM,Gold Coast,41,Sydney,93
+50920150606,2015,10,6-Jun-2015,Docklands,7:20 PM,Essendon,53,Geelong,122
+71320150606,2015,10,6-Jun-2015,Adelaide Oval,7:10 PM,Port Adelaide,100,Western Bulldogs,62
+192120150607,2015,10,7-Jun-2015,Sydney Showground,1:10 PM,Greater Western Sydney,97,Brisbane Lions,67
+121820150607,2015,10,7-Jun-2015,Bellerive Oval,3:20 PM,North Melbourne,85,West Coast,75
+101520150607,2015,10,7-Jun-2015,Docklands,4:40 PM,St Kilda,69,Hawthorn,132
+41120150608,2015,10,8-Jun-2015,M.C.G.,3:20 PM,Melbourne,85,Collingwood,110
+91320150612,2015,11,12-Jun-2015,Adelaide Oval,7:20 PM,Port Adelaide,69,Geelong,92
+82020150613,2015,11,13-Jun-2015,Carrara,1:40 PM,Gold Coast,46,Fremantle,53
+51820150613,2015,11,13-Jun-2015,Subiaco,2:35 PM,West Coast,96,Essendon,46
+121620150613,2015,11,13-Jun-2015,Docklands,7:20 PM,North Melbourne,75,Sydney,91
+42120150614,2015,11,14-Jun-2015,M.C.G.,1:10 PM,Collingwood,119,Greater Western Sydney,77
+111520150614,2015,11,14-Jun-2015,Docklands,4:40 PM,St Kilda,85,Melbourne,83
+11020150618,2015,12,18-Jun-2015,Adelaide Oval,7:20 PM,Adelaide,85,Hawthorn,114
+141820150619,2015,12,19-Jun-2015,M.C.G.,7:50 PM,Richmond,70,West Coast,90
+31320150620,2015,12,20-Jun-2015,M.C.G.,1:40 PM,Carlton,110,Port Adelaide,106
+122120150620,2015,12,20-Jun-2015,Sydney Showground,4:35 PM,Greater Western Sydney,61,North Melbourne,117
+71920150620,2015,12,20-Jun-2015,Docklands,7:20 PM,Western Bulldogs,146,Brisbane Lions,74
+91120150621,2015,12,21-Jun-2015,Kardinia Park,3:20 PM,Geelong,89,Melbourne,113
+40820150625,2015,13,25-Jun-2015,Subiaco,6:10 PM,Fremantle,80,Collingwood,73
+141620150626,2015,13,26-Jun-2015,S.C.G.,7:50 PM,Sydney,77,Richmond,95
+51020150627,2015,13,27-Jun-2015,M.C.G.,1:40 PM,Hawthorn,114,Essendon,76
+11920150627,2015,13,27-Jun-2015,Gabba,4:35 PM,Brisbane Lions,69,Adelaide,82
+71520150627,2015,13,27-Jun-2015,Docklands,7:20 PM,St Kilda,56,Western Bulldogs,62
+32020150628,2015,13,28-Jun-2015,Docklands,3:20 PM,Carlton,103,Gold Coast,69
+131620150702,2015,14,2-Jul-2015,S.C.G.,7:20 PM,Sydney,94,Port Adelaide,84
+41020150703,2015,14,3-Jul-2015,M.C.G.,7:50 PM,Collingwood,91,Hawthorn,101
+142120150704,2015,14,4-Jul-2015,M.C.G.,1:40 PM,Richmond,78,Greater Western Sydney,69
+122020150704,2015,14,4-Jul-2015,Carrara,4:40 PM,Gold Coast,125,North Melbourne,70
+30720150704,2015,14,4-Jul-2015,Docklands,7:30 PM,Western Bulldogs,64,Carlton,53
+111820150704,2015,14,4-Jul-2015,Marrara Oval,7:10 PM,Melbourne,60,West Coast,114
+51520150705,2015,14,5-Jul-2015,Docklands,1:10 PM,Essendon,52,St Kilda,162
+81920150705,2015,14,5-Jul-2015,Subiaco,2:40 PM,Fremantle,84,Brisbane Lions,48
+41320150709,2015,15,9-Jul-2015,Adelaide Oval,7:20 PM,Port Adelaide,66,Collingwood,63
+31420150710,2015,15,10-Jul-2015,M.C.G.,7:50 PM,Richmond,71,Carlton,41
+51120150711,2015,15,11-Jul-2015,M.C.G.,1:40 PM,Essendon,69,Melbourne,60
+72020150711,2015,15,11-Jul-2015,Cazaly's Stadium,4:35 PM,Western Bulldogs,95,Gold Coast,73
+91220150711,2015,15,11-Jul-2015,Docklands,7:20 PM,North Melbourne,120,Geelong,79
+11820150711,2015,15,11-Jul-2015,Subiaco,5:40 PM,West Coast,147,Adelaide,91
+152120150712,2015,15,12-Jul-2015,Sydney Showground,1:10 PM,Greater Western Sydney,84,St Kilda,49
+81020150712,2015,15,12-Jul-2015,York Park,3:20 PM,Hawthorn,115,Fremantle,43
+161920150712,2015,15,12-Jul-2015,Gabba,4:40 PM,Brisbane Lions,49,Sydney,70
+51220150717,2015,16,17-Jul-2015,Docklands,7:50 PM,North Melbourne,93,Essendon,68
+70920150718,2015,16,18-Jul-2015,Kardinia Park,1:45 PM,Geelong,72,Western Bulldogs,64
+202120150718,2015,16,18-Jul-2015,Carrara,2:10 PM,Gold Coast,79,Greater Western Sydney,94
+41820150718,2015,16,18-Jul-2015,Docklands,4:35 PM,Collingwood,56,West Coast,87
+101620150718,2015,16,18-Jul-2015,Stadium Australia,7:20 PM,Sydney,57,Hawthorn,146
+30820150718,2015,16,18-Jul-2015,Subiaco,5:40 PM,Fremantle,95,Carlton,53
+111920150719,2015,16,19-Jul-2015,M.C.G.,1:10 PM,Melbourne,60,Brisbane Lions,36
+11320150719,2015,16,19-Jul-2015,Adelaide Oval,2:50 PM,Port Adelaide,113,Adelaide,116
+141520150719,2015,16,19-Jul-2015,Docklands,4:40 PM,St Kilda,73,Richmond,89
+31020150724,2015,17,24-Jul-2015,Docklands,7:50 PM,Carlton,35,Hawthorn,173
+92120150725,2015,17,25-Jul-2015,Manuka Oval,1:45 PM,Greater Western Sydney,42,Geelong,69
+12020150725,2015,17,25-Jul-2015,Adelaide Oval,1:40 PM,Adelaide,125,Gold Coast,80
+81420150725,2015,17,25-Jul-2015,M.C.G.,4:35 PM,Richmond,78,Fremantle,82
+51320150725,2015,17,25-Jul-2015,Docklands,7:20 PM,Essendon,116,Port Adelaide,129
+121920150725,2015,17,25-Jul-2015,Gabba,7:20 PM,Brisbane Lions,38,North Melbourne,110
+40720150726,2015,17,26-Jul-2015,Docklands,1:10 PM,Western Bulldogs,104,Collingwood,86
+111520150726,2015,17,26-Jul-2015,M.C.G.,3:20 PM,Melbourne,46,St Kilda,83
+161820150726,2015,17,26-Jul-2015,Subiaco,2:40 PM,West Coast,103,Sydney,51
+101420150731,2015,18,31-Jul-2015,M.C.G.,7:50 PM,Hawthorn,53,Richmond,71
+91920150801,2015,18,1-Aug-2015,Kardinia Park,1:45 PM,Geelong,113,Brisbane Lions,57
+41120150801,2015,18,1-Aug-2015,M.C.G.,2:10 PM,Collingwood,54,Melbourne,91
+11620150801,2015,18,1-Aug-2015,S.C.G.,4:35 PM,Sydney,117,Adelaide,65
+31220150801,2015,18,1-Aug-2015,Docklands,7:20 PM,Carlton,54,North Melbourne,118
+182020150801,2015,18,1-Aug-2015,Carrara,7:20 PM,Gold Coast,83,West Coast,83
+131520150802,2015,18,2-Aug-2015,Adelaide Oval,12:40 PM,Port Adelaide,112,St Kilda,49
+50720150802,2015,18,2-Aug-2015,Docklands,3:20 PM,Essendon,40,Western Bulldogs,127
+82120150802,2015,18,2-Aug-2015,Subiaco,2:40 PM,Fremantle,84,Greater Western Sydney,63
+11420150807,2015,19,7-Aug-2015,Adelaide Oval,7:20 PM,Adelaide,88,Richmond,52
+30420150808,2015,19,8-Aug-2015,M.C.G.,1:45 PM,Collingwood,105,Carlton,87
+71320150808,2015,19,8-Aug-2015,Docklands,2:10 PM,Western Bulldogs,128,Port Adelaide,64
+192020150808,2015,19,8-Aug-2015,Gabba,4:35 PM,Brisbane Lions,100,Gold Coast,114
+91620150808,2015,19,8-Aug-2015,Kardinia Park,7:20 PM,Geelong,95,Sydney,63
+101820150808,2015,19,8-Aug-2015,Subiaco,5:40 PM,West Coast,74,Hawthorn,88
+111220150809,2015,19,9-Aug-2015,M.C.G.,1:10 PM,Melbourne,92,North Melbourne,127
+52120150809,2015,19,9-Aug-2015,Sydney Showground,3:20 PM,Greater Western Sydney,93,Essendon,61
+81520150809,2015,19,9-Aug-2015,Docklands,4:40 PM,St Kilda,59,Fremantle,96
+41620150814,2015,20,14-Aug-2015,S.C.G.,7:50 PM,Sydney,87,Collingwood,76
+10520150815,2015,20,15-Aug-2015,Docklands,1:45 PM,Essendon,59,Adelaide,171
+121520150815,2015,20,15-Aug-2015,Bellerive Oval,2:10 PM,North Melbourne,120,St Kilda,83
+132120150815,2015,20,15-Aug-2015,Adelaide Oval,4:05 PM,Port Adelaide,111,Greater Western Sydney,90
+31920150815,2015,20,15-Aug-2015,Gabba,7:20 PM,Brisbane Lions,131,Carlton,67
+91020150815,2015,20,15-Aug-2015,M.C.G.,7:20 PM,Geelong,85,Hawthorn,121
+142020150816,2015,20,16-Aug-2015,M.C.G.,1:10 PM,Richmond,138,Gold Coast,55
+71120150816,2015,20,16-Aug-2015,Docklands,3:20 PM,Western Bulldogs,153,Melbourne,55
+81820150816,2015,20,16-Aug-2015,Subiaco,2:40 PM,Fremantle,80,West Coast,104
+101320150821,2015,21,21-Aug-2015,Docklands,7:50 PM,Hawthorn,86,Port Adelaide,108
+41420150822,2015,21,22-Aug-2015,M.C.G.,1:45 PM,Collingwood,56,Richmond,147
+162120150822,2015,21,22-Aug-2015,Sydney Showground,2:10 PM,Greater Western Sydney,44,Sydney,133
+52020150822,2015,21,22-Aug-2015,Carrara,4:35 PM,Gold Coast,97,Essendon,95
+91520150822,2015,21,22-Aug-2015,Docklands,7:20 PM,St Kilda,97,Geelong,97
+11920150822,2015,21,22-Aug-2015,Adelaide Oval,7:10 PM,Adelaide,131,Brisbane Lions,44
+81220150823,2015,21,23-Aug-2015,Docklands,1:10 PM,North Melbourne,94,Fremantle,83
+31120150823,2015,21,23-Aug-2015,M.C.G.,3:20 PM,Carlton,78,Melbourne,55
+71820150823,2015,21,23-Aug-2015,Subiaco,2:40 PM,West Coast,162,Western Bulldogs,85
+40920150828,2015,22,28-Aug-2015,M.C.G.,7:50 PM,Geelong,62,Collingwood,110
+32120150829,2015,22,29-Aug-2015,Sydney Showground,1:45 PM,Greater Western Sydney,132,Carlton,51
+101920150829,2015,22,29-Aug-2015,York Park,2:10 PM,Hawthorn,134,Brisbane Lions,62
+71220150829,2015,22,29-Aug-2015,Docklands,4:35 PM,North Melbourne,73,Western Bulldogs,96
+51420150829,2015,22,29-Aug-2015,M.C.G.,7:20 PM,Essendon,47,Richmond,74
+132020150829,2015,22,29-Aug-2015,Carrara,7:20 PM,Gold Coast,51,Port Adelaide,88
+11820150830,2015,22,30-Aug-2015,Adelaide Oval,12:40 PM,Adelaide,126,West Coast,69
+151620150830,2015,22,30-Aug-2015,Docklands,3:20 PM,St Kilda,38,Sydney,135
+81120150830,2015,22,30-Aug-2015,Subiaco,2:40 PM,Fremantle,108,Melbourne,54
+121420150904,2015,23,4-Sep-2015,Docklands,7:50 PM,Richmond,108,North Melbourne,67
+10920150905,2015,23,5-Sep-2015,Kardinia Park,1:05 PM,Geelong,119,Adelaide,80
+71920150905,2015,23,5-Sep-2015,Gabba,1:45 PM,Brisbane Lions,130,Western Bulldogs,122
+81320150905,2015,23,5-Sep-2015,Adelaide Oval,3:20 PM,Port Adelaide,122,Fremantle,53
+31020150905,2015,23,5-Sep-2015,M.C.G.,4:40 PM,Hawthorn,113,Carlton,56
+162020150905,2015,23,5-Sep-2015,S.C.G.,7:25 PM,Sydney,127,Gold Coast,64
+151820150905,2015,23,5-Sep-2015,Subiaco,5:40 PM,West Coast,125,St Kilda,30
+112120150906,2015,23,6-Sep-2015,Docklands,1:10 PM,Melbourne,103,Greater Western Sydney,77
+40520150906,2015,23,6-Sep-2015,M.C.G.,3:20 PM,Collingwood,92,Essendon,95
+101820150911,2015,Qualifying Final,11-Sep-2015,Subiaco,6:20 PM,West Coast,96,Hawthorn,64
+81620150912,2015,Qualifying Final,12-Sep-2015,Subiaco,1:20 PM,Fremantle,69,Sydney,60
+10720150912,2015,Elimination Final,12-Sep-2015,M.C.G.,7:20 PM,Western Bulldogs,102,Adelaide,109
+121420150913,2015,Elimination Final,13-Sep-2015,M.C.G.,3:20 PM,Richmond,88,North Melbourne,105
+11020150918,2015,Semi Final,18-Sep-2015,M.C.G.,7:50 PM,Hawthorn,135,Adelaide,61
+121620150919,2015,Semi Final,19-Sep-2015,Stadium Australia,7:20 PM,Sydney,51,North Melbourne,77
+81020150925,2015,Preliminary Final,25-Sep-2015,Subiaco,6:20 PM,Fremantle,67,Hawthorn,94
+121820150926,2015,Preliminary Final,26-Sep-2015,Subiaco,5:45 PM,West Coast,80,North Melbourne,55
+101820151003,2015,Grand Final,3-Oct-2015,M.C.G.,2:30 PM,West Coast,61,Hawthorn,107
+31420160324,2016,1,24-Mar-2016,M.C.G.,7:20 PM,Richmond,92,Carlton,83
+112120160326,2016,1,26-Mar-2016,M.C.G.,1:40 PM,Melbourne,80,Greater Western Sydney,78
+52020160326,2016,1,26-Mar-2016,Carrara,3:35 PM,Gold Coast,121,Essendon,60
+11220160326,2016,1,26-Mar-2016,Docklands,7:25 PM,North Melbourne,107,Adelaide,97
+41620160326,2016,1,26-Mar-2016,S.C.G.,7:25 PM,Sydney,133,Collingwood,53
+70820160327,2016,1,27-Mar-2016,Docklands,1:10 PM,Western Bulldogs,103,Fremantle,38
+131520160327,2016,1,27-Mar-2016,Adelaide Oval,2:50 PM,Port Adelaide,133,St Kilda,100
+181920160327,2016,1,27-Mar-2016,Subiaco,4:40 PM,West Coast,166,Brisbane Lions,102
+91020160328,2016,1,28-Mar-2016,M.C.G.,3:20 PM,Geelong,116,Hawthorn,86
+41420160401,2016,2,1-Apr-2016,M.C.G.,7:50 PM,Collingwood,87,Richmond,86
+11320160402,2016,2,2-Apr-2016,Adelaide Oval,1:15 PM,Adelaide,144,Port Adelaide,86
+51120160402,2016,2,2-Apr-2016,M.C.G.,2:10 PM,Essendon,80,Melbourne,67
+121920160402,2016,2,2-Apr-2016,Gabba,3:35 PM,Brisbane Lions,83,North Melbourne,117
+71520160402,2016,2,2-Apr-2016,Docklands,7:25 PM,St Kilda,36,Western Bulldogs,93
+82020160402,2016,2,2-Apr-2016,Subiaco,4:40 PM,Fremantle,100,Gold Coast,126
+92120160403,2016,2,3-Apr-2016,Manuka Oval,1:10 PM,Greater Western Sydney,89,Geelong,76
+101820160403,2016,2,3-Apr-2016,M.C.G.,3:20 PM,Hawthorn,99,West Coast,53
+31620160403,2016,2,3-Apr-2016,Docklands,4:40 PM,Carlton,71,Sydney,131
+51320160408,2016,3,8-Apr-2016,Adelaide Oval,7:20 PM,Port Adelaide,112,Essendon,51
+41520160409,2016,3,9-Apr-2016,M.C.G.,1:45 PM,St Kilda,119,Collingwood,90
+11420160409,2016,3,9-Apr-2016,Docklands,2:10 PM,Richmond,92,Adelaide,128
+162120160409,2016,3,9-Apr-2016,S.C.G.,4:35 PM,Sydney,93,Greater Western Sydney,68
+32020160409,2016,3,9-Apr-2016,Carrara,7:25 PM,Gold Coast,95,Carlton,41
+81820160409,2016,3,9-Apr-2016,Subiaco,5:40 PM,West Coast,92,Fremantle,59
+111220160410,2016,3,10-Apr-2016,Bellerive Oval,1:10 PM,North Melbourne,136,Melbourne,131
+71020160410,2016,3,10-Apr-2016,Docklands,3:20 PM,Western Bulldogs,90,Hawthorn,93
+91920160410,2016,3,10-Apr-2016,Kardinia Park,4:40 PM,Geelong,125,Brisbane Lions,56
+141820160415,2016,4,15-Apr-2016,Subiaco,6:10 PM,West Coast,125,Richmond,57
+50920160416,2016,4,16-Apr-2016,M.C.G.,1:45 PM,Essendon,42,Geelong,72
+101520160416,2016,4,16-Apr-2016,York Park,2:10 PM,Hawthorn,87,St Kilda,84
+192020160416,2016,4,16-Apr-2016,Gabba,4:35 PM,Brisbane Lions,107,Gold Coast,94
+30720160416,2016,4,16-Apr-2016,Docklands,7:25 PM,Carlton,49,Western Bulldogs,85
+11620160416,2016,4,16-Apr-2016,Adelaide Oval,7:10 PM,Adelaide,113,Sydney,103
+132120160417,2016,4,17-Apr-2016,Manuka Oval,1:10 PM,Greater Western Sydney,151,Port Adelaide,65
+41120160417,2016,4,17-Apr-2016,M.C.G.,3:20 PM,Collingwood,67,Melbourne,102
+81220160417,2016,4,17-Apr-2016,Docklands,4:40 PM,North Melbourne,132,Fremantle,101
+11020160422,2016,5,22-Apr-2016,M.C.G.,7:50 PM,Hawthorn,112,Adelaide,109
+161820160423,2016,5,23-Apr-2016,S.C.G.,1:45 PM,Sydney,88,West Coast,49
+122020160423,2016,5,23-Apr-2016,Carrara,4:35 PM,Gold Coast,81,North Melbourne,119
+71920160423,2016,5,23-Apr-2016,Docklands,7:25 PM,Western Bulldogs,120,Brisbane Lions,67
+91320160423,2016,5,23-Apr-2016,Adelaide Oval,7:15 PM,Port Adelaide,59,Geelong,107
+152120160424,2016,5,24-Apr-2016,Docklands,1:10 PM,St Kilda,79,Greater Western Sydney,126
+30820160424,2016,5,24-Apr-2016,Subiaco,2:15 PM,Fremantle,68,Carlton,72
+111420160424,2016,5,24-Apr-2016,M.C.G.,7:10 PM,Melbourne,129,Richmond,96
+40520160425,2016,5,25-Apr-2016,M.C.G.,3:20 PM,Collingwood,142,Essendon,73
+71220160429,2016,6,29-Apr-2016,Docklands,7:50 PM,North Melbourne,61,Western Bulldogs,45
+111520160430,2016,6,30-Apr-2016,Docklands,1:45 PM,Melbourne,96,St Kilda,135
+10820160430,2016,6,30-Apr-2016,Adelaide Oval,1:40 PM,Adelaide,97,Fremantle,64
+102120160430,2016,6,30-Apr-2016,Sydney Showground,4:35 PM,Greater Western Sydney,158,Hawthorn,83
+92020160430,2016,6,30-Apr-2016,Kardinia Park,7:25 PM,Geelong,168,Gold Coast,48
+131420160430,2016,6,30-Apr-2016,M.C.G.,7:25 PM,Richmond,59,Port Adelaide,94
+161920160501,2016,6,1-May-2016,Gabba,1:10 PM,Brisbane Lions,94,Sydney,97
+30520160501,2016,6,1-May-2016,M.C.G.,3:20 PM,Carlton,72,Essendon,57
+41820160501,2016,6,1-May-2016,Subiaco,2:40 PM,West Coast,124,Collingwood,62
+101420160506,2016,7,6-May-2016,M.C.G.,7:50 PM,Richmond,90,Hawthorn,136
+30420160507,2016,7,7-May-2016,M.C.G.,1:45 PM,Collingwood,84,Carlton,99
+91820160507,2016,7,7-May-2016,Kardinia Park,2:10 PM,Geelong,123,West Coast,79
+51620160507,2016,7,7-May-2016,S.C.G.,4:35 PM,Sydney,135,Essendon,54
+112020160507,2016,7,7-May-2016,Carrara,5:10 PM,Gold Coast,87,Melbourne,160
+10720160507,2016,7,7-May-2016,Docklands,7:40 PM,Western Bulldogs,123,Adelaide,108
+82120160507,2016,7,7-May-2016,Subiaco,6:10 PM,Fremantle,77,Greater Western Sydney,95
+121520160508,2016,7,8-May-2016,Docklands,3:20 PM,St Kilda,75,North Melbourne,82
+131920160508,2016,7,8-May-2016,Adelaide Oval,4:10 PM,Port Adelaide,136,Brisbane Lions,59
+10920160513,2016,8,13-May-2016,Adelaide Oval,7:20 PM,Adelaide,72,Geelong,98
+51220160514,2016,8,14-May-2016,Docklands,1:45 PM,Essendon,60,North Melbourne,74
+81020160514,2016,8,14-May-2016,York Park,2:10 PM,Hawthorn,116,Fremantle,75
+202120160514,2016,8,14-May-2016,Sydney Showground,4:35 PM,Greater Western Sydney,149,Gold Coast,58
+41920160514,2016,8,14-May-2016,Gabba,7:25 PM,Brisbane Lions,65,Collingwood,143
+141620160514,2016,8,14-May-2016,M.C.G.,7:25 PM,Richmond,101,Sydney,100
+31320160515,2016,8,15-May-2016,Docklands,1:10 PM,Carlton,93,Port Adelaide,91
+71120160515,2016,8,15-May-2016,M.C.G.,3:20 PM,Melbourne,82,Western Bulldogs,114
+151820160515,2016,8,15-May-2016,Subiaco,2:40 PM,West Coast,132,St Kilda,29
+101620160520,2016,9,20-May-2016,M.C.G.,7:50 PM,Hawthorn,55,Sydney,69
+40920160521,2016,9,21-May-2016,M.C.G.,1:45 PM,Collingwood,104,Geelong,80
+12020160521,2016,9,21-May-2016,Carrara,2:10 PM,Gold Coast,74,Adelaide,149
+131820160521,2016,9,21-May-2016,Adelaide Oval,4:05 PM,Port Adelaide,86,West Coast,94
+31220160521,2016,9,21-May-2016,Docklands,7:25 PM,North Melbourne,113,Carlton,46
+81420160521,2016,9,21-May-2016,Subiaco,5:40 PM,Fremantle,45,Richmond,83
+111920160522,2016,9,22-May-2016,M.C.G.,1:10 PM,Melbourne,131,Brisbane Lions,68
+72120160522,2016,9,22-May-2016,Sydney Showground,3:20 PM,Greater Western Sydney,98,Western Bulldogs,73
+51520160522,2016,9,22-May-2016,Docklands,4:40 PM,St Kilda,109,Essendon,63
+121620160527,2016,10,27-May-2016,S.C.G.,7:50 PM,Sydney,91,North Melbourne,65
+101920160528,2016,10,28-May-2016,Gabba,1:45 PM,Brisbane Lions,87,Hawthorn,135
+111320160528,2016,10,28-May-2016,Traeger Park,1:40 PM,Melbourne,76,Port Adelaide,121
+81520160528,2016,10,28-May-2016,Docklands,4:35 PM,St Kilda,101,Fremantle,67
+51420160528,2016,10,28-May-2016,M.C.G.,7:25 PM,Essendon,67,Richmond,105
+12120160528,2016,10,28-May-2016,Adelaide Oval,7:10 PM,Adelaide,107,Greater Western Sydney,85
+30920160529,2016,10,29-May-2016,Docklands,1:10 PM,Carlton,104,Geelong,85
+40720160529,2016,10,29-May-2016,M.C.G.,3:20 PM,Collingwood,53,Western Bulldogs,74
+182020160529,2016,10,29-May-2016,Subiaco,2:40 PM,West Coast,132,Gold Coast,55
+121420160603,2016,11,3-Jun-2016,Bellerive Oval,7:50 PM,North Melbourne,124,Richmond,54
+101120160604,2016,11,4-Jun-2016,M.C.G.,1:45 PM,Hawthorn,82,Melbourne,64
+31920160604,2016,11,4-Jun-2016,Docklands,2:10 PM,Carlton,102,Brisbane Lions,64
+92120160604,2016,11,4-Jun-2016,Kardinia Park,4:35 PM,Geelong,98,Greater Western Sydney,88
+162020160604,2016,11,4-Jun-2016,Carrara,7:25 PM,Gold Coast,41,Sydney,79
+50820160604,2016,11,4-Jun-2016,Subiaco,5:40 PM,Fremantle,126,Essendon,47
+41320160605,2016,11,5-Jun-2016,M.C.G.,1:10 PM,Collingwood,58,Port Adelaide,125
+71820160605,2016,11,5-Jun-2016,Docklands,3:20 PM,Western Bulldogs,83,West Coast,75
+11520160605,2016,11,5-Jun-2016,Adelaide Oval,4:10 PM,Adelaide,133,St Kilda,45
+51020160610,2016,12,10-Jun-2016,Docklands,7:50 PM,Essendon,43,Hawthorn,151
+71320160611,2016,12,11-Jun-2016,Adelaide Oval,1:10 PM,Port Adelaide,97,Western Bulldogs,100
+81920160611,2016,12,11-Jun-2016,Gabba,4:35 PM,Brisbane Lions,64,Fremantle,147
+91220160611,2016,12,11-Jun-2016,Docklands,7:25 PM,Geelong,105,North Melbourne,74
+11820160611,2016,12,11-Jun-2016,Subiaco,5:40 PM,West Coast,76,Adelaide,105
+31520160612,2016,12,12-Jun-2016,Docklands,1:10 PM,St Kilda,110,Carlton,78
+142020160612,2016,12,12-Jun-2016,M.C.G.,3:20 PM,Richmond,114,Gold Coast,97
+162120160612,2016,12,12-Jun-2016,Sydney Showground,4:40 PM,Greater Western Sydney,105,Sydney,63
+41120160613,2016,12,13-Jun-2016,M.C.G.,3:20 PM,Melbourne,104,Collingwood,58
+101220160617,2016,13,17-Jun-2016,Docklands,7:50 PM,North Melbourne,84,Hawthorn,93
+181920160618,2016,13,18-Jun-2016,Gabba,1:40 PM,Brisbane Lions,82,West Coast,131
+81320160618,2016,13,18-Jun-2016,Subiaco,2:35 PM,Fremantle,86,Port Adelaide,69
+70920160618,2016,13,18-Jun-2016,Docklands,7:25 PM,Western Bulldogs,43,Geelong,100
+111620160619,2016,13,19-Jun-2016,S.C.G.,1:10 PM,Sydney,86,Melbourne,31
+52120160619,2016,13,19-Jun-2016,Docklands,4:40 PM,Essendon,90,Greater Western Sydney,117
+11220160623,2016,14,23-Jun-2016,Adelaide Oval,7:20 PM,Adelaide,100,North Melbourne,67
+40820160624,2016,14,24-Jun-2016,M.C.G.,7:50 PM,Collingwood,85,Fremantle,37
+141920160625,2016,14,25-Jun-2016,M.C.G.,1:40 PM,Richmond,117,Brisbane Lions,75
+32120160625,2016,14,25-Jun-2016,Sydney Showground,4:35 PM,Greater Western Sydney,127,Carlton,65
+91520160625,2016,14,25-Jun-2016,Docklands,7:25 PM,St Kilda,93,Geelong,90
+102020160626,2016,14,26-Jun-2016,York Park,3:20 PM,Hawthorn,86,Gold Coast,60
+51820160630,2016,15,30-Jun-2016,Subiaco,6:10 PM,West Coast,130,Essendon,52
+131420160701,2016,15,1-Jul-2016,Adelaide Oval,7:20 PM,Port Adelaide,94,Richmond,56
+152020160702,2016,15,2-Jul-2016,Carrara,1:40 PM,Gold Coast,108,St Kilda,68
+71620160702,2016,15,2-Jul-2016,S.C.G.,4:35 PM,Sydney,79,Western Bulldogs,83
+30420160702,2016,15,2-Jul-2016,M.C.G.,7:25 PM,Carlton,45,Collingwood,57
+11120160703,2016,15,3-Jul-2016,M.C.G.,3:20 PM,Melbourne,98,Adelaide,120
+101320160707,2016,16,7-Jul-2016,Adelaide Oval,7:20 PM,Port Adelaide,79,Hawthorn,101
+91620160708,2016,16,8-Jul-2016,Kardinia Park,7:50 PM,Geelong,60,Sydney,98
+42120160709,2016,16,9-Jul-2016,Sydney Showground,1:40 PM,Greater Western Sydney,93,Collingwood,125
+192020160709,2016,16,9-Jul-2016,Carrara,4:35 PM,Gold Coast,139,Brisbane Lions,113
+71420160709,2016,16,9-Jul-2016,Docklands,7:25 PM,Western Bulldogs,85,Richmond,75
+81120160709,2016,16,9-Jul-2016,Marrara Oval,7:10 PM,Melbourne,87,Fremantle,55
+10320160710,2016,16,10-Jul-2016,M.C.G.,1:10 PM,Carlton,47,Adelaide,107
+121820160710,2016,16,10-Jul-2016,Subiaco,1:20 PM,West Coast,104,North Melbourne,72
+51520160710,2016,16,10-Jul-2016,Docklands,4:40 PM,Essendon,98,St Kilda,109
+101620160714,2016,17,14-Jul-2016,S.C.G.,7:20 PM,Sydney,70,Hawthorn,75
+80920160715,2016,17,15-Jul-2016,Subiaco,6:10 PM,Fremantle,61,Geelong,78
+51420160716,2016,17,16-Jul-2016,M.C.G.,1:40 PM,Richmond,102,Essendon,83
+121320160716,2016,17,16-Jul-2016,Docklands,4:35 PM,North Melbourne,77,Port Adelaide,105
+72020160716,2016,17,16-Jul-2016,Cazaly's Stadium,7:25 PM,Western Bulldogs,107,Gold Coast,59
+10420160716,2016,17,16-Jul-2016,Adelaide Oval,7:10 PM,Adelaide,97,Collingwood,69
+31820160717,2016,17,17-Jul-2016,M.C.G.,1:10 PM,Carlton,75,West Coast,82
+111520160717,2016,17,17-Jul-2016,Docklands,3:20 PM,St Kilda,110,Melbourne,74
+192120160717,2016,17,17-Jul-2016,Gabba,4:40 PM,Brisbane Lions,67,Greater Western Sydney,146
+41220160722,2016,18,22-Jul-2016,Docklands,7:50 PM,Collingwood,84,North Melbourne,124
+31620160723,2016,18,23-Jul-2016,S.C.G.,1:45 PM,Sydney,74,Carlton,68
+82020160723,2016,18,23-Jul-2016,Carrara,2:10 PM,Gold Coast,105,Fremantle,81
+111820160723,2016,18,23-Jul-2016,Subiaco,2:35 PM,West Coast,66,Melbourne,60
+10920160723,2016,18,23-Jul-2016,Kardinia Park,7:25 PM,Geelong,85,Adelaide,55
+71520160723,2016,18,23-Jul-2016,Docklands,7:25 PM,Western Bulldogs,60,St Kilda,75
+51920160724,2016,18,24-Jul-2016,Docklands,1:10 PM,Essendon,91,Brisbane Lions,128
+101420160724,2016,18,24-Jul-2016,M.C.G.,3:20 PM,Hawthorn,114,Richmond,44
+132120160724,2016,18,24-Jul-2016,Adelaide Oval,4:10 PM,Port Adelaide,60,Greater Western Sydney,79
+70920160729,2016,19,29-Jul-2016,Kardinia Park,7:50 PM,Geelong,103,Western Bulldogs,78
+142120160730,2016,19,30-Jul-2016,Manuka Oval,1:45 PM,Greater Western Sydney,111,Richmond,23
+31020160730,2016,19,30-Jul-2016,York Park,2:10 PM,Hawthorn,74,Carlton,55
+41820160730,2016,19,30-Jul-2016,M.C.G.,4:35 PM,Collingwood,91,West Coast,72
+121520160730,2016,19,30-Jul-2016,Docklands,7:25 PM,North Melbourne,85,St Kilda,62
+131920160730,2016,19,30-Jul-2016,Gabba,7:25 PM,Brisbane Lions,79,Port Adelaide,173
+112020160731,2016,19,31-Jul-2016,M.C.G.,1:10 PM,Melbourne,66,Gold Coast,64
+81620160731,2016,19,31-Jul-2016,Subiaco,1:20 PM,Fremantle,47,Sydney,137
+10520160731,2016,19,31-Jul-2016,Adelaide Oval,4:10 PM,Adelaide,143,Essendon,61
+41420160805,2016,20,5-Aug-2016,M.C.G.,7:50 PM,Richmond,92,Collingwood,77
+131620160806,2016,20,6-Aug-2016,S.C.G.,1:45 PM,Sydney,100,Port Adelaide,33
+101120160806,2016,20,6-Aug-2016,M.C.G.,2:10 PM,Melbourne,110,Hawthorn,81
+202120160806,2016,20,6-Aug-2016,Carrara,4:35 PM,Gold Coast,84,Greater Western Sydney,92
+71220160806,2016,20,6-Aug-2016,Docklands,7:25 PM,Western Bulldogs,61,North Melbourne,47
+11920160806,2016,20,6-Aug-2016,Adelaide Oval,7:10 PM,Adelaide,177,Brisbane Lions,39
+31520160807,2016,20,7-Aug-2016,M.C.G.,1:10 PM,Carlton,51,St Kilda,122
+50920160807,2016,20,7-Aug-2016,Docklands,3:20 PM,Geelong,100,Essendon,34
+81820160807,2016,20,7-Aug-2016,Subiaco,2:40 PM,Fremantle,64,West Coast,110
+40720160812,2016,21,12-Aug-2016,Docklands,7:50 PM,Western Bulldogs,95,Collingwood,92
+31920160813,2016,21,13-Aug-2016,Gabba,1:45 PM,Brisbane Lions,99,Carlton,95
+101220160813,2016,21,13-Aug-2016,M.C.G.,2:10 PM,Hawthorn,96,North Melbourne,57
+182120160813,2016,21,13-Aug-2016,Sydney Showground,4:35 PM,Greater Western Sydney,96,West Coast,97
+151620160813,2016,21,13-Aug-2016,Docklands,7:25 PM,St Kilda,76,Sydney,146
+111320160813,2016,21,13-Aug-2016,Adelaide Oval,7:10 PM,Port Adelaide,54,Melbourne,94
+52020160814,2016,21,14-Aug-2016,Docklands,1:10 PM,Essendon,75,Gold Coast,69
+91420160814,2016,21,14-Aug-2016,M.C.G.,3:20 PM,Richmond,78,Geelong,82
+10820160814,2016,21,14-Aug-2016,Subiaco,2:40 PM,Fremantle,70,Adelaide,142
+101820160819,2016,22,19-Aug-2016,Subiaco,6:10 PM,West Coast,92,Hawthorn,67
+121620160820,2016,22,20-Aug-2016,Bellerive Oval,1:45 PM,North Melbourne,76,Sydney,85
+141520160820,2016,22,20-Aug-2016,M.C.G.,2:10 PM,Richmond,46,St Kilda,55
+82120160820,2016,22,20-Aug-2016,Sydney Showground,4:35 PM,Greater Western Sydney,129,Fremantle,37
+42020160820,2016,22,20-Aug-2016,Docklands,7:25 PM,Collingwood,118,Gold Coast,47
+11320160820,2016,22,20-Aug-2016,Adelaide Oval,7:10 PM,Port Adelaide,94,Adelaide,109
+31120160821,2016,22,21-Aug-2016,M.C.G.,1:10 PM,Carlton,78,Melbourne,58
+91920160821,2016,22,21-Aug-2016,Gabba,3:20 PM,Brisbane Lions,69,Geelong,129
+50720160821,2016,22,21-Aug-2016,Docklands,4:40 PM,Essendon,53,Western Bulldogs,93
+11820160826,2016,23,26-Aug-2016,Adelaide Oval,7:40 PM,Adelaide,71,West Coast,100
+91120160827,2016,23,27-Aug-2016,Kardinia Park,1:45 PM,Geelong,155,Melbourne,44
+30520160827,2016,23,27-Aug-2016,M.C.G.,2:10 PM,Essendon,103,Carlton,79
+141620160827,2016,23,27-Aug-2016,S.C.G.,4:35 PM,Sydney,164,Richmond,51
+122120160827,2016,23,27-Aug-2016,Docklands,7:25 PM,North Melbourne,63,Greater Western Sydney,100
+132020160827,2016,23,27-Aug-2016,Carrara,7:25 PM,Gold Coast,66,Port Adelaide,89
+151920160828,2016,23,28-Aug-2016,Docklands,1:10 PM,St Kilda,161,Brisbane Lions,103
+41020160828,2016,23,28-Aug-2016,M.C.G.,3:20 PM,Hawthorn,112,Collingwood,111
+70820160828,2016,23,28-Aug-2016,Subiaco,2:40 PM,Fremantle,69,Western Bulldogs,49
+71820160908,2016,Elimination Final,8-Sep-2016,Subiaco,6:10 PM,West Coast,52,Western Bulldogs,99
+91020160909,2016,Qualifying Final,9-Sep-2016,M.C.G.,7:50 PM,Geelong,85,Hawthorn,83
+162120160910,2016,Qualifying Final,10-Sep-2016,Stadium Australia,3:20 PM,Sydney,55,Greater Western Sydney,91
+11220160910,2016,Elimination Final,10-Sep-2016,Adelaide Oval,7:10 PM,Adelaide,141,North Melbourne,79
+71020160916,2016,Semi Final,16-Sep-2016,M.C.G.,7:50 PM,Hawthorn,84,Western Bulldogs,107
+11620160917,2016,Semi Final,17-Sep-2016,S.C.G.,7:25 PM,Sydney,118,Adelaide,82
+91620160923,2016,Preliminary Final,23-Sep-2016,M.C.G.,7:50 PM,Geelong,60,Sydney,97
+72120160924,2016,Preliminary Final,24-Sep-2016,Sydney Showground,5:15 PM,Greater Western Sydney,83,Western Bulldogs,89
+71620161001,2016,Grand Final,1-Oct-2016,M.C.G.,2:30 PM,Sydney,67,Western Bulldogs,89
+31420170323,2017,1,23-Mar-2017,M.C.G.,7:20 PM,Carlton,89,Richmond,132
+40720170324,2017,1,24-Mar-2017,M.C.G.,7:50 PM,Collingwood,86,Western Bulldogs,100
+111520170325,2017,1,25-Mar-2017,Docklands,4:35 PM,St Kilda,90,Melbourne,120
+131620170325,2017,1,25-Mar-2017,S.C.G.,4:35 PM,Sydney,82,Port Adelaide,110
+51020170325,2017,1,25-Mar-2017,M.C.G.,7:25 PM,Essendon,116,Hawthorn,91
+192020170325,2017,1,25-Mar-2017,Carrara,7:05 PM,Gold Coast,96,Brisbane Lions,98
+121820170326,2017,1,26-Mar-2017,Docklands,1:10 PM,North Melbourne,93,West Coast,136
+12120170326,2017,1,26-Mar-2017,Adelaide Oval,2:45 PM,Adelaide,147,Greater Western Sydney,91
+80920170326,2017,1,26-Mar-2017,Subiaco,4:40 PM,Fremantle,73,Geelong,115
+41420170330,2017,2,30-Mar-2017,M.C.G.,7:20 PM,Richmond,99,Collingwood,80
+71620170331,2017,2,31-Mar-2017,Docklands,7:50 PM,Western Bulldogs,110,Sydney,87
+11020170401,2017,2,1-Apr-2017,M.C.G.,1:45 PM,Hawthorn,89,Adelaide,113
+202120170401,2017,2,1-Apr-2017,Sydney Showground,4:35 PM,Greater Western Sydney,160,Gold Coast,58
+51920170401,2017,2,1-Apr-2017,Gabba,6:25 PM,Brisbane Lions,84,Essendon,111
+151820170401,2017,2,1-Apr-2017,Subiaco,4:40 PM,West Coast,116,St Kilda,97
+91220170402,2017,2,2-Apr-2017,Docklands,1:10 PM,Geelong,112,North Melbourne,111
+31120170402,2017,2,2-Apr-2017,M.C.G.,3:20 PM,Melbourne,86,Carlton,64
+81320170402,2017,2,2-Apr-2017,Adelaide Oval,4:10 PM,Port Adelaide,145,Fremantle,56
+41620170407,2017,3,7-Apr-2017,S.C.G.,7:50 PM,Sydney,79,Collingwood,80
+122120170408,2017,3,8-Apr-2017,Bellerive Oval,1:45 PM,North Melbourne,67,Greater Western Sydney,109
+141820170408,2017,3,8-Apr-2017,M.C.G.,2:10 PM,Richmond,76,West Coast,65
+91120170408,2017,3,8-Apr-2017,Docklands,4:35 PM,Geelong,126,Melbourne,97
+70820170408,2017,3,8-Apr-2017,Subiaco,5:40 PM,Fremantle,89,Western Bulldogs,73
+11320170408,2017,3,8-Apr-2017,Adelaide Oval,7:10 PM,Port Adelaide,83,Adelaide,100
+151920170409,2017,3,9-Apr-2017,Docklands,1:10 PM,St Kilda,107,Brisbane Lions,76
+30520170409,2017,3,9-Apr-2017,M.C.G.,3:20 PM,Carlton,57,Essendon,42
+102020170409,2017,3,9-Apr-2017,Carrara,4:40 PM,Gold Coast,139,Hawthorn,53
+161820170413,2017,4,13-Apr-2017,Subiaco,6:10 PM,West Coast,91,Sydney,65
+71220170414,2017,4,14-Apr-2017,Docklands,4:20 PM,North Melbourne,86,Western Bulldogs,89
+81120170415,2017,4,15-Apr-2017,M.C.G.,1:45 PM,Melbourne,104,Fremantle,106
+132120170415,2017,4,15-Apr-2017,Manuka Oval,4:35 PM,Greater Western Sydney,112,Port Adelaide,81
+32020170415,2017,4,15-Apr-2017,Docklands,7:25 PM,Carlton,82,Gold Coast,108
+10520170415,2017,4,15-Apr-2017,Adelaide Oval,7:10 PM,Adelaide,153,Essendon,88
+41520170416,2017,4,16-Apr-2017,Docklands,3:20 PM,Collingwood,55,St Kilda,69
+141920170416,2017,4,16-Apr-2017,Gabba,4:40 PM,Brisbane Lions,67,Richmond,119
+91020170417,2017,4,17-Apr-2017,M.C.G.,3:20 PM,Hawthorn,48,Geelong,134
+31320170421,2017,5,21-Apr-2017,Adelaide Oval,7:20 PM,Port Adelaide,137,Carlton,47
+71920170422,2017,5,22-Apr-2017,Docklands,1:45 PM,Western Bulldogs,122,Brisbane Lions,90
+12020170422,2017,5,22-Apr-2017,Carrara,4:35 PM,Gold Coast,86,Adelaide,153
+162120170422,2017,5,22-Apr-2017,S.C.G.,7:25 PM,Sydney,63,Greater Western Sydney,105
+81220170422,2017,5,22-Apr-2017,Subiaco,5:40 PM,Fremantle,67,North Melbourne,62
+91520170423,2017,5,23-Apr-2017,Docklands,3:20 PM,St Kilda,88,Geelong,126
+101820170423,2017,5,23-Apr-2017,M.C.G.,4:40 PM,Hawthorn,125,West Coast,75
+111420170424,2017,5,24-Apr-2017,M.C.G.,7:25 PM,Richmond,88,Melbourne,75
+40520170425,2017,5,25-Apr-2017,M.C.G.,3:20 PM,Essendon,100,Collingwood,82
+72120170428,2017,6,28-Apr-2017,Manuka Oval,7:50 PM,Greater Western Sydney,75,Western Bulldogs,73
+101520170429,2017,6,29-Apr-2017,York Park,1:45 PM,Hawthorn,55,St Kilda,130
+31620170429,2017,6,29-Apr-2017,M.C.G.,2:10 PM,Carlton,97,Sydney,78
+131920170429,2017,6,29-Apr-2017,Gabba,4:35 PM,Brisbane Lions,67,Port Adelaide,150
+122020170429,2017,6,29-Apr-2017,Docklands,7:25 PM,North Melbourne,107,Gold Coast,94
+81820170429,2017,6,29-Apr-2017,Subiaco,6:10 PM,West Coast,103,Fremantle,62
+51120170430,2017,6,30-Apr-2017,Docklands,1:10 PM,Essendon,74,Melbourne,112
+40920170430,2017,6,30-Apr-2017,M.C.G.,3:20 PM,Geelong,78,Collingwood,107
+11420170430,2017,6,30-Apr-2017,Adelaide Oval,4:10 PM,Adelaide,140,Richmond,64
+152120170505,2017,7,5-May-2017,Docklands,7:50 PM,St Kilda,108,Greater Western Sydney,85
+11220170506,2017,7,6-May-2017,Bellerive Oval,1:45 PM,North Melbourne,145,Adelaide,86
+30420170506,2017,7,6-May-2017,M.C.G.,2:10 PM,Collingwood,56,Carlton,79
+131820170506,2017,7,6-May-2017,Adelaide Oval,4:05 PM,Port Adelaide,87,West Coast,97
+71420170506,2017,7,6-May-2017,Docklands,7:25 PM,Western Bulldogs,80,Richmond,75
+92020170506,2017,7,6-May-2017,Carrara,7:25 PM,Gold Coast,124,Geelong,99
+161920170507,2017,7,7-May-2017,S.C.G.,1:10 PM,Sydney,135,Brisbane Lions,81
+101120170507,2017,7,7-May-2017,M.C.G.,3:20 PM,Melbourne,91,Hawthorn,94
+50820170507,2017,7,7-May-2017,Subiaco,2:40 PM,Fremantle,116,Essendon,79
+71820170512,2017,8,12-May-2017,Subiaco,6:10 PM,West Coast,69,Western Bulldogs,61
+101920170513,2017,8,13-May-2017,York Park,1:45 PM,Hawthorn,113,Brisbane Lions,75
+31520170513,2017,8,13-May-2017,Docklands,2:10 PM,St Kilda,85,Carlton,66
+42120170513,2017,8,13-May-2017,Sydney Showground,4:35 PM,Greater Western Sydney,102,Collingwood,99
+50920170513,2017,8,13-May-2017,M.C.G.,7:25 PM,Essendon,110,Geelong,93
+11120170513,2017,8,13-May-2017,Adelaide Oval,7:10 PM,Adelaide,66,Melbourne,107
+81420170514,2017,8,14-May-2017,M.C.G.,1:10 PM,Richmond,70,Fremantle,72
+132020170514,2017,8,14-May-2017,Jiangwan Stadium,1:15 PM,Gold Coast,38,Port Adelaide,110
+121620170514,2017,8,14-May-2017,Docklands,4:40 PM,North Melbourne,78,Sydney,120
+70920170519,2017,9,19-May-2017,Kardinia Park,7:50 PM,Geelong,104,Western Bulldogs,81
+151620170520,2017,9,20-May-2017,Docklands,1:45 PM,St Kilda,68,Sydney,118
+142120170520,2017,9,20-May-2017,Sydney Showground,4:35 PM,Greater Western Sydney,78,Richmond,75
+11920170520,2017,9,20-May-2017,Gabba,7:25 PM,Brisbane Lions,60,Adelaide,140
+41020170520,2017,9,20-May-2017,M.C.G.,7:25 PM,Collingwood,90,Hawthorn,72
+51820170521,2017,9,21-May-2017,Docklands,1:10 PM,Essendon,125,West Coast,64
+111220170521,2017,9,21-May-2017,M.C.G.,3:20 PM,Melbourne,90,North Melbourne,104
+30820170521,2017,9,21-May-2017,Subiaco,2:40 PM,Fremantle,86,Carlton,51
+91320170525,2017,10,25-May-2017,Kardinia Park,7:20 PM,Geelong,81,Port Adelaide,79
+101620170526,2017,10,26-May-2017,S.C.G.,7:50 PM,Sydney,75,Hawthorn,81
+71520170527,2017,10,27-May-2017,Docklands,1:45 PM,Western Bulldogs,90,St Kilda,50
+112020170527,2017,10,27-May-2017,Traeger Park,4:05 PM,Melbourne,122,Gold Coast,87
+51420170527,2017,10,27-May-2017,M.C.G.,7:25 PM,Richmond,81,Essendon,66
+10820170527,2017,10,27-May-2017,Adelaide Oval,7:10 PM,Adelaide,143,Fremantle,43
+41920170528,2017,10,28-May-2017,M.C.G.,1:10 PM,Collingwood,129,Brisbane Lions,84
+31220170528,2017,10,28-May-2017,Docklands,3:20 PM,Carlton,96,North Melbourne,113
+182120170528,2017,10,28-May-2017,Subiaco,2:40 PM,West Coast,90,Greater Western Sydney,98
+101320170601,2017,11,1-Jun-2017,Adelaide Oval,7:20 PM,Port Adelaide,98,Hawthorn,47
+10920170602,2017,11,2-Jun-2017,Kardinia Park,7:50 PM,Geelong,96,Adelaide,74
+182020170603,2017,11,3-Jun-2017,Carrara,1:45 PM,Gold Coast,80,West Coast,77
+52120170603,2017,11,3-Jun-2017,Sydney Showground,4:35 PM,Greater Western Sydney,117,Essendon,101
+121420170603,2017,11,3-Jun-2017,Docklands,7:25 PM,North Melbourne,66,Richmond,101
+40820170604,2017,11,4-Jun-2017,Subiaco,2:40 PM,Fremantle,85,Collingwood,105
+71620170608,2017,12,8-Jun-2017,S.C.G.,7:20 PM,Sydney,88,Western Bulldogs,42
+11520170609,2017,12,9-Jun-2017,Adelaide Oval,7:20 PM,Adelaide,111,St Kilda,54
+102020170610,2017,12,10-Jun-2017,M.C.G.,1:45 PM,Hawthorn,79,Gold Coast,95
+81920170610,2017,12,10-Jun-2017,Gabba,4:35 PM,Brisbane Lions,121,Fremantle,64
+51320170610,2017,12,10-Jun-2017,Docklands,7:25 PM,Essendon,131,Port Adelaide,61
+32120170611,2017,12,11-Jun-2017,Docklands,3:20 PM,Carlton,71,Greater Western Sydney,70
+41120170612,2017,12,12-Jun-2017,M.C.G.,3:20 PM,Melbourne,104,Collingwood,100
+91820170615,2017,13,15-Jun-2017,Subiaco,6:10 PM,West Coast,83,Geelong,70
+121520170616,2017,13,16-Jun-2017,Docklands,7:50 PM,North Melbourne,72,St Kilda,89
+141620170617,2017,13,17-Jun-2017,M.C.G.,1:45 PM,Richmond,71,Sydney,80
+131920170617,2017,13,17-Jun-2017,Adelaide Oval,4:05 PM,Port Adelaide,121,Brisbane Lions,81
+32020170617,2017,13,17-Jun-2017,Carrara,7:25 PM,Gold Coast,73,Carlton,83
+71120170618,2017,13,18-Jun-2017,Docklands,3:20 PM,Western Bulldogs,56,Melbourne,113
+11020170622,2017,14,22-Jun-2017,Adelaide Oval,7:20 PM,Adelaide,82,Hawthorn,96
+51620170623,2017,14,23-Jun-2017,S.C.G.,7:50 PM,Sydney,86,Essendon,85
+41320170624,2017,14,24-Jun-2017,M.C.G.,1:45 PM,Collingwood,62,Port Adelaide,93
+192120170624,2017,14,24-Jun-2017,Gabba,4:35 PM,Brisbane Lions,86,Greater Western Sydney,146
+71220170624,2017,14,24-Jun-2017,Docklands,7:25 PM,Western Bulldogs,107,North Melbourne,106
+111820170624,2017,14,24-Jun-2017,Subiaco,5:40 PM,West Coast,96,Melbourne,99
+80920170625,2017,14,25-Jun-2017,Kardinia Park,1:10 PM,Geelong,74,Fremantle,72
+31420170625,2017,14,25-Jun-2017,M.C.G.,3:20 PM,Richmond,84,Carlton,58
+152020170625,2017,14,25-Jun-2017,Docklands,4:40 PM,St Kilda,103,Gold Coast,72
+111620170630,2017,15,30-Jun-2017,M.C.G.,7:50 PM,Melbourne,50,Sydney,85
+71820170701,2017,15,1-Jul-2017,Docklands,1:45 PM,Western Bulldogs,80,West Coast,87
+10320170701,2017,15,1-Jul-2017,M.C.G.,2:10 PM,Carlton,77,Adelaide,89
+122020170701,2017,15,1-Jul-2017,Carrara,4:35 PM,Gold Coast,118,North Melbourne,99
+92120170701,2017,15,1-Jul-2017,Sydney Showground,7:25 PM,Greater Western Sydney,68,Geelong,68
+131420170701,2017,15,1-Jul-2017,Adelaide Oval,7:10 PM,Port Adelaide,63,Richmond,76
+51920170702,2017,15,2-Jul-2017,Docklands,1:10 PM,Essendon,82,Brisbane Lions,90
+41020170702,2017,15,2-Jul-2017,M.C.G.,3:20 PM,Hawthorn,118,Collingwood,94
+81520170702,2017,15,2-Jul-2017,Subiaco,2:40 PM,Fremantle,80,St Kilda,89
+10720170707,2017,16,7-Jul-2017,Adelaide Oval,7:20 PM,Adelaide,104,Western Bulldogs,45
+102120170708,2017,16,8-Jul-2017,York Park,1:45 PM,Hawthorn,97,Greater Western Sydney,97
+40520170708,2017,16,8-Jul-2017,M.C.G.,2:10 PM,Collingwood,80,Essendon,117
+162020170708,2017,16,8-Jul-2017,S.C.G.,4:35 PM,Sydney,118,Gold Coast,51
+91920170708,2017,16,8-Jul-2017,Gabba,7:25 PM,Brisbane Lions,78,Geelong,163
+141520170708,2017,16,8-Jul-2017,Docklands,7:25 PM,St Kilda,138,Richmond,71
+81220170709,2017,16,9-Jul-2017,Docklands,1:10 PM,North Melbourne,82,Fremantle,86
+31120170709,2017,16,9-Jul-2017,M.C.G.,3:20 PM,Carlton,82,Melbourne,90
+131820170709,2017,16,9-Jul-2017,Subiaco,2:40 PM,West Coast,88,Port Adelaide,120
+51520170714,2017,17,14-Jul-2017,Docklands,7:50 PM,St Kilda,57,Essendon,118
+91020170715,2017,17,15-Jul-2017,M.C.G.,1:45 PM,Geelong,88,Hawthorn,85
+121320170715,2017,17,15-Jul-2017,Adelaide Oval,1:40 PM,Port Adelaide,127,North Melbourne,57
+42020170715,2017,17,15-Jul-2017,Carrara,4:35 PM,Gold Coast,88,Collingwood,103
+162120170715,2017,17,15-Jul-2017,Sydney Showground,7:25 PM,Greater Western Sydney,83,Sydney,96
+11120170715,2017,17,15-Jul-2017,Marrara Oval,7:10 PM,Melbourne,70,Adelaide,116
+141920170716,2017,17,16-Jul-2017,Docklands,1:10 PM,Richmond,112,Brisbane Lions,81
+30720170716,2017,17,16-Jul-2017,M.C.G.,3:20 PM,Carlton,62,Western Bulldogs,82
+81820170716,2017,17,16-Jul-2017,Subiaco,2:40 PM,Fremantle,44,West Coast,74
+10920170721,2017,18,21-Jul-2017,Adelaide Oval,7:20 PM,Adelaide,91,Geelong,70
+51220170722,2017,18,22-Jul-2017,Docklands,1:45 PM,Essendon,132,North Melbourne,105
+111320170722,2017,18,22-Jul-2017,M.C.G.,2:10 PM,Melbourne,88,Port Adelaide,65
+72020170722,2017,18,22-Jul-2017,Cazaly's Stadium,4:35 PM,Western Bulldogs,110,Gold Coast,56
+151620170722,2017,18,22-Jul-2017,S.C.G.,7:25 PM,Sydney,101,St Kilda,59
+81020170722,2017,18,22-Jul-2017,Subiaco,5:40 PM,Fremantle,48,Hawthorn,100
+142120170723,2017,18,23-Jul-2017,M.C.G.,1:10 PM,Richmond,64,Greater Western Sydney,45
+41820170723,2017,18,23-Jul-2017,Docklands,3:20 PM,Collingwood,93,West Coast,85
+31920170723,2017,18,23-Jul-2017,Gabba,4:40 PM,Brisbane Lions,112,Carlton,82
+101620170728,2017,19,28-Jul-2017,M.C.G.,7:50 PM,Hawthorn,72,Sydney,66
+111220170729,2017,19,29-Jul-2017,Bellerive Oval,1:45 PM,North Melbourne,76,Melbourne,72
+82120170729,2017,19,29-Jul-2017,Sydney Showground,2:10 PM,Greater Western Sydney,98,Fremantle,86
+131520170729,2017,19,29-Jul-2017,Adelaide Oval,4:05 PM,Port Adelaide,63,St Kilda,61
+30920170729,2017,19,29-Jul-2017,Docklands,7:25 PM,Carlton,58,Geelong,123
+142020170729,2017,19,29-Jul-2017,Carrara,7:25 PM,Gold Coast,65,Richmond,98
+50720170730,2017,19,30-Jul-2017,Docklands,1:10 PM,Western Bulldogs,127,Essendon,97
+10420170730,2017,19,30-Jul-2017,M.C.G.,3:20 PM,Collingwood,103,Adelaide,103
+181920170730,2017,19,30-Jul-2017,Subiaco,2:40 PM,West Coast,113,Brisbane Lions,45
+91620170804,2017,20,4-Aug-2017,Kardinia Park,7:50 PM,Geelong,61,Sydney,107
+112120170805,2017,20,5-Aug-2017,Manuka Oval,1:45 PM,Greater Western Sydney,97,Melbourne,62
+30520170805,2017,20,5-Aug-2017,M.C.G.,2:10 PM,Essendon,84,Carlton,76
+71920170805,2017,20,5-Aug-2017,Gabba,4:35 PM,Brisbane Lions,89,Western Bulldogs,103
+41220170805,2017,20,5-Aug-2017,Docklands,7:25 PM,North Melbourne,57,Collingwood,111
+82020170805,2017,20,5-Aug-2017,Subiaco,5:40 PM,Fremantle,90,Gold Coast,67
+151820170806,2017,20,6-Aug-2017,Docklands,1:10 PM,St Kilda,103,West Coast,95
+101420170806,2017,20,6-Aug-2017,M.C.G.,3:20 PM,Richmond,93,Hawthorn,64
+11320170806,2017,20,6-Aug-2017,Adelaide Oval,4:10 PM,Adelaide,130,Port Adelaide,46
+72120170811,2017,21,11-Aug-2017,Docklands,7:50 PM,Western Bulldogs,57,Greater Western Sydney,105
+81620170812,2017,21,12-Aug-2017,S.C.G.,1:45 PM,Sydney,143,Fremantle,39
+91420170812,2017,21,12-Aug-2017,Kardinia Park,2:10 PM,Geelong,80,Richmond,66
+192020170812,2017,21,12-Aug-2017,Gabba,4:35 PM,Brisbane Lions,142,Gold Coast,84
+10520170812,2017,21,12-Aug-2017,Docklands,7:25 PM,Essendon,80,Adelaide,123
+31820170812,2017,21,12-Aug-2017,Subiaco,5:40 PM,West Coast,100,Carlton,83
+111520170813,2017,21,13-Aug-2017,M.C.G.,1:10 PM,Melbourne,96,St Kilda,72
+101220170813,2017,21,13-Aug-2017,York Park,3:20 PM,Hawthorn,116,North Melbourne,89
+41320170813,2017,21,13-Aug-2017,Adelaide Oval,4:10 PM,Port Adelaide,98,Collingwood,71
+11620170818,2017,22,18-Aug-2017,Adelaide Oval,7:20 PM,Adelaide,80,Sydney,83
+71320170819,2017,22,19-Aug-2017,Eureka Stadium,1:45 PM,Western Bulldogs,79,Port Adelaide,96
+40920170819,2017,22,19-Aug-2017,M.C.G.,2:10 PM,Collingwood,59,Geelong,70
+182120170819,2017,22,19-Aug-2017,Sydney Showground,4:35 PM,Greater Western Sydney,81,West Coast,60
+31020170819,2017,22,19-Aug-2017,Docklands,7:25 PM,Carlton,77,Hawthorn,70
+52020170819,2017,22,19-Aug-2017,Carrara,7:25 PM,Gold Coast,57,Essendon,90
+111920170820,2017,22,20-Aug-2017,M.C.G.,1:10 PM,Melbourne,104,Brisbane Lions,91
+121520170820,2017,22,20-Aug-2017,Docklands,3:20 PM,St Kilda,127,North Melbourne,78
+81420170820,2017,22,20-Aug-2017,Subiaco,2:40 PM,Fremantle,51,Richmond,155
+71020170825,2017,23,25-Aug-2017,Docklands,7:50 PM,Hawthorn,99,Western Bulldogs,90
+41120170826,2017,23,26-Aug-2017,M.C.G.,1:45 PM,Collingwood,99,Melbourne,83
+121920170826,2017,23,26-Aug-2017,Gabba,2:10 PM,Brisbane Lions,79,North Melbourne,130
+31620170826,2017,23,26-Aug-2017,S.C.G.,4:35 PM,Sydney,138,Carlton,57
+92120170826,2017,23,26-Aug-2017,Kardinia Park,7:25 PM,Geelong,103,Greater Western Sydney,59
+132020170826,2017,23,26-Aug-2017,Adelaide Oval,7:10 PM,Port Adelaide,135,Gold Coast,20
+50820170827,2017,23,27-Aug-2017,Docklands,1:10 PM,Essendon,107,Fremantle,92
+141520170827,2017,23,27-Aug-2017,M.C.G.,3:20 PM,Richmond,122,St Kilda,81
+11820170827,2017,23,27-Aug-2017,Subiaco,2:40 PM,West Coast,100,Adelaide,71
+12120170907,2017,Qualifying Final,7-Sep-2017,Adelaide Oval,7:20 PM,Adelaide,84,Greater Western Sydney,48
+91420170908,2017,Qualifying Final,8-Sep-2017,M.C.G.,7:50 PM,Geelong,40,Richmond,91
+51620170909,2017,Elimination Final,9-Sep-2017,S.C.G.,4:20 PM,Sydney,121,Essendon,56
+131820170909,2017,Elimination Final,9-Sep-2017,Adelaide Oval,7:20 PM,Port Adelaide,76,West Coast,78
+91620170915,2017,Semi Final,15-Sep-2017,M.C.G.,7:50 PM,Geelong,98,Sydney,39
+182120170916,2017,Semi Final,16-Sep-2017,Sydney Showground,7:25 PM,Greater Western Sydney,125,West Coast,58
+10920170922,2017,Preliminary Final,22-Sep-2017,Adelaide Oval,7:20 PM,Adelaide,136,Geelong,75
+142120170923,2017,Preliminary Final,23-Sep-2017,M.C.G.,4:45 PM,Richmond,103,Greater Western Sydney,67
+11420170930,2017,Grand Final,30-Sep-2017,M.C.G.,2:30 PM,Adelaide,60,Richmond,108
+31420180322,2018,1,22-Mar-2018,M.C.G.,7:25 PM,Richmond,121,Carlton,95
+10520180323,2018,1,23-Mar-2018,Docklands,7:50 PM,Essendon,99,Adelaide,87
+151920180324,2018,1,24-Mar-2018,Docklands,3:35 PM,St Kilda,107,Brisbane Lions,82
+81320180324,2018,1,24-Mar-2018,Adelaide Oval,4:05 PM,Port Adelaide,110,Fremantle,60
+122020180324,2018,1,24-Mar-2018,Cazaly's Stadium,6:25 PM,Gold Coast,55,North Melbourne,39
+41020180324,2018,1,24-Mar-2018,M.C.G.,7:25 PM,Hawthorn,101,Collingwood,67
+72120180325,2018,1,25-Mar-2018,Manuka Oval,1:10 PM,Greater Western Sydney,133,Western Bulldogs,51
+91120180325,2018,1,25-Mar-2018,M.C.G.,3:20 PM,Melbourne,94,Geelong,97
+161820180325,2018,1,25-Mar-2018,Perth Stadium,4:20 PM,West Coast,86,Sydney,115
+11420180329,2018,2,29-Mar-2018,Adelaide Oval,7:20 PM,Adelaide,118,Richmond,82
+121520180330,2018,2,30-Mar-2018,Docklands,4:20 PM,North Melbourne,95,St Kilda,43
+32020180331,2018,2,31-Mar-2018,Docklands,1:45 PM,Carlton,67,Gold Coast,101
+42120180331,2018,2,31-Mar-2018,M.C.G.,4:35 PM,Collingwood,79,Greater Western Sydney,95
+111920180331,2018,2,31-Mar-2018,Gabba,6:25 PM,Brisbane Lions,74,Melbourne,100
+50820180331,2018,2,31-Mar-2018,Perth Stadium,5:10 PM,Fremantle,106,Essendon,90
+71820180401,2018,2,1-Apr-2018,Docklands,3:20 PM,Western Bulldogs,70,West Coast,121
+131620180401,2018,2,1-Apr-2018,S.C.G.,4:40 PM,Sydney,71,Port Adelaide,94
+91020180402,2018,2,2-Apr-2018,M.C.G.,3:20 PM,Geelong,117,Hawthorn,118
+30420180406,2018,3,6-Apr-2018,M.C.G.,7:50 PM,Carlton,76,Collingwood,100
+131920180407,2018,3,7-Apr-2018,Adelaide Oval,1:15 PM,Port Adelaide,97,Brisbane Lions,92
+111220180407,2018,3,7-Apr-2018,M.C.G.,2:10 PM,Melbourne,123,North Melbourne,86
+82020180407,2018,3,7-Apr-2018,Perth Stadium,2:35 PM,Gold Coast,68,Fremantle,96
+11520180407,2018,3,7-Apr-2018,Docklands,7:25 PM,St Kilda,55,Adelaide,104
+162120180407,2018,3,7-Apr-2018,S.C.G.,7:25 PM,Sydney,103,Greater Western Sydney,87
+101420180408,2018,3,8-Apr-2018,M.C.G.,1:10 PM,Richmond,102,Hawthorn,89
+50720180408,2018,3,8-Apr-2018,Docklands,3:20 PM,Western Bulldogs,104,Essendon,83
+91820180408,2018,3,8-Apr-2018,Perth Stadium,2:40 PM,West Coast,95,Geelong,80
+10420180413,2018,4,13-Apr-2018,Adelaide Oval,7:20 PM,Adelaide,58,Collingwood,106
+82120180414,2018,4,14-Apr-2018,Manuka Oval,1:45 PM,Greater Western Sydney,82,Fremantle,51
+141920180414,2018,4,14-Apr-2018,M.C.G.,2:10 PM,Richmond,110,Brisbane Lions,17
+71620180414,2018,4,14-Apr-2018,Docklands,4:35 PM,Western Bulldogs,79,Sydney,86
+31220180414,2018,4,14-Apr-2018,Bellerive Oval,7:25 PM,North Melbourne,116,Carlton,30
+182020180414,2018,4,14-Apr-2018,Perth Stadium,6:10 PM,West Coast,139,Gold Coast,59
+51320180415,2018,4,15-Apr-2018,Docklands,1:10 PM,Essendon,106,Port Adelaide,84
+101120180415,2018,4,15-Apr-2018,M.C.G.,3:20 PM,Hawthorn,115,Melbourne,48
+91520180415,2018,4,15-Apr-2018,Kardinia Park,4:40 PM,Geelong,103,St Kilda,56
+11620180420,2018,5,20-Apr-2018,S.C.G.,7:50 PM,Sydney,75,Adelaide,85
+152120180421,2018,5,21-Apr-2018,Docklands,1:45 PM,St Kilda,73,Greater Western Sydney,73
+31820180421,2018,5,21-Apr-2018,M.C.G.,4:35 PM,Carlton,69,West Coast,79
+91320180421,2018,5,21-Apr-2018,Adelaide Oval,7:10 PM,Port Adelaide,50,Geelong,84
+70820180421,2018,5,21-Apr-2018,Perth Stadium,6:15 PM,Fremantle,108,Western Bulldogs,54
+101220180422,2018,5,22-Apr-2018,Docklands,3:20 PM,North Melbourne,98,Hawthorn,70
+192020180422,2018,5,22-Apr-2018,Gabba,4:45 PM,Brisbane Lions,71,Gold Coast,76
+111420180424,2018,5,24-Apr-2018,M.C.G.,7:25 PM,Melbourne,56,Richmond,102
+40520180425,2018,5,25-Apr-2018,M.C.G.,3:20 PM,Collingwood,101,Essendon,52
+30720180427,2018,6,27-Apr-2018,Docklands,7:50 PM,Western Bulldogs,80,Carlton,59
+91620180428,2018,6,28-Apr-2018,Kardinia Park,1:45 PM,Geelong,69,Sydney,86
+121320180428,2018,6,28-Apr-2018,Docklands,2:10 PM,North Melbourne,69,Port Adelaide,102
+192120180428,2018,6,28-Apr-2018,Sydney Showground,4:35 PM,Greater Western Sydney,77,Brisbane Lions,43
+101520180428,2018,6,28-Apr-2018,York Park,7:25 PM,Hawthorn,89,St Kilda,54
+12020180428,2018,6,28-Apr-2018,Adelaide Oval,7:10 PM,Adelaide,110,Gold Coast,62
+51120180429,2018,6,29-Apr-2018,Docklands,1:10 PM,Essendon,72,Melbourne,108
+41420180429,2018,6,29-Apr-2018,M.C.G.,3:20 PM,Collingwood,70,Richmond,113
+81820180429,2018,6,29-Apr-2018,Perth Stadium,2:40 PM,Fremantle,81,West Coast,89
+92120180504,2018,7,4-May-2018,Kardinia Park,7:50 PM,Geelong,93,Greater Western Sydney,32
+72020180505,2018,7,5-May-2018,Eureka Stadium,1:45 PM,Western Bulldogs,81,Gold Coast,72
+51020180505,2018,7,5-May-2018,M.C.G.,2:10 PM,Essendon,67,Hawthorn,90
+131820180505,2018,7,5-May-2018,Perth Stadium,2:35 PM,West Coast,102,Port Adelaide,60
+121620180505,2018,7,5-May-2018,S.C.G.,7:25 PM,Sydney,66,North Melbourne,68
+10320180505,2018,7,5-May-2018,Adelaide Oval,7:10 PM,Adelaide,125,Carlton,70
+81420180506,2018,7,6-May-2018,M.C.G.,1:10 PM,Richmond,110,Fremantle,33
+111520180506,2018,7,6-May-2018,Docklands,3:20 PM,St Kilda,67,Melbourne,106
+41920180506,2018,7,6-May-2018,Gabba,4:40 PM,Brisbane Lions,114,Collingwood,121
+101620180511,2018,8,11-May-2018,M.C.G.,7:50 PM,Hawthorn,71,Sydney,79
+182120180512,2018,8,12-May-2018,Sydney Showground,1:45 PM,Greater Western Sydney,61,West Coast,86
+30520180512,2018,8,12-May-2018,M.C.G.,2:10 PM,Carlton,91,Essendon,78
+112020180512,2018,8,12-May-2018,Gabba,4:35 PM,Gold Coast,77,Melbourne,146
+11320180512,2018,8,12-May-2018,Adelaide Oval,4:40 PM,Port Adelaide,95,Adelaide,90
+71920180512,2018,8,12-May-2018,Docklands,7:25 PM,Western Bulldogs,107,Brisbane Lions,93
+81520180512,2018,8,12-May-2018,Perth Stadium,6:10 PM,Fremantle,89,St Kilda,59
+121420180513,2018,8,13-May-2018,Docklands,1:10 PM,North Melbourne,72,Richmond,82
+40920180513,2018,8,13-May-2018,M.C.G.,3:20 PM,Collingwood,45,Geelong,66
+10720180518,2018,9,18-May-2018,Adelaide Oval,7:20 PM,Adelaide,63,Western Bulldogs,26
+122120180519,2018,9,19-May-2018,Bellerive Oval,1:45 PM,North Melbourne,112,Greater Western Sydney,69
+132020180519,2018,9,19-May-2018,Jiangwan Stadium,1:15 PM,Gold Coast,42,Port Adelaide,82
+50920180519,2018,9,19-May-2018,M.C.G.,4:35 PM,Essendon,84,Geelong,50
+41520180519,2018,9,19-May-2018,Docklands,7:25 PM,St Kilda,72,Collingwood,100
+81620180519,2018,9,19-May-2018,S.C.G.,7:25 PM,Sydney,111,Fremantle,52
+31120180520,2018,9,20-May-2018,M.C.G.,1:10 PM,Carlton,50,Melbourne,159
+101920180520,2018,9,20-May-2018,Gabba,3:20 PM,Brisbane Lions,129,Hawthorn,73
+141820180520,2018,9,20-May-2018,Perth Stadium,2:40 PM,West Coast,130,Richmond,83
+40720180525,2018,10,25-May-2018,Docklands,7:50 PM,Collingwood,90,Western Bulldogs,55
+141520180526,2018,10,26-May-2018,M.C.G.,1:45 PM,Richmond,105,St Kilda,77
+161920180526,2018,10,26-May-2018,Gabba,4:35 PM,Brisbane Lions,49,Sydney,67
+30920180526,2018,10,26-May-2018,Kardinia Park,7:25 PM,Geelong,73,Carlton,45
+52120180526,2018,10,26-May-2018,Sydney Showground,7:25 PM,Greater Western Sydney,60,Essendon,95
+101820180527,2018,10,27-May-2018,Docklands,1:10 PM,Hawthorn,60,West Coast,75
+11120180527,2018,10,27-May-2018,Traeger Park,2:50 PM,Melbourne,146,Adelaide,55
+81220180527,2018,10,27-May-2018,Perth Stadium,2:40 PM,Fremantle,58,North Melbourne,86
+31620180601,2018,11,1-Jun-2018,S.C.G.,7:50 PM,Sydney,91,Carlton,61
+71120180602,2018,11,2-Jun-2018,Docklands,1:45 PM,Western Bulldogs,51,Melbourne,100
+101320180602,2018,11,2-Jun-2018,York Park,2:10 PM,Hawthorn,64,Port Adelaide,61
+92020180602,2018,11,2-Jun-2018,Carrara,4:35 PM,Gold Coast,36,Geelong,121
+51420180602,2018,11,2-Jun-2018,M.C.G.,7:25 PM,Essendon,43,Richmond,114
+151820180602,2018,11,2-Jun-2018,Perth Stadium,6:10 PM,West Coast,101,St Kilda,88
+121920180603,2018,11,3-Jun-2018,Docklands,1:10 PM,North Melbourne,141,Brisbane Lions,87
+40820180603,2018,11,3-Jun-2018,M.C.G.,3:20 PM,Collingwood,138,Fremantle,77
+12120180603,2018,11,3-Jun-2018,Adelaide Oval,4:10 PM,Adelaide,81,Greater Western Sydney,97
+131420180608,2018,12,8-Jun-2018,Adelaide Oval,7:20 PM,Port Adelaide,72,Richmond,58
+91220180609,2018,12,9-Jun-2018,Kardinia Park,1:45 PM,Geelong,96,North Melbourne,59
+202120180609,2018,12,9-Jun-2018,Sydney Showground,4:35 PM,Greater Western Sydney,134,Gold Coast,26
+151620180609,2018,12,9-Jun-2018,Docklands,7:25 PM,St Kilda,55,Sydney,126
+51920180610,2018,12,10-Jun-2018,Gabba,1:10 PM,Brisbane Lions,62,Essendon,84
+10820180610,2018,12,10-Jun-2018,Perth Stadium,2:40 PM,Fremantle,71,Adelaide,68
+41120180611,2018,12,11-Jun-2018,M.C.G.,3:20 PM,Melbourne,91,Collingwood,133
+71320180614,2018,13,14-Jun-2018,Adelaide Oval,7:20 PM,Port Adelaide,132,Western Bulldogs,75
+161820180615,2018,13,15-Jun-2018,S.C.G.,7:50 PM,Sydney,72,West Coast,57
+30820180616,2018,13,16-Jun-2018,Docklands,1:45 PM,Carlton,46,Fremantle,103
+152020180616,2018,13,16-Jun-2018,Carrara,4:35 PM,Gold Coast,78,St Kilda,80
+11020180616,2018,13,16-Jun-2018,M.C.G.,7:25 PM,Hawthorn,88,Adelaide,32
+91420180617,2018,13,17-Jun-2018,M.C.G.,3:20 PM,Geelong,65,Richmond,83
+51820180621,2018,14,21-Jun-2018,Perth Stadium,6:10 PM,West Coast,52,Essendon,80
+111320180622,2018,14,22-Jun-2018,Adelaide Oval,7:20 PM,Port Adelaide,75,Melbourne,65
+102020180623,2018,14,23-Jun-2018,York Park,1:45 PM,Hawthorn,96,Gold Coast,43
+192120180623,2018,14,23-Jun-2018,Gabba,4:35 PM,Brisbane Lions,82,Greater Western Sydney,109
+71220180623,2018,14,23-Jun-2018,Docklands,7:25 PM,Western Bulldogs,75,North Melbourne,77
+30420180624,2018,14,24-Jun-2018,M.C.G.,3:20 PM,Collingwood,79,Carlton,59
+141620180628,2018,15,28-Jun-2018,Docklands,7:20 PM,Richmond,93,Sydney,67
+70920180629,2018,15,29-Jun-2018,Docklands,7:50 PM,Western Bulldogs,103,Geelong,101
+31320180630,2018,15,30-Jun-2018,M.C.G.,1:45 PM,Carlton,69,Port Adelaide,90
+11820180630,2018,15,30-Jun-2018,Adelaide Oval,4:05 PM,Adelaide,88,West Coast,78
+42020180630,2018,15,30-Jun-2018,Carrara,7:25 PM,Gold Coast,60,Collingwood,99
+102120180630,2018,15,30-Jun-2018,Sydney Showground,7:25 PM,Greater Western Sydney,95,Hawthorn,84
+111520180701,2018,15,1-Jul-2018,M.C.G.,1:10 PM,Melbourne,117,St Kilda,119
+51220180701,2018,15,1-Jul-2018,Docklands,3:20 PM,Essendon,125,North Melbourne,108
+81920180701,2018,15,1-Jul-2018,Perth Stadium,2:40 PM,Fremantle,64,Brisbane Lions,119
+91620180705,2018,16,5-Jul-2018,S.C.G.,7:20 PM,Sydney,59,Geelong,71
+11420180706,2018,16,6-Jul-2018,M.C.G.,7:50 PM,Richmond,103,Adelaide,56
+31920180707,2018,16,7-Jul-2018,Gabba,1:45 PM,Brisbane Lions,120,Carlton,55
+131520180707,2018,16,7-Jul-2018,Adelaide Oval,4:05 PM,Port Adelaide,86,St Kilda,50
+71020180707,2018,16,7-Jul-2018,Docklands,7:25 PM,Western Bulldogs,59,Hawthorn,122
+81120180707,2018,16,7-Jul-2018,Marrara Oval,7:10 PM,Melbourne,102,Fremantle,48
+122020180708,2018,16,8-Jul-2018,Docklands,1:10 PM,North Melbourne,95,Gold Coast,58
+40520180708,2018,16,8-Jul-2018,M.C.G.,3:20 PM,Essendon,62,Collingwood,78
+182120180708,2018,16,8-Jul-2018,Perth Stadium,2:40 PM,West Coast,86,Greater Western Sydney,75
+10920180712,2018,17,12-Jul-2018,Adelaide Oval,7:20 PM,Adelaide,112,Geelong,97
+31520180713,2018,17,13-Jul-2018,Docklands,7:50 PM,St Kilda,116,Carlton,52
+101920180714,2018,17,14-Jul-2018,York Park,1:45 PM,Hawthorn,65,Brisbane Lions,98
+71120180714,2018,17,14-Jul-2018,M.C.G.,4:35 PM,Melbourne,119,Western Bulldogs,69
+52020180714,2018,17,14-Jul-2018,Carrara,7:25 PM,Gold Coast,51,Essendon,95
+142120180714,2018,17,14-Jul-2018,Sydney Showground,7:25 PM,Greater Western Sydney,79,Richmond,77
+41820180715,2018,17,15-Jul-2018,M.C.G.,1:10 PM,Collingwood,67,West Coast,102
+121620180715,2018,17,15-Jul-2018,Docklands,3:20 PM,North Melbourne,98,Sydney,104
+81320180715,2018,17,15-Jul-2018,Perth Stadium,2:40 PM,Fremantle,59,Port Adelaide,50
+141520180720,2018,18,20-Jul-2018,Docklands,7:50 PM,St Kilda,57,Richmond,111
+41220180721,2018,18,21-Jul-2018,M.C.G.,1:45 PM,Collingwood,130,North Melbourne,64
+162020180721,2018,18,21-Jul-2018,S.C.G.,2:10 PM,Sydney,64,Gold Coast,88
+50820180721,2018,18,21-Jul-2018,Docklands,4:35 PM,Essendon,99,Fremantle,70
+11920180721,2018,18,21-Jul-2018,Gabba,7:25 PM,Brisbane Lions,88,Adelaide,93
+91120180721,2018,18,21-Jul-2018,Kardinia Park,7:25 PM,Geelong,100,Melbourne,98
+31020180722,2018,18,22-Jul-2018,Docklands,1:10 PM,Carlton,52,Hawthorn,124
+71820180722,2018,18,22-Jul-2018,Perth Stadium,1:20 PM,West Coast,100,Western Bulldogs,46
+132120180722,2018,18,22-Jul-2018,Adelaide Oval,4:10 PM,Port Adelaide,58,Greater Western Sydney,80
+51620180727,2018,19,27-Jul-2018,Docklands,7:50 PM,Essendon,109,Sydney,66
+41420180728,2018,19,28-Jul-2018,M.C.G.,1:45 PM,Richmond,105,Collingwood,77
+91920180728,2018,19,28-Jul-2018,Kardinia Park,2:10 PM,Geelong,120,Brisbane Lions,78
+152120180728,2018,19,28-Jul-2018,Sydney Showground,4:35 PM,Greater Western Sydney,86,St Kilda,61
+32020180728,2018,19,28-Jul-2018,Carrara,7:25 PM,Gold Coast,44,Carlton,79
+11120180728,2018,19,28-Jul-2018,Adelaide Oval,7:10 PM,Adelaide,77,Melbourne,90
+121820180729,2018,19,29-Jul-2018,Bellerive Oval,1:10 PM,North Melbourne,81,West Coast,41
+71320180729,2018,19,29-Jul-2018,Eureka Stadium,3:20 PM,Western Bulldogs,34,Port Adelaide,78
+81020180729,2018,19,29-Jul-2018,Perth Stadium,2:40 PM,Fremantle,53,Hawthorn,112
+91420180803,2018,20,3-Aug-2018,M.C.G.,7:50 PM,Richmond,85,Geelong,82
+51020180804,2018,20,4-Aug-2018,M.C.G.,1:45 PM,Hawthorn,107,Essendon,103
+121920180804,2018,20,4-Aug-2018,Gabba,2:10 PM,Brisbane Lions,104,North Melbourne,107
+11320180804,2018,20,4-Aug-2018,Adelaide Oval,4:05 PM,Adelaide,96,Port Adelaide,93
+41620180804,2018,20,4-Aug-2018,S.C.G.,7:25 PM,Sydney,73,Collingwood,71
+71520180804,2018,20,4-Aug-2018,Docklands,7:25 PM,St Kilda,68,Western Bulldogs,103
+32120180805,2018,20,5-Aug-2018,Docklands,1:10 PM,Carlton,46,Greater Western Sydney,151
+112020180805,2018,20,5-Aug-2018,M.C.G.,3:20 PM,Melbourne,143,Gold Coast,47
+81820180805,2018,20,5-Aug-2018,Perth Stadium,2:40 PM,West Coast,142,Fremantle,84
+51520180810,2018,21,10-Aug-2018,Docklands,7:50 PM,Essendon,122,St Kilda,79
+91020180811,2018,21,11-Aug-2018,M.C.G.,1:45 PM,Hawthorn,71,Geelong,60
+142020180811,2018,21,11-Aug-2018,Carrara,2:10 PM,Gold Coast,51,Richmond,125
+131820180811,2018,21,11-Aug-2018,Adelaide Oval,4:05 PM,Port Adelaide,58,West Coast,62
+12120180811,2018,21,11-Aug-2018,Manuka Oval,7:25 PM,Greater Western Sydney,106,Adelaide,92
+41920180811,2018,21,11-Aug-2018,Docklands,7:25 PM,Collingwood,104,Brisbane Lions,73
+71220180812,2018,21,12-Aug-2018,Docklands,1:10 PM,North Melbourne,85,Western Bulldogs,92
+111620180812,2018,21,12-Aug-2018,M.C.G.,3:20 PM,Melbourne,78,Sydney,87
+30820180812,2018,21,12-Aug-2018,Perth Stadium,2:40 PM,Fremantle,101,Carlton,72
+51420180817,2018,22,17-Aug-2018,M.C.G.,7:50 PM,Richmond,81,Essendon,73
+41320180818,2018,22,18-Aug-2018,M.C.G.,1:45 PM,Collingwood,115,Port Adelaide,64
+80920180818,2018,22,18-Aug-2018,Kardinia Park,2:10 PM,Geelong,158,Fremantle,25
+162120180818,2018,22,18-Aug-2018,Sydney Showground,4:35 PM,Greater Western Sydney,60,Sydney,80
+101520180818,2018,22,18-Aug-2018,Docklands,7:25 PM,St Kilda,76,Hawthorn,80
+192020180818,2018,22,18-Aug-2018,Carrara,7:25 PM,Gold Coast,74,Brisbane Lions,78
+30720180819,2018,22,19-Aug-2018,Docklands,1:10 PM,Carlton,49,Western Bulldogs,66
+111820180819,2018,22,19-Aug-2018,Perth Stadium,1:20 PM,West Coast,91,Melbourne,108
+11220180819,2018,22,19-Aug-2018,Adelaide Oval,4:10 PM,Adelaide,86,North Melbourne,77
+51320180824,2018,23,24-Aug-2018,Adelaide Oval,7:20 PM,Port Adelaide,89,Essendon,111
+92020180825,2018,23,25-Aug-2018,Kardinia Park,1:45 PM,Geelong,142,Gold Coast,40
+71420180825,2018,23,25-Aug-2018,M.C.G.,2:10 PM,Richmond,98,Western Bulldogs,95
+40820180825,2018,23,25-Aug-2018,Perth Stadium,2:35 PM,Fremantle,67,Collingwood,76
+10320180825,2018,23,25-Aug-2018,Docklands,7:25 PM,Carlton,61,Adelaide,165
+101620180825,2018,23,25-Aug-2018,S.C.G.,7:25 PM,Sydney,74,Hawthorn,83
+181920180826,2018,23,26-Aug-2018,Gabba,1:10 PM,Brisbane Lions,72,West Coast,98
+112120180826,2018,23,26-Aug-2018,M.C.G.,3:20 PM,Melbourne,102,Greater Western Sydney,57
+121520180826,2018,23,26-Aug-2018,Docklands,4:40 PM,St Kilda,94,North Melbourne,117
+101420180906,2018,Qualifying Final,6-Sep-2018,M.C.G.,7:20 PM,Richmond,95,Hawthorn,64
+91120180907,2018,Elimination Final,7-Sep-2018,M.C.G.,7:50 PM,Melbourne,75,Geelong,46
+162120180908,2018,Elimination Final,8-Sep-2018,S.C.G.,4:20 PM,Sydney,30,Greater Western Sydney,79
+41820180908,2018,Qualifying Final,8-Sep-2018,Perth Stadium,6:10 PM,West Coast,86,Collingwood,70
+101120180914,2018,Semi Final,14-Sep-2018,M.C.G.,7:50 PM,Hawthorn,71,Melbourne,104
+42120180915,2018,Semi Final,15-Sep-2018,M.C.G.,7:25 PM,Collingwood,69,Greater Western Sydney,59
+41420180921,2018,Preliminary Final,21-Sep-2018,M.C.G.,7:50 PM,Richmond,58,Collingwood,97
+111820180922,2018,Preliminary Final,22-Sep-2018,Perth Stadium,1:20 PM,West Coast,121,Melbourne,55
+41820180929,2018,Grand Final,29-Sep-2018,M.C.G.,2:30 PM,West Coast,79,Collingwood,74
+31420190321,2019,1,21-Mar-2019,M.C.G.,7:25 PM,Carlton,64,Richmond,97
+40920190322,2019,1,22-Mar-2019,M.C.G.,7:50 PM,Collingwood,65,Geelong,72
+111320190323,2019,1,23-Mar-2019,M.C.G.,1:45 PM,Melbourne,61,Port Adelaide,87
+11020190323,2019,1,23-Mar-2019,Adelaide Oval,4:05 PM,Adelaide,55,Hawthorn,87
+71620190323,2019,1,23-Mar-2019,Docklands,7:25 PM,Western Bulldogs,82,Sydney,65
+181920190323,2019,1,23-Mar-2019,Gabba,7:20 PM,Brisbane Lions,102,West Coast,58
+152020190324,2019,1,24-Mar-2019,Docklands,1:10 PM,St Kilda,85,Gold Coast,84
+52120190324,2019,1,24-Mar-2019,Sydney Showground,3:20 PM,Greater Western Sydney,112,Essendon,40
+81220190324,2019,1,24-Mar-2019,Perth Stadium,3:20 PM,Fremantle,141,North Melbourne,59
+41420190328,2019,2,28-Mar-2019,M.C.G.,7:20 PM,Richmond,66,Collingwood,110
+11620190329,2019,2,29-Mar-2019,S.C.G.,7:50 PM,Sydney,62,Adelaide,88
+51520190330,2019,2,30-Mar-2019,Docklands,4:35 PM,Essendon,65,St Kilda,76
+31320190330,2019,2,30-Mar-2019,Adelaide Oval,4:40 PM,Port Adelaide,88,Carlton,72
+91120190330,2019,2,30-Mar-2019,Kardinia Park,7:25 PM,Geelong,126,Melbourne,46
+182120190330,2019,2,30-Mar-2019,Perth Stadium,5:10 PM,West Coast,104,Greater Western Sydney,52
+121920190331,2019,2,31-Mar-2019,Docklands,1:10 PM,North Melbourne,87,Brisbane Lions,107
+71020190331,2019,2,31-Mar-2019,M.C.G.,3:20 PM,Hawthorn,87,Western Bulldogs,106
+82020190331,2019,2,31-Mar-2019,Carrara,3:40 PM,Gold Coast,61,Fremantle,58
+10920190404,2019,3,4-Apr-2019,Adelaide Oval,7:20 PM,Adelaide,75,Geelong,99
+51120190405,2019,3,5-Apr-2019,M.C.G.,7:50 PM,Melbourne,112,Essendon,130
+31620190406,2019,3,6-Apr-2019,Docklands,1:45 PM,Carlton,74,Sydney,93
+142120190406,2019,3,6-Apr-2019,Sydney Showground,4:35 PM,Greater Western Sydney,125,Richmond,76
+131920190406,2019,3,6-Apr-2019,Gabba,6:25 PM,Brisbane Lions,107,Port Adelaide,90
+41820190406,2019,3,6-Apr-2019,M.C.G.,7:25 PM,Collingwood,76,West Coast,98
+72020190407,2019,3,7-Apr-2019,Docklands,2:20 PM,Western Bulldogs,68,Gold Coast,73
+101220190407,2019,3,7-Apr-2019,M.C.G.,3:20 PM,Hawthorn,87,North Melbourne,71
+81520190407,2019,3,7-Apr-2019,Perth Stadium,3:20 PM,Fremantle,71,St Kilda,66
+111620190411,2019,4,11-Apr-2019,S.C.G.,7:20 PM,Sydney,78,Melbourne,100
+40720190412,2019,4,12-Apr-2019,M.C.G.,7:50 PM,Collingwood,78,Western Bulldogs,64
+92120190413,2019,4,13-Apr-2019,Kardinia Park,1:45 PM,Geelong,75,Greater Western Sydney,79
+51920190413,2019,4,13-Apr-2019,M.C.G.,2:10 PM,Essendon,112,Brisbane Lions,65
+131420190413,2019,4,13-Apr-2019,Adelaide Oval,4:05 PM,Port Adelaide,92,Richmond,99
+11220190413,2019,4,13-Apr-2019,Docklands,7:25 PM,North Melbourne,71,Adelaide,59
+81820190413,2019,4,13-Apr-2019,Perth Stadium,6:10 PM,West Coast,69,Fremantle,56
+32020190414,2019,4,14-Apr-2019,Carrara,2:40 PM,Gold Coast,59,Carlton,57
+101520190414,2019,4,14-Apr-2019,Docklands,3:20 PM,St Kilda,74,Hawthorn,69
+41920190418,2019,5,18-Apr-2019,Gabba,7:35 PM,Brisbane Lions,61,Collingwood,123
+51220190419,2019,5,19-Apr-2019,Docklands,4:20 PM,North Melbourne,58,Essendon,116
+131820190419,2019,5,19-Apr-2019,Perth Stadium,6:10 PM,West Coast,53,Port Adelaide,95
+82120190420,2019,5,20-Apr-2019,Manuka Oval,1:45 PM,Greater Western Sydney,82,Fremantle,106
+111520190420,2019,5,20-Apr-2019,M.C.G.,4:35 PM,Melbourne,55,St Kilda,95
+141620190420,2019,5,20-Apr-2019,Docklands,7:25 PM,Richmond,89,Sydney,67
+30720190421,2019,5,21-Apr-2019,Docklands,1:10 PM,Western Bulldogs,57,Carlton,101
+12020190421,2019,5,21-Apr-2019,Adelaide Oval,4:10 PM,Adelaide,119,Gold Coast,46
+91020190422,2019,5,22-Apr-2019,M.C.G.,3:20 PM,Hawthorn,90,Geelong,113
+111420190424,2019,6,24-Apr-2019,M.C.G.,7:35 PM,Richmond,85,Melbourne,42
+40520190425,2019,6,25-Apr-2019,M.C.G.,3:20 PM,Essendon,69,Collingwood,73
+121320190426,2019,6,26-Apr-2019,Adelaide Oval,7:20 PM,Port Adelaide,88,North Melbourne,72
+192020190427,2019,6,27-Apr-2019,Carrara,1:45 PM,Gold Coast,62,Brisbane Lions,111
+11520190427,2019,6,27-Apr-2019,Docklands,4:35 PM,St Kilda,68,Adelaide,97
+162120190427,2019,6,27-Apr-2019,S.C.G.,7:25 PM,Sydney,79,Greater Western Sydney,120
+70820190427,2019,6,27-Apr-2019,Perth Stadium,6:10 PM,Fremantle,88,Western Bulldogs,69
+31020190428,2019,6,28-Apr-2019,York Park,3:20 PM,Hawthorn,93,Carlton,88
+91820190428,2019,6,28-Apr-2019,Kardinia Park,4:40 PM,Geelong,104,West Coast,46
+41320190503,2019,7,3-May-2019,Docklands,7:50 PM,Collingwood,108,Port Adelaide,69
+101120190504,2019,7,4-May-2019,M.C.G.,1:45 PM,Melbourne,79,Hawthorn,74
+152120190504,2019,7,4-May-2019,Manuka Oval,1:45 PM,Greater Western Sydney,114,St Kilda,70
+161920190504,2019,7,4-May-2019,Gabba,4:35 PM,Brisbane Lions,103,Sydney,81
+71420190504,2019,7,4-May-2019,Docklands,7:25 PM,Western Bulldogs,99,Richmond,52
+182020190504,2019,7,4-May-2019,Perth Stadium,6:10 PM,West Coast,80,Gold Coast,57
+31220190505,2019,7,5-May-2019,Docklands,1:10 PM,Carlton,62,North Melbourne,120
+50920190505,2019,7,5-May-2019,M.C.G.,3:20 PM,Geelong,86,Essendon,54
+10820190505,2019,7,5-May-2019,Adelaide Oval,4:10 PM,Adelaide,51,Fremantle,34
+51620190510,2019,8,10-May-2019,S.C.G.,7:50 PM,Sydney,77,Essendon,72
+30420190511,2019,8,11-May-2019,M.C.G.,1:45 PM,Carlton,87,Collingwood,106
+71920190511,2019,8,11-May-2019,Eureka Stadium,1:45 PM,Western Bulldogs,92,Brisbane Lions,76
+112020190511,2019,8,11-May-2019,Carrara,4:35 PM,Gold Coast,60,Melbourne,61
+151820190511,2019,8,11-May-2019,Docklands,7:25 PM,St Kilda,70,West Coast,88
+11320190511,2019,8,11-May-2019,Adelaide Oval,7:10 PM,Port Adelaide,68,Adelaide,88
+91220190512,2019,8,12-May-2019,Docklands,1:10 PM,North Melbourne,80,Geelong,104
+102120190512,2019,8,12-May-2019,M.C.G.,3:20 PM,Hawthorn,71,Greater Western Sydney,38
+81420190512,2019,8,12-May-2019,Perth Stadium,3:20 PM,Fremantle,86,Richmond,111
+111820190517,2019,9,17-May-2019,Perth Stadium,6:10 PM,West Coast,85,Melbourne,69
+41520190518,2019,9,18-May-2019,M.C.G.,1:45 PM,Collingwood,112,St Kilda,71
+11920190518,2019,9,18-May-2019,Gabba,2:10 PM,Brisbane Lions,93,Adelaide,92
+70920190518,2019,9,18-May-2019,Kardinia Park,4:35 PM,Geelong,133,Western Bulldogs,89
+50820190518,2019,9,18-May-2019,Docklands,7:25 PM,Essendon,60,Fremantle,53
+121620190518,2019,9,18-May-2019,Bellerive Oval,7:25 PM,North Melbourne,72,Sydney,77
+132020190519,2019,9,19-May-2019,Adelaide Oval,12:40 PM,Port Adelaide,89,Gold Coast,51
+101420190519,2019,9,19-May-2019,M.C.G.,3:20 PM,Richmond,95,Hawthorn,59
+32120190519,2019,9,19-May-2019,Sydney Showground,4:40 PM,Greater Western Sydney,138,Carlton,45
+41620190524,2019,10,24-May-2019,S.C.G.,7:50 PM,Sydney,73,Collingwood,80
+101320190525,2019,10,25-May-2019,York Park,1:45 PM,Hawthorn,80,Port Adelaide,49
+71220190525,2019,10,25-May-2019,Docklands,2:10 PM,Western Bulldogs,90,North Melbourne,115
+11820190525,2019,10,25-May-2019,Adelaide Oval,4:05 PM,Adelaide,73,West Coast,85
+51420190525,2019,10,25-May-2019,M.C.G.,7:25 PM,Richmond,73,Essendon,50
+92020190525,2019,10,25-May-2019,Carrara,7:25 PM,Gold Coast,64,Geelong,91
+112120190526,2019,10,26-May-2019,M.C.G.,1:10 PM,Melbourne,68,Greater Western Sydney,94
+31520190526,2019,10,26-May-2019,Docklands,3:20 PM,St Kilda,68,Carlton,55
+81920190526,2019,10,26-May-2019,Perth Stadium,3:20 PM,Fremantle,73,Brisbane Lions,72
+121420190531,2019,11,31-May-2019,Docklands,7:50 PM,North Melbourne,99,Richmond,62
+40820190601,2019,11,1-Jun-2019,M.C.G.,1:45 PM,Collingwood,75,Fremantle,79
+202120190601,2019,11,1-Jun-2019,Sydney Showground,1:45 PM,Greater Western Sydney,126,Gold Coast,43
+91620190601,2019,11,1-Jun-2019,Kardinia Park,4:35 PM,Geelong,85,Sydney,63
+101920190601,2019,11,1-Jun-2019,Gabba,7:25 PM,Brisbane Lions,85,Hawthorn,66
+11120190601,2019,11,1-Jun-2019,Marrara Oval,7:10 PM,Melbourne,88,Adelaide,90
+131520190602,2019,11,2-Jun-2019,Jiangwan Stadium,12:20 PM,St Kilda,69,Port Adelaide,139
+30520190602,2019,11,2-Jun-2019,M.C.G.,3:20 PM,Essendon,74,Carlton,33
+71820190602,2019,11,2-Jun-2019,Perth Stadium,3:20 PM,West Coast,133,Western Bulldogs,72
+91420190607,2019,12,7-Jun-2019,M.C.G.,7:50 PM,Richmond,37,Geelong,104
+31920190608,2019,12,8-Jun-2019,Docklands,1:45 PM,Carlton,78,Brisbane Lions,63
+122020190608,2019,12,8-Jun-2019,Carrara,4:35 PM,Gold Coast,72,North Melbourne,99
+12120190608,2019,12,8-Jun-2019,Adelaide Oval,7:10 PM,Adelaide,82,Greater Western Sydney,61
+161820190609,2019,12,9-Jun-2019,S.C.G.,3:20 PM,Sydney,116,West Coast,71
+41120190610,2019,12,10-Jun-2019,M.C.G.,3:20 PM,Collingwood,98,Melbourne,57
+11420190613,2019,13,13-Jun-2019,Adelaide Oval,7:20 PM,Adelaide,101,Richmond,68
+51020190614,2019,13,14-Jun-2019,Docklands,7:50 PM,Essendon,96,Hawthorn,77
+152020190615,2019,13,15-Jun-2019,Riverway Stadium,1:45 PM,Gold Coast,76,St Kilda,80
+81320190615,2019,13,15-Jun-2019,Perth Stadium,2:35 PM,Fremantle,100,Port Adelaide,79
+30720190615,2019,13,15-Jun-2019,Docklands,7:25 PM,Carlton,100,Western Bulldogs,103
+122120190616,2019,13,16-Jun-2019,Bellerive Oval,3:20 PM,North Melbourne,68,Greater Western Sydney,91
+51820190620,2019,14,20-Jun-2019,Perth Stadium,6:10 PM,West Coast,106,Essendon,71
+101620190621,2019,14,21-Jun-2019,S.C.G.,7:50 PM,Sydney,82,Hawthorn,63
+81120190622,2019,14,22-Jun-2019,M.C.G.,1:45 PM,Melbourne,85,Fremantle,71
+151920190622,2019,14,22-Jun-2019,Docklands,4:35 PM,St Kilda,59,Brisbane Lions,115
+91320190622,2019,14,22-Jun-2019,Adelaide Oval,7:10 PM,Port Adelaide,67,Geelong,56
+40720190623,2019,14,23-Jun-2019,Docklands,3:20 PM,Western Bulldogs,73,Collingwood,82
+52120190627,2019,15,27-Jun-2019,Docklands,7:20 PM,Essendon,77,Greater Western Sydney,71
+10920190628,2019,15,28-Jun-2019,Kardinia Park,7:50 PM,Geelong,96,Adelaide,69
+101820190629,2019,15,29-Jun-2019,M.C.G.,1:45 PM,Hawthorn,71,West Coast,77
+162020190629,2019,15,29-Jun-2019,S.C.G.,4:35 PM,Sydney,93,Gold Coast,51
+41220190629,2019,15,29-Jun-2019,Docklands,7:25 PM,Collingwood,37,North Melbourne,81
+71320190629,2019,15,29-Jun-2019,Adelaide Oval,7:10 PM,Port Adelaide,41,Western Bulldogs,66
+141520190630,2019,15,30-Jun-2019,Docklands,1:10 PM,St Kilda,70,Richmond,103
+111920190630,2019,15,30-Jun-2019,Gabba,3:20 PM,Brisbane Lions,107,Melbourne,74
+30820190630,2019,15,30-Jun-2019,Perth Stadium,3:20 PM,Fremantle,75,Carlton,79
+41020190705,2019,16,5-Jul-2019,M.C.G.,7:50 PM,Hawthorn,67,Collingwood,63
+51620190706,2019,16,6-Jul-2019,M.C.G.,1:45 PM,Essendon,76,Sydney,66
+142020190706,2019,16,6-Jul-2019,Carrara,2:10 PM,Gold Coast,58,Richmond,150
+11320190706,2019,16,6-Jul-2019,Adelaide Oval,4:05 PM,Adelaide,44,Port Adelaide,101
+70920190706,2019,16,6-Jul-2019,Docklands,7:25 PM,Western Bulldogs,71,Geelong,55
+81820190706,2019,16,6-Jul-2019,Perth Stadium,6:10 PM,Fremantle,31,West Coast,122
+31120190707,2019,16,7-Jul-2019,M.C.G.,1:10 PM,Carlton,100,Melbourne,105
+121520190707,2019,16,7-Jul-2019,Bellerive Oval,3:20 PM,North Melbourne,112,St Kilda,73
+192120190707,2019,16,7-Jul-2019,Sydney Showground,4:40 PM,Greater Western Sydney,74,Brisbane Lions,94
+41820190712,2019,17,12-Jul-2019,Perth Stadium,6:10 PM,West Coast,77,Collingwood,78
+31620190713,2019,17,13-Jul-2019,S.C.G.,1:45 PM,Sydney,62,Carlton,69
+81020190713,2019,17,13-Jul-2019,York Park,2:10 PM,Hawthorn,84,Fremantle,53
+51220190713,2019,17,13-Jul-2019,Docklands,4:35 PM,Essendon,86,North Melbourne,81
+12020190713,2019,17,13-Jul-2019,Carrara,7:25 PM,Gold Coast,56,Adelaide,151
+91520190713,2019,17,13-Jul-2019,Kardinia Park,7:25 PM,Geelong,84,St Kilda,57
+142120190714,2019,17,14-Jul-2019,M.C.G.,1:10 PM,Richmond,94,Greater Western Sydney,67
+71120190714,2019,17,14-Jul-2019,Docklands,3:20 PM,Western Bulldogs,74,Melbourne,66
+131920190714,2019,17,14-Jul-2019,Adelaide Oval,4:10 PM,Port Adelaide,49,Brisbane Lions,97
+10520190719,2019,18,19-Jul-2019,Adelaide Oval,7:20 PM,Adelaide,75,Essendon,96
+131420190720,2019,18,20-Jul-2019,M.C.G.,1:45 PM,Richmond,101,Port Adelaide,63
+32020190720,2019,18,20-Jul-2019,Docklands,2:10 PM,Carlton,99,Gold Coast,75
+42120190720,2019,18,20-Jul-2019,Sydney Showground,4:35 PM,Greater Western Sydney,122,Collingwood,75
+121920190720,2019,18,20-Jul-2019,Gabba,7:25 PM,Brisbane Lions,87,North Melbourne,75
+81620190720,2019,18,20-Jul-2019,Perth Stadium,6:10 PM,Fremantle,52,Sydney,51
+91020190721,2019,18,21-Jul-2019,M.C.G.,1:10 PM,Geelong,61,Hawthorn,85
+111820190721,2019,18,21-Jul-2019,Traeger Park,2:50 PM,Melbourne,78,West Coast,91
+71520190721,2019,18,21-Jul-2019,Docklands,4:40 PM,St Kilda,116,Western Bulldogs,89
+41420190726,2019,19,26-Jul-2019,M.C.G.,7:50 PM,Collingwood,66,Richmond,98
+101920190727,2019,19,27-Jul-2019,York Park,1:45 PM,Hawthorn,60,Brisbane Lions,87
+10320190727,2019,19,27-Jul-2019,M.C.G.,2:10 PM,Carlton,87,Adelaide,60
+121820190727,2019,19,27-Jul-2019,Perth Stadium,2:35 PM,West Coast,121,North Melbourne,72
+111520190727,2019,19,27-Jul-2019,Docklands,7:25 PM,St Kilda,104,Melbourne,85
+132120190727,2019,19,27-Jul-2019,Adelaide Oval,7:10 PM,Port Adelaide,55,Greater Western Sydney,56
+70820190728,2019,19,28-Jul-2019,Docklands,1:10 PM,Western Bulldogs,113,Fremantle,66
+91620190728,2019,19,28-Jul-2019,S.C.G.,3:20 PM,Sydney,80,Geelong,107
+52020190728,2019,19,28-Jul-2019,Carrara,4:40 PM,Gold Coast,96,Essendon,106
+101220190802,2019,20,2-Aug-2019,Docklands,7:50 PM,North Melbourne,86,Hawthorn,64
+51320190803,2019,20,3-Aug-2019,Docklands,1:45 PM,Essendon,67,Port Adelaide,126
+162120190803,2019,20,3-Aug-2019,Sydney Showground,2:10 PM,Greater Western Sydney,83,Sydney,81
+80920190803,2019,20,3-Aug-2019,Perth Stadium,2:35 PM,Fremantle,95,Geelong,61
+111420190803,2019,20,3-Aug-2019,M.C.G.,7:25 PM,Melbourne,60,Richmond,93
+11520190803,2019,20,3-Aug-2019,Adelaide Oval,7:10 PM,Adelaide,92,St Kilda,70
+42020190804,2019,20,4-Aug-2019,M.C.G.,1:10 PM,Collingwood,120,Gold Coast,51
+31820190804,2019,20,4-Aug-2019,Docklands,3:20 PM,Carlton,75,West Coast,99
+71920190804,2019,20,4-Aug-2019,Gabba,4:40 PM,Brisbane Lions,98,Western Bulldogs,80
+102120190809,2019,21,9-Aug-2019,Manuka Oval,7:50 PM,Greater Western Sydney,29,Hawthorn,85
+41120190810,2019,21,10-Aug-2019,M.C.G.,1:45 PM,Melbourne,53,Collingwood,70
+131620190810,2019,21,10-Aug-2019,Adelaide Oval,1:40 PM,Port Adelaide,103,Sydney,56
+192020190810,2019,21,10-Aug-2019,Gabba,4:35 PM,Brisbane Lions,144,Gold Coast,53
+50720190810,2019,21,10-Aug-2019,Docklands,7:25 PM,Essendon,33,Western Bulldogs,137
+91220190810,2019,21,10-Aug-2019,Kardinia Park,7:25 PM,Geelong,69,North Melbourne,14
+81520190811,2019,21,11-Aug-2019,Docklands,1:10 PM,St Kilda,72,Fremantle,69
+31420190811,2019,21,11-Aug-2019,M.C.G.,3:20 PM,Richmond,73,Carlton,45
+11820190811,2019,21,11-Aug-2019,Perth Stadium,3:20 PM,West Coast,90,Adelaide,80
+111620190816,2019,22,16-Aug-2019,M.C.G.,7:50 PM,Melbourne,42,Sydney,95
+31520190817,2019,22,17-Aug-2019,M.C.G.,1:45 PM,Carlton,78,St Kilda,68
+91920190817,2019,22,17-Aug-2019,Gabba,2:10 PM,Brisbane Lions,75,Geelong,74
+10420190817,2019,22,17-Aug-2019,Adelaide Oval,4:05 PM,Adelaide,48,Collingwood,114
+121320190817,2019,22,17-Aug-2019,Docklands,7:25 PM,North Melbourne,144,Port Adelaide,58
+50820190817,2019,22,17-Aug-2019,Perth Stadium,6:10 PM,Fremantle,55,Essendon,87
+141820190818,2019,22,18-Aug-2019,M.C.G.,1:10 PM,Richmond,88,West Coast,82
+72120190818,2019,22,18-Aug-2019,Sydney Showground,3:20 PM,Greater Western Sydney,65,Western Bulldogs,126
+102020190818,2019,22,18-Aug-2019,Docklands,4:40 PM,Hawthorn,118,Gold Coast,48
+40520190823,2019,23,23-Aug-2019,M.C.G.,7:50 PM,Collingwood,76,Essendon,65
+151620190824,2019,23,24-Aug-2019,S.C.G.,1:45 PM,Sydney,109,St Kilda,64
+111220190824,2019,23,24-Aug-2019,Bellerive Oval,2:10 PM,North Melbourne,88,Melbourne,83
+30920190824,2019,23,24-Aug-2019,Kardinia Park,4:35 PM,Geelong,129,Carlton,61
+202120190824,2019,23,24-Aug-2019,Carrara,7:25 PM,Gold Coast,55,Greater Western Sydney,127
+101820190824,2019,23,24-Aug-2019,Perth Stadium,6:10 PM,West Coast,67,Hawthorn,105
+10720190825,2019,23,25-Aug-2019,Eureka Stadium,1:10 PM,Western Bulldogs,121,Adelaide,87
+141920190825,2019,23,25-Aug-2019,M.C.G.,3:20 PM,Richmond,82,Brisbane Lions,55
+81320190825,2019,23,25-Aug-2019,Adelaide Oval,4:10 PM,Port Adelaide,110,Fremantle,67
+51820190905,2019,Elimination Final,5-Sep-2019,Perth Stadium,6:10 PM,West Coast,116,Essendon,61
+40920190906,2019,Qualifying Final,6-Sep-2019,M.C.G.,7:50 PM,Geelong,51,Collingwood,61
+72120190907,2019,Elimination Final,7-Sep-2019,Sydney Showground,3:20 PM,Greater Western Sydney,113,Western Bulldogs,55
+141920190907,2019,Qualifying Final,7-Sep-2019,Gabba,7:25 PM,Brisbane Lions,65,Richmond,112
+91820190913,2019,Semi Final,13-Sep-2019,M.C.G.,7:50 PM,Geelong,88,West Coast,68
+192120190914,2019,Semi Final,14-Sep-2019,Gabba,7:25 PM,Brisbane Lions,80,Greater Western Sydney,83
+91420190920,2019,Preliminary Final,20-Sep-2019,M.C.G.,7:50 PM,Richmond,85,Geelong,66
+42120190921,2019,Preliminary Final,21-Sep-2019,M.C.G.,4:35 PM,Collingwood,52,Greater Western Sydney,56
+142120190928,2019,Grand Final,28-Sep-2019,M.C.G.,2:30 PM,Richmond,114,Greater Western Sydney,25
+31420200319,2020,1,19-Mar-2020,M.C.G.,7:40 PM,Richmond,105,Carlton,81
+40720200320,2020,1,20-Mar-2020,Docklands,7:50 PM,Western Bulldogs,34,Collingwood,86
+50820200321,2020,1,21-Mar-2020,Docklands,2:10 PM,Essendon,63,Fremantle,57
+11620200321,2020,1,21-Mar-2020,Adelaide Oval,4:35 PM,Adelaide,71,Sydney,74
+132020200321,2020,1,21-Mar-2020,Carrara,6:40 PM,Gold Coast,29,Port Adelaide,76
+92120200321,2020,1,21-Mar-2020,Sydney Showground,7:40 PM,Greater Western Sydney,105,Geelong,73
+121520200322,2020,1,22-Mar-2020,Docklands,1:05 PM,North Melbourne,56,St Kilda,54
+101920200322,2020,1,22-Mar-2020,M.C.G.,3:35 PM,Hawthorn,90,Brisbane Lions,62
+111820200322,2020,1,22-Mar-2020,Perth Stadium,3:40 PM,West Coast,78,Melbourne,51
+41420200611,2020,2,11-Jun-2020,M.C.G.,7:40 PM,Collingwood,36,Richmond,36
+91020200612,2020,2,12-Jun-2020,Kardinia Park,7:50 PM,Geelong,108,Hawthorn,47
+81920200613,2020,2,13-Jun-2020,Gabba,1:45 PM,Brisbane Lions,81,Fremantle,69
+31120200613,2020,2,13-Jun-2020,Docklands,4:35 PM,Carlton,53,Melbourne,54
+11320200613,2020,2,13-Jun-2020,Adelaide Oval,7:10 PM,Port Adelaide,110,Adelaide,35
+182020200613,2020,2,13-Jun-2020,Carrara,7:40 PM,Gold Coast,90,West Coast,46
+122120200614,2020,2,14-Jun-2020,Sydney Showground,1:05 PM,Greater Western Sydney,60,North Melbourne,80
+51620200614,2020,2,14-Jun-2020,S.C.G.,3:35 PM,Sydney,73,Essendon,79
+71520200614,2020,2,14-Jun-2020,Docklands,6:05 PM,St Kilda,88,Western Bulldogs,49
+101420200618,2020,3,18-Jun-2020,M.C.G.,7:40 PM,Richmond,39,Hawthorn,71
+72120200619,2020,3,19-Jun-2020,Docklands,7:50 PM,Western Bulldogs,57,Greater Western Sydney,33
+121620200620,2020,3,20-Jun-2020,Docklands,1:45 PM,North Melbourne,60,Sydney,71
+41520200620,2020,3,20-Jun-2020,M.C.G.,4:35 PM,Collingwood,81,St Kilda,37
+30920200620,2020,3,20-Jun-2020,Kardinia Park,7:40 PM,Geelong,77,Carlton,79
+181920200620,2020,3,20-Jun-2020,Gabba,7:40 PM,Brisbane Lions,74,West Coast,44
+12020200621,2020,3,21-Jun-2020,Carrara,3:05 PM,Gold Coast,82,Adelaide,29
+81320200621,2020,3,21-Jun-2020,Carrara,8:10 PM,Fremantle,41,Port Adelaide,70
+71620200625,2020,4,25-Jun-2020,S.C.G.,7:40 PM,Sydney,39,Western Bulldogs,67
+42120200626,2020,4,26-Jun-2020,Sydney Showground,7:50 PM,Greater Western Sydney,66,Collingwood,64
+131820200627,2020,4,27-Jun-2020,Carrara,1:45 PM,Port Adelaide,89,West Coast,41
+141520200627,2020,4,27-Jun-2020,Docklands,4:35 PM,St Kilda,93,Richmond,67
+30520200627,2020,4,27-Jun-2020,M.C.G.,7:40 PM,Essendon,51,Carlton,52
+82020200627,2020,4,27-Jun-2020,Carrara,7:40 PM,Gold Coast,64,Fremantle,51
+11920200628,2020,4,28-Jun-2020,Gabba,1:05 PM,Brisbane Lions,83,Adelaide,46
+91120200628,2020,4,28-Jun-2020,M.C.G.,3:35 PM,Melbourne,44,Geelong,47
+101220200628,2020,4,28-Jun-2020,Docklands,6:10 PM,Hawthorn,58,North Melbourne,54
+31520200702,2020,5,2-Jul-2020,Docklands,7:40 PM,Carlton,55,St Kilda,73
+40520200703,2020,5,3-Jul-2020,M.C.G.,7:50 PM,Collingwood,48,Essendon,63
+161820200704,2020,5,4-Jul-2020,Carrara,1:45 PM,West Coast,77,Sydney,43
+92020200704,2020,5,4-Jul-2020,Kardinia Park,4:35 PM,Geelong,89,Gold Coast,52
+71220200704,2020,5,4-Jul-2020,Docklands,7:40 PM,Western Bulldogs,87,North Melbourne,38
+131920200704,2020,5,4-Jul-2020,Gabba,7:40 PM,Brisbane Lions,85,Port Adelaide,48
+10820200705,2020,5,5-Jul-2020,Carrara,1:05 PM,Adelaide,34,Fremantle,54
+111420200705,2020,5,5-Jul-2020,M.C.G.,3:35 PM,Melbourne,52,Richmond,79
+102120200705,2020,5,5-Jul-2020,Sydney Showground,6:10 PM,Greater Western Sydney,83,Hawthorn,49
+91920200709,2020,6,9-Jul-2020,S.C.G.,7:40 PM,Geelong,73,Brisbane Lions,46
+41020200710,2020,6,10-Jul-2020,Sydney Showground,7:50 PM,Collingwood,59,Hawthorn,27
+81520200711,2020,6,11-Jul-2020,Carrara,12:35 PM,Fremantle,79,St Kilda,73
+11820200711,2020,6,11-Jul-2020,Gabba,3:05 PM,West Coast,67,Adelaide,34
+112020200711,2020,6,11-Jul-2020,Sydney Showground,6:05 PM,Melbourne,80,Gold Coast,63
+51220200711,2020,6,11-Jul-2020,Carrara,7:40 PM,Essendon,67,North Melbourne,53
+132120200712,2020,6,12-Jul-2020,Carrara,1:05 PM,Port Adelaide,63,Greater Western Sydney,46
+141620200712,2020,6,12-Jul-2020,Gabba,3:35 PM,Richmond,34,Sydney,26
+30720200712,2020,6,12-Jul-2020,Carrara,6:45 PM,Carlton,103,Western Bulldogs,51
+40920200716,2020,7,16-Jul-2020,Perth Stadium,6:10 PM,Geelong,35,Collingwood,57
+50720200717,2020,7,17-Jul-2020,Carrara,7:50 PM,Essendon,51,Western Bulldogs,93
+192120200718,2020,7,18-Jul-2020,Sydney Showground,1:45 PM,Greater Western Sydney,68,Brisbane Lions,88
+162020200718,2020,7,18-Jul-2020,S.C.G.,4:35 PM,Sydney,60,Gold Coast,92
+121420200718,2020,7,18-Jul-2020,Carrara,7:40 PM,Richmond,77,North Melbourne,23
+31320200719,2020,7,19-Jul-2020,Gabba,1:05 PM,Carlton,61,Port Adelaide,64
+101120200719,2020,7,19-Jul-2020,Sydney Showground,3:35 PM,Hawthorn,48,Melbourne,91
+81820200719,2020,7,19-Jul-2020,Perth Stadium,4:35 PM,Fremantle,32,West Coast,62
+11520200720,2020,7,20-Jul-2020,Adelaide Oval,7:10 PM,Adelaide,55,St Kilda,78
+72020200723,2020,8,23-Jul-2020,Carrara,7:40 PM,Gold Coast,46,Western Bulldogs,51
+142120200724,2020,8,24-Jul-2020,Sydney Showground,7:50 PM,Greater Western Sydney,62,Richmond,50
+31220200725,2020,8,25-Jul-2020,Gabba,1:05 PM,North Melbourne,57,Carlton,64
+101620200725,2020,8,25-Jul-2020,S.C.G.,3:35 PM,Sydney,60,Hawthorn,53
+131520200725,2020,8,25-Jul-2020,Adelaide Oval,7:10 PM,Port Adelaide,44,St Kilda,73
+10520200726,2020,8,26-Jul-2020,Adelaide Oval,12:35 PM,Adelaide,59,Essendon,62
+41820200726,2020,8,26-Jul-2020,Perth Stadium,1:35 PM,West Coast,111,Collingwood,45
+111920200726,2020,8,26-Jul-2020,Carrara,6:10 PM,Melbourne,49,Brisbane Lions,53
+80920200727,2020,8,27-Jul-2020,Perth Stadium,6:10 PM,Fremantle,16,Geelong,48
+71420200729,2020,9,29-Jul-2020,Carrara,7:10 PM,Western Bulldogs,49,Richmond,90
+111320200730,2020,9,30-Jul-2020,Gabba,7:50 PM,Melbourne,32,Port Adelaide,83
+31020200731,2020,9,31-Jul-2020,Perth Stadium,3:40 PM,Carlton,58,Hawthorn,89
+51920200731,2020,9,31-Jul-2020,Carrara,8:10 PM,Essendon,28,Brisbane Lions,91
+11220200801,2020,9,1-Aug-2020,Carrara,2:35 PM,North Melbourne,119,Adelaide,50
+151620200801,2020,9,1-Aug-2020,Gabba,5:10 PM,St Kilda,101,Sydney,48
+91820200801,2020,9,1-Aug-2020,Perth Stadium,6:10 PM,West Coast,73,Geelong,64
+202120200802,2020,9,2-Aug-2020,Carrara,3:35 PM,Gold Coast,35,Greater Western Sydney,61
+40820200802,2020,9,2-Aug-2020,Perth Stadium,4:10 PM,Fremantle,61,Collingwood,49
+71320200803,2020,10,3-Aug-2020,Adelaide Oval,6:40 PM,Port Adelaide,55,Western Bulldogs,42
+141920200804,2020,10,4-Aug-2020,Carrara,7:10 PM,Richmond,82,Brisbane Lions,41
+91220200805,2020,10,5-Aug-2020,Gabba,5:40 PM,Geelong,90,North Melbourne,57
+11120200805,2020,10,5-Aug-2020,Adelaide Oval,7:40 PM,Adelaide,37,Melbourne,88
+41620200806,2020,10,6-Aug-2020,Gabba,5:40 PM,Collingwood,50,Sydney,41
+152020200806,2020,10,6-Aug-2020,Carrara,8:10 PM,Gold Coast,74,St Kilda,78
+52120200807,2020,10,7-Aug-2020,Carrara,7:50 PM,Essendon,55,Greater Western Sydney,59
+131420200808,2020,11,8-Aug-2020,Adelaide Oval,4:05 PM,Port Adelaide,93,Richmond,72
+71920200808,2020,11,8-Aug-2020,Gabba,7:40 PM,Brisbane Lions,96,Western Bulldogs,72
+31820200809,2020,11,9-Aug-2020,Perth Stadium,1:35 PM,West Coast,72,Carlton,50
+111220200809,2020,11,9-Aug-2020,Adelaide Oval,5:40 PM,Melbourne,92,North Melbourne,35
+91520200810,2020,11,10-Aug-2020,Gabba,6:10 PM,St Kilda,34,Geelong,93
+81020200810,2020,11,10-Aug-2020,Perth Stadium,6:40 PM,Fremantle,48,Hawthorn,32
+10420200811,2020,11,11-Aug-2020,Adelaide Oval,6:05 PM,Adelaide,38,Collingwood,62
+52020200812,2020,11,12-Aug-2020,Carrara,7:10 PM,Gold Coast,73,Essendon,73
+162120200813,2020,12,13-Aug-2020,Perth Stadium,6:10 PM,Sydney,66,Greater Western Sydney,25
+91320200814,2020,12,14-Aug-2020,Carrara,7:50 PM,Geelong,91,Port Adelaide,31
+121920200815,2020,12,15-Aug-2020,Carrara,2:35 PM,North Melbourne,52,Brisbane Lions,53
+41120200815,2020,12,15-Aug-2020,Gabba,5:10 PM,Melbourne,100,Collingwood,44
+30820200815,2020,12,15-Aug-2020,Perth Stadium,6:10 PM,Fremantle,36,Carlton,40
+10720200816,2020,12,16-Aug-2020,Carrara,1:05 PM,Western Bulldogs,111,Adelaide,54
+51520200816,2020,12,16-Aug-2020,Gabba,3:35 PM,St Kilda,68,Essendon,33
+101820200816,2020,12,16-Aug-2020,Perth Stadium,4:10 PM,West Coast,81,Hawthorn,49
+142020200817,2020,12,17-Aug-2020,Gabba,7:10 PM,Richmond,53,Gold Coast,32
+32020200821,2020,13,21-Aug-2020,Marrara Oval,7:20 PM,Gold Coast,27,Carlton,60
+71120200822,2020,13,22-Aug-2020,Carrara,1:45 PM,Western Bulldogs,80,Melbourne,52
+101320200822,2020,13,22-Aug-2020,Adelaide Oval,4:05 PM,Port Adelaide,68,Hawthorn,58
+51420200822,2020,13,22-Aug-2020,Marrara Oval,7:15 PM,Essendon,61,Richmond,73
+81620200822,2020,13,22-Aug-2020,Perth Stadium,6:10 PM,Fremantle,50,Sydney,19
+10920200823,2020,13,23-Aug-2020,Adelaide Oval,12:35 PM,Adelaide,37,Geelong,65
+151920200823,2020,13,23-Aug-2020,Gabba,3:35 PM,Brisbane Lions,50,St Kilda,48
+182120200823,2020,13,23-Aug-2020,Perth Stadium,4:10 PM,West Coast,61,Greater Western Sydney,49
+41220200824,2020,13,24-Aug-2020,Gabba,7:10 PM,Collingwood,65,North Melbourne,35
+51020200827,2020,14,27-Aug-2020,Adelaide Oval,4:10 PM,Hawthorn,71,Essendon,87
+141820200827,2020,14,27-Aug-2020,Carrara,7:10 PM,Richmond,88,West Coast,61
+70920200828,2020,14,28-Aug-2020,Carrara,7:50 PM,Western Bulldogs,61,Geelong,72
+131620200829,2020,14,29-Aug-2020,Adelaide Oval,1:15 PM,Port Adelaide,73,Sydney,47
+82120200829,2020,14,29-Aug-2020,Perth Stadium,2:35 PM,Fremantle,53,Greater Western Sydney,91
+111520200829,2020,14,29-Aug-2020,Traeger Park,7:10 PM,Melbourne,52,St Kilda,49
+30420200830,2020,14,30-Aug-2020,Gabba,3:35 PM,Carlton,48,Collingwood,72
+122020200830,2020,14,30-Aug-2020,Carrara,6:10 PM,Gold Coast,91,North Melbourne,28
+11020200901,2020,15,1-Sep-2020,Adelaide Oval,5:10 PM,Hawthorn,48,Adelaide,83
+51820200901,2020,15,1-Sep-2020,Gabba,8:10 PM,West Coast,60,Essendon,45
+81420200902,2020,15,2-Sep-2020,Carrara,7:10 PM,Richmond,56,Fremantle,29
+111620200903,2020,15,3-Sep-2020,Cazaly's Stadium,4:40 PM,Sydney,67,Melbourne,46
+32120200903,2020,15,3-Sep-2020,Carrara,7:10 PM,Greater Western Sydney,48,Carlton,39
+41920200904,2020,15,4-Sep-2020,Gabba,7:50 PM,Brisbane Lions,42,Collingwood,34
+121320200905,2020,16,5-Sep-2020,Carrara,7:40 PM,North Melbourne,42,Port Adelaide,78
+101520200906,2020,16,6-Sep-2020,Carrara,1:05 PM,St Kilda,80,Hawthorn,66
+50920200906,2020,16,6-Sep-2020,Gabba,3:35 PM,Geelong,108,Essendon,42
+71820200906,2020,16,6-Sep-2020,Carrara,6:10 PM,Western Bulldogs,49,West Coast,47
+81120200907,2020,16,7-Sep-2020,Cazaly's Stadium,7:10 PM,Melbourne,33,Fremantle,47
+12120200908,2020,16,8-Sep-2020,Adelaide Oval,5:10 PM,Adelaide,59,Greater Western Sydney,47
+31620200908,2020,16,8-Sep-2020,Carrara,8:10 PM,Carlton,57,Sydney,52
+192020200909,2020,16,9-Sep-2020,Gabba,7:10 PM,Brisbane Lions,88,Gold Coast,43
+151820200910,2020,17,10-Sep-2020,Gabba,7:10 PM,St Kilda,50,West Coast,65
+91420200911,2020,17,11-Sep-2020,Carrara,7:50 PM,Geelong,31,Richmond,57
+81220200912,2020,17,12-Sep-2020,Carrara,2:10 PM,North Melbourne,35,Fremantle,99
+51320200912,2020,17,12-Sep-2020,Adelaide Oval,4:35 PM,Port Adelaide,79,Essendon,29
+112120200912,2020,17,12-Sep-2020,Gabba,7:40 PM,Greater Western Sydney,74,Melbourne,79
+10320200913,2020,17,13-Sep-2020,Carrara,1:05 PM,Carlton,56,Adelaide,72
+71020200913,2020,17,13-Sep-2020,Adelaide Oval,3:05 PM,Hawthorn,40,Western Bulldogs,76
+161920200913,2020,17,13-Sep-2020,Cazaly's Stadium,6:10 PM,Sydney,41,Brisbane Lions,73
+42020200914,2020,17,14-Sep-2020,Gabba,7:10 PM,Collingwood,68,Gold Coast,46
+121820200917,2020,18,17-Sep-2020,Carrara,7:10 PM,North Melbourne,34,West Coast,49
+152120200918,2020,18,18-Sep-2020,Gabba,7:50 PM,St Kilda,82,Greater Western Sydney,30
+51120200919,2020,18,19-Sep-2020,Carrara,2:10 PM,Essendon,49,Melbourne,68
+11420200919,2020,18,19-Sep-2020,Adelaide Oval,4:40 PM,Adelaide,33,Richmond,77
+31920200919,2020,18,19-Sep-2020,Gabba,7:40 PM,Brisbane Lions,78,Carlton,61
+102020200920,2020,18,20-Sep-2020,Adelaide Oval,12:35 PM,Hawthorn,108,Gold Coast,57
+91620200920,2020,18,20-Sep-2020,Carrara,3:35 PM,Sydney,63,Geelong,69
+70820200920,2020,18,20-Sep-2020,Cazaly's Stadium,6:10 PM,Fremantle,44,Western Bulldogs,74
+41320200921,2020,18,21-Sep-2020,Gabba,7:15 PM,Collingwood,45,Port Adelaide,61
+91320201001,2020,Qualifying Final,1-Oct-2020,Adelaide Oval,7:10 PM,Port Adelaide,58,Geelong,42
+141920201002,2020,Qualifying Final,2-Oct-2020,Gabba,7:50 PM,Brisbane Lions,69,Richmond,54
+71520201003,2020,Elimination Final,3-Oct-2020,Gabba,4:40 PM,St Kilda,67,Western Bulldogs,64
+41820201003,2020,Elimination Final,3-Oct-2020,Perth Stadium,6:10 PM,West Coast,75,Collingwood,76
+141520201009,2020,Semi Final,9-Oct-2020,Carrara,6:50 PM,Richmond,80,St Kilda,49
+40920201010,2020,Semi Final,10-Oct-2020,Gabba,6:40 PM,Geelong,100,Collingwood,32
+131420201016,2020,Preliminary Final,16-Oct-2020,Adelaide Oval,7:20 PM,Port Adelaide,40,Richmond,46
+91920201017,2020,Preliminary Final,17-Oct-2020,Gabba,6:40 PM,Brisbane Lions,42,Geelong,82
+91420201024,2020,Grand Final,24-Oct-2020,Gabba,6:30 PM,Richmond,81,Geelong,50
+31420210318,2021,1,18-Mar-2021,M.C.G.,7:25 PM,Richmond,105,Carlton,80
+40720210319,2021,1,19-Mar-2021,M.C.G.,7:50 PM,Collingwood,53,Western Bulldogs,69
+81120210320,2021,1,20-Mar-2021,M.C.G.,1:45 PM,Melbourne,80,Fremantle,58
+10920210320,2021,1,20-Mar-2021,Adelaide Oval,4:05 PM,Adelaide,103,Geelong,91
+51020210320,2021,1,20-Mar-2021,Docklands,7:25 PM,Essendon,91,Hawthorn,92
+161920210320,2021,1,20-Mar-2021,Gabba,6:45 PM,Brisbane Lions,94,Sydney,125
+121320210321,2021,1,21-Mar-2021,Docklands,1:10 PM,North Melbourne,65,Port Adelaide,117
+152120210321,2021,1,21-Mar-2021,Sydney Showground,3:20 PM,Greater Western Sydney,78,St Kilda,86
+182020210321,2021,1,21-Mar-2021,Perth Stadium,3:10 PM,West Coast,83,Gold Coast,58
+30420210325,2021,2,25-Mar-2021,M.C.G.,7:20 PM,Carlton,85,Collingwood,106
+91920210326,2021,2,26-Mar-2021,Kardinia Park,7:50 PM,Geelong,81,Brisbane Lions,80
+11620210327,2021,2,27-Mar-2021,S.C.G.,1:45 PM,Sydney,121,Adelaide,88
+51320210327,2021,2,27-Mar-2021,Adelaide Oval,4:05 PM,Port Adelaide,119,Essendon,65
+111520210327,2021,2,27-Mar-2021,Docklands,7:25 PM,St Kilda,73,Melbourne,91
+122020210327,2021,2,27-Mar-2021,Carrara,7:10 PM,Gold Coast,98,North Melbourne,39
+101420210328,2021,2,28-Mar-2021,M.C.G.,1:10 PM,Hawthorn,49,Richmond,78
+71820210328,2021,2,28-Mar-2021,Docklands,3:20 PM,Western Bulldogs,100,West Coast,93
+82120210328,2021,2,28-Mar-2021,Perth Stadium,3:10 PM,Fremantle,87,Greater Western Sydney,56
+41920210401,2021,3,1-Apr-2021,Docklands,7:40 PM,Collingwood,72,Brisbane Lions,73
+71220210402,2021,3,2-Apr-2021,Docklands,4:20 PM,North Melbourne,39,Western Bulldogs,167
+12020210402,2021,3,2-Apr-2021,Adelaide Oval,7:20 PM,Adelaide,95,Gold Coast,85
+141620210403,2021,3,3-Apr-2021,M.C.G.,1:45 PM,Richmond,72,Sydney,117
+51520210403,2021,3,3-Apr-2021,Docklands,4:35 PM,Essendon,143,St Kilda,68
+131820210403,2021,3,3-Apr-2021,Perth Stadium,5:10 PM,West Coast,108,Port Adelaide,71
+30820210404,2021,3,4-Apr-2021,Docklands,3:20 PM,Carlton,109,Fremantle,64
+112120210404,2021,3,4-Apr-2021,Manuka Oval,6:10 PM,Greater Western Sydney,68,Melbourne,102
+91020210405,2021,3,5-Apr-2021,M.C.G.,3:20 PM,Geelong,69,Hawthorn,64
+51620210408,2021,4,8-Apr-2021,S.C.G.,7:20 PM,Sydney,83,Essendon,80
+131420210409,2021,4,9-Apr-2021,Adelaide Oval,7:20 PM,Port Adelaide,79,Richmond,77
+71920210410,2021,4,10-Apr-2021,Eureka Stadium,1:35 PM,Western Bulldogs,73,Brisbane Lions,54
+151820210410,2021,4,10-Apr-2021,Docklands,4:35 PM,St Kilda,102,West Coast,82
+32020210410,2021,4,10-Apr-2021,Carrara,7:25 PM,Gold Coast,59,Carlton,70
+42120210410,2021,4,10-Apr-2021,M.C.G.,7:25 PM,Collingwood,60,Greater Western Sydney,90
+11220210411,2021,4,11-Apr-2021,Docklands,1:10 PM,North Melbourne,68,Adelaide,109
+91120210411,2021,4,11-Apr-2021,M.C.G.,3:20 PM,Melbourne,85,Geelong,60
+81020210411,2021,4,11-Apr-2021,Perth Stadium,2:40 PM,Fremantle,96,Hawthorn,81
+141520210415,2021,5,15-Apr-2021,Docklands,7:20 PM,St Kilda,48,Richmond,134
+41820210416,2021,5,16-Apr-2021,Perth Stadium,6:10 PM,West Coast,103,Collingwood,76
+72020210417,2021,5,17-Apr-2021,Docklands,4:35 PM,Western Bulldogs,118,Gold Coast,56
+162120210417,2021,5,17-Apr-2021,S.C.G.,4:35 PM,Sydney,69,Greater Western Sydney,71
+31320210417,2021,5,17-Apr-2021,M.C.G.,7:25 PM,Carlton,68,Port Adelaide,96
+51920210417,2021,5,17-Apr-2021,Gabba,7:25 PM,Brisbane Lions,102,Essendon,45
+10820210418,2021,5,18-Apr-2021,Adelaide Oval,12:40 PM,Adelaide,72,Fremantle,84
+101120210418,2021,5,18-Apr-2021,M.C.G.,3:20 PM,Hawthorn,54,Melbourne,104
+91220210418,2021,5,18-Apr-2021,Kardinia Park,4:40 PM,Geelong,77,North Melbourne,47
+72120210423,2021,6,23-Apr-2021,Manuka Oval,7:50 PM,Greater Western Sydney,65,Western Bulldogs,104
+91820210424,2021,6,24-Apr-2021,Kardinia Park,1:45 PM,Geelong,136,West Coast,39
+162020210424,2021,6,24-Apr-2021,Carrara,1:45 PM,Gold Coast,100,Sydney,60
+31920210424,2021,6,24-Apr-2021,Docklands,4:35 PM,Carlton,85,Brisbane Lions,103
+111420210424,2021,6,24-Apr-2021,M.C.G.,7:25 PM,Melbourne,82,Richmond,48
+81220210424,2021,6,24-Apr-2021,Perth Stadium,6:15 PM,Fremantle,99,North Melbourne,48
+11020210425,2021,6,25-Apr-2021,York Park,12:30 PM,Hawthorn,102,Adelaide,99
+40520210425,2021,6,25-Apr-2021,M.C.G.,3:20 PM,Collingwood,85,Essendon,109
+131520210425,2021,6,25-Apr-2021,Adelaide Oval,6:10 PM,Port Adelaide,93,St Kilda,39
+71420210430,2021,7,30-Apr-2021,M.C.G.,7:50 PM,Richmond,77,Western Bulldogs,55
+42020210501,2021,7,1-May-2021,M.C.G.,1:45 PM,Collingwood,55,Gold Coast,79
+12120210501,2021,7,1-May-2021,Adelaide Oval,1:40 PM,Adelaide,39,Greater Western Sydney,106
+101520210501,2021,7,1-May-2021,Docklands,4:35 PM,St Kilda,128,Hawthorn,59
+91620210501,2021,7,1-May-2021,S.C.G.,7:25 PM,Sydney,90,Geelong,88
+131920210501,2021,7,1-May-2021,Gabba,7:25 PM,Brisbane Lions,93,Port Adelaide,44
+111220210502,2021,7,2-May-2021,Bellerive Oval,1:10 PM,North Melbourne,73,Melbourne,103
+30520210502,2021,7,2-May-2021,M.C.G.,3:20 PM,Essendon,107,Carlton,123
+81820210502,2021,7,2-May-2021,Perth Stadium,2:40 PM,West Coast,132,Fremantle,73
+91420210507,2021,8,7-May-2021,M.C.G.,7:50 PM,Richmond,63,Geelong,126
+152020210508,2021,8,8-May-2021,Carrara,1:45 PM,Gold Coast,54,St Kilda,63
+52120210508,2021,8,8-May-2021,Sydney Showground,2:10 PM,Greater Western Sydney,107,Essendon,105
+41220210508,2021,8,8-May-2021,Docklands,4:35 PM,North Melbourne,76,Collingwood,94
+111620210508,2021,8,8-May-2021,M.C.G.,7:25 PM,Melbourne,67,Sydney,58
+11320210508,2021,8,8-May-2021,Adelaide Oval,7:10 PM,Port Adelaide,87,Adelaide,38
+101820210509,2021,8,9-May-2021,M.C.G.,1:10 PM,Hawthorn,60,West Coast,98
+30720210509,2021,8,9-May-2021,Docklands,3:20 PM,Western Bulldogs,107,Carlton,91
+81920210509,2021,8,9-May-2021,Gabba,4:40 PM,Brisbane Lions,95,Fremantle,71
+91520210514,2021,9,14-May-2021,Docklands,7:50 PM,St Kilda,47,Geelong,68
+41620210515,2021,9,15-May-2021,S.C.G.,1:45 PM,Sydney,72,Collingwood,42
+101220210515,2021,9,15-May-2021,York Park,2:10 PM,Hawthorn,80,North Melbourne,87
+192020210515,2021,9,15-May-2021,Carrara,4:35 PM,Gold Coast,51,Brisbane Lions,124
+142120210515,2021,9,15-May-2021,Docklands,7:25 PM,Richmond,87,Greater Western Sydney,83
+71320210515,2021,9,15-May-2021,Adelaide Oval,7:10 PM,Port Adelaide,77,Western Bulldogs,96
+50820210516,2021,9,16-May-2021,Docklands,1:10 PM,Essendon,68,Fremantle,61
+31120210516,2021,9,16-May-2021,M.C.G.,3:20 PM,Melbourne,94,Carlton,68
+11820210516,2021,9,16-May-2021,Perth Stadium,2:40 PM,West Coast,106,Adelaide,76
+141920210521,2021,10,21-May-2021,Gabba,7:50 PM,Brisbane Lions,102,Richmond,74
+31020210522,2021,10,22-May-2021,M.C.G.,1:45 PM,Carlton,86,Hawthorn,63
+92020210522,2021,10,22-May-2021,Kardinia Park,2:10 PM,Geelong,91,Gold Coast,57
+11120210522,2021,10,22-May-2021,Adelaide Oval,4:05 PM,Adelaide,96,Melbourne,95
+71520210522,2021,10,22-May-2021,Docklands,7:25 PM,Western Bulldogs,144,St Kilda,33
+81620210522,2021,10,22-May-2021,Perth Stadium,5:40 PM,Fremantle,86,Sydney,84
+182120210523,2021,10,23-May-2021,Sydney Showground,1:10 PM,Greater Western Sydney,93,West Coast,77
+41320210523,2021,10,23-May-2021,M.C.G.,3:20 PM,Collingwood,58,Port Adelaide,59
+51220210523,2021,10,23-May-2021,Docklands,4:40 PM,Essendon,141,North Melbourne,69
+71120210528,2021,11,28-May-2021,Docklands,7:50 PM,Western Bulldogs,59,Melbourne,87
+40920210529,2021,11,29-May-2021,M.C.G.,1:45 PM,Collingwood,51,Geelong,61
+192120210529,2021,11,29-May-2021,Gabba,2:10 PM,Brisbane Lions,129,Greater Western Sydney,65
+121520210529,2021,11,29-May-2021,Docklands,4:35 PM,St Kilda,88,North Melbourne,68
+51820210529,2021,11,29-May-2021,Perth Stadium,5:40 PM,West Coast,71,Essendon,87
+102020210529,2021,11,29-May-2021,S.C.G.,7:40 PM,Gold Coast,113,Hawthorn,76
+11420210530,2021,11,30-May-2021,Sydney Showground,2:10 PM,Richmond,111,Adelaide,83
+31620210530,2021,11,30-May-2021,S.C.G.,3:20 PM,Sydney,100,Carlton,78
+81320210530,2021,11,30-May-2021,Adelaide Oval,4:50 PM,Port Adelaide,115,Fremantle,69
+111920210604,2021,12,4-Jun-2021,Sydney Showground,7:50 PM,Melbourne,97,Brisbane Lions,75
+151620210605,2021,12,5-Jun-2021,S.C.G.,1:45 PM,Sydney,92,St Kilda,83
+10420210605,2021,12,5-Jun-2021,Adelaide Oval,4:05 PM,Adelaide,73,Collingwood,78
+51420210605,2021,12,5-Jun-2021,Perth Stadium,5:40 PM,Essendon,84,Richmond,123
+31820210606,2021,12,6-Jun-2021,S.C.G.,3:20 PM,Carlton,73,West Coast,95
+70820210606,2021,12,6-Jun-2021,Perth Stadium,4:40 PM,Fremantle,65,Western Bulldogs,93
+91320210610,2021,13,10-Jun-2021,Adelaide Oval,7:10 PM,Port Adelaide,91,Geelong,112
+101620210611,2021,13,11-Jun-2021,S.C.G.,7:50 PM,Sydney,51,Hawthorn,89
+82020210612,2021,13,12-Jun-2021,Perth Stadium,2:15 PM,Fremantle,76,Gold Coast,49
+11520210612,2021,13,12-Jun-2021,Cazaly's Stadium,7:25 PM,St Kilda,60,Adelaide,66
+122120210613,2021,13,13-Jun-2021,Bellerive Oval,3:20 PM,North Melbourne,94,Greater Western Sydney,94
+141820210613,2021,13,13-Jun-2021,Perth Stadium,5:20 PM,West Coast,85,Richmond,81
+41120210614,2021,13,14-Jun-2021,S.C.G.,3:20 PM,Melbourne,63,Collingwood,80
+70920210618,2021,14,18-Jun-2021,Kardinia Park,7:50 PM,Geelong,83,Western Bulldogs,78
+132020210619,2021,14,19-Jun-2021,Carrara,1:45 PM,Gold Coast,31,Port Adelaide,81
+121920210619,2021,14,19-Jun-2021,Bellerive Oval,4:35 PM,North Melbourne,45,Brisbane Lions,68
+32120210619,2021,14,19-Jun-2021,Sydney Showground,7:25 PM,Greater Western Sydney,102,Carlton,66
+51020210620,2021,14,20-Jun-2021,York Park,3:20 PM,Hawthorn,73,Essendon,86
+91920210624,2021,15,24-Jun-2021,Gabba,7:30 PM,Brisbane Lions,94,Geelong,50
+141520210625,2021,15,25-Jun-2021,M.C.G.,7:50 PM,Richmond,22,St Kilda,62
+40820210626,2021,15,26-Jun-2021,Docklands,1:45 PM,Collingwood,79,Fremantle,91
+122020210626,2021,15,26-Jun-2021,Bellerive Oval,1:45 PM,North Melbourne,72,Gold Coast,63
+131620210626,2021,15,26-Jun-2021,Adelaide Oval,4:05 PM,Port Adelaide,81,Sydney,71
+51120210626,2021,15,26-Jun-2021,M.C.G.,7:25 PM,Essendon,57,Melbourne,68
+102120210627,2021,15,27-Jun-2021,M.C.G.,1:10 PM,Greater Western Sydney,72,Hawthorn,90
+71820210627,2021,15,27-Jun-2021,Perth Stadium,1:20 PM,West Coast,43,Western Bulldogs,98
+10320210627,2021,15,27-Jun-2021,Docklands,4:10 PM,Carlton,83,Adelaide,73
+142020210701,2021,16,1-Jul-2021,Docklands,7:20 PM,Gold Coast,77,Richmond,67
+50920210702,2021,16,2-Jul-2021,Kardinia Park,7:50 PM,Geelong,98,Essendon,57
+112120210703,2021,16,3-Jul-2021,M.C.G.,1:45 PM,Melbourne,55,Greater Western Sydney,64
+11920210703,2021,16,3-Jul-2021,Adelaide Oval,4:05 PM,Adelaide,59,Brisbane Lions,111
+30820210703,2021,16,3-Jul-2021,M.C.G.,7:40 PM,Fremantle,64,Carlton,80
+101320210703,2021,16,3-Jul-2021,Docklands,7:40 PM,Hawthorn,53,Port Adelaide,87
+161820210704,2021,16,4-Jul-2021,Kardinia Park,1:10 PM,Sydney,118,West Coast,26
+41520210704,2021,16,4-Jul-2021,M.C.G.,3:20 PM,Collingwood,61,St Kilda,70
+71220210704,2021,16,4-Jul-2021,Docklands,4:40 PM,Western Bulldogs,108,North Melbourne,79
+111320210708,2021,17,8-Jul-2021,Adelaide Oval,7:10 PM,Port Adelaide,55,Melbourne,86
+10520210709,2021,17,9-Jul-2021,Docklands,7:50 PM,Essendon,84,Adelaide,21
+81020210710,2021,17,10-Jul-2021,York Park,1:45 PM,Hawthorn,46,Fremantle,108
+30920210710,2021,17,10-Jul-2021,M.C.G.,4:35 PM,Carlton,44,Geelong,70
+151920210710,2021,17,10-Jul-2021,Carrara,7:25 PM,Brisbane Lions,63,St Kilda,95
+202120210711,2021,17,11-Jul-2021,Eureka Stadium,12:40 PM,Greater Western Sydney,64,Gold Coast,65
+71620210711,2021,17,11-Jul-2021,Docklands,3:20 PM,Western Bulldogs,60,Sydney,79
+41420210711,2021,17,11-Jul-2021,M.C.G.,4:10 PM,Richmond,71,Collingwood,87
+121820210712,2021,17,12-Jul-2021,Perth Stadium,5:40 PM,West Coast,60,North Melbourne,70
+80920210715,2021,18,15-Jul-2021,Perth Stadium,6:10 PM,Fremantle,31,Geelong,100
+141920210716,2021,18,16-Jul-2021,Carrara,8:05 PM,Richmond,106,Brisbane Lions,86
+131520210717,2021,18,17-Jul-2021,Docklands,1:45 PM,St Kilda,61,Port Adelaide,74
+72020210717,2021,18,17-Jul-2021,Carrara,4:35 PM,Gold Coast,79,Western Bulldogs,90
+101120210717,2021,18,17-Jul-2021,M.C.G.,7:25 PM,Melbourne,79,Hawthorn,79
+51220210718,2021,18,18-Jul-2021,Carrara,12:35 PM,North Melbourne,74,Essendon,92
+30420210718,2021,18,18-Jul-2021,M.C.G.,3:20 PM,Collingwood,62,Carlton,91
+11820210718,2021,18,18-Jul-2021,Adelaide Oval,4:10 PM,Adelaide,56,West Coast,98
+162120210718,2021,18,18-Jul-2021,Carrara,6:10 PM,Greater Western Sydney,72,Sydney,98
+41320210723,2021,19,23-Jul-2021,Docklands,7:10 PM,Port Adelaide,97,Collingwood,69
+31220210724,2021,19,24-Jul-2021,Docklands,1:45 PM,Carlton,77,North Melbourne,116
+192020210724,2021,19,24-Jul-2021,Gabba,3:10 PM,Brisbane Lions,120,Gold Coast,71
+151820210724,2021,19,24-Jul-2021,Perth Stadium,2:35 PM,West Coast,94,St Kilda,86
+71120210724,2021,19,24-Jul-2021,M.C.G.,7:25 PM,Melbourne,65,Western Bulldogs,85
+11020210724,2021,19,24-Jul-2021,Docklands,7:40 PM,Adelaide,102,Hawthorn,83
+81620210725,2021,19,25-Jul-2021,Carrara,12:30 PM,Sydney,98,Fremantle,58
+91420210725,2021,19,25-Jul-2021,M.C.G.,3:20 PM,Geelong,95,Richmond,57
+52120210725,2021,19,25-Jul-2021,Carrara,6:10 PM,Essendon,53,Greater Western Sydney,66
+31520210730,2021,20,30-Jul-2021,Docklands,7:50 PM,St Kilda,81,Carlton,112
+10720210731,2021,20,31-Jul-2021,Eureka Stadium,12:20 PM,Western Bulldogs,105,Adelaide,56
+91220210731,2021,20,31-Jul-2021,Bellerive Oval,1:15 PM,North Melbourne,42,Geelong,62
+41820210731,2021,20,31-Jul-2021,M.C.G.,4:15 PM,Collingwood,90,West Coast,45
+112020210801,2021,20,1-Aug-2021,Docklands,12:10 PM,Gold Coast,30,Melbourne,128
+101920210801,2021,20,1-Aug-2021,York Park,2:10 PM,Hawthorn,92,Brisbane Lions,80
+51620210801,2021,20,1-Aug-2021,M.C.G.,3:10 PM,Essendon,102,Sydney,109
+81420210801,2021,20,1-Aug-2021,Perth Stadium,3:10 PM,Fremantle,55,Richmond,51
+132120210801,2021,20,1-Aug-2021,Docklands,6:10 PM,Greater Western Sydney,73,Port Adelaide,100
+92120210806,2021,21,6-Aug-2021,Kardinia Park,7:50 PM,Geelong,65,Greater Western Sydney,84
+32020210807,2021,21,7-Aug-2021,Docklands,1:45 PM,Carlton,57,Gold Coast,76
+121420210807,2021,21,7-Aug-2021,M.C.G.,4:35 PM,Richmond,89,North Melbourne,56
+11320210807,2021,21,7-Aug-2021,Adelaide Oval,7:10 PM,Adelaide,51,Port Adelaide,55
+151620210807,2021,21,7-Aug-2021,Docklands,7:40 PM,St Kilda,93,Sydney,64
+41020210808,2021,21,8-Aug-2021,M.C.G.,2:10 PM,Hawthorn,97,Collingwood,78
+50720210808,2021,21,8-Aug-2021,Docklands,3:20 PM,Western Bulldogs,84,Essendon,97
+81920210808,2021,21,8-Aug-2021,Perth Stadium,3:10 PM,Fremantle,54,Brisbane Lions,118
+111820210809,2021,21,9-Aug-2021,Perth Stadium,6:10 PM,West Coast,63,Melbourne,72
+142120210813,2021,22,13-Aug-2021,Docklands,7:50 PM,Greater Western Sydney,106,Richmond,67
+71020210814,2021,22,14-Aug-2021,York Park,1:45 PM,Hawthorn,64,Western Bulldogs,37
+31320210814,2021,22,14-Aug-2021,Adelaide Oval,4:05 PM,Port Adelaide,140,Carlton,45
+91520210814,2021,22,14-Aug-2021,Kardinia Park,4:35 PM,Geelong,85,St Kilda,71
+41920210814,2021,22,14-Aug-2021,Gabba,7:25 PM,Brisbane Lions,142,Collingwood,57
+121620210814,2021,22,14-Aug-2021,Docklands,7:40 PM,North Melbourne,77,Sydney,91
+11120210815,2021,22,15-Aug-2021,M.C.G.,2:10 PM,Melbourne,104,Adelaide,63
+52020210815,2021,22,15-Aug-2021,Kardinia Park,3:20 PM,Gold Coast,30,Essendon,98
+81820210815,2021,22,15-Aug-2021,Perth Stadium,3:10 PM,Fremantle,79,West Coast,64
+71320210820,2021,23,20-Aug-2021,Docklands,7:50 PM,Western Bulldogs,64,Port Adelaide,66
+101420210821,2021,23,21-Aug-2021,M.C.G.,1:35 PM,Richmond,83,Hawthorn,83
+162020210821,2021,23,21-Aug-2021,Docklands,1:45 PM,Sydney,136,Gold Coast,49
+181920210821,2021,23,21-Aug-2021,Gabba,4:35 PM,Brisbane Lions,125,West Coast,87
+91120210821,2021,23,21-Aug-2021,Kardinia Park,7:25 PM,Geelong,77,Melbourne,81
+32120210821,2021,23,21-Aug-2021,Docklands,7:40 PM,Carlton,75,Greater Western Sydney,89
+81520210822,2021,23,22-Aug-2021,Bellerive Oval,12:15 PM,St Kilda,107,Fremantle,49
+40520210822,2021,23,22-Aug-2021,M.C.G.,3:20 PM,Essendon,102,Collingwood,64
+11220210822,2021,23,22-Aug-2021,Adelaide Oval,4:10 PM,Adelaide,98,North Melbourne,54
+91320210827,2021,Qualifying Final,27-Aug-2021,Adelaide Oval,7:20 PM,Port Adelaide,86,Geelong,43
+162120210828,2021,Elimination Final,28-Aug-2021,York Park,3:20 PM,Sydney,73,Greater Western Sydney,74
+111920210828,2021,Qualifying Final,28-Aug-2021,Adelaide Oval,7:00 PM,Melbourne,93,Brisbane Lions,60
+50720210829,2021,Elimination Final,29-Aug-2021,York Park,3:20 PM,Western Bulldogs,85,Essendon,36
+92120210903,2021,Semi Final,3-Sep-2021,Perth Stadium,5:50 PM,Geelong,103,Greater Western Sydney,68
+71920210904,2021,Semi Final,4-Sep-2021,Gabba,7:20 PM,Brisbane Lions,78,Western Bulldogs,79
+91120210910,2021,Preliminary Final,10-Sep-2021,Perth Stadium,5:50 PM,Melbourne,125,Geelong,42
+71320210911,2021,Preliminary Final,11-Sep-2021,Adelaide Oval,7:10 PM,Port Adelaide,45,Western Bulldogs,116
+71120210925,2021,Grand Final,25-Sep-2021,Perth Stadium,5:15 PM,Melbourne,140,Western Bulldogs,66
+71120220316,2022,1,16-Mar-2022,M.C.G.,7:10 PM,Melbourne,97,Western Bulldogs,71
+31420220317,2022,1,17-Mar-2022,M.C.G.,7:25 PM,Carlton,101,Richmond,76
+41520220318,2022,1,18-Mar-2022,Docklands,7:50 PM,St Kilda,85,Collingwood,102
+50920220319,2022,1,19-Mar-2022,M.C.G.,2:10 PM,Geelong,138,Essendon,72
+162120220319,2022,1,19-Mar-2022,Stadium Australia,5:10 PM,Greater Western Sydney,92,Sydney,112
+131920220319,2022,1,19-Mar-2022,Gabba,7:10 PM,Brisbane Lions,80,Port Adelaide,69
+101220220320,2022,1,20-Mar-2022,M.C.G.,1:10 PM,Hawthorn,78,North Melbourne,58
+10820220320,2022,1,20-Mar-2022,Adelaide Oval,3:40 PM,Adelaide,82,Fremantle,83
+182020220320,2022,1,20-Mar-2022,Perth Stadium,4:40 PM,West Coast,80,Gold Coast,107
+30720220324,2022,2,24-Mar-2022,Docklands,7:20 PM,Western Bulldogs,90,Carlton,102
+91620220325,2022,2,25-Mar-2022,S.C.G.,7:50 PM,Sydney,107,Geelong,77
+10420220326,2022,2,26-Mar-2022,M.C.G.,1:45 PM,Collingwood,100,Adelaide,58
+51920220326,2022,2,26-Mar-2022,Docklands,4:35 PM,Essendon,75,Brisbane Lions,97
+101320220326,2022,2,26-Mar-2022,Adelaide Oval,7:10 PM,Port Adelaide,56,Hawthorn,120
+112020220326,2022,2,26-Mar-2022,Carrara,7:00 PM,Gold Coast,69,Melbourne,82
+121820220327,2022,2,27-Mar-2022,Docklands,1:10 PM,North Melbourne,74,West Coast,59
+142120220327,2022,2,27-Mar-2022,M.C.G.,3:20 PM,Richmond,109,Greater Western Sydney,73
+81520220327,2022,2,27-Mar-2022,Perth Stadium,3:20 PM,Fremantle,55,St Kilda,65
+71620220331,2022,3,31-Mar-2022,Docklands,7:20 PM,Western Bulldogs,71,Sydney,60
+51120220401,2022,3,1-Apr-2022,M.C.G.,7:20 PM,Melbourne,99,Essendon,70
+11320220401,2022,3,1-Apr-2022,Adelaide Oval,7:50 PM,Adelaide,96,Port Adelaide,92
+202120220402,2022,3,2-Apr-2022,Sydney Showground,4:35 PM,Greater Western Sydney,83,Gold Coast,57
+40920220402,2022,3,2-Apr-2022,M.C.G.,7:25 PM,Collingwood,91,Geelong,104
+121920220402,2022,3,2-Apr-2022,Gabba,7:00 PM,Brisbane Lions,156,North Melbourne,48
+31020220403,2022,3,3-Apr-2022,M.C.G.,1:10 PM,Carlton,74,Hawthorn,73
+141520220403,2022,3,3-Apr-2022,Docklands,3:20 PM,St Kilda,117,Richmond,84
+81820220403,2022,3,3-Apr-2022,Perth Stadium,4:20 PM,West Coast,47,Fremantle,102
+111320220407,2022,4,7-Apr-2022,Adelaide Oval,7:10 PM,Port Adelaide,36,Melbourne,68
+91920220408,2022,4,8-Apr-2022,Kardinia Park,7:50 PM,Geelong,80,Brisbane Lions,70
+121620220409,2022,4,9-Apr-2022,S.C.G.,2:40 PM,Sydney,86,North Melbourne,75
+41820220409,2022,4,9-Apr-2022,Docklands,4:35 PM,Collingwood,74,West Coast,87
+82120220409,2022,4,9-Apr-2022,Perth Stadium,5:25 PM,Fremantle,88,Greater Western Sydney,54
+71420220409,2022,4,9-Apr-2022,M.C.G.,7:25 PM,Richmond,99,Western Bulldogs,61
+10520220410,2022,4,10-Apr-2022,Docklands,1:10 PM,Essendon,103,Adelaide,99
+101520220410,2022,4,10-Apr-2022,M.C.G.,3:20 PM,Hawthorn,73,St Kilda,142
+32020220410,2022,4,10-Apr-2022,Carrara,4:10 PM,Gold Coast,92,Carlton,62
+41920220414,2022,5,14-Apr-2022,Gabba,7:35 PM,Brisbane Lions,98,Collingwood,91
+71220220415,2022,5,15-Apr-2022,Docklands,4:20 PM,North Melbourne,71,Western Bulldogs,139
+161820220415,2022,5,15-Apr-2022,Perth Stadium,5:40 PM,West Coast,58,Sydney,121
+152020220416,2022,5,16-Apr-2022,Docklands,1:45 PM,St Kilda,87,Gold Coast,61
+11420220416,2022,5,16-Apr-2022,Adelaide Oval,4:05 PM,Adelaide,101,Richmond,82
+112120220416,2022,5,16-Apr-2022,M.C.G.,7:25 PM,Melbourne,120,Greater Western Sydney,53
+31320220417,2022,5,17-Apr-2022,M.C.G.,1:40 PM,Carlton,94,Port Adelaide,91
+50820220417,2022,5,17-Apr-2022,Docklands,4:40 PM,Essendon,59,Fremantle,107
+91020220418,2022,5,18-Apr-2022,M.C.G.,3:20 PM,Hawthorn,92,Geelong,80
+152120220422,2022,6,22-Apr-2022,Manuka Oval,7:50 PM,Greater Western Sydney,60,St Kilda,77
+10720220423,2022,6,23-Apr-2022,Eureka Stadium,1:45 PM,Western Bulldogs,62,Adelaide,63
+131820220423,2022,6,23-Apr-2022,Adelaide Oval,4:05 PM,Port Adelaide,117,West Coast,33
+30820220423,2022,6,23-Apr-2022,Perth Stadium,5:40 PM,Fremantle,97,Carlton,62
+91220220424,2022,6,24-Apr-2022,Bellerive Oval,1:10 PM,North Melbourne,61,Geelong,121
+192020220424,2022,6,24-Apr-2022,Carrara,4:10 PM,Gold Coast,80,Brisbane Lions,132
+111420220424,2022,6,24-Apr-2022,M.C.G.,7:25 PM,Richmond,54,Melbourne,76
+101620220425,2022,6,25-Apr-2022,York Park,12:30 PM,Hawthorn,68,Sydney,109
+40520220425,2022,6,25-Apr-2022,M.C.G.,3:20 PM,Essendon,82,Collingwood,93
+141820220429,2022,7,29-Apr-2022,Perth Stadium,6:10 PM,West Coast,56,Richmond,165
+80920220430,2022,7,30-Apr-2022,Kardinia Park,1:45 PM,Geelong,66,Fremantle,69
+12120220430,2022,7,30-Apr-2022,Adelaide Oval,1:40 PM,Adelaide,54,Greater Western Sydney,113
+101120220430,2022,7,30-Apr-2022,M.C.G.,4:35 PM,Melbourne,91,Hawthorn,81
+31220220430,2022,7,30-Apr-2022,Docklands,7:25 PM,Carlton,114,North Melbourne,64
+131520220430,2022,7,30-Apr-2022,Cazaly's Stadium,7:25 PM,St Kilda,42,Port Adelaide,43
+42020220501,2022,7,1-May-2022,M.C.G.,1:10 PM,Collingwood,115,Gold Coast,90
+50720220501,2022,7,1-May-2022,Docklands,3:20 PM,Western Bulldogs,103,Essendon,71
+161920220501,2022,7,1-May-2022,S.C.G.,4:40 PM,Sydney,89,Brisbane Lions,113
+71320220506,2022,8,6-May-2022,Adelaide Oval,7:00 PM,Port Adelaide,86,Western Bulldogs,69
+81220220506,2022,8,6-May-2022,Perth Stadium,6:40 PM,Fremantle,102,North Melbourne,24
+41420220507,2022,8,7-May-2022,M.C.G.,1:45 PM,Richmond,113,Collingwood,86
+162020220507,2022,8,7-May-2022,S.C.G.,1:45 PM,Sydney,61,Gold Coast,75
+92120220507,2022,8,7-May-2022,Manuka Oval,4:35 PM,Greater Western Sydney,35,Geelong,88
+51020220507,2022,8,7-May-2022,Docklands,7:25 PM,Essendon,108,Hawthorn,81
+181920220507,2022,8,7-May-2022,Gabba,7:25 PM,Brisbane Lions,105,West Coast,30
+111520220508,2022,8,8-May-2022,M.C.G.,1:10 PM,Melbourne,93,St Kilda,55
+10320220508,2022,8,8-May-2022,Docklands,4:40 PM,Carlton,116,Adelaide,68
+40720220513,2022,9,13-May-2022,Docklands,7:50 PM,Collingwood,51,Western Bulldogs,99
+101420220514,2022,9,14-May-2022,M.C.G.,1:45 PM,Hawthorn,94,Richmond,117
+121320220514,2022,9,14-May-2022,Bellerive Oval,2:10 PM,North Melbourne,46,Port Adelaide,115
+91520220514,2022,9,14-May-2022,Docklands,4:35 PM,St Kilda,90,Geelong,80
+51620220514,2022,9,14-May-2022,S.C.G.,7:25 PM,Sydney,105,Essendon,47
+11920220514,2022,9,14-May-2022,Adelaide Oval,7:10 PM,Adelaide,66,Brisbane Lions,102
+82020220515,2022,9,15-May-2022,Carrara,1:40 PM,Gold Coast,69,Fremantle,33
+32120220515,2022,9,15-May-2022,Sydney Showground,3:20 PM,Greater Western Sydney,75,Carlton,105
+111820220515,2022,9,15-May-2022,Perth Stadium,3:20 PM,West Coast,38,Melbourne,112
+31620220520,2022,10,20-May-2022,Docklands,7:50 PM,Carlton,102,Sydney,87
+72020220521,2022,10,21-May-2022,Eureka Stadium,1:45 PM,Western Bulldogs,106,Gold Coast,87
+91320220521,2022,10,21-May-2022,Kardinia Park,1:45 PM,Geelong,82,Port Adelaide,47
+111220220521,2022,10,21-May-2022,Docklands,4:35 PM,North Melbourne,53,Melbourne,100
+11520220521,2022,10,21-May-2022,Adelaide Oval,7:00 PM,Adelaide,69,St Kilda,90
+51420220521,2022,10,21-May-2022,M.C.G.,7:30 PM,Richmond,80,Essendon,48
+182120220522,2022,10,22-May-2022,Sydney Showground,2:10 PM,Greater Western Sydney,138,West Coast,86
+101920220522,2022,10,22-May-2022,York Park,3:20 PM,Hawthorn,117,Brisbane Lions,112
+40820220522,2022,10,22-May-2022,Perth Stadium,3:20 PM,Fremantle,44,Collingwood,80
+141620220527,2022,11,27-May-2022,S.C.G.,7:50 PM,Sydney,106,Richmond,100
+10920220528,2022,11,28-May-2022,Kardinia Park,1:45 PM,Geelong,97,Adelaide,55
+192120220528,2022,11,28-May-2022,Gabba,1:45 PM,Brisbane Lions,110,Greater Western Sydney,96
+81120220528,2022,11,28-May-2022,M.C.G.,4:35 PM,Melbourne,56,Fremantle,94
+71820220528,2022,11,28-May-2022,Perth Stadium,5:30 PM,West Coast,60,Western Bulldogs,161
+102020220528,2022,11,28-May-2022,Marrara Oval,7:10 PM,Gold Coast,121,Hawthorn,54
+121520220529,2022,11,29-May-2022,Docklands,1:10 PM,St Kilda,103,North Melbourne,50
+30420220529,2022,11,29-May-2022,M.C.G.,3:20 PM,Collingwood,79,Carlton,75
+51320220529,2022,11,29-May-2022,Adelaide Oval,4:10 PM,Port Adelaide,66,Essendon,50
+70920220603,2022,12,3-Jun-2022,Docklands,7:50 PM,Western Bulldogs,70,Geelong,83
+11820220604,2022,12,4-Jun-2022,Adelaide Oval,1:15 PM,Adelaide,88,West Coast,57
+122020220604,2022,12,4-Jun-2022,Marrara Oval,4:05 PM,Gold Coast,109,North Melbourne,47
+111620220604,2022,12,4-Jun-2022,M.C.G.,7:25 PM,Melbourne,61,Sydney,73
+41020220605,2022,12,5-Jun-2022,M.C.G.,2:10 PM,Hawthorn,68,Collingwood,72
+81920220605,2022,12,5-Jun-2022,Perth Stadium,3:20 PM,Fremantle,99,Brisbane Lions,85
+131420220609,2022,13,9-Jun-2022,M.C.G.,7:20 PM,Richmond,77,Port Adelaide,65
+30520220610,2022,13,10-Jun-2022,M.C.G.,7:50 PM,Essendon,54,Carlton,80
+81020220611,2022,13,11-Jun-2022,Perth Stadium,2:10 PM,Fremantle,95,Hawthorn,82
+151920220611,2022,13,11-Jun-2022,Gabba,7:25 PM,Brisbane Lions,78,St Kilda,57
+122120220612,2022,13,12-Jun-2022,Docklands,3:20 PM,North Melbourne,53,Greater Western Sydney,102
+41120220613,2022,13,13-Jun-2022,M.C.G.,3:20 PM,Collingwood,82,Melbourne,56
+31420220616,2022,14,16-Jun-2022,M.C.G.,7:20 PM,Richmond,81,Carlton,66
+51520220617,2022,14,17-Jun-2022,Docklands,7:50 PM,St Kilda,72,Essendon,107
+131620220618,2022,14,18-Jun-2022,Adelaide Oval,1:15 PM,Port Adelaide,82,Sydney,59
+91820220618,2022,14,18-Jun-2022,Perth Stadium,2:35 PM,West Coast,63,Geelong,81
+72120220618,2022,14,18-Jun-2022,Sydney Showground,7:25 PM,Greater Western Sydney,105,Western Bulldogs,125
+12020220619,2022,14,19-Jun-2022,Carrara,3:20 PM,Gold Coast,116,Adelaide,73
+111920220623,2022,15,23-Jun-2022,M.C.G.,7:20 PM,Melbourne,117,Brisbane Lions,53
+71020220624,2022,15,24-Jun-2022,Docklands,7:00 PM,Western Bulldogs,125,Hawthorn,83
+51820220624,2022,15,24-Jun-2022,Perth Stadium,6:40 PM,West Coast,107,Essendon,97
+30820220625,2022,15,25-Jun-2022,Docklands,1:45 PM,Carlton,81,Fremantle,50
+91420220625,2022,15,25-Jun-2022,M.C.G.,4:35 PM,Geelong,89,Richmond,86
+151620220625,2022,15,25-Jun-2022,S.C.G.,7:25 PM,Sydney,83,St Kilda,32
+11220220626,2022,15,26-Jun-2022,Bellerive Oval,1:10 PM,North Melbourne,58,Adelaide,115
+42120220626,2022,15,26-Jun-2022,M.C.G.,3:20 PM,Collingwood,88,Greater Western Sydney,77
+132020220626,2022,15,26-Jun-2022,Adelaide Oval,3:40 PM,Port Adelaide,93,Gold Coast,91
+71920220630,2022,16,30-Jun-2022,Gabba,7:20 PM,Brisbane Lions,108,Western Bulldogs,67
+31520220701,2022,16,1-Jul-2022,Docklands,7:50 PM,Carlton,78,St Kilda,93
+51620220702,2022,16,2-Jul-2022,M.C.G.,1:45 PM,Essendon,95,Sydney,86
+11120220702,2022,16,2-Jul-2022,Adelaide Oval,4:05 PM,Adelaide,65,Melbourne,94
+42020220702,2022,16,2-Jul-2022,Carrara,7:25 PM,Gold Coast,62,Collingwood,67
+91220220702,2022,16,2-Jul-2022,Kardinia Park,7:25 PM,Geelong,144,North Melbourne,32
+141820220703,2022,16,3-Jul-2022,M.C.G.,2:10 PM,Richmond,128,West Coast,93
+102120220703,2022,16,3-Jul-2022,Sydney Showground,3:20 PM,Greater Western Sydney,72,Hawthorn,50
+81320220703,2022,16,3-Jul-2022,Perth Stadium,3:20 PM,Fremantle,99,Port Adelaide,91
+91120220707,2022,17,7-Jul-2022,Kardinia Park,7:20 PM,Geelong,91,Melbourne,63
+71620220708,2022,17,8-Jul-2022,S.C.G.,7:50 PM,Sydney,120,Western Bulldogs,67
+41220220709,2022,17,9-Jul-2022,M.C.G.,1:45 PM,Collingwood,88,North Melbourne,81
+142020220709,2022,17,9-Jul-2022,Carrara,4:35 PM,Gold Coast,94,Richmond,92
+81520220709,2022,17,9-Jul-2022,Docklands,7:25 PM,St Kilda,70,Fremantle,111
+132120220709,2022,17,9-Jul-2022,Adelaide Oval,7:00 PM,Port Adelaide,84,Greater Western Sydney,29
+51920220710,2022,17,10-Jul-2022,Gabba,1:10 PM,Brisbane Lions,90,Essendon,100
+11020220710,2022,17,10-Jul-2022,Docklands,3:20 PM,Hawthorn,86,Adelaide,54
+31820220710,2022,17,10-Jul-2022,Perth Stadium,2:40 PM,West Coast,53,Carlton,116
+71520220715,2022,18,15-Jul-2022,Docklands,7:50 PM,Western Bulldogs,84,St Kilda,56
+10420220716,2022,18,16-Jul-2022,Adelaide Oval,1:15 PM,Adelaide,86,Collingwood,91
+192120220716,2022,18,16-Jul-2022,Manuka Oval,1:45 PM,Greater Western Sydney,59,Brisbane Lions,99
+121420220716,2022,18,16-Jul-2022,Docklands,4:35 PM,North Melbourne,92,Richmond,88
+30920220716,2022,18,16-Jul-2022,M.C.G.,7:25 PM,Carlton,55,Geelong,85
+81620220716,2022,18,16-Jul-2022,Perth Stadium,5:30 PM,Fremantle,65,Sydney,82
+101820220717,2022,18,17-Jul-2022,M.C.G.,1:10 PM,Hawthorn,102,West Coast,77
+111320220717,2022,18,17-Jul-2022,Traeger Park,2:50 PM,Melbourne,83,Port Adelaide,69
+52020220717,2022,18,17-Jul-2022,Docklands,4:40 PM,Essendon,103,Gold Coast,55
+81420220722,2022,19,22-Jul-2022,Docklands,7:50 PM,Richmond,52,Fremantle,52
+11620220723,2022,19,23-Jul-2022,S.C.G.,1:45 PM,Sydney,118,Adelaide,85
+101220220723,2022,19,23-Jul-2022,Bellerive Oval,1:45 PM,North Melbourne,75,Hawthorn,121
+91320220723,2022,19,23-Jul-2022,Adelaide Oval,4:05 PM,Port Adelaide,94,Geelong,106
+192020220723,2022,19,23-Jul-2022,Gabba,7:10 PM,Brisbane Lions,110,Gold Coast,93
+71120220723,2022,19,23-Jul-2022,Docklands,7:25 PM,Western Bulldogs,110,Melbourne,100
+32120220724,2022,19,24-Jul-2022,Docklands,1:10 PM,Carlton,90,Greater Western Sydney,54
+40520220724,2022,19,24-Jul-2022,M.C.G.,3:20 PM,Collingwood,80,Essendon,76
+151820220724,2022,19,24-Jul-2022,Perth Stadium,2:40 PM,West Coast,62,St Kilda,90
+81120220729,2022,20,29-Jul-2022,Perth Stadium,6:10 PM,Fremantle,39,Melbourne,85
+41320220730,2022,20,30-Jul-2022,M.C.G.,1:45 PM,Collingwood,88,Port Adelaide,82
+162120220730,2022,20,30-Jul-2022,S.C.G.,2:10 PM,Sydney,112,Greater Western Sydney,39
+101520220730,2022,20,30-Jul-2022,Docklands,4:35 PM,St Kilda,75,Hawthorn,63
+70920220730,2022,20,30-Jul-2022,Kardinia Park,7:25 PM,Geelong,94,Western Bulldogs,66
+10320220730,2022,20,30-Jul-2022,Adelaide Oval,7:00 PM,Adelaide,84,Carlton,55
+182020220731,2022,20,31-Jul-2022,Carrara,1:10 PM,Gold Coast,107,West Coast,104
+141920220731,2022,20,31-Jul-2022,M.C.G.,3:20 PM,Richmond,104,Brisbane Lions,97
+51220220731,2022,20,31-Jul-2022,Docklands,4:40 PM,Essendon,114,North Melbourne,66
+41120220805,2022,21,5-Aug-2022,M.C.G.,7:50 PM,Melbourne,89,Collingwood,96
+102020220806,2022,21,6-Aug-2022,York Park,1:45 PM,Hawthorn,70,Gold Coast,63
+52120220806,2022,21,6-Aug-2022,Sydney Showground,2:10 PM,Greater Western Sydney,96,Essendon,69
+70820220806,2022,21,6-Aug-2022,Docklands,4:35 PM,Western Bulldogs,78,Fremantle,95
+91520220806,2022,21,6-Aug-2022,Kardinia Park,7:25 PM,Geelong,110,St Kilda,65
+131420220806,2022,21,6-Aug-2022,Adelaide Oval,7:10 PM,Port Adelaide,71,Richmond,109
+121620220807,2022,21,7-Aug-2022,Docklands,1:10 PM,North Melbourne,88,Sydney,126
+31920220807,2022,21,7-Aug-2022,Gabba,3:20 PM,Brisbane Lions,114,Carlton,81
+11820220807,2022,21,7-Aug-2022,Perth Stadium,2:10 PM,West Coast,86,Adelaide,102
+151920220812,2022,22,12-Aug-2022,Docklands,7:50 PM,St Kilda,66,Brisbane Lions,81
+72120220813,2022,22,13-Aug-2022,Docklands,1:45 PM,Western Bulldogs,62,Greater Western Sydney,57
+11220220813,2022,22,13-Aug-2022,Adelaide Oval,1:40 PM,Adelaide,103,North Melbourne,74
+92020220813,2022,22,13-Aug-2022,Carrara,4:35 PM,Gold Coast,59,Geelong,119
+31120220813,2022,22,13-Aug-2022,M.C.G.,7:25 PM,Melbourne,79,Carlton,74
+81820220813,2022,22,13-Aug-2022,Perth Stadium,5:40 PM,Fremantle,71,West Coast,47
+101420220814,2022,22,14-Aug-2022,M.C.G.,1:10 PM,Richmond,128,Hawthorn,67
+41620220814,2022,22,14-Aug-2022,S.C.G.,3:20 PM,Sydney,77,Collingwood,50
+51320220814,2022,22,14-Aug-2022,Docklands,4:40 PM,Essendon,62,Port Adelaide,146
+111920220819,2022,23,19-Aug-2022,Gabba,7:50 PM,Brisbane Lions,57,Melbourne,115
+82120220820,2022,23,20-Aug-2022,Manuka Oval,1:45 PM,Greater Western Sydney,69,Fremantle,89
+122020220820,2022,23,20-Aug-2022,Docklands,2:10 PM,North Melbourne,47,Gold Coast,114
+91820220820,2022,23,20-Aug-2022,Kardinia Park,4:35 PM,Geelong,131,West Coast,46
+51420220820,2022,23,20-Aug-2022,M.C.G.,7:25 PM,Essendon,75,Richmond,141
+11320220820,2022,23,20-Aug-2022,Adelaide Oval,7:00 PM,Port Adelaide,111,Adelaide,55
+71020220821,2022,23,21-Aug-2022,York Park,1:10 PM,Hawthorn,64,Western Bulldogs,87
+30420220821,2022,23,21-Aug-2022,M.C.G.,3:20 PM,Carlton,74,Collingwood,75
+151620220821,2022,23,21-Aug-2022,Docklands,4:40 PM,St Kilda,74,Sydney,88
+141920220901,2022,Elimination Final,1-Sep-2022,Gabba,7:20 PM,Brisbane Lions,106,Richmond,104
+111620220902,2022,Qualifying Final,2-Sep-2022,M.C.G.,7:50 PM,Melbourne,69,Sydney,91
+40920220903,2022,Qualifying Final,3-Sep-2022,M.C.G.,4:35 PM,Geelong,78,Collingwood,72
+70820220903,2022,Elimination Final,3-Sep-2022,Perth Stadium,6:10 PM,Fremantle,73,Western Bulldogs,60
+111920220909,2022,Semi Final,9-Sep-2022,M.C.G.,7:50 PM,Melbourne,79,Brisbane Lions,92
+40820220910,2022,Semi Final,10-Sep-2022,M.C.G.,7:25 PM,Collingwood,79,Fremantle,59
+91920220916,2022,Preliminary Final,16-Sep-2022,M.C.G.,7:50 PM,Geelong,120,Brisbane Lions,49
+41620220917,2022,Preliminary Final,17-Sep-2022,S.C.G.,4:45 PM,Sydney,95,Collingwood,94
+91620220924,2022,Grand Final,24-Sep-2022,M.C.G.,2:30 PM,Geelong,133,Sydney,52
+31420230316,2023,1,16-Mar-2023,M.C.G.,7:20 PM,Richmond,58,Carlton,58
+40920230317,2023,1,17-Mar-2023,M.C.G.,7:40 PM,Geelong,103,Collingwood,125
+121820230318,2023,1,18-Mar-2023,Docklands,1:45 PM,North Melbourne,87,West Coast,82
+131920230318,2023,1,18-Mar-2023,Adelaide Oval,4:05 PM,Port Adelaide,126,Brisbane Lions,72
+71120230318,2023,1,18-Mar-2023,M.C.G.,7:25 PM,Melbourne,115,Western Bulldogs,65
+162020230318,2023,1,18-Mar-2023,Carrara,7:00 PM,Gold Coast,61,Sydney,110
+12120230319,2023,1,19-Mar-2023,Sydney Showground,1:10 PM,Greater Western Sydney,106,Adelaide,90
+51020230319,2023,1,19-Mar-2023,M.C.G.,3:20 PM,Hawthorn,65,Essendon,124
+81520230319,2023,1,19-Mar-2023,Docklands,4:40 PM,St Kilda,67,Fremantle,52
+30920230323,2023,2,23-Mar-2023,M.C.G.,7:20 PM,Carlton,90,Geelong,82
+111920230324,2023,2,24-Mar-2023,Gabba,6:55 PM,Brisbane Lions,93,Melbourne,82
+41320230325,2023,2,25-Mar-2023,M.C.G.,1:45 PM,Collingwood,135,Port Adelaide,64
+11420230325,2023,2,25-Mar-2023,Adelaide Oval,4:05 PM,Adelaide,76,Richmond,108
+71520230325,2023,2,25-Mar-2023,Docklands,7:25 PM,Western Bulldogs,41,St Kilda,92
+81220230325,2023,2,25-Mar-2023,Perth Stadium,4:30 PM,Fremantle,72,North Melbourne,73
+101620230326,2023,2,26-Mar-2023,S.C.G.,1:10 PM,Sydney,118,Hawthorn,37
+52020230326,2023,2,26-Mar-2023,Docklands,3:20 PM,Essendon,108,Gold Coast,80
+182120230326,2023,2,26-Mar-2023,Perth Stadium,3:20 PM,West Coast,100,Greater Western Sydney,81
+71920230330,2023,3,30-Mar-2023,Docklands,7:20 PM,Western Bulldogs,67,Brisbane Lions,53
+41420230331,2023,3,31-Mar-2023,M.C.G.,7:50 PM,Collingwood,63,Richmond,49
+101220230401,2023,3,1-Apr-2023,York Park,1:45 PM,Hawthorn,80,North Melbourne,61
+32120230401,2023,3,1-Apr-2023,Sydney Showground,4:35 PM,Greater Western Sydney,64,Carlton,74
+51520230401,2023,3,1-Apr-2023,M.C.G.,7:25 PM,St Kilda,92,Essendon,74
+11320230401,2023,3,1-Apr-2023,Adelaide Oval,7:00 PM,Port Adelaide,86,Adelaide,117
+92020230402,2023,3,2-Apr-2023,Carrara,2:10 PM,Gold Coast,73,Geelong,54
+111620230402,2023,3,2-Apr-2023,M.C.G.,3:20 PM,Melbourne,134,Sydney,84
+81820230402,2023,3,2-Apr-2023,Perth Stadium,3:20 PM,Fremantle,108,West Coast,67
