@@ -24,8 +24,8 @@ import csv
 
 def get_soup_data(url):
     browser = webdriver.Firefox()
-
     browser.get(url)
+    # TODO: Don't wait 2 seconds if the page has loaded
     time.sleep(2)
     html = browser.page_source
     soup = BeautifulSoup(html, "html.parser")
@@ -116,34 +116,11 @@ def get_relevant_content_from_match(match_url):
     return get_info_from_match_soup(soup)
 
 
-def map_team_name(team_name):
-    if team_name == "West Coast Eagles":
-        return "West Coast"
-    if team_name == "Geelong Cats":
-        return "Geelong"
-    if team_name == "Sydney Swans":
-        return "Sydney"
-    if team_name == "Gold Coast Suns":
-        return "Gold Coast"
-    if team_name == "Adelaide Crows":
-        return "Adelaide"
-    if team_name == "GWS Giants":
-        return "Greater Western Sydney"
-    return team_name
-
-
 def get_all_matches_from_afl_homepage(homepage_soup):
     relevant_links = get_all_links_from_afl_homepage(homepage_soup)
     matches = []
     for link in relevant_links:
         match_information = get_relevant_content_from_match(link)
-        # fix team names
-        match_information["home_team_name"] = map_team_name(
-            match_information["home_team_name"]
-        )
-        match_information["away_team_name"] = map_team_name(
-            match_information["away_team_name"]
-        )
         original_match_date = match_information["match_date"]
         # fix match date
         datetimeobject = datetime.strptime(
@@ -214,14 +191,11 @@ def write_data_to_csv(csv_name):
                     "date",
                     "venue",
                     "time",
-                    "home_team",
+                    "home_team_name",
                     "home_team_score",
-                    "away_team",
+                    "away_team_name",
                     "away_team_score",
-                    "home_team_goals",
-                    "home_team_behinds",
-                    "away_team_goals",
-                    "away_team_behinds",
+                    "margin",
                 ]
             )
     for year in range(2012, 2024):
