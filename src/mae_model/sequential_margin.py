@@ -194,9 +194,8 @@ class SequentialMarginModel:
             games = self.player_games[player_name]
             if games < self.min_player_games:
                 continue
-            weight = player["percent_played"] / 100.0
-            if weight <= 0:
-                weight = (player["disposals"] + 1.0) / 25.0
+            # Prediction-time weighting must not depend on same-match in-game stats.
+            weight = 1.0
             weighted_total += self.player_rating[player_name] * weight
             total_weight += weight
 
@@ -250,8 +249,8 @@ class SequentialMarginModel:
         if not home_players or not away_players:
             return
 
-        home_weights = [max(p["percent_played"] / 100.0, (p["disposals"] + 1.0) / 25.0) for p in home_players]
-        away_weights = [max(p["percent_played"] / 100.0, (p["disposals"] + 1.0) / 25.0) for p in away_players]
+        home_weights = [1.0 for _ in home_players]
+        away_weights = [1.0 for _ in away_players]
         home_total = sum(home_weights)
         away_total = sum(away_weights)
         if home_total <= 0 or away_total <= 0:
@@ -403,6 +402,200 @@ class ScoringShotMarginModel:
         expected_home_score, expected_away_score, expected_margin = self.predict(match)
         self.update(match, expected_home_score, expected_away_score)
         return expected_home_score, expected_away_score, expected_margin
+
+
+class BenchmarkShotVolumeModel:
+    """
+    Benchmark-first decomposition model.
+
+    Predicts margin from observed scoring-shot volume and sequential conversion state.
+    """
+
+    def __init__(
+        self,
+        base_scoring_shots: float = 26.0,
+        home_adv_scoring_shots: float = 1.0,
+        shot_k: float = 0.07,
+        shot_residual_cap: float = 12.0,
+        conversion_k: float = 0.045,
+        home_adv_k: float = 0.002,
+        season_carryover: float = 0.78,
+        conversion_window_games: int = 800,
+    ):
+        self.base_scoring_shots = base_scoring_shots
+        self.home_adv_scoring_shots = home_adv_scoring_shots
+        self.shot_k = shot_k
+        self.shot_residual_cap = shot_residual_cap
+        self.conversion_k = conversion_k
+        self.home_adv_k = home_adv_k
+        self.season_carryover = season_carryover
+        self.current_year: Optional[int] = None
+
+        self.team_attack_shots: Dict[str, float] = defaultdict(float)
+        self.team_defense_shots: Dict[str, float] = defaultdict(float)
+        self.team_attack_conversion: Dict[str, float] = defaultdict(float)
+        self.team_defense_conversion: Dict[str, float] = defaultdict(float)
+        self.home_adv_pps = 0.08
+        self.points_per_shot_history: deque = deque(maxlen=conversion_window_games)
+
+    def _apply_season_transition(self):
+        teams = list(
+            set(
+                list(self.team_attack_shots.keys())
+                + list(self.team_defense_shots.keys())
+                + list(self.team_attack_conversion.keys())
+                + list(self.team_defense_conversion.keys())
+            )
+        )
+        if not teams:
+            return
+
+        for team in teams:
+            self.team_attack_shots[team] *= self.season_carryover
+            self.team_defense_shots[team] *= self.season_carryover
+            self.team_attack_conversion[team] *= self.season_carryover
+            self.team_defense_conversion[team] *= self.season_carryover
+
+        attack_shot_mean = sum(self.team_attack_shots[t] for t in teams) / len(teams)
+        defense_shot_mean = sum(self.team_defense_shots[t] for t in teams) / len(teams)
+        attack_mean = sum(self.team_attack_conversion[t] for t in teams) / len(teams)
+        defense_mean = sum(self.team_defense_conversion[t] for t in teams) / len(teams)
+        for team in teams:
+            self.team_attack_shots[team] -= attack_shot_mean
+            self.team_defense_shots[team] -= defense_shot_mean
+            self.team_attack_conversion[team] -= attack_mean
+            self.team_defense_conversion[team] -= defense_mean
+
+    def _league_points_per_shot(self) -> float:
+        if not self.points_per_shot_history:
+            return 4.85
+        return float(sum(self.points_per_shot_history) / len(self.points_per_shot_history))
+
+    @staticmethod
+    def _actual_scoring_shots(match: MatchRow) -> Tuple[float, float]:
+        home_ss = float(match.home_scoring_shots)
+        away_ss = float(match.away_scoring_shots)
+        if home_ss <= 0:
+            home_ss = max(1.0, match.home_score / 5.0)
+        if away_ss <= 0:
+            away_ss = max(1.0, match.away_score / 5.0)
+        return home_ss, away_ss
+
+    def _predict_scoring_shots(self, match: MatchRow) -> Tuple[float, float]:
+        expected_home_ss = (
+            self.base_scoring_shots
+            + self.team_attack_shots[match.home_team]
+            - self.team_defense_shots[match.away_team]
+            + self.home_adv_scoring_shots
+        )
+        expected_away_ss = (
+            self.base_scoring_shots
+            + self.team_attack_shots[match.away_team]
+            - self.team_defense_shots[match.home_team]
+            - self.home_adv_scoring_shots
+        )
+        return max(8.0, expected_home_ss), max(8.0, expected_away_ss)
+
+    def predict(self, match: MatchRow) -> Tuple[float, float, float, float, float, float, float]:
+        home_ss, away_ss = self._predict_scoring_shots(match)
+        league_pps = self._league_points_per_shot()
+
+        expected_home_pps = (
+            league_pps
+            + self.team_attack_conversion[match.home_team]
+            - self.team_defense_conversion[match.away_team]
+            + self.home_adv_pps
+        )
+        expected_away_pps = (
+            league_pps
+            + self.team_attack_conversion[match.away_team]
+            - self.team_defense_conversion[match.home_team]
+            - self.home_adv_pps
+        )
+        expected_home_pps = max(3.5, min(6.4, expected_home_pps))
+        expected_away_pps = max(3.5, min(6.4, expected_away_pps))
+
+        expected_home_score = expected_home_pps * home_ss
+        expected_away_score = expected_away_pps * away_ss
+        expected_margin = expected_home_score - expected_away_score
+        return (
+            expected_home_score,
+            expected_away_score,
+            expected_margin,
+            home_ss,
+            away_ss,
+            expected_home_pps,
+            expected_away_pps,
+        )
+
+    def update(
+        self,
+        match: MatchRow,
+        expected_home_ss: float,
+        expected_away_ss: float,
+        expected_margin: float,
+        expected_home_pps: float,
+        expected_away_pps: float,
+    ):
+        home_ss, away_ss = self._actual_scoring_shots(match)
+
+        home_shot_residual = max(
+            -self.shot_residual_cap,
+            min(self.shot_residual_cap, home_ss - expected_home_ss),
+        )
+        away_shot_residual = max(
+            -self.shot_residual_cap,
+            min(self.shot_residual_cap, away_ss - expected_away_ss),
+        )
+        self.team_attack_shots[match.home_team] += self.shot_k * home_shot_residual
+        self.team_defense_shots[match.home_team] -= self.shot_k * away_shot_residual
+        self.team_attack_shots[match.away_team] += self.shot_k * away_shot_residual
+        self.team_defense_shots[match.away_team] -= self.shot_k * home_shot_residual
+
+        actual_home_pps = match.home_score / home_ss
+        actual_away_pps = match.away_score / away_ss
+
+        home_conversion_residual = actual_home_pps - expected_home_pps
+        away_conversion_residual = actual_away_pps - expected_away_pps
+
+        self.team_attack_conversion[match.home_team] += self.conversion_k * home_conversion_residual
+        self.team_defense_conversion[match.away_team] -= self.conversion_k * home_conversion_residual
+        self.team_attack_conversion[match.away_team] += self.conversion_k * away_conversion_residual
+        self.team_defense_conversion[match.home_team] -= self.conversion_k * away_conversion_residual
+
+        total_shots = max(8.0, home_ss + away_ss)
+        margin_residual_per_shot = (match.actual_margin - expected_margin) / total_shots
+        self.home_adv_pps += self.home_adv_k * margin_residual_per_shot
+        self.home_adv_pps = max(-0.6, min(0.6, self.home_adv_pps))
+
+        self.points_per_shot_history.append(actual_home_pps)
+        self.points_per_shot_history.append(actual_away_pps)
+
+    def step(self, match: MatchRow) -> Tuple[float, float, float]:
+        if self.current_year is None:
+            self.current_year = match.year
+        elif match.year != self.current_year:
+            self.current_year = match.year
+            self._apply_season_transition()
+
+        (
+            expected_home,
+            expected_away,
+            expected_margin,
+            home_ss,
+            away_ss,
+            expected_home_pps,
+            expected_away_pps,
+        ) = self.predict(match)
+        self.update(
+            match,
+            expected_home_ss=home_ss,
+            expected_away_ss=away_ss,
+            expected_margin=expected_margin,
+            expected_home_pps=expected_home_pps,
+            expected_away_pps=expected_away_pps,
+        )
+        return expected_home, expected_away, expected_margin
 
 
 class ShotVolumeConversionModel:
@@ -776,14 +969,11 @@ def walk_forward_predictions(
             shot_residual_cap=12.0,
         ),
     }
-    hybrid_model = ShotVolumeConversionModel(
-        conversion_k=0.02,
-        home_adv_k=0.001,
-        season_carryover=0.75,
-        lineup_conversion_scale=0.06,
-        player_conversion_k=0.15,
-        min_player_games=2,
-        conversion_window_games=600,
+    hybrid_model = BenchmarkShotVolumeModel(
+        conversion_k=0.045,
+        home_adv_k=0.002,
+        season_carryover=0.78,
+        conversion_window_games=800,
     )
 
     predictions: List[PredictionRow] = []
@@ -809,7 +999,7 @@ def walk_forward_predictions(
                     )
                 )
 
-        _, _, hybrid_margin = hybrid_model.step(match, lineups)
+        _, _, hybrid_margin = hybrid_model.step(match)
 
         if match.year >= scoring_year:
             predictions.append(
