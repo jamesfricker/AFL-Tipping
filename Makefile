@@ -1,4 +1,4 @@
 
 .PHONY: test
 test:
-	python3 -m pytest -vvrP
+	uv run pytest -vvrP

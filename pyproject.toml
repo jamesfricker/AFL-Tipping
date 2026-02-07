@@ -1,0 +1,22 @@
+[project]
+name = "afl-tipping"
+version = "0.1.0"
+description = "AFL tipping data pipelines and MAE-focused prediction models."
+requires-python = ">=3.11"
+dependencies = [
+  "beautifulsoup4>=4.12",
+  "numpy>=1.26",
+  "pandas>=2.2",
+  "requests>=2.31",
+  "scikit-learn>=1.8.0",
+  "selenium>=4.20",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
