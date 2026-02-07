@@ -2,8 +2,11 @@ import csv
 from pathlib import Path
 
 from src.mae_model.sequential_margin import (
+    MatchRow,
+    ShotVolumeConversionModel,
     load_lineups_csv,
     load_matches_csv,
+    parse_match_date,
     summarize_predictions,
     walk_forward_predictions,
 )
@@ -131,3 +134,41 @@ def test_team_plus_lineup_beats_team_only(tmp_path):
     overall = {row["model_name"]: row for row in summary if row["year"] == "ALL"}
     assert {"team_only", "team_plus_lineup"}.issubset(set(overall.keys()))
     assert overall["team_plus_lineup"]["mae_margin"] < overall["team_only"]["mae_margin"]
+
+
+def test_hybrid_predict_does_not_use_same_match_outcomes():
+    model = ShotVolumeConversionModel()
+    lineups = {
+        ("M1", "A"): [{"player_name": "A1", "goals": 0.0, "behinds": 0.0}],
+        ("M1", "B"): [{"player_name": "B1", "goals": 0.0, "behinds": 0.0}],
+    }
+    baseline_match = MatchRow(
+        match_id="M1",
+        year=2026,
+        round_label="R1",
+        date=parse_match_date("01-Jan-2026"),
+        venue="Test Oval",
+        home_team="A",
+        away_team="B",
+        home_score=0.0,
+        away_score=0.0,
+        home_scoring_shots=0,
+        away_scoring_shots=0,
+    )
+    changed_outcome_match = MatchRow(
+        match_id="M1",
+        year=2026,
+        round_label="R1",
+        date=parse_match_date("01-Jan-2026"),
+        venue="Test Oval",
+        home_team="A",
+        away_team="B",
+        home_score=180.0,
+        away_score=20.0,
+        home_scoring_shots=45,
+        away_scoring_shots=8,
+    )
+
+    baseline_prediction = model.predict(baseline_match, lineups)
+    changed_prediction = model.predict(changed_outcome_match, lineups)
+    assert baseline_prediction == changed_prediction
