@@ -26,6 +26,34 @@ Generated files used by the models:
 
 - `src/outputs/afl_data.csv`: match-level history (scores, goals/behinds, scoring shots)
 - `src/outputs/afl_player_stats.csv`: player-level match stats from AFL Tables scraping
+- `src/outputs/afl_betting_history.xlsx`: historical betting odds/line workbook used by market-aware models
+- `src/outputs/afl_match_context.csv` (optional): per-match weather + crowd + venue-trait inputs used by context model
+
+Optional context CSV columns (flexible aliases supported):
+- Match keys: `date`, `home_team`, `away_team`, `venue`
+- Weather: `weather_temp_c`, `weather_rain_mm`, `weather_wind_kmh`, `weather_humidity_pct`
+- Crowd: `projected_attendance` (pre-game) and/or `attendance` (actual, used only for future prior updates)
+- Venue traits: `venue_length_m`, `venue_width_m`, `venue_capacity`
+
+Build context CSV with Open-Meteo (rate-limited + cached):
+
+```bash
+uv run python -m src.mae_model.build_match_context \
+  --matches-csv src/outputs/afl_data.csv \
+  --output-csv src/outputs/afl_match_context.csv \
+  --weather-cache .context/open_meteo_daily_cache.json
+```
+
+Optional attendance file:
+
+```bash
+uv run python -m src.mae_model.build_match_context \
+  --matches-csv src/outputs/afl_data.csv \
+  --attendance-csv your_attendance_source.csv \
+  --output-csv src/outputs/afl_match_context.csv
+```
+
+`build_match_context` has configurable throttles (`--limit-minute`, `--limit-hour`, `--limit-day`, `--limit-month`) and defaults to conservative values under Open-Meteo open-access limits.
 
 ## Backtesting Pipeline
 
@@ -35,6 +63,8 @@ Run the walk-forward backtest:
 uv run python -m src.mae_model.run_backtest \
   --matches-csv src/outputs/afl_data.csv \
   --lineups-csv src/outputs/afl_player_stats.csv \
+  --market-xlsx src/outputs/afl_betting_history.xlsx \
+  --context-csv src/outputs/afl_match_context.csv \
   --output-dir reports_rethink \
   --min-train-years 3
 ```
@@ -46,7 +76,7 @@ Outputs:
 
 ## Model Family (Current)
 
-The backtest currently evaluates four models in `src/mae_model/sequential_margin.py`:
+The backtest currently evaluates multiple models in `src/mae_model/sequential_margin.py`, including:
 
 1. `team_only`
 - Sequential team offense/defense ratings updated every match.
@@ -63,6 +93,24 @@ The backtest currently evaluates four models in `src/mae_model/sequential_margin
 
 4. `team_residual_lineup`
 - Hybrid decomposition model (`ShotVolumeConversionModel`) that combines scoring-shot volume and conversion effects with lineup conversion ratings.
+
+5. `market_line_blend`
+- Year-locked blend of `scoring_shots` margin and market closing line margin from `afl_betting_history.xlsx`.
+- Blend weight is fit from a rolling recent-history window (5 prior seasons) to track regime changes.
+- Uses only pre-game market data and prior years to fit blend weights.
+
+6. `team_context_env`
+- `team_only` baseline plus learned context adjustment from optional match context data.
+- Uses weather and venue traits directly at prediction time, and attendance via projected crowd or historical attendance priors only.
+
+7. `market_only`
+- Uses market closing line margin directly (with base-model fallback only when market line is missing).
+
+8. `market_residual_corrector`
+- Market-first residual model:
+  - anchor at `market_line_blend`
+  - learn a small clipped correction from prior years only
+  - include odds-derived implied probability and uncertainty damping
 
 ## Deep Audit (Assumptions, Leakage, Overfit)
 
@@ -102,19 +150,22 @@ This confirms the extreme performance is leakage-driven, not true pre-game predi
 
 ## Which Model To Use For 2026
 
-For **pre-game 2026 predictions**, treat `team_residual_lineup` as **not deployable** until leakage is removed.
+For **pre-game 2026 predictions**, the current best-performing deployable model on ALL-years MAE is `market_residual_corrector`.
 
 Recommended production baseline:
 
-- **Primary:** `team_only`
-- **Secondary challenger:** `scoring_shots`
+- **Primary (ALL-years MAE):** `market_residual_corrector`
+- **Primary (2024/2025 benchmark-years focus):** `market_line_blend`
+- **Secondary challengers:** `market_only`, `team_only`
 
 Current walk-forward all-years summary:
 
+- `market_residual_corrector`: MAE 26.5515, tip 68.78%
+- `market_line_blend`: MAE 26.5735, tip 68.56%
+- `market_only`: MAE 26.6466, tip 68.42%
 - `team_only`: MAE 27.3178, tip 67.85%
+- `team_residual_lineup`: MAE 27.2709, tip 67.80%
 - `scoring_shots`: MAE 27.2705, tip 67.80%
-- `team_plus_lineup`: MAE 27.3877, tip 67.71%
-- `team_residual_lineup`: MAE 14.5606, tip 84.90% (**invalid for pre-game use**)
 
 ## 2026 Prediction Workflow
 
@@ -129,13 +180,16 @@ Use this weekly cycle during the 2026 season:
 uv run python -m src.mae_model.run_backtest \
   --matches-csv src/outputs/afl_data.csv \
   --lineups-csv src/outputs/afl_player_stats.csv \
+  --market-xlsx src/outputs/afl_betting_history.xlsx \
+  --context-csv src/outputs/afl_match_context.csv \
   --output-dir reports_rethink \
   --min-train-years 3
 ```
 
-3. Generate next-round margins with `team_only` from current model state.
+3. Generate next-round margins with `market_line_blend` when market lines are available.
 - Replay all completed historical matches with `model.step(...)`.
 - For upcoming fixtures, call `model.predict(...)` (do not update state until results are known).
+- If market lines are unavailable for a fixture, fall back to `team_only`.
 
 Example script:
 
