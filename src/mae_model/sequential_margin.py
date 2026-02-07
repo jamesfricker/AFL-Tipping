@@ -407,13 +407,17 @@ class ScoringShotMarginModel:
 
 class ShotVolumeConversionModel:
     """
-    Margin decomposition model:
-    - use scoring-shot volume directly for each match
+    Pre-game deployable margin decomposition model:
+    - predict scoring-shot volume from team shot ratings
     - predict points-per-shot for each team from league/team/lineup conversion state
     """
 
     def __init__(
         self,
+        base_scoring_shots: float = 26.0,
+        home_adv_scoring_shots: float = 1.0,
+        shot_k: float = 0.07,
+        shot_residual_cap: float = 12.0,
         conversion_k: float = 0.03,
         home_adv_k: float = 0.001,
         season_carryover: float = 0.78,
@@ -422,6 +426,10 @@ class ShotVolumeConversionModel:
         min_player_games: int = 2,
         conversion_window_games: int = 600,
     ):
+        self.base_scoring_shots = base_scoring_shots
+        self.home_adv_scoring_shots = home_adv_scoring_shots
+        self.shot_k = shot_k
+        self.shot_residual_cap = shot_residual_cap
         self.conversion_k = conversion_k
         self.home_adv_k = home_adv_k
         self.season_carryover = season_carryover
@@ -430,6 +438,8 @@ class ShotVolumeConversionModel:
         self.min_player_games = min_player_games
         self.current_year: Optional[int] = None
 
+        self.team_attack_shots: Dict[str, float] = defaultdict(float)
+        self.team_defense_shots: Dict[str, float] = defaultdict(float)
         self.team_attack_conversion: Dict[str, float] = defaultdict(float)
         self.team_defense_conversion: Dict[str, float] = defaultdict(float)
         self.home_adv_pps = 0.08
@@ -439,15 +449,28 @@ class ShotVolumeConversionModel:
         self.player_games: Dict[str, int] = defaultdict(int)
 
     def _apply_season_transition(self):
-        teams = list(set(list(self.team_attack_conversion.keys()) + list(self.team_defense_conversion.keys())))
+        teams = list(
+            set(
+                list(self.team_attack_shots.keys())
+                + list(self.team_defense_shots.keys())
+                + list(self.team_attack_conversion.keys())
+                + list(self.team_defense_conversion.keys())
+            )
+        )
         if teams:
             for team in teams:
+                self.team_attack_shots[team] *= self.season_carryover
+                self.team_defense_shots[team] *= self.season_carryover
                 self.team_attack_conversion[team] *= self.season_carryover
                 self.team_defense_conversion[team] *= self.season_carryover
 
+            attack_shot_mean = sum(self.team_attack_shots[t] for t in teams) / len(teams)
+            defense_shot_mean = sum(self.team_defense_shots[t] for t in teams) / len(teams)
             attack_mean = sum(self.team_attack_conversion[t] for t in teams) / len(teams)
             defense_mean = sum(self.team_defense_conversion[t] for t in teams) / len(teams)
             for team in teams:
+                self.team_attack_shots[team] -= attack_shot_mean
+                self.team_defense_shots[team] -= defense_shot_mean
                 self.team_attack_conversion[team] -= attack_mean
                 self.team_defense_conversion[team] -= defense_mean
 
@@ -475,15 +498,29 @@ class ShotVolumeConversionModel:
             player_name = player["player_name"]
             if self.player_games[player_name] < self.min_player_games:
                 continue
-            weight = player["percent_played"] / 100.0
-            if weight <= 0:
-                weight = (player.get("disposals", 0.0) + 1.0) / 25.0
+            # Do not use same-match in-game stats (percent played/disposals) at prediction time.
+            weight = 1.0
             weighted_total += self.player_conversion_rating[player_name] * weight
             total_weight += weight
 
         if total_weight <= 0:
             return 0.0
         return self.lineup_conversion_scale * (weighted_total / total_weight)
+
+    def _predict_scoring_shots(self, match: MatchRow) -> Tuple[float, float]:
+        expected_home_ss = (
+            self.base_scoring_shots
+            + self.team_attack_shots[match.home_team]
+            - self.team_defense_shots[match.away_team]
+            + self.home_adv_scoring_shots
+        )
+        expected_away_ss = (
+            self.base_scoring_shots
+            + self.team_attack_shots[match.away_team]
+            - self.team_defense_shots[match.home_team]
+            - self.home_adv_scoring_shots
+        )
+        return max(8.0, expected_home_ss), max(8.0, expected_away_ss)
 
     @staticmethod
     def _actual_scoring_shots(match: MatchRow) -> Tuple[float, float]:
@@ -499,8 +536,8 @@ class ShotVolumeConversionModel:
         self,
         match: MatchRow,
         lineups: Dict[Tuple[str, str], List[dict]],
-    ) -> Tuple[float, float, float, float, float]:
-        home_ss, away_ss = self._actual_scoring_shots(match)
+    ) -> Tuple[float, float, float, float, float, float, float]:
+        home_ss, away_ss = self._predict_scoring_shots(match)
         league_pps = self._league_points_per_shot()
 
         home_lineup = self._lineup_conversion_effect(match.match_id, match.home_team, lineups)
@@ -526,7 +563,15 @@ class ShotVolumeConversionModel:
         expected_home_score = expected_home_pps * home_ss
         expected_away_score = expected_away_pps * away_ss
         expected_margin = expected_home_score - expected_away_score
-        return expected_home_score, expected_away_score, expected_margin, expected_home_pps, expected_away_pps
+        return (
+            expected_home_score,
+            expected_away_score,
+            expected_margin,
+            home_ss,
+            away_ss,
+            expected_home_pps,
+            expected_away_pps,
+        )
 
     def _update_player_conversion(
         self,
@@ -552,12 +597,28 @@ class ShotVolumeConversionModel:
     def update(
         self,
         match: MatchRow,
+        expected_home_ss: float,
+        expected_away_ss: float,
         expected_margin: float,
         expected_home_pps: float,
         expected_away_pps: float,
         lineups: Dict[Tuple[str, str], List[dict]],
     ):
         home_ss, away_ss = self._actual_scoring_shots(match)
+        home_shot_residual = max(
+            -self.shot_residual_cap,
+            min(self.shot_residual_cap, home_ss - expected_home_ss),
+        )
+        away_shot_residual = max(
+            -self.shot_residual_cap,
+            min(self.shot_residual_cap, away_ss - expected_away_ss),
+        )
+
+        self.team_attack_shots[match.home_team] += self.shot_k * home_shot_residual
+        self.team_defense_shots[match.home_team] -= self.shot_k * away_shot_residual
+        self.team_attack_shots[match.away_team] += self.shot_k * away_shot_residual
+        self.team_defense_shots[match.away_team] -= self.shot_k * home_shot_residual
+
         actual_home_pps = match.home_score / home_ss
         actual_away_pps = match.away_score / away_ss
 
@@ -585,8 +646,24 @@ class ShotVolumeConversionModel:
             self.current_year = match.year
             self._apply_season_transition()
 
-        expected_home, expected_away, expected_margin, expected_home_pps, expected_away_pps = self.predict(match, lineups)
-        self.update(match, expected_margin, expected_home_pps, expected_away_pps, lineups)
+        (
+            expected_home,
+            expected_away,
+            expected_margin,
+            expected_home_ss,
+            expected_away_ss,
+            expected_home_pps,
+            expected_away_pps,
+        ) = self.predict(match, lineups)
+        self.update(
+            match,
+            expected_home_ss,
+            expected_away_ss,
+            expected_margin,
+            expected_home_pps,
+            expected_away_pps,
+            lineups,
+        )
         return expected_home, expected_away, expected_margin
 
 
