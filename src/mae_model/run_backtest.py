@@ -2,6 +2,8 @@ import argparse
 from pathlib import Path
 
 from .sequential_margin import (
+    load_match_context_csv,
+    load_market_xlsx,
     load_lineups_csv,
     load_matches_csv,
     summarize_predictions,
@@ -26,6 +28,16 @@ def parse_args():
         help="Path to per-player match stats CSV. If missing, lineup effects default to zero.",
     )
     parser.add_argument(
+        "--market-xlsx",
+        default="src/outputs/afl_betting_history.xlsx",
+        help="Path to betting market history workbook (optional).",
+    )
+    parser.add_argument(
+        "--context-csv",
+        default="",
+        help="Optional per-match context CSV (weather/attendance/venue traits).",
+    )
+    parser.add_argument(
         "--output-dir",
         default="reports",
         help="Directory for prediction and summary outputs.",
@@ -44,10 +56,14 @@ def main():
 
     matches = load_matches_csv(args.matches_csv)
     lineups = load_lineups_csv(args.lineups_csv)
+    market_data = load_market_xlsx(args.market_xlsx)
+    context_data = load_match_context_csv(args.context_csv)
     predictions = walk_forward_predictions(
         matches=matches,
         lineups=lineups,
         min_train_years=args.min_train_years,
+        market_data=market_data,
+        match_context_data=context_data,
     )
     summary = summarize_predictions(predictions)
 
