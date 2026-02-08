@@ -1,5 +1,6 @@
 import csv
 import math
+import warnings
 from collections import defaultdict
 from collections import deque
 from dataclasses import dataclass
@@ -9,7 +10,15 @@ from statistics import NormalDist
 from typing import Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
-from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import HistGradientBoostingRegressor
+from sklearn.isotonic import IsotonicRegression
+from sklearn.linear_model import HuberRegressor, LogisticRegression, Ridge
+
+warnings.filterwarnings(
+    "ignore",
+    message="`sklearn.utils.parallel.delayed` should be used with `sklearn.utils.parallel.Parallel`",
+    category=UserWarning,
+)
 
 
 TEAM_ALIASES = {
@@ -30,6 +39,482 @@ FINALS_ORDER = {
     "Final": 106,
     "Grand Final": 107,
 }
+
+TEAM_HOME_STATE = {
+    "Adelaide": "SA",
+    "Brisbane Lions": "QLD",
+    "Carlton": "VIC",
+    "Collingwood": "VIC",
+    "Essendon": "VIC",
+    "Fremantle": "WA",
+    "Geelong": "VIC",
+    "Gold Coast": "QLD",
+    "Greater Western Sydney": "NSW",
+    "Hawthorn": "VIC",
+    "Kangaroos": "VIC",
+    "Melbourne": "VIC",
+    "Port Adelaide": "SA",
+    "Richmond": "VIC",
+    "St Kilda": "VIC",
+    "Sydney": "NSW",
+    "West Coast": "WA",
+    "Western Bulldogs": "VIC",
+}
+
+TEAM_HOME_COORDS = {
+    "Adelaide": (-34.9285, 138.6007),
+    "Brisbane Lions": (-27.4698, 153.0251),
+    "Carlton": (-37.8136, 144.9631),
+    "Collingwood": (-37.8136, 144.9631),
+    "Essendon": (-37.8136, 144.9631),
+    "Fremantle": (-31.9505, 115.8605),
+    "Geelong": (-38.1499, 144.3617),
+    "Gold Coast": (-28.0167, 153.4000),
+    "Greater Western Sydney": (-33.8688, 151.2093),
+    "Hawthorn": (-37.8136, 144.9631),
+    "Kangaroos": (-37.8136, 144.9631),
+    "Melbourne": (-37.8136, 144.9631),
+    "Port Adelaide": (-34.9285, 138.6007),
+    "Richmond": (-37.8136, 144.9631),
+    "St Kilda": (-37.8136, 144.9631),
+    "Sydney": (-33.8688, 151.2093),
+    "West Coast": (-31.9505, 115.8605),
+    "Western Bulldogs": (-37.8136, 144.9631),
+}
+
+VENUE_STATE_HINTS = (
+    ("mcg", "VIC"),
+    ("marvel", "VIC"),
+    ("docklands", "VIC"),
+    ("kardinia", "VIC"),
+    ("gmhba", "VIC"),
+    ("aami stadium", "SA"),
+    ("adelaide oval", "SA"),
+    ("perth stadium", "WA"),
+    ("optus", "WA"),
+    ("domain stadium", "WA"),
+    ("subiaco", "WA"),
+    ("the gabba", "QLD"),
+    ("gabba", "QLD"),
+    ("carrara", "QLD"),
+    ("metricon", "QLD"),
+    ("heritage bank", "QLD"),
+    ("sydney cricket ground", "NSW"),
+    ("scg", "NSW"),
+    ("stadium australia", "NSW"),
+    ("anz stadium", "NSW"),
+    ("accor", "NSW"),
+    ("showground", "NSW"),
+    ("engie", "NSW"),
+    ("manuka", "ACT"),
+    ("bellerive", "TAS"),
+    ("utas", "TAS"),
+    ("blundstone", "TAS"),
+    ("mars stadium", "VIC"),
+    ("eureka", "VIC"),
+    ("cazaly", "QLD"),
+    ("tio", "NT"),
+    ("traeger", "NT"),
+    ("darwin", "NT"),
+    ("york park", "TAS"),
+    ("norwood", "SA"),
+)
+
+VENUE_COORD_HINTS = (
+    ("mcg", (-37.8199, 144.9834)),
+    ("marvel", (-37.8164, 144.9475)),
+    ("docklands", (-37.8164, 144.9475)),
+    ("kardinia", (-38.1580, 144.3547)),
+    ("gmhba", (-38.1580, 144.3547)),
+    ("adelaide oval", (-34.9154, 138.5964)),
+    ("aami stadium", (-34.9154, 138.5964)),
+    ("optus", (-31.9509, 115.8882)),
+    ("perth stadium", (-31.9509, 115.8882)),
+    ("domain stadium", (-31.9434, 115.8721)),
+    ("subiaco", (-31.9434, 115.8721)),
+    ("the gabba", (-27.4858, 153.0381)),
+    ("gabba", (-27.4858, 153.0381)),
+    ("metricon", (-28.0573, 153.3805)),
+    ("heritage bank", (-28.0573, 153.3805)),
+    ("sydney cricket ground", (-33.8917, 151.2240)),
+    ("scg", (-33.8917, 151.2240)),
+    ("anz stadium", (-33.8474, 151.0639)),
+    ("accor", (-33.8474, 151.0639)),
+    ("showground", (-33.8441, 151.0676)),
+    ("engie", (-33.8441, 151.0676)),
+    ("manuka", (-35.3198, 149.1398)),
+    ("blundstone", (-42.8815, 147.3347)),
+    ("bellerive", (-42.8815, 147.3347)),
+    ("utas", (-41.4342, 147.1377)),
+    ("york park", (-41.4342, 147.1377)),
+    ("mars stadium", (-37.5460, 143.8469)),
+    ("eureka", (-37.5460, 143.8469)),
+    ("cazaly", (-16.9204, 145.7708)),
+    ("tio", (-12.4012, 130.8773)),
+    ("traeger", (-23.6997, 133.8807)),
+    ("norwood", (-34.9209, 138.6298)),
+)
+
+
+def _normalize_text(value: str) -> str:
+    return " ".join(value.lower().strip().split())
+
+
+def _infer_venue_state(venue: str) -> Optional[str]:
+    norm = _normalize_text(venue)
+    for needle, state in VENUE_STATE_HINTS:
+        if needle in norm:
+            return state
+    return None
+
+
+def _infer_venue_coords(venue: str) -> Optional[Tuple[float, float]]:
+    norm = _normalize_text(venue)
+    for needle, coords in VENUE_COORD_HINTS:
+        if needle in norm:
+            return coords
+    return None
+
+
+def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    r_km = 6371.0
+    phi1 = math.radians(lat1)
+    phi2 = math.radians(lat2)
+    d_phi = math.radians(lat2 - lat1)
+    d_lambda = math.radians(lon2 - lon1)
+    a = (
+        math.sin(d_phi / 2.0) ** 2
+        + math.cos(phi1) * math.cos(phi2) * math.sin(d_lambda / 2.0) ** 2
+    )
+    return 2.0 * r_km * math.atan2(math.sqrt(a), math.sqrt(max(0.0, 1.0 - a)))
+
+
+def _round_progress(round_label: str) -> float:
+    if is_finals_round(round_label):
+        return 1.0
+    return min(1.0, max(0.0, round_sort_value(round_label) / 24.0))
+
+
+def _disagreement_bucket(disagreement: float) -> str:
+    abs_dis = abs(disagreement)
+    if abs_dis < 7.0:
+        return "small"
+    if abs_dis < 14.0:
+        return "medium"
+    return "large"
+
+
+class TeamFeatureTracker:
+    def __init__(self):
+        self.margin_ewma = {
+            0.1: defaultdict(float),
+            0.3: defaultdict(float),
+            0.5: defaultdict(float),
+        }
+        self.margin_history: Dict[str, deque] = defaultdict(lambda: deque(maxlen=10))
+        self.last_match_date: Dict[str, date] = {}
+
+    def _rolling_mean(self, team_name: str, window: int) -> float:
+        history = self.margin_history[team_name]
+        if not history:
+            return 0.0
+        values = list(history)[-window:]
+        return float(sum(values) / len(values))
+
+    def _rest_days(self, team_name: str, match_date: date) -> float:
+        previous = self.last_match_date.get(team_name)
+        if previous is None:
+            return 7.0
+        return float((match_date - previous).days)
+
+    def _travel_km(self, team_name: str, venue: str) -> float:
+        team_coords = TEAM_HOME_COORDS.get(team_name)
+        venue_coords = _infer_venue_coords(venue)
+        if team_coords is None or venue_coords is None:
+            return 0.0
+        return _haversine_km(team_coords[0], team_coords[1], venue_coords[0], venue_coords[1])
+
+    def _interstate_flag(self, team_name: str, venue: str) -> float:
+        team_state = TEAM_HOME_STATE.get(team_name)
+        venue_state = _infer_venue_state(venue)
+        if team_state is None or venue_state is None:
+            return 0.0
+        return 1.0 if team_state != venue_state else 0.0
+
+    def pre_match_features(self, match: "MatchRow") -> Dict[str, float]:
+        match_date = match.date.date()
+        home_rest = self._rest_days(match.home_team, match_date)
+        away_rest = self._rest_days(match.away_team, match_date)
+        home_travel = self._travel_km(match.home_team, match.venue)
+        away_travel = self._travel_km(match.away_team, match.venue)
+        home_interstate = self._interstate_flag(match.home_team, match.venue)
+        away_interstate = self._interstate_flag(match.away_team, match.venue)
+        return {
+            "form_ewma_01_diff": self.margin_ewma[0.1][match.home_team] - self.margin_ewma[0.1][match.away_team],
+            "form_ewma_03_diff": self.margin_ewma[0.3][match.home_team] - self.margin_ewma[0.3][match.away_team],
+            "form_ewma_05_diff": self.margin_ewma[0.5][match.home_team] - self.margin_ewma[0.5][match.away_team],
+            "form_roll3_diff": self._rolling_mean(match.home_team, 3) - self._rolling_mean(match.away_team, 3),
+            "form_roll5_diff": self._rolling_mean(match.home_team, 5) - self._rolling_mean(match.away_team, 5),
+            "form_roll10_diff": self._rolling_mean(match.home_team, 10) - self._rolling_mean(match.away_team, 10),
+            "home_rest_days": home_rest,
+            "away_rest_days": away_rest,
+            "rest_days_diff": home_rest - away_rest,
+            "home_short_rest": 1.0 if home_rest <= 5.0 else 0.0,
+            "away_short_rest": 1.0 if away_rest <= 5.0 else 0.0,
+            "home_long_break": 1.0 if home_rest >= 9.0 else 0.0,
+            "away_long_break": 1.0 if away_rest >= 9.0 else 0.0,
+            "travel_km_diff": home_travel - away_travel,
+            "away_travel_km": away_travel,
+            "home_interstate": home_interstate,
+            "away_interstate": away_interstate,
+            "interstate_diff": home_interstate - away_interstate,
+            "season_progress": _round_progress(match.round_label),
+        }
+
+    def update(self, match: "MatchRow"):
+        home_margin = match.actual_margin
+        away_margin = -home_margin
+        for alpha, store in self.margin_ewma.items():
+            store[match.home_team] = (1.0 - alpha) * store[match.home_team] + alpha * home_margin
+            store[match.away_team] = (1.0 - alpha) * store[match.away_team] + alpha * away_margin
+        self.margin_history[match.home_team].append(home_margin)
+        self.margin_history[match.away_team].append(away_margin)
+        match_date = match.date.date()
+        self.last_match_date[match.home_team] = match_date
+        self.last_match_date[match.away_team] = match_date
+
+
+class KnownLineupTracker:
+    def __init__(self):
+        self.team_player_appearances: Dict[str, Dict[str, int]] = defaultdict(lambda: defaultdict(int))
+        self.team_last_lineup: Dict[str, set] = defaultdict(set)
+        self.team_matches_seen: Dict[str, int] = defaultdict(int)
+
+    @staticmethod
+    def _lineup_names(
+        match_id: str,
+        team_name: str,
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ) -> List[str]:
+        rows = lineups.get((match_id, team_name), [])
+        names = []
+        for row in rows:
+            name = str(row.get("player_name", "")).strip()
+            if name:
+                names.append(name)
+        return names
+
+    def _team_lineup_features(
+        self,
+        team_name: str,
+        player_names: List[str],
+    ) -> Tuple[float, float, float, float]:
+        if not player_names:
+            return 0.0, 0.0, 0.0, 0.0
+        appearances = self.team_player_appearances[team_name]
+        lineup_set = set(player_names)
+        known = sum(1 for name in player_names if appearances.get(name, 0) > 0)
+        debut = sum(1 for name in player_names if appearances.get(name, 0) == 0)
+        last = self.team_last_lineup.get(team_name, set())
+        returning = len(lineup_set & last)
+        size = float(len(lineup_set))
+        known_ratio = known / size
+        debut_ratio = debut / size
+        returning_ratio = (returning / size) if last else 0.0
+        return known_ratio, returning_ratio, debut_ratio, size
+
+    def pre_match_features(
+        self,
+        match: "MatchRow",
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ) -> Dict[str, float]:
+        home_players = self._lineup_names(match.match_id, match.home_team, lineups)
+        away_players = self._lineup_names(match.match_id, match.away_team, lineups)
+        home_known, home_returning, home_debut, home_size = self._team_lineup_features(match.home_team, home_players)
+        away_known, away_returning, away_debut, away_size = self._team_lineup_features(match.away_team, away_players)
+        return {
+            "lineup_known_diff": home_known - away_known,
+            "lineup_returning_diff": home_returning - away_returning,
+            "lineup_debut_diff": home_debut - away_debut,
+            "lineup_size_diff": home_size - away_size,
+            "lineup_volatility": home_debut + away_debut,
+        }
+
+    def update(
+        self,
+        match: "MatchRow",
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ):
+        for team_name in (match.home_team, match.away_team):
+            names = self._lineup_names(match.match_id, team_name, lineups)
+            if not names:
+                continue
+            lineup_set = set(names)
+            for name in lineup_set:
+                self.team_player_appearances[team_name][name] += 1
+            self.team_last_lineup[team_name] = lineup_set
+            self.team_matches_seen[team_name] += 1
+
+
+class LineupStrengthTracker:
+    def __init__(self):
+        self.player_rating: Dict[str, float] = defaultdict(float)
+        self.player_games: Dict[str, int] = defaultdict(int)
+        self.player_last_team: Dict[str, str] = {}
+
+    @staticmethod
+    def _lineup_rows(
+        match_id: str,
+        team_name: str,
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ) -> List[dict]:
+        return list(lineups.get((match_id, team_name), []))
+
+    def _team_lineup_strength(
+        self,
+        rows: List[dict],
+    ) -> Tuple[float, float, float]:
+        if not rows:
+            return 0.0, 0.0, 0.0
+        player_names = [str(row.get("player_name", "")).strip() for row in rows]
+        player_names = [name for name in player_names if name]
+        if not player_names:
+            return 0.0, 0.0, 0.0
+
+        ratings = [self.player_rating[name] for name in player_names if self.player_games[name] > 0]
+        games = [self.player_games[name] for name in player_names]
+        if ratings:
+            strength = float(sum(ratings) / len(ratings))
+            top_end = float(sum(sorted(ratings, reverse=True)[:4]) / min(4, len(ratings)))
+        else:
+            strength = 0.0
+            top_end = 0.0
+        experience = float(sum(games) / max(1, len(games)))
+        return strength, experience, top_end
+
+    def pre_match_features(
+        self,
+        match: "MatchRow",
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ) -> Dict[str, float]:
+        home_rows = self._lineup_rows(match.match_id, match.home_team, lineups)
+        away_rows = self._lineup_rows(match.match_id, match.away_team, lineups)
+        home_strength, home_experience, home_top_end = self._team_lineup_strength(home_rows)
+        away_strength, away_experience, away_top_end = self._team_lineup_strength(away_rows)
+        return {
+            "lineup_strength_diff": home_strength - away_strength,
+            "lineup_experience_diff": home_experience - away_experience,
+            "lineup_top_end_diff": home_top_end - away_top_end,
+        }
+
+    def _player_impact(self, row: dict) -> float:
+        disposals = float(row.get("disposals", 0.0) or 0.0)
+        goals = float(row.get("goals", 0.0) or 0.0)
+        behinds = float(row.get("behinds", 0.0) or 0.0)
+        clearances = float(row.get("clearances", 0.0) or 0.0)
+        tackles = float(row.get("tackles", 0.0) or 0.0)
+        inside_50s = float(row.get("inside_50s", 0.0) or 0.0)
+        contested = float(row.get("contested_possessions", 0.0) or 0.0)
+        marks = float(row.get("marks", 0.0) or 0.0)
+        goal_assists = float(row.get("goal_assists", 0.0) or 0.0)
+        percent_played = float(row.get("percent_played", 0.0) or 0.0)
+        tog_weight = max(0.35, min(1.35, percent_played / 75.0))
+        raw_score = (
+            0.045 * disposals
+            + 1.35 * goals
+            + 0.55 * behinds
+            + 0.55 * clearances
+            + 0.40 * tackles
+            + 0.28 * inside_50s
+            + 0.22 * contested
+            + 0.18 * marks
+            + 0.35 * goal_assists
+        )
+        return tog_weight * raw_score
+
+    def update(
+        self,
+        match: "MatchRow",
+        lineups: Dict[Tuple[str, str], List[dict]],
+    ):
+        for team_name in (match.home_team, match.away_team):
+            rows = self._lineup_rows(match.match_id, team_name, lineups)
+            for row in rows:
+                player_name = str(row.get("player_name", "")).strip()
+                if not player_name:
+                    continue
+                impact = self._player_impact(row)
+                prior = self.player_rating[player_name]
+                if self.player_games[player_name] <= 0:
+                    updated = impact
+                else:
+                    updated = 0.82 * prior + 0.18 * impact
+                self.player_rating[player_name] = updated
+                self.player_games[player_name] += 1
+                self.player_last_team[player_name] = team_name
+
+
+class DisagreementReliabilityTracker:
+    def __init__(self):
+        self.counts: Dict[Tuple[str, str, str], int] = defaultdict(int)
+        self.correct: Dict[Tuple[str, str, str], int] = defaultdict(int)
+
+    def _favorite_bucket(self, implied_home_prob: Optional[float]) -> str:
+        if implied_home_prob is None:
+            return "unknown"
+        if implied_home_prob > 0.58:
+            return "home_fav"
+        if implied_home_prob < 0.42:
+            return "away_fav"
+        return "coin"
+
+    def _sigma_bucket(self, market_sigma: float) -> str:
+        if market_sigma < 24.0:
+            return "low_sigma"
+        if market_sigma < 34.0:
+            return "mid_sigma"
+        return "high_sigma"
+
+    def _context_key(
+        self,
+        round_label: str,
+        implied_home_prob: Optional[float],
+        market_sigma: float,
+        disagreement: float,
+    ) -> Tuple[str, str, str]:
+        return (
+            "finals" if is_finals_round(round_label) else "regular",
+            _disagreement_bucket(disagreement),
+            f"{self._favorite_bucket(implied_home_prob)}_{self._sigma_bucket(market_sigma)}",
+        )
+
+    def expected_accuracy(
+        self,
+        round_label: str,
+        implied_home_prob: Optional[float],
+        market_sigma: float,
+        disagreement: float,
+    ) -> float:
+        key = self._context_key(round_label, implied_home_prob, market_sigma, disagreement)
+        count = self.counts.get(key, 0)
+        correct = self.correct.get(key, 0)
+        # Smoothed context hit-rate. 0.5 prior avoids overfitting tiny buckets.
+        return (correct + 8.0 * 0.5) / (count + 8.0)
+
+    def update(
+        self,
+        round_label: str,
+        implied_home_prob: Optional[float],
+        market_sigma: float,
+        disagreement: float,
+        actual_minus_anchor: float,
+    ):
+        if abs(disagreement) < 1.0:
+            return
+        key = self._context_key(round_label, implied_home_prob, market_sigma, disagreement)
+        self.counts[key] += 1
+        if math.copysign(1.0, disagreement) == math.copysign(1.0, actual_minus_anchor):
+            self.correct[key] += 1
 
 
 def canonical_team_name(team_name: str) -> str:
@@ -211,8 +696,20 @@ def load_market_xlsx(path: Optional[str]) -> Dict[Tuple[date, str, str], dict]:
             "Home Team": "home_team",
             "Away Team": "away_team",
             "Home Line Close": "home_line_close",
+            "Home Line Open": "home_line_open",
+            "Home Line Min": "home_line_min",
+            "Home Line Max": "home_line_max",
             "Home Odds": "home_odds",
             "Away Odds": "away_odds",
+            "Home Odds Open": "home_odds_open",
+            "Away Odds Open": "away_odds_open",
+            "Home Odds Close": "home_odds_close",
+            "Away Odds Close": "away_odds_close",
+            "Total Score Open": "total_score_open",
+            "Total Score Min": "total_score_min",
+            "Total Score Max": "total_score_max",
+            "Total Score Close": "total_score_close",
+            "Bookmakers Surveyed": "bookmakers_surveyed",
             "Date": "date",
         }
     )
@@ -220,21 +717,56 @@ def load_market_xlsx(path: Optional[str]) -> Dict[Tuple[date, str, str], dict]:
     if not required.issubset(set(frame.columns)):
         return market_rows
 
-    frame = frame[list(required)].dropna(subset=["date", "home_team", "away_team"])
+    optional = {
+        "home_line_open",
+        "home_line_min",
+        "home_line_max",
+        "home_odds_open",
+        "away_odds_open",
+        "home_odds_close",
+        "away_odds_close",
+        "total_score_open",
+        "total_score_min",
+        "total_score_max",
+        "total_score_close",
+        "bookmakers_surveyed",
+    }
+    available_columns = list(required | (optional & set(frame.columns)))
+    frame = frame[available_columns].dropna(subset=["date", "home_team", "away_team"])
     frame["date"] = pd.to_datetime(frame["date"], errors="coerce").dt.date
     frame = frame.dropna(subset=["date"])
+
+    def _as_float(value) -> Optional[float]:
+        if value != value:
+            return None
+        try:
+            return float(value)
+        except (TypeError, ValueError):
+            return None
 
     for row in frame.to_dict(orient="records"):
         home_team = canonical_team_name(str(row["home_team"]).strip())
         away_team = canonical_team_name(str(row["away_team"]).strip())
         key = (row["date"], home_team, away_team)
-        home_line_close = row["home_line_close"]
-        home_odds = row["home_odds"]
-        away_odds = row["away_odds"]
+        home_line_close = row.get("home_line_close")
+        home_odds = row.get("home_odds")
+        away_odds = row.get("away_odds")
         market_rows[key] = {
-            "home_line_close": float(home_line_close) if home_line_close == home_line_close else None,
-            "home_odds": float(home_odds) if home_odds == home_odds else None,
-            "away_odds": float(away_odds) if away_odds == away_odds else None,
+            "home_line_close": _as_float(home_line_close),
+            "home_line_open": _as_float(row.get("home_line_open")),
+            "home_line_min": _as_float(row.get("home_line_min")),
+            "home_line_max": _as_float(row.get("home_line_max")),
+            "home_odds": _as_float(home_odds),
+            "away_odds": _as_float(away_odds),
+            "home_odds_open": _as_float(row.get("home_odds_open")),
+            "away_odds_open": _as_float(row.get("away_odds_open")),
+            "home_odds_close": _as_float(row.get("home_odds_close")),
+            "away_odds_close": _as_float(row.get("away_odds_close")),
+            "total_score_open": _as_float(row.get("total_score_open")),
+            "total_score_min": _as_float(row.get("total_score_min")),
+            "total_score_max": _as_float(row.get("total_score_max")),
+            "total_score_close": _as_float(row.get("total_score_close")),
+            "bookmakers_surveyed": _as_float(row.get("bookmakers_surveyed")),
         }
 
     return market_rows
@@ -1797,95 +2329,747 @@ def _market_sigma_from_spread_and_probability(
     return max(12.0, min(80.0, sigma))
 
 
-def _market_residual_features(row: dict) -> np.ndarray:
-    internal_margin = row["internal_margin"]
-    anchor_margin = row["anchor_margin"]
-    disagreement = internal_margin - anchor_margin
-    implied_prob = row.get("implied_home_prob")
-    market_sigma = row.get("market_sigma", 30.0)
-    implied_edge = 0.0 if implied_prob is None else (implied_prob - 0.5) * 2.0
-    finals_flag = 1.0 if is_finals_round(row["round_label"]) else 0.0
+def _split_train_validation_rows(
+    history_rows: List[dict],
+    min_train_rows: int,
+    min_validation_rows: int,
+) -> Tuple[List[dict], List[dict]]:
+    years = sorted({row["year"] for row in history_rows})
+    if len(years) < 2:
+        return history_rows, history_rows
+    validation_year = years[-1]
+    train_rows = [row for row in history_rows if row["year"] < validation_year]
+    validation_rows = [row for row in history_rows if row["year"] == validation_year]
+    if len(train_rows) < min_train_rows or len(validation_rows) < min_validation_rows:
+        return history_rows, history_rows
+    return train_rows, validation_rows
+
+
+def _ridge_fit_coefficients(x: np.ndarray, y: np.ndarray, alpha: float) -> np.ndarray:
+    if len(x) == 0:
+        return np.zeros(x.shape[1], dtype=float)
+    model = Ridge(alpha=alpha, fit_intercept=False)
+    model.fit(x, y)
+    return np.array(model.coef_, dtype=float)
+
+
+def _build_shrunken_venue_effect(
+    rows: List[dict],
+    residual_values: np.ndarray,
+    shrinkage: float,
+) -> Dict[str, float]:
+    sums: Dict[str, float] = defaultdict(float)
+    counts: Dict[str, int] = defaultdict(int)
+    for row, residual in zip(rows, residual_values):
+        venue = row.get("venue", "")
+        sums[venue] += float(residual)
+        counts[venue] += 1
+    return {venue: sums[venue] / (counts[venue] + shrinkage) for venue in sums}
+
+
+def _internal_adjustment_features(row: dict) -> np.ndarray:
     return np.array(
         [
             1.0,
-            anchor_margin / 40.0,
-            internal_margin / 30.0,
-            disagreement / 25.0,
-            abs(disagreement) / 25.0,
-            finals_flag,
-            implied_edge,
-            (market_sigma - 30.0) / 20.0,
+            row["internal_margin"] / 35.0,
+            row.get("form_ewma_01_diff", 0.0) / 25.0,
+            row.get("form_ewma_03_diff", 0.0) / 25.0,
+            row.get("form_ewma_05_diff", 0.0) / 25.0,
+            row.get("form_roll3_diff", 0.0) / 25.0,
+            row.get("form_roll5_diff", 0.0) / 25.0,
+            row.get("form_roll10_diff", 0.0) / 25.0,
+            row.get("rest_days_diff", 0.0) / 8.0,
+            row.get("home_short_rest", 0.0),
+            row.get("away_short_rest", 0.0),
+            row.get("home_long_break", 0.0),
+            row.get("away_long_break", 0.0),
+            row.get("travel_km_diff", 0.0) / 1000.0,
+            row.get("interstate_diff", 0.0),
+            row.get("lineup_known_diff", 0.0),
+            row.get("lineup_returning_diff", 0.0),
+            row.get("lineup_debut_diff", 0.0),
+            row.get("lineup_size_diff", 0.0) / 5.0,
+            row.get("lineup_strength_diff", 0.0) / 6.0,
+            row.get("lineup_experience_diff", 0.0) / 10.0,
+            row.get("lineup_top_end_diff", 0.0) / 6.0,
+            row.get("season_progress", 0.5) - 0.5,
+            1.0 if is_finals_round(row["round_label"]) else 0.0,
         ],
         dtype=float,
     )
 
 
-def _fit_ridge_from_rows(rows: List[dict], alpha: float) -> np.ndarray:
-    if not rows:
-        return np.zeros(8, dtype=float)
-    x = np.array([_market_residual_features(row) for row in rows], dtype=float)
-    y = np.array(
-        [max(-25.0, min(25.0, row["actual_margin"] - row["anchor_margin"])) for row in rows],
+def _fit_internal_margin_adjuster(history_rows: List[dict]) -> dict:
+    default = {"coef": np.zeros(24, dtype=float), "venue_effect": {}, "cap": 10.0}
+    if len(history_rows) < 140:
+        return default
+
+    train_rows, validation_rows = _split_train_validation_rows(
+        history_rows,
+        min_train_rows=120,
+        min_validation_rows=60,
+    )
+    x_train = np.array([_internal_adjustment_features(row) for row in train_rows], dtype=float)
+    y_train = np.array(
+        [max(-32.0, min(32.0, row["actual_margin"] - row["internal_margin"])) for row in train_rows],
         dtype=float,
     )
-    ridge = alpha * np.eye(x.shape[1], dtype=float)
-    ridge[0, 0] = 0.0
-    coef = np.linalg.solve(x.T @ x + ridge, x.T @ y)
-    return np.clip(coef, -15.0, 15.0)
+    x_validation = np.array([_internal_adjustment_features(row) for row in validation_rows], dtype=float)
+    y_validation = np.array(
+        [max(-32.0, min(32.0, row["actual_margin"] - row["internal_margin"])) for row in validation_rows],
+        dtype=float,
+    )
+
+    best_alpha = 10.0
+    best_shrinkage = 16.0
+    best_cap = 10.0
+    best_mae = float("inf")
+    for alpha in (1.0, 3.0, 10.0, 30.0, 60.0):
+        coef = _ridge_fit_coefficients(x_train, y_train, alpha=alpha)
+        train_pred = x_train @ coef
+        for shrinkage in (8.0, 16.0, 30.0, 50.0):
+            venue_effect = _build_shrunken_venue_effect(train_rows, y_train - train_pred, shrinkage)
+            for cap in (6.0, 8.0, 10.0, 12.0, 14.0):
+                validation_pred = []
+                for row, linear_pred in zip(validation_rows, x_validation @ coef):
+                    venue_adj = venue_effect.get(row.get("venue", ""), 0.0)
+                    adjustment = max(-cap, min(cap, float(linear_pred + venue_adj)))
+                    validation_pred.append(adjustment)
+                mae = float(np.mean(np.abs(y_validation - np.array(validation_pred, dtype=float))))
+                if mae < best_mae:
+                    best_mae = mae
+                    best_alpha = alpha
+                    best_shrinkage = shrinkage
+                    best_cap = cap
+
+    x_full = np.array([_internal_adjustment_features(row) for row in history_rows], dtype=float)
+    y_full = np.array(
+        [max(-32.0, min(32.0, row["actual_margin"] - row["internal_margin"])) for row in history_rows],
+        dtype=float,
+    )
+    coef = _ridge_fit_coefficients(x_full, y_full, alpha=best_alpha)
+    venue_effect = _build_shrunken_venue_effect(history_rows, y_full - (x_full @ coef), best_shrinkage)
+    return {"coef": coef, "venue_effect": venue_effect, "cap": best_cap}
+
+
+def _apply_internal_margin_adjuster(row: dict, config: dict) -> float:
+    if not config or "coef" not in config:
+        return row["internal_margin"]
+    features = _internal_adjustment_features(row)
+    venue_adjustment = config.get("venue_effect", {}).get(row.get("venue", ""), 0.0)
+    cap = float(config.get("cap", 10.0))
+    adjustment = float(features @ config["coef"] + venue_adjustment)
+    adjustment = max(-cap, min(cap, adjustment))
+    return row["internal_margin"] + adjustment
+
+
+def _market_anchor_features(row: dict) -> np.ndarray:
+    market_margin = row["market_margin"]
+    internal_margin = row["internal_margin"]
+    base_margin = row["base_margin"]
+    implied_prob = row.get("implied_home_prob")
+    implied_edge = 0.0 if implied_prob is None else (implied_prob - 0.5) * 2.0
+    sigma = float(row.get("market_sigma", 30.0))
+    sigma_norm = (sigma - 30.0) / 20.0
+    disagreement = internal_margin - market_margin
+    market_move = float(row.get("market_move", 0.0))
+    total_move = float(row.get("market_total_move", 0.0))
+    books = float(row.get("bookmakers_surveyed", 0.0))
+    return np.array(
+        [
+            1.0,
+            market_margin / 35.0,
+            base_margin / 35.0,
+            internal_margin / 35.0,
+            (base_margin - market_margin) / 28.0,
+            disagreement / 25.0,
+            abs(disagreement) / 25.0,
+            row.get("form_ewma_03_diff", 0.0) / 25.0,
+            row.get("rest_days_diff", 0.0) / 8.0,
+            row.get("travel_km_diff", 0.0) / 1000.0,
+            sigma_norm,
+            implied_edge,
+            abs(market_move) / 8.0,
+            total_move / 15.0,
+            books / 12.0,
+            row.get("lineup_strength_diff", 0.0) / 6.0,
+            row.get("lineup_experience_diff", 0.0) / 10.0,
+            row.get("lineup_top_end_diff", 0.0) / 6.0,
+            row.get("lineup_known_diff", 0.0),
+            row.get("lineup_debut_diff", 0.0),
+            row.get("season_progress", 0.5) - 0.5,
+            1.0 if is_finals_round(row["round_label"]) else 0.0,
+        ],
+        dtype=float,
+    )
+
+
+def _apply_market_anchor_model(row: dict, config: dict) -> float:
+    if row.get("market_margin") is None:
+        return row["base_margin"]
+    if not config or "coef" not in config:
+        return row["market_margin"]
+    features = _market_anchor_features(row)
+    raw_adjustment = float(features @ config["coef"])
+    sigma_norm = max(0.0, (float(row.get("market_sigma", 30.0)) - 30.0) / 20.0)
+    disagreement = abs(row["internal_margin"] - row["market_margin"])
+    disagreement_norm = max(0.0, (disagreement - 6.0) / 20.0)
+    damp = 1.0 / (
+        1.0
+        + float(config.get("sigma_k", 0.5)) * sigma_norm
+        + float(config.get("disagreement_k", 0.2)) * disagreement_norm
+    )
+    adjustment = damp * raw_adjustment
+    cap = float(config.get("cap", 4.0))
+    adjustment = max(-cap, min(cap, adjustment))
+    return row["market_margin"] + adjustment
+
+
+def _fit_market_anchor_model(history_rows: List[dict]) -> dict:
+    default = {"coef": np.zeros(22, dtype=float), "cap": 4.0, "sigma_k": 0.5, "disagreement_k": 0.2}
+    if len(history_rows) < 140:
+        return default
+
+    train_rows, validation_rows = _split_train_validation_rows(
+        history_rows,
+        min_train_rows=120,
+        min_validation_rows=60,
+    )
+    x_train = np.array([_market_anchor_features(row) for row in train_rows], dtype=float)
+    y_train = np.array(
+        [max(-25.0, min(25.0, row["actual_margin"] - row["market_margin"])) for row in train_rows],
+        dtype=float,
+    )
+    best_alpha = 10.0
+    best_cfg = dict(default)
+    best_mae = float("inf")
+
+    for alpha in (1.0, 3.0, 10.0, 25.0, 50.0):
+        coef = _ridge_fit_coefficients(x_train, y_train, alpha=alpha)
+        for cap in (2.0, 3.0, 4.0, 5.0, 7.0):
+            for sigma_k in (0.0, 0.3, 0.6, 0.9):
+                for disagreement_k in (0.0, 0.2, 0.4, 0.7):
+                    cfg = {
+                        "coef": coef,
+                        "cap": cap,
+                        "sigma_k": sigma_k,
+                        "disagreement_k": disagreement_k,
+                    }
+                    abs_errors = 0.0
+                    for row in validation_rows:
+                        pred = _apply_market_anchor_model(row, cfg)
+                        abs_errors += abs(row["actual_margin"] - pred)
+                    mae = abs_errors / max(1, len(validation_rows))
+                    if mae < best_mae:
+                        best_mae = mae
+                        best_alpha = alpha
+                        best_cfg = cfg
+
+    x_full = np.array([_market_anchor_features(row) for row in history_rows], dtype=float)
+    y_full = np.array(
+        [max(-25.0, min(25.0, row["actual_margin"] - row["market_margin"])) for row in history_rows],
+        dtype=float,
+    )
+    coef = _ridge_fit_coefficients(x_full, y_full, alpha=best_alpha)
+    return {
+        "coef": coef,
+        "cap": best_cfg["cap"],
+        "sigma_k": best_cfg["sigma_k"],
+        "disagreement_k": best_cfg["disagreement_k"],
+    }
+
+
+def _market_residual_features(row: dict) -> np.ndarray:
+    anchor_margin = row["anchor_margin"]
+    internal_margin = row["internal_margin"]
+    base_margin = row["base_margin"]
+    disagreement = internal_margin - anchor_margin
+    abs_disagreement = abs(disagreement)
+    disagreement_bucket = _disagreement_bucket(disagreement)
+    round_number = round_sort_value(row["round_label"])
+    is_early = 1.0 if (not is_finals_round(row["round_label"]) and round_number <= 6) else 0.0
+    is_late = 1.0 if (not is_finals_round(row["round_label"]) and round_number >= 17) else 0.0
+
+    implied_prob = row.get("implied_home_prob")
+    implied_edge = 0.0 if implied_prob is None else (implied_prob - 0.5) * 2.0
+    market_sigma = float(row.get("market_sigma", 30.0))
+    sigma_norm = (market_sigma - 30.0) / 20.0
+    market_move = float(row.get("market_move", 0.0))
+    total_move = float(row.get("market_total_move", 0.0))
+    finals_flag = 1.0 if is_finals_round(row["round_label"]) else 0.0
+    disagreement_accuracy = float(row.get("disagreement_direction_accuracy", 0.5))
+    return np.array(
+        [
+            1.0,
+            anchor_margin / 35.0,
+            internal_margin / 35.0,
+            base_margin / 35.0,
+            disagreement / 25.0,
+            abs_disagreement / 25.0,
+            (disagreement * disagreement) / 400.0,
+            1.0 if disagreement_bucket == "small" else 0.0,
+            1.0 if disagreement_bucket == "medium" else 0.0,
+            1.0 if disagreement_bucket == "large" else 0.0,
+            finals_flag,
+            implied_edge,
+            sigma_norm,
+            row.get("season_progress", 0.5) - 0.5,
+            is_early,
+            is_late,
+            row.get("form_ewma_03_diff", 0.0) / 25.0,
+            row.get("form_roll5_diff", 0.0) / 25.0,
+            row.get("rest_days_diff", 0.0) / 8.0,
+            row.get("travel_km_diff", 0.0) / 1000.0,
+            row.get("interstate_diff", 0.0),
+            disagreement * finals_flag / 25.0,
+            disagreement * row.get("form_ewma_03_diff", 0.0) / 500.0,
+            disagreement * internal_margin / 700.0,
+            disagreement_accuracy - 0.5,
+            disagreement * (disagreement_accuracy - 0.5) / 25.0,
+            1.0 if implied_prob is not None and implied_prob > 0.58 else 0.0,
+            1.0 if implied_prob is not None and implied_prob < 0.42 else 0.0,
+            abs(market_move) / 8.0,
+            total_move / 15.0,
+            row.get("lineup_strength_diff", 0.0) / 6.0,
+            row.get("lineup_experience_diff", 0.0) / 10.0,
+            row.get("lineup_top_end_diff", 0.0) / 6.0,
+            row.get("lineup_known_diff", 0.0),
+            row.get("lineup_debut_diff", 0.0),
+            disagreement * abs(market_move) / 80.0,
+            disagreement * row.get("lineup_strength_diff", 0.0) / 90.0,
+        ],
+        dtype=float,
+    )
+
+
+def _market_residual_meta_features(row: dict) -> np.ndarray:
+    disagreement = row["internal_margin"] - row["anchor_margin"]
+    sigma_norm = (float(row.get("market_sigma", 30.0)) - 30.0) / 20.0
+    market_move = float(row.get("market_move", 0.0))
+    return np.array(
+        [
+            1.0,
+            disagreement / 25.0,
+            abs(disagreement) / 25.0,
+            sigma_norm,
+            row.get("season_progress", 0.5) - 0.5,
+            row.get("disagreement_direction_accuracy", 0.5) - 0.5,
+            abs(market_move) / 8.0,
+            row.get("lineup_strength_diff", 0.0) / 6.0,
+        ],
+        dtype=float,
+    )
+
+
+def _safe_fit_predict(model, x_train: np.ndarray, y_train: np.ndarray, x_predict: np.ndarray) -> np.ndarray:
+    try:
+        model.fit(x_train, y_train)
+        return np.array(model.predict(x_predict), dtype=float)
+    except Exception:
+        return np.zeros(len(x_predict), dtype=float)
+
+
+def _chronological_oof_predictions(
+    x: np.ndarray,
+    y: np.ndarray,
+    years: np.ndarray,
+    model_builders: List,
+    min_train_rows: int = 120,
+) -> np.ndarray:
+    if len(x) == 0:
+        return np.zeros((0, len(model_builders)), dtype=float)
+    oof = np.full((len(x), len(model_builders)), np.nan, dtype=float)
+    unique_years = sorted(set(int(year) for year in years))
+    for validation_year in unique_years[1:]:
+        train_idx = np.where(years < validation_year)[0]
+        validation_idx = np.where(years == validation_year)[0]
+        if len(train_idx) < min_train_rows or len(validation_idx) == 0:
+            continue
+        for model_idx, builder in enumerate(model_builders):
+            model = builder()
+            preds = _safe_fit_predict(model, x[train_idx], y[train_idx], x[validation_idx])
+            oof[validation_idx, model_idx] = preds
+    return oof
+
+
+def _fit_residual_base_builders(
+    x_train: np.ndarray,
+    y_train: np.ndarray,
+    x_validation: np.ndarray,
+    y_validation: np.ndarray,
+):
+    def mae(preds: np.ndarray) -> float:
+        return float(np.mean(np.abs(y_validation - preds)))
+
+    best_ridge_alpha = 10.0
+    best_ridge_mae = float("inf")
+    for alpha in (1.0, 3.0, 10.0, 25.0, 60.0):
+        model = Ridge(alpha=alpha, fit_intercept=False)
+        preds = _safe_fit_predict(model, x_train, y_train, x_validation)
+        score = mae(preds)
+        if score < best_ridge_mae:
+            best_ridge_mae = score
+            best_ridge_alpha = alpha
+
+    best_huber_alpha = 0.001
+    best_huber_eps = 1.4
+    best_huber_mae = float("inf")
+    for alpha in (0.0003, 0.001, 0.003):
+        for epsilon in (1.25, 1.4, 1.6):
+            model = HuberRegressor(alpha=alpha, epsilon=epsilon, fit_intercept=False, max_iter=500)
+            preds = _safe_fit_predict(model, x_train, y_train, x_validation)
+            score = mae(preds)
+            if score < best_huber_mae:
+                best_huber_mae = score
+                best_huber_alpha = alpha
+                best_huber_eps = epsilon
+
+    best_hgb = {"learning_rate": 0.05, "max_depth": 4, "min_samples_leaf": 10, "l2_regularization": 0.0}
+    best_hgb_mae = float("inf")
+    for learning_rate in (0.03, 0.06):
+        for max_depth in (3, 5):
+            for min_samples_leaf in (8, 14):
+                for l2_regularization in (0.0, 0.3):
+                    model = HistGradientBoostingRegressor(
+                        loss="absolute_error",
+                        learning_rate=learning_rate,
+                        max_depth=max_depth,
+                        min_samples_leaf=min_samples_leaf,
+                        l2_regularization=l2_regularization,
+                        max_iter=140,
+                        random_state=42,
+                    )
+                    preds = _safe_fit_predict(model, x_train, y_train, x_validation)
+                    score = mae(preds)
+                    if score < best_hgb_mae:
+                        best_hgb_mae = score
+                        best_hgb = {
+                            "learning_rate": learning_rate,
+                            "max_depth": max_depth,
+                            "min_samples_leaf": min_samples_leaf,
+                            "l2_regularization": l2_regularization,
+                        }
+
+    return [
+        lambda alpha=best_ridge_alpha: Ridge(alpha=alpha, fit_intercept=False),
+        lambda alpha=best_huber_alpha, eps=best_huber_eps: HuberRegressor(
+            alpha=alpha,
+            epsilon=eps,
+            fit_intercept=False,
+            max_iter=500,
+        ),
+        lambda params=best_hgb: HistGradientBoostingRegressor(
+            loss="absolute_error",
+            learning_rate=params["learning_rate"],
+            max_depth=params["max_depth"],
+            min_samples_leaf=params["min_samples_leaf"],
+            l2_regularization=params["l2_regularization"],
+            max_iter=140,
+            random_state=42,
+        ),
+    ]
+
+
+def _fit_residual_core(history_rows: List[dict], model_builders: List) -> dict:
+    x = np.array([_market_residual_features(row) for row in history_rows], dtype=float)
+    y = np.array(
+        [max(-35.0, min(35.0, row["actual_margin"] - row["anchor_margin"])) for row in history_rows],
+        dtype=float,
+    )
+    years = np.array([row["year"] for row in history_rows], dtype=int)
+    base_models = []
+    for builder in model_builders:
+        model = builder()
+        _safe_fit_predict(model, x, y, x[:1])
+        base_models.append(model)
+
+    oof_base = _chronological_oof_predictions(x, y, years, model_builders, min_train_rows=120)
+    meta_extra = np.array([_market_residual_meta_features(row) for row in history_rows], dtype=float)
+    valid_mask = ~np.isnan(oof_base).any(axis=1)
+    if int(np.sum(valid_mask)) < 120:
+        in_sample_base = np.column_stack([np.array(model.predict(x), dtype=float) for model in base_models])
+        meta_x = np.hstack([in_sample_base, meta_extra])
+        meta_y = y
+        calibration_x = meta_x
+        calibration_y = y
+    else:
+        meta_x = np.hstack([oof_base[valid_mask], meta_extra[valid_mask]])
+        meta_y = y[valid_mask]
+        calibration_x = meta_x
+        calibration_y = meta_y
+
+    best_meta_alpha = 3.0
+    best_meta_mae = float("inf")
+    for alpha in (0.3, 1.0, 3.0, 8.0, 20.0):
+        meta_model = Ridge(alpha=alpha, fit_intercept=False)
+        meta_model.fit(meta_x, meta_y)
+        preds = np.array(meta_model.predict(meta_x), dtype=float)
+        score = float(np.mean(np.abs(meta_y - preds)))
+        if score < best_meta_mae:
+            best_meta_mae = score
+            best_meta_alpha = alpha
+
+    meta_model = Ridge(alpha=best_meta_alpha, fit_intercept=False)
+    meta_model.fit(meta_x, meta_y)
+    calibration_raw = np.array(meta_model.predict(calibration_x), dtype=float)
+    calibrator = None
+    if len(calibration_raw) >= 120 and np.ptp(calibration_raw) > 1e-6:
+        try:
+            isotonic = IsotonicRegression(out_of_bounds="clip")
+            isotonic.fit(calibration_raw, calibration_y)
+            mae_raw = float(np.mean(np.abs(calibration_y - calibration_raw)))
+            mae_iso = float(np.mean(np.abs(calibration_y - isotonic.predict(calibration_raw))))
+            if mae_iso + 0.01 < mae_raw:
+                calibrator = isotonic
+        except Exception:
+            calibrator = None
+
+    abs_model = Ridge(alpha=12.0, fit_intercept=False)
+    abs_model.fit(x, np.abs(y))
+    return {
+        "base_models": base_models,
+        "meta_model": meta_model,
+        "calibrator": calibrator,
+        "abs_model": abs_model,
+    }
+
+
+def _predict_raw_market_residual(row: dict, config: dict) -> float:
+    if not config or not config.get("base_models") or config.get("meta_model") is None:
+        return 0.0
+    features = _market_residual_features(row).reshape(1, -1)
+    meta_features = _market_residual_meta_features(row).reshape(1, -1)
+    base_preds = np.array([float(model.predict(features)[0]) for model in config["base_models"]], dtype=float)
+    meta_x = np.hstack([base_preds.reshape(1, -1), meta_features])
+    raw = float(config["meta_model"].predict(meta_x)[0])
+    calibrator = config.get("calibrator")
+    if calibrator is not None:
+        raw = float(calibrator.predict(np.array([raw], dtype=float))[0])
+    return raw
+
+
+def _safety_context_key(row: dict) -> Tuple[str, str, str]:
+    finals_bucket = "finals" if is_finals_round(row["round_label"]) else "regular"
+    disagreement_bucket = _disagreement_bucket(row["internal_margin"] - row["anchor_margin"])
+    market_sigma = float(row.get("market_sigma", 30.0))
+    if market_sigma < 24.0:
+        sigma_bucket = "sigma_low"
+    elif market_sigma < 34.0:
+        sigma_bucket = "sigma_mid"
+    else:
+        sigma_bucket = "sigma_high"
+    return finals_bucket, disagreement_bucket, sigma_bucket
+
+
+def _build_context_caps(history_rows: List[dict], quantile: float) -> Tuple[Dict[Tuple[str, str, str], float], float]:
+    grouped: Dict[Tuple[str, str, str], List[float]] = defaultdict(list)
+    residual_abs = []
+    for row in history_rows:
+        value = abs(row["actual_margin"] - row["anchor_margin"])
+        residual_abs.append(value)
+        grouped[_safety_context_key(row)].append(value)
+    if not residual_abs:
+        return {}, 5.0
+    global_cap = float(np.quantile(np.array(residual_abs, dtype=float), quantile))
+    context_caps = {}
+    for key, values in grouped.items():
+        if len(values) < 24:
+            continue
+        context_caps[key] = float(np.quantile(np.array(values, dtype=float), quantile))
+    return context_caps, global_cap
+
+
+def _apply_market_residual_safety(
+    row: dict,
+    raw_correction: float,
+    predicted_abs_residual: float,
+    config: dict,
+) -> float:
+    sigma = float(row.get("market_sigma", 30.0))
+    sigma_norm = max(0.0, (sigma - 30.0) / 20.0)
+    disagreement = abs(row["internal_margin"] - row["anchor_margin"])
+    disagreement_norm = max(0.0, (disagreement - 6.0) / 20.0)
+    reliability = float(row.get("disagreement_direction_accuracy", 0.5))
+    line_move_norm = abs(float(row.get("market_move", 0.0))) / 8.0
+    lineup_volatility = max(0.0, min(2.0, float(row.get("lineup_volatility", 0.0))))
+
+    damp = 1.0 / (
+        1.0
+        + float(config.get("sigma_k", 0.6)) * sigma_norm
+        + float(config.get("disagreement_k", 0.25)) * disagreement_norm
+        + float(config.get("line_move_k", 0.0)) * line_move_norm
+        + float(config.get("lineup_k", 0.0)) * lineup_volatility
+    )
+    damp *= 1.0 + float(config.get("reliability_k", 0.2)) * ((reliability - 0.5) * 2.0)
+    damp = max(0.2, min(1.25, damp))
+
+    predicted_abs_residual = max(2.0, min(30.0, predicted_abs_residual))
+
+    context_caps = config.get("context_caps", {})
+    context_cap = context_caps.get(_safety_context_key(row), float(config.get("global_cap", 6.0)))
+    cap_scale = float(config.get("cap_scale", 0.7))
+    min_cap = float(config.get("min_cap", 3.0))
+    dynamic_cap = float(config.get("global_cap", 6.0)) + cap_scale * predicted_abs_residual
+    cap = max(min_cap, min(context_cap, dynamic_cap))
+
+    correction = damp * raw_correction * float(config.get("post_scale", 1.0))
+    return max(-cap, min(cap, correction))
 
 
 def _apply_market_residual_corrector(row: dict, config: dict) -> float:
-    raw_correction = float(_market_residual_features(row) @ config["coef"])
-    sigma = float(row.get("market_sigma", 30.0))
-    sigma_norm = max(0.0, (sigma - 30.0) / 20.0)
-    damp = 1.0 / (1.0 + config["sigma_k"] * sigma_norm)
-    correction = damp * raw_correction
-    cap = config["cap"]
-    correction = max(-cap, min(cap, correction))
+    if not config or not config.get("base_models") or config.get("meta_model") is None:
+        return row["anchor_margin"]
+
+    raw_correction = _predict_raw_market_residual(row, config)
+    abs_model = config.get("abs_model")
+    if abs_model is None:
+        predicted_abs_residual = float(config.get("global_cap", 6.0))
+    else:
+        try:
+            predicted_abs_residual = float(
+                abs_model.predict(_market_residual_features(row).reshape(1, -1))[0]
+            )
+        except Exception:
+            predicted_abs_residual = float(config.get("global_cap", 6.0))
+
+    correction = _apply_market_residual_safety(
+        row,
+        raw_correction=raw_correction,
+        predicted_abs_residual=predicted_abs_residual,
+        config=config,
+    )
     return row["anchor_margin"] + correction
 
 
 def _fit_market_residual_corrector(history_rows: List[dict]) -> dict:
-    default = {"coef": np.zeros(8, dtype=float), "cap": 5.0, "sigma_k": 0.6}
-    if len(history_rows) < 140:
+    default = {
+        "base_models": [],
+        "meta_model": None,
+        "calibrator": None,
+        "abs_model": None,
+        "context_caps": {},
+        "global_cap": 5.0,
+        "sigma_k": 0.6,
+        "disagreement_k": 0.25,
+        "reliability_k": 0.2,
+        "line_move_k": 0.0,
+        "lineup_k": 0.0,
+        "cap_scale": 0.7,
+        "min_cap": 3.0,
+        "post_scale": 1.0,
+    }
+    if len(history_rows) < 160:
         return default
 
-    years = sorted({row["year"] for row in history_rows})
-    if len(years) >= 2:
-        validation_year = years[-1]
-        train_rows = [row for row in history_rows if row["year"] < validation_year]
-        validation_rows = [row for row in history_rows if row["year"] == validation_year]
-        if len(train_rows) < 120 or len(validation_rows) < 60:
-            train_rows = history_rows
-            validation_rows = history_rows
-    else:
-        train_rows = history_rows
-        validation_rows = history_rows
+    train_rows, validation_rows = _split_train_validation_rows(
+        history_rows,
+        min_train_rows=140,
+        min_validation_rows=70,
+    )
+    x_train = np.array([_market_residual_features(row) for row in train_rows], dtype=float)
+    y_train = np.array(
+        [max(-35.0, min(35.0, row["actual_margin"] - row["anchor_margin"])) for row in train_rows],
+        dtype=float,
+    )
+    x_validation = np.array([_market_residual_features(row) for row in validation_rows], dtype=float)
+    y_validation = np.array(
+        [max(-35.0, min(35.0, row["actual_margin"] - row["anchor_margin"])) for row in validation_rows],
+        dtype=float,
+    )
+    model_builders = _fit_residual_base_builders(x_train, y_train, x_validation, y_validation)
+    core_train = _fit_residual_core(train_rows, model_builders)
 
-    alphas = (1.0, 3.0, 10.0, 30.0)
-    caps = (3.0, 4.0, 5.0, 6.0, 8.0)
-    sigma_ks = (0.0, 0.3, 0.6, 1.0)
-
-    best_cfg = default
-    best_alpha = 3.0
+    best_safety = {
+        "sigma_k": 0.6,
+        "disagreement_k": 0.25,
+        "reliability_k": 0.2,
+        "line_move_k": 0.0,
+        "lineup_k": 0.0,
+        "cap_scale": 0.7,
+        "min_cap": 3.0,
+        "post_scale": 1.0,
+        "quantile": 0.85,
+    }
     best_mae = float("inf")
-    for alpha in alphas:
-        coef = _fit_ridge_from_rows(train_rows, alpha)
-        for cap in caps:
-            for sigma_k in sigma_ks:
-                cfg = {"coef": coef, "cap": cap, "sigma_k": sigma_k}
-                abs_errors = 0.0
-                for row in validation_rows:
-                    pred = _apply_market_residual_corrector(row, cfg)
-                    abs_errors += abs(row["actual_margin"] - pred)
-                mae = abs_errors / len(validation_rows)
-                if mae < best_mae:
-                    best_mae = mae
-                    best_cfg = cfg
-                    best_alpha = alpha
+    validation_raw_corrections = [_predict_raw_market_residual(row, core_train) for row in validation_rows]
+    if core_train.get("abs_model") is not None:
+        validation_abs_predictions = [
+            float(core_train["abs_model"].predict(_market_residual_features(row).reshape(1, -1))[0])
+            for row in validation_rows
+        ]
+    else:
+        validation_abs_predictions = [5.0 for _ in validation_rows]
 
-    final_coef = _fit_ridge_from_rows(history_rows, alpha=best_alpha)
-    return {"coef": final_coef, "cap": best_cfg["cap"], "sigma_k": best_cfg["sigma_k"]}
+    for quantile in (0.82, 0.90):
+        context_caps, global_cap = _build_context_caps(train_rows, quantile=quantile)
+        trial = dict(core_train)
+        trial["context_caps"] = context_caps
+        trial["global_cap"] = global_cap
+        for sigma_k in (0.35, 0.75):
+            for disagreement_k in (0.1, 0.35):
+                for reliability_k in (0.0, 0.25):
+                    for line_move_k in (0.0, 0.35):
+                        for lineup_k in (0.0, 0.25):
+                            for cap_scale in (0.55, 0.85):
+                                for min_cap in (3.0, 4.0):
+                                    for post_scale in (0.6, 0.8, 1.0):
+                                        trial.update(
+                                            {
+                                                "sigma_k": sigma_k,
+                                                "disagreement_k": disagreement_k,
+                                                "reliability_k": reliability_k,
+                                                "line_move_k": line_move_k,
+                                                "lineup_k": lineup_k,
+                                                "cap_scale": cap_scale,
+                                                "min_cap": min_cap,
+                                                "post_scale": post_scale,
+                                            }
+                                        )
+                                        abs_errors = 0.0
+                                        for row, raw_correction, pred_abs in zip(
+                                            validation_rows,
+                                            validation_raw_corrections,
+                                            validation_abs_predictions,
+                                        ):
+                                            pred = row["anchor_margin"] + _apply_market_residual_safety(
+                                                row,
+                                                raw_correction=raw_correction,
+                                                predicted_abs_residual=pred_abs,
+                                                config=trial,
+                                            )
+                                            abs_errors += abs(row["actual_margin"] - pred)
+                                        mae = abs_errors / max(1, len(validation_rows))
+                                        if mae < best_mae:
+                                            best_mae = mae
+                                            best_safety = {
+                                                "sigma_k": sigma_k,
+                                                "disagreement_k": disagreement_k,
+                                                "reliability_k": reliability_k,
+                                                "line_move_k": line_move_k,
+                                                "lineup_k": lineup_k,
+                                                "cap_scale": cap_scale,
+                                                "min_cap": min_cap,
+                                                "post_scale": post_scale,
+                                                "quantile": quantile,
+                                            }
+
+    full_core = _fit_residual_core(history_rows, model_builders)
+    context_caps, global_cap = _build_context_caps(history_rows, quantile=best_safety["quantile"])
+    full_core.update(
+        {
+            "context_caps": context_caps,
+            "global_cap": global_cap,
+            "sigma_k": best_safety["sigma_k"],
+            "disagreement_k": best_safety["disagreement_k"],
+            "reliability_k": best_safety["reliability_k"],
+            "line_move_k": best_safety["line_move_k"],
+            "lineup_k": best_safety["lineup_k"],
+            "cap_scale": best_safety["cap_scale"],
+            "min_cap": best_safety["min_cap"],
+            "post_scale": best_safety["post_scale"],
+        }
+    )
+    return full_core
 
 
 def _build_avenue_experiments(base_predictions: List[PredictionRow]) -> List[PredictionRow]:
@@ -2083,13 +3267,23 @@ def walk_forward_predictions(
     context_model = VenueEnvironmentAdjustmentModel()
 
     predictions: List[PredictionRow] = []
+    form_tracker = TeamFeatureTracker()
+    lineup_tracker = KnownLineupTracker()
+    lineup_strength_tracker = LineupStrengthTracker()
+    disagreement_tracker = DisagreementReliabilityTracker()
+    internal_fit_history: List[dict] = []
+    internal_adjuster_by_year: Dict[int, dict] = {}
     market_fit_history: List[dict] = []
-    market_weight_by_year: Dict[int, float] = {}
+    market_anchor_config_by_year: Dict[int, dict] = {}
     market_residual_config_by_year: Dict[int, dict] = {}
-    market_fit_recent_years = 5
-    market_residual_recent_years = 3
+    internal_recent_years = 6
+    market_anchor_recent_years = 6
+    market_residual_recent_years = 4
 
     for match in matches:
+        pregame_features = form_tracker.pre_match_features(match)
+        pregame_features.update(lineup_tracker.pre_match_features(match, lineups))
+        pregame_features.update(lineup_strength_tracker.pre_match_features(match, lineups))
         match_margins: Dict[str, float] = {}
         for model_name, model in models.items():
             if model_name == "scoring_shots":
@@ -2124,6 +3318,149 @@ def walk_forward_predictions(
         )
         match_margins["team_context_env"] = context_margin
 
+        internal_adjustment_row = {
+            "year": match.year,
+            "round_label": match.round_label,
+            "venue": match.venue,
+            "internal_margin": match_margins["team_residual_lineup"],
+            **pregame_features,
+        }
+        if match.year not in internal_adjuster_by_year:
+            prior_internal_rows = [row for row in internal_fit_history if row["year"] < match.year]
+            fit_internal_rows = _recent_history_rows(prior_internal_rows, match.year, internal_recent_years)
+            internal_adjuster_by_year[match.year] = _fit_internal_margin_adjuster(fit_internal_rows)
+        internal_margin_enhanced = _apply_internal_margin_adjuster(
+            internal_adjustment_row,
+            internal_adjuster_by_year[match.year],
+        )
+
+        base_margin = match_margins["scoring_shots"]
+        market_row = market_data.get(context_key)
+        market_margin: Optional[float] = None
+        implied_home_prob: Optional[float] = None
+        market_sigma: float = 30.0
+        market_move: float = 0.0
+        market_range: float = 0.0
+        market_total_close: float = 165.0
+        market_total_move: float = 0.0
+        bookmakers_surveyed: float = 0.0
+        if market_row is not None and market_row.get("home_line_close") is not None:
+            # Betting line is typically home handicap; negative implies home favourite.
+            # Convert to predicted home margin orientation.
+            market_margin = -float(market_row["home_line_close"])
+            implied_home_prob = _market_implied_home_probability(
+                market_row.get("home_odds"),
+                market_row.get("away_odds"),
+            )
+            market_sigma = _market_sigma_from_spread_and_probability(market_margin, implied_home_prob)
+            home_line_open = market_row.get("home_line_open")
+            if home_line_open is not None:
+                market_move = market_margin - (-float(home_line_open))
+            home_line_min = market_row.get("home_line_min")
+            home_line_max = market_row.get("home_line_max")
+            if home_line_min is not None and home_line_max is not None:
+                market_range = abs(float(home_line_max) - float(home_line_min))
+            total_score_close = market_row.get("total_score_close")
+            total_score_open = market_row.get("total_score_open")
+            if total_score_close is not None:
+                market_total_close = float(total_score_close)
+                if total_score_open is not None:
+                    market_total_move = float(total_score_close) - float(total_score_open)
+            books = market_row.get("bookmakers_surveyed")
+            if books is not None:
+                bookmakers_surveyed = float(books)
+
+        if market_margin is None:
+            market_anchor_margin = 0.6 * base_margin + 0.4 * internal_margin_enhanced
+            market_only_margin = base_margin
+            market_residual_margin = market_anchor_margin
+        else:
+            if match.year not in market_anchor_config_by_year:
+                prior_market_rows = [row for row in market_fit_history if row["year"] < match.year]
+                anchor_fit_rows = _recent_history_rows(prior_market_rows, match.year, market_anchor_recent_years)
+                residual_fit_rows = _recent_history_rows(prior_market_rows, match.year, market_residual_recent_years)
+                market_anchor_config_by_year[match.year] = _fit_market_anchor_model(anchor_fit_rows)
+                market_residual_config_by_year[match.year] = _fit_market_residual_corrector(residual_fit_rows)
+
+            anchor_row = {
+                "year": match.year,
+                "round_label": match.round_label,
+                "venue": match.venue,
+                "market_margin": market_margin,
+                "base_margin": base_margin,
+                "internal_margin": internal_margin_enhanced,
+                "implied_home_prob": implied_home_prob,
+                "market_sigma": market_sigma,
+                "market_move": market_move,
+                "market_range": market_range,
+                "market_total_close": market_total_close,
+                "market_total_move": market_total_move,
+                "bookmakers_surveyed": bookmakers_surveyed,
+                **pregame_features,
+            }
+            market_anchor_margin = _apply_market_anchor_model(
+                anchor_row,
+                market_anchor_config_by_year[match.year],
+            )
+            disagreement = internal_margin_enhanced - market_anchor_margin
+            disagreement_accuracy = disagreement_tracker.expected_accuracy(
+                match.round_label,
+                implied_home_prob,
+                market_sigma,
+                disagreement,
+            )
+            residual_row = {
+                "year": match.year,
+                "round_label": match.round_label,
+                "venue": match.venue,
+                "anchor_margin": market_anchor_margin,
+                "base_margin": base_margin,
+                "internal_margin": internal_margin_enhanced,
+                "implied_home_prob": implied_home_prob,
+                "market_sigma": market_sigma,
+                "market_move": market_move,
+                "market_range": market_range,
+                "market_total_close": market_total_close,
+                "market_total_move": market_total_move,
+                "bookmakers_surveyed": bookmakers_surveyed,
+                "disagreement_direction_accuracy": disagreement_accuracy,
+                **pregame_features,
+            }
+            market_residual_margin = _apply_market_residual_corrector(
+                residual_row,
+                market_residual_config_by_year[match.year],
+            )
+            market_only_margin = market_margin
+
+            market_fit_history.append(
+                {
+                    "year": match.year,
+                    "round_label": match.round_label,
+                    "venue": match.venue,
+                    "actual_margin": match.actual_margin,
+                    "base_margin": base_margin,
+                    "market_margin": market_margin,
+                    "anchor_margin": market_anchor_margin,
+                    "internal_margin": internal_margin_enhanced,
+                    "implied_home_prob": implied_home_prob,
+                    "market_sigma": market_sigma,
+                    "market_move": market_move,
+                    "market_range": market_range,
+                    "market_total_close": market_total_close,
+                    "market_total_move": market_total_move,
+                    "bookmakers_surveyed": bookmakers_surveyed,
+                    "disagreement_direction_accuracy": disagreement_accuracy,
+                    **pregame_features,
+                }
+            )
+            disagreement_tracker.update(
+                match.round_label,
+                implied_home_prob,
+                market_sigma,
+                disagreement,
+                match.actual_margin - market_anchor_margin,
+            )
+
         if match.year >= scoring_year:
             predictions.append(
                 PredictionRow(
@@ -2153,49 +3490,20 @@ def walk_forward_predictions(
                     model_name="team_context_env",
                 )
             )
-
-            market_row = market_data.get(context_key)
-            market_margin: Optional[float] = None
-            implied_home_prob: Optional[float] = None
-            market_sigma: float = 30.0
-            if market_row is not None and market_row.get("home_line_close") is not None:
-                # Betting line is typically home handicap; negative implies home favourite.
-                # Convert to predicted home margin orientation.
-                market_margin = -float(market_row["home_line_close"])
-                implied_home_prob = _market_implied_home_probability(
-                    market_row.get("home_odds"),
-                    market_row.get("away_odds"),
+            predictions.append(
+                PredictionRow(
+                    match_id=match.match_id,
+                    year=match.year,
+                    round_label=match.round_label,
+                    home_team=match.home_team,
+                    away_team=match.away_team,
+                    venue=match.venue,
+                    actual_margin=match.actual_margin,
+                    predicted_margin=internal_margin_enhanced,
+                    abs_error=abs(match.actual_margin - internal_margin_enhanced),
+                    model_name="team_residual_lineup_form",
                 )
-                market_sigma = _market_sigma_from_spread_and_probability(market_margin, implied_home_prob)
-
-            if match.year not in market_weight_by_year:
-                prior_rows = [row for row in market_fit_history if row["year"] < match.year]
-                fit_rows = _recent_history_rows(prior_rows, match.year, market_fit_recent_years)
-                market_weight_by_year[match.year] = _fit_market_line_weight(fit_rows)
-                residual_fit_rows = _recent_history_rows(prior_rows, match.year, market_residual_recent_years)
-                market_residual_config_by_year[match.year] = _fit_market_residual_corrector(residual_fit_rows)
-
-            base_margin = match_margins["scoring_shots"]
-            if market_margin is None:
-                market_blend_margin = base_margin
-            else:
-                weight = market_weight_by_year[match.year]
-                market_blend_margin = weight * market_margin + (1.0 - weight) * base_margin
-
-            market_only_margin = market_margin if market_margin is not None else base_margin
-            if market_margin is None:
-                market_residual_margin = market_blend_margin
-            else:
-                residual_row = {
-                    "year": match.year,
-                    "round_label": match.round_label,
-                    "anchor_margin": market_blend_margin,
-                    "internal_margin": match_margins["team_residual_lineup"],
-                    "implied_home_prob": implied_home_prob,
-                    "market_sigma": market_sigma,
-                }
-                cfg = market_residual_config_by_year[match.year]
-                market_residual_margin = _apply_market_residual_corrector(residual_row, cfg)
+            )
 
             predictions.append(
                 PredictionRow(
@@ -2206,8 +3514,8 @@ def walk_forward_predictions(
                     away_team=match.away_team,
                     venue=match.venue,
                     actual_margin=match.actual_margin,
-                    predicted_margin=market_blend_margin,
-                    abs_error=abs(match.actual_margin - market_blend_margin),
+                    predicted_margin=market_anchor_margin,
+                    abs_error=abs(match.actual_margin - market_anchor_margin),
                     model_name="market_line_blend",
                 )
             )
@@ -2240,20 +3548,19 @@ def walk_forward_predictions(
                 )
             )
 
-            if market_margin is not None:
-                market_fit_history.append(
-                    {
-                        "year": match.year,
-                        "round_label": match.round_label,
-                        "actual_margin": match.actual_margin,
-                        "base_margin": base_margin,
-                        "market_margin": market_margin,
-                        "anchor_margin": market_blend_margin,
-                        "internal_margin": match_margins["team_residual_lineup"],
-                        "implied_home_prob": implied_home_prob,
-                        "market_sigma": market_sigma,
-                    }
-                )
+        internal_fit_history.append(
+            {
+                "year": match.year,
+                "round_label": match.round_label,
+                "venue": match.venue,
+                "actual_margin": match.actual_margin,
+                "internal_margin": match_margins["team_residual_lineup"],
+                **pregame_features,
+            }
+        )
+        form_tracker.update(match)
+        lineup_tracker.update(match, lineups)
+        lineup_strength_tracker.update(match, lineups)
 
     predictions.extend(_build_avenue_experiments(predictions))
     return predictions
