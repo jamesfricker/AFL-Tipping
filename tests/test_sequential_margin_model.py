@@ -1,535 +1,609 @@
 import csv
+import json
+import math
+from dataclasses import replace
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
+import pytest
 
-from src.mae_model.sequential_margin import (
-    BenchmarkShotVolumeModel,
+from src.mae_model.data import (
+    MarketQuote,
     MatchRow,
-    MatchContextRow,
-    SequentialMarginModel,
-    ShotVolumeConversionModel,
-    TerritoryShotChainModel,
-    VenueEnvironmentAdjustmentModel,
-    load_match_context_csv,
-    load_lineups_csv,
+    load_fixtures_csv,
+    load_market_csv,
     load_market_xlsx,
     load_matches_csv,
-    parse_match_date,
-    _market_implied_home_probability,
-    _market_sigma_from_spread_and_probability,
-    _recent_history_rows,
+    parse_timestamp,
+)
+from src.mae_model.predict_fixtures import main as predict_main
+from src.mae_model.run_backtest import main as backtest_main
+from src.mae_model.sequential_margin import (
+    PredictionRequest,
+    fit_market_weight,
+    predict_fixtures,
+    replay_predictions,
     summarize_predictions,
     walk_forward_predictions,
 )
 
 
-def _write_synthetic_matches(path: Path):
-    headers = [
-        "match_id",
-        "year",
-        "round",
-        "date",
-        "venue",
-        "time",
-        "home_team_name",
-        "home_team_score",
-        "away_team_name",
-        "away_team_score",
-    ]
-    with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
+def stamp(text):
+    return datetime.fromisoformat(text)
+
+
+def match(
+    match_id="first", year=2024, month=3, day=1, hour=19, home="A", away="B", score=100
+):
+    return MatchRow(
+        match_id,
+        year,
+        "1",
+        stamp(f"{year}-{month:02}-{day:02}T{hour:02}:00:00+11:00"),
+        "M.C.G.",
+        home,
+        away,
+        score,
+        80,
+        home_scoring_shots=25,
+        away_scoring_shots=20,
+    )
+
+
+def fixture(match_id="future", year=2025, month=3, day=1, hour=19, home="A", away="B"):
+    return match(match_id, year, month, day, hour, home, away).fixture
+
+
+def margins(rows):
+    return {row.model_name: row.predicted_margin for row in rows}
+
+
+def write_csv(path, rows):
+    with path.open("w", newline="") as target:
+        writer = csv.DictWriter(target, fieldnames=list(rows[0]))
         writer.writeheader()
-
-        game_num = 1
-        for year in range(2018, 2023):
-            for rnd in range(1, 21):
-                is_even = rnd % 2 == 0
-                home_team = "B"
-                away_team = "A"
-                if not is_even:
-                    home_team = "A"
-                    away_team = "B"
-
-                a_star = rnd % 3 != 0
-                b_star = rnd % 4 != 0
-                home_adv = 5 if home_team == "A" else -5
-                player_delta = (28 if a_star else 0) - (28 if b_star else 0)
-                noise = 0
-                margin = home_adv + player_delta + noise
-
-                home_score = 80 + (margin / 2.0)
-                away_score = 80 - (margin / 2.0)
-                month = ((rnd - 1) % 9) + 1
-                day = ((rnd - 1) % 27) + 1
-                date = f"{day:02d}-{['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'][month-1]}-{year}"
-
-                writer.writerow(
-                    {
-                        "match_id": f"{year}R{rnd:02d}",
-                        "year": year,
-                        "round": f"R{rnd}",
-                        "date": date,
-                        "venue": "Synthetic Oval",
-                        "time": "1:00 PM",
-                        "home_team_name": home_team,
-                        "home_team_score": f"{home_score:.1f}",
-                        "away_team_name": away_team,
-                        "away_team_score": f"{away_score:.1f}",
-                    }
-                )
-                game_num += 1
+        writer.writerows(rows)
 
 
-def _write_synthetic_lineups(path: Path):
-    headers = [
-        "match_id",
-        "team_name",
-        "player_name",
-        "percent_played",
-        "disposals",
-    ]
-    with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
-        writer.writeheader()
-
-        for year in range(2018, 2023):
-            for rnd in range(1, 21):
-                match_id = f"{year}R{rnd:02d}"
-                a_star = rnd % 3 != 0
-                b_star = rnd % 4 != 0
-
-                a_players = ["A_role_1", "A_role_2", "A_role_3"]
-                b_players = ["B_role_1", "B_role_2", "B_role_3"]
-                for idx in range(4, 11):
-                    a_players.append(f"A_role_{idx}")
-                    b_players.append(f"B_role_{idx}")
-                if a_star:
-                    a_players.append("A_star")
-                if b_star:
-                    b_players.append("B_star")
-
-                for player in a_players:
-                    writer.writerow(
-                        {
-                            "match_id": match_id,
-                            "team_name": "A",
-                            "player_name": player,
-                            "percent_played": 96 if "star" in player else 42,
-                            "disposals": 45 if "star" in player else 2,
-                        }
-                    )
-
-                for player in b_players:
-                    writer.writerow(
-                        {
-                            "match_id": match_id,
-                            "team_name": "B",
-                            "player_name": player,
-                            "percent_played": 96 if "star" in player else 42,
-                            "disposals": 45 if "star" in player else 2,
-                        }
-                    )
-
-
-def _write_synthetic_context(path: Path):
-    headers = [
-        "date",
-        "home_team",
-        "away_team",
-        "venue",
-        "weather_temp_c",
-        "weather_rain_mm",
-        "weather_wind_kmh",
-        "weather_humidity_pct",
-        "attendance",
-        "projected_attendance",
-        "venue_length_m",
-        "venue_width_m",
-        "venue_capacity",
-    ]
-    with path.open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
-        writer.writeheader()
-        for year in range(2018, 2023):
-            for rnd in range(1, 21):
-                is_even = rnd % 2 == 0
-                home_team = "B" if is_even else "A"
-                away_team = "A" if is_even else "B"
-                month = ((rnd - 1) % 9) + 1
-                day = ((rnd - 1) % 27) + 1
-                date = f"{day:02d}-{['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep'][month-1]}-{year}"
-                writer.writerow(
-                    {
-                        "date": date,
-                        "home_team": home_team,
-                        "away_team": away_team,
-                        "venue": "Synthetic Oval",
-                        "weather_temp_c": 15.0 + (rnd % 10),
-                        "weather_rain_mm": float(rnd % 5),
-                        "weather_wind_kmh": 10.0 + (rnd % 7),
-                        "weather_humidity_pct": 45.0 + (rnd % 25),
-                        "attendance": 21000 + (rnd * 300),
-                        "projected_attendance": 20500 + (rnd * 280),
-                        "venue_length_m": 165.0,
-                        "venue_width_m": 135.0,
-                        "venue_capacity": 52000.0,
-                    }
-                )
-
-
-def test_team_plus_lineup_beats_team_only(tmp_path):
-    matches_path = tmp_path / "matches.csv"
-    players_path = tmp_path / "players.csv"
-    _write_synthetic_matches(matches_path)
-    _write_synthetic_lineups(players_path)
-
-    matches = load_matches_csv(str(matches_path))
-    lineups = load_lineups_csv(str(players_path))
-    preds = walk_forward_predictions(matches, lineups, min_train_years=1)
-    summary = summarize_predictions(preds)
-
-    overall = {row["model_name"]: row for row in summary if row["year"] == "ALL"}
-    assert {"team_only", "team_plus_lineup"}.issubset(set(overall.keys()))
-    assert overall["team_plus_lineup"]["mae_margin"] <= overall["team_only"]["mae_margin"] + 0.2
-
-
-def test_hybrid_predict_does_not_use_same_match_outcomes():
-    model = ShotVolumeConversionModel()
-    lineups = {
-        ("M1", "A"): [{"player_name": "A1", "goals": 0.0, "behinds": 0.0}],
-        ("M1", "B"): [{"player_name": "B1", "goals": 0.0, "behinds": 0.0}],
-    }
-    baseline_match = MatchRow(
-        match_id="M1",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=0.0,
-        away_score=0.0,
-        home_scoring_shots=0,
-        away_scoring_shots=0,
-    )
-    changed_outcome_match = MatchRow(
-        match_id="M1",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=180.0,
-        away_score=20.0,
-        home_scoring_shots=45,
-        away_scoring_shots=8,
-    )
-
-    baseline_prediction = model.predict(baseline_match, lineups)
-    changed_prediction = model.predict(changed_outcome_match, lineups)
-    assert baseline_prediction == changed_prediction
-
-
-def test_benchmark_shot_volume_predict_does_not_use_same_match_outcomes():
-    model = BenchmarkShotVolumeModel()
-    baseline_match = MatchRow(
-        match_id="M2",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=0.0,
-        away_score=0.0,
-        home_scoring_shots=0,
-        away_scoring_shots=0,
-    )
-    changed_outcome_match = MatchRow(
-        match_id="M2",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=180.0,
-        away_score=20.0,
-        home_scoring_shots=45,
-        away_scoring_shots=8,
-    )
-
-    baseline_prediction = model.predict(baseline_match)
-    changed_prediction = model.predict(changed_outcome_match)
-    assert baseline_prediction == changed_prediction
-
-
-def test_territory_chain_predict_does_not_use_same_match_outcomes():
-    model = TerritoryShotChainModel()
-    baseline_match = MatchRow(
-        match_id="M4",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=0.0,
-        away_score=0.0,
-        home_scoring_shots=0,
-        away_scoring_shots=0,
-    )
-    changed_outcome_match = MatchRow(
-        match_id="M4",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=180.0,
-        away_score=20.0,
-        home_scoring_shots=45,
-        away_scoring_shots=8,
-    )
-
-    baseline_prediction = model.predict(baseline_match)
-    changed_prediction = model.predict(changed_outcome_match)
-    assert baseline_prediction == changed_prediction
-
-
-def test_team_plus_lineup_predict_does_not_use_same_match_playtime_or_disposals():
-    model = SequentialMarginModel(use_lineups=True, min_player_games=0, lineup_scale=8.0)
-    model.player_rating["A1"] = 0.3
-    model.player_rating["A2"] = -0.1
-    model.player_rating["B1"] = -0.2
-    model.player_rating["B2"] = 0.4
-    model.player_games["A1"] = 5
-    model.player_games["A2"] = 5
-    model.player_games["B1"] = 5
-    model.player_games["B2"] = 5
-
-    match = MatchRow(
-        match_id="M3",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=0.0,
-        away_score=0.0,
-    )
-
-    lineups_low_stats = {
-        ("M3", "A"): [
-            {"player_name": "A1", "percent_played": 1.0, "disposals": 0.0},
-            {"player_name": "A2", "percent_played": 1.0, "disposals": 0.0},
-        ],
-        ("M3", "B"): [
-            {"player_name": "B1", "percent_played": 1.0, "disposals": 0.0},
-            {"player_name": "B2", "percent_played": 1.0, "disposals": 0.0},
-        ],
-    }
-    lineups_high_stats = {
-        ("M3", "A"): [
-            {"player_name": "A1", "percent_played": 100.0, "disposals": 45.0},
-            {"player_name": "A2", "percent_played": 100.0, "disposals": 45.0},
-        ],
-        ("M3", "B"): [
-            {"player_name": "B1", "percent_played": 100.0, "disposals": 45.0},
-            {"player_name": "B2", "percent_played": 100.0, "disposals": 45.0},
-        ],
+def match_dict():
+    return {
+        "match_id": "first",
+        "year": "2024",
+        "round": "1",
+        "date": "01-Mar-2024",
+        "time": "7:00 PM",
+        "venue": "M.C.G.",
+        "home_team_name": "A",
+        "away_team_name": "B",
+        "home_team_score": "100",
+        "away_team_score": "80",
+        "home_scoring_shots": "25",
+        "away_scoring_shots": "20",
     }
 
-    low_prediction = model.predict(match, lineups_low_stats)
-    high_prediction = model.predict(match, lineups_high_stats)
-    assert low_prediction == high_prediction
+
+def fixture_dict():
+    return {
+        "match_id": "future",
+        "year": "2025",
+        "round": "1",
+        "kickoff": "2025-03-01T19:00:00+11:00",
+        "venue": "M.C.G.",
+        "home_team_name": "A",
+        "away_team_name": "B",
+    }
 
 
-def test_context_model_predict_does_not_use_same_match_actual_attendance():
-    model = VenueEnvironmentAdjustmentModel()
-    match = MatchRow(
-        match_id="M5",
-        year=2026,
-        round_label="R1",
-        date=parse_match_date("01-Jan-2026"),
-        venue="Test Oval",
-        home_team="A",
-        away_team="B",
-        home_score=0.0,
-        away_score=0.0,
+def test_initial_forecast_has_literal_baseline_and_missing_market():
+    target = fixture()
+    rows = predict_fixtures([], [target], target.kickoff - timedelta(hours=1))
+    assert margins(rows) == {
+        "team_only": 6.0,
+        "scoring_shots": 9.7,
+        "market_only": None,
+        "market_scoring_blend": 9.7,
+    }
+    assert rows[-1].used_fallback
+    assert rows[-1].market_weight == 1.0
+    assert rows[2].market_status == "missing_quote"
+    assert rows[2].market_home_probability is None
+
+
+def test_season_transition_and_live_backtest_use_same_forecast():
+    prior, target = match(), match("future", year=2025)
+    cutoff = target.fixture.kickoff - timedelta(hours=1)
+    live = predict_fixtures([prior, target], [target.fixture], cutoff, lead_hours=1)
+    historical = walk_forward_predictions([prior, target], 1, lead_hours=1)
+    assert margins(live) == margins(historical)
+    assert margins(live)["team_only"] == pytest.approx(7.4196)
+    assert margins(live)["scoring_shots"] == pytest.approx(9.428)
+    assert all(row.actual_margin is None for row in live)
+    assert all(row.actual_margin == 20 for row in historical)
+
+
+def test_future_results_and_same_day_results_do_not_change_predictions():
+    first = match()
+    same_day = match("second", hour=21, home="C", away="D")
+    target = fixture("later", year=2024, day=2)
+    cutoff = stamp("2024-03-01T22:00:00+11:00")
+    original = predict_fixtures([first, same_day], [target], cutoff)
+    changed = predict_fixtures(
+        [replace(first, home_score=900), replace(same_day, away_score=0)],
+        [target],
+        cutoff,
     )
-    context_low = MatchContextRow(
-        date=match.date.date(),
-        home_team="A",
-        away_team="B",
-        venue="Test Oval",
-        weather_temp_c=20.0,
-        weather_rain_mm=0.0,
-        weather_wind_kmh=12.0,
-        weather_humidity_pct=50.0,
-        attendance=5000.0,
-        venue_length_m=160.0,
-        venue_width_m=130.0,
-        venue_capacity=30000.0,
+    assert margins(original) == margins(changed)
+    assert margins(original)["team_only"] == 6.0
+    next_day = stamp("2024-03-02T10:00:00+11:00")
+    assert predict_fixtures([first, same_day], [target], next_day) == predict_fixtures(
+        [same_day, first], [target], next_day
     )
-    context_high = MatchContextRow(
-        date=match.date.date(),
-        home_team="A",
-        away_team="B",
-        venue="Test Oval",
-        weather_temp_c=20.0,
-        weather_rain_mm=0.0,
-        weather_wind_kmh=12.0,
-        weather_humidity_pct=50.0,
-        attendance=65000.0,
-        venue_length_m=160.0,
-        venue_width_m=130.0,
-        venue_capacity=30000.0,
-    )
-
-    low_prediction = model.predict(match, base_margin=3.0, context=context_low)
-    high_prediction = model.predict(match, base_margin=3.0, context=context_high)
-    assert low_prediction == high_prediction
-
-
-def test_load_match_context_csv_applies_aliases_and_fields(tmp_path):
-    context_path = tmp_path / "context.csv"
-    with context_path.open("w", newline="") as f:
-        writer = csv.DictWriter(
-            f,
-            fieldnames=[
-                "Date",
-                "Home Team",
-                "Away Team",
-                "Venue",
-                "temperature_c",
-                "rain_mm",
-                "wind_speed_kmh",
-                "relative_humidity_pct",
-                "crowd",
-                "expected_attendance",
-                "ground_length_m",
-                "ground_width_m",
-                "stadium_capacity",
-            ],
-        )
-        writer.writeheader()
-        writer.writerow(
-            {
-                "Date": "2025-09-27",
-                "Home Team": "Brisbane",
-                "Away Team": "GWS Giants",
-                "Venue": "The Gabba",
-                "temperature_c": 23.5,
-                "rain_mm": 1.2,
-                "wind_speed_kmh": 19.0,
-                "relative_humidity_pct": 68.0,
-                "crowd": 32910,
-                "expected_attendance": 31500,
-                "ground_length_m": 156,
-                "ground_width_m": 138,
-                "stadium_capacity": 42000,
-            }
-        )
-
-    context = load_match_context_csv(str(context_path))
-    key = (pd.Timestamp("2025-09-27").date(), "Brisbane Lions", "Greater Western Sydney")
-    assert key in context
-    row = context[key]
-    assert row.weather_temp_c == 23.5
-    assert row.weather_rain_mm == 1.2
-    assert row.weather_wind_kmh == 19.0
-    assert row.weather_humidity_pct == 68.0
-    assert row.attendance == 32910.0
-    assert row.projected_attendance == 31500.0
-    assert row.venue_length_m == 156.0
-    assert row.venue_width_m == 138.0
-    assert row.venue_capacity == 42000.0
-
-
-def test_walk_forward_adds_team_context_env_model(tmp_path):
-    matches_path = tmp_path / "matches.csv"
-    players_path = tmp_path / "players.csv"
-    context_path = tmp_path / "context.csv"
-    _write_synthetic_matches(matches_path)
-    _write_synthetic_lineups(players_path)
-    _write_synthetic_context(context_path)
-
-    matches = load_matches_csv(str(matches_path))
-    lineups = load_lineups_csv(str(players_path))
-    context_data = load_match_context_csv(str(context_path))
-    preds = walk_forward_predictions(
-        matches=matches,
-        lineups=lineups,
-        min_train_years=1,
-        match_context_data=context_data,
+    assert (
+        margins(predict_fixtures([first, same_day], [target], next_day))["team_only"]
+        != 6.0
     )
 
-    model_names = {row.model_name for row in preds}
-    assert "team_context_env" in model_names
+
+def test_explicit_publication_time_controls_result_use():
+    prior = replace(match(), result_available_at=stamp("2024-03-01T21:00:00+11:00"))
+    target = fixture("later", year=2024, day=2)
+    before = predict_fixtures([prior], [target], stamp("2024-03-01T20:59:59+11:00"))
+    after = predict_fixtures([prior], [target], stamp("2024-03-01T21:00:00+11:00"))
+    assert margins(before)["team_only"] == 6.0
+    assert margins(after)["team_only"] == pytest.approx(7.82)
+    assert prior.timing_assumption == "explicit_timestamp"
 
 
-def test_recent_history_rows_filters_to_recent_years():
+def test_delayed_prior_season_result_does_not_reverse_season():
+    old = replace(
+        match("old", year=2023), result_available_at=stamp("2025-03-02T12:00:00+11:00")
+    )
+    recent = match("recent", year=2025)
+    target = fixture("later", year=2025, day=3)
+    rows = predict_fixtures([old, recent], [target], stamp("2025-03-02T13:00:00+11:00"))
+    assert all(
+        math.isfinite(value) for value in margins(rows).values() if value is not None
+    )
+    assert rows == predict_fixtures(
+        [recent, old], [target], stamp("2025-03-02T13:00:00+11:00")
+    )
+
+
+def test_latest_eligible_quote_and_probability_use_deadline():
+    target = fixture()
+    cutoff = target.kickoff - timedelta(hours=1)
+    quotes = [
+        MarketQuote(target.match_id, cutoff - timedelta(hours=1), 4.5, 2, 4),
+        MarketQuote(target.match_id, cutoff + timedelta(minutes=1), 100, 1.1, 20),
+    ]
+    rows = predict_fixtures([], [target], cutoff, quotes)
+    assert margins(rows)["market_only"] == 4.5
+    assert margins(rows)["market_scoring_blend"] == 4.5
+    assert rows[2].market_home_probability == pytest.approx(2 / 3)
+    assert rows[2].market_status == "timed_quote"
+    assert not rows[-1].used_fallback
+    late = predict_fixtures([], [target], cutoff, quotes[1:])
+    assert late[2].predicted_margin is None
+    assert late[2].market_status == "no_eligible_quote"
+
+
+def test_quotes_for_other_future_history_ids_are_safe():
+    target = fixture()
+    future = match("other", year=2025, day=4)
+    quote = MarketQuote("other", future.fixture.kickoff, 999)
+    rows = predict_fixtures(
+        [future], [target], target.kickoff - timedelta(hours=1), [quote]
+    )
+    assert margins(rows)["team_only"] == 6.0
+
+
+def test_weight_defaults_and_ties_prefer_market():
+    assert fit_market_weight([(10, 50, 10)] * 119) == 1.0
+    assert fit_market_weight([(10, 10, 10)] * 120) == 1.0
+    assert fit_market_weight([(10, 50, 10)] * 120) == 0.0
+    assert fit_market_weight([(20, 30, 10)] * 120) == 0.5
+
+
+def test_weight_uses_only_prior_five_years_and_known_results():
     history = [
-        {"year": 2020, "value": 1},
-        {"year": 2022, "value": 2},
-        {"year": 2024, "value": 3},
+        match(
+            str(i),
+            year=2019,
+            day=(i % 28) + 1,
+            month=(i // 28) + 1,
+            home=f"A{i}",
+            away=f"B{i}",
+        )
+        for i in range(120)
     ]
-    filtered = _recent_history_rows(history, current_year=2025, recent_years=2)
-    assert [row["year"] for row in filtered] == [2024]
+    quotes = [
+        MarketQuote(row.match_id, row.fixture.kickoff - timedelta(hours=1), 100)
+        for row in history
+    ]
+    target = fixture(year=2024)
+    rows = predict_fixtures(
+        history, [target], target.kickoff - timedelta(hours=1), quotes
+    )
+    assert rows[-1].market_weight == 0.14
+    assert rows[-1].weight_training_games == 120
+    too_old = predict_fixtures(
+        history, [fixture(year=2025)], stamp("2025-03-01T18:00:00+11:00"), quotes
+    )
+    assert too_old[-1].market_weight == 1.0
+    assert too_old[-1].weight_training_games == 0
+    late = [
+        replace(row, result_available_at=stamp("2024-01-02T00:00:00+11:00"))
+        for row in history
+    ]
+    frozen = predict_fixtures(
+        late, [target], target.kickoff - timedelta(hours=1), quotes
+    )
+    assert frozen[-1].weight_training_games == 0
 
 
-def test_market_probability_removes_vig_and_bounds():
-    p = _market_implied_home_probability(1.80, 2.20)
-    assert p is not None
-    assert 0.5 < p < 1.0
-    assert _market_implied_home_probability(None, 2.0) is None
-    assert _market_implied_home_probability(0.9, 2.0) is None
+def test_training_quotes_cannot_arrive_after_the_historical_deadline():
+    history = [
+        match(
+            str(i),
+            year=2024,
+            day=(i % 28) + 1,
+            month=(i // 28) + 1,
+            home=f"A{i}",
+            away=f"B{i}",
+        )
+        for i in range(120)
+    ]
+    quotes = [
+        MarketQuote(row.match_id, row.fixture.kickoff + timedelta(minutes=1), 100)
+        for row in history
+    ]
+    target = fixture()
+    rows = predict_fixtures(
+        history, [target], target.kickoff - timedelta(hours=1), quotes
+    )
+    assert rows[-1].weight_training_games == 0
+    assert rows[-1].market_weight == 1.0
 
 
-def test_market_sigma_estimate_from_line_and_probability():
-    sigma = _market_sigma_from_spread_and_probability(12.0, 0.70)
-    assert 12.0 <= sigma <= 80.0
-    fallback = _market_sigma_from_spread_and_probability(None, 0.70)
-    assert fallback == 30.0
+def test_target_season_outcomes_do_not_fit_weight():
+    history = [
+        match(str(i), year=2025, month=1, day=(i % 28) + 1, home=f"A{i}", away=f"B{i}")
+        for i in range(120)
+    ]
+    quotes = [
+        MarketQuote(row.match_id, row.fixture.kickoff - timedelta(hours=1), 100)
+        for row in history
+    ]
+    target = fixture()
+    rows = predict_fixtures(
+        history, [target], target.kickoff - timedelta(hours=1), quotes
+    )
+    assert rows[-1].weight_training_games == 0
+    assert rows[-1].market_weight == 1.0
 
 
-def test_load_market_xlsx_applies_team_aliases(tmp_path):
-    xlsx_path = tmp_path / "market.xlsx"
+def test_raw_market_missing_stays_missing_in_common_subset():
+    first, second = match(), match("second", day=2)
+    quote = MarketQuote("first", first.fixture.kickoff - timedelta(hours=1), 10)
+    summary = summarize_predictions(
+        walk_forward_predictions([first, second], 0, [quote])
+    )
+    market = next(
+        row
+        for row in summary
+        if row["year"] == "ALL"
+        and row["model_name"] == "market_only"
+        and row["scope"] == "all_matches"
+    )
+    blend = next(
+        row
+        for row in summary
+        if row["year"] == "ALL"
+        and row["model_name"] == "market_scoring_blend"
+        and row["scope"] == "all_matches"
+    )
+    common = [
+        row
+        for row in summary
+        if row["year"] == "ALL" and row["scope"] == "common_market"
+    ]
+    assert market["num_games"] == 1
+    assert market["missing_predictions"] == 1
+    assert blend["fallback_count"] == 1
+    assert len(common) == 4
+    assert {row["num_games"] for row in common} == {1}
+
+
+@pytest.mark.parametrize(
+    "actual,predicted,expected",
+    [(0, 1, 0), (-5, 0, 0), (0, 0, 100), (-5, -1, 100), (5, 1, 100)],
+)
+def test_tips_require_matching_signs(actual, predicted, expected):
+    row = walk_forward_predictions([match()], 0)[0]
+    row = replace(
+        row,
+        predicted_margin=predicted,
+        actual_margin=actual,
+        abs_error=abs(actual - predicted),
+    )
+    assert summarize_predictions([row])[0]["tip_pct"] == expected
+
+
+def test_timezone_local_year_and_next_day_use_venue():
+    row = replace(match(), date=stamp("2023-12-31T15:00:00+00:00"), year=2024)
+    assert row.fixture.year == 2024
+    assert row.available_at.isoformat() == "2024-01-02T00:00:00+11:00"
+    perth = replace(
+        match(), venue="Perth Stadium", date=stamp("2024-03-01T19:00:00+08:00")
+    )
+    assert perth.available_at.isoformat() == "2024-03-02T00:00:00+08:00"
+
+
+@pytest.mark.parametrize("value", ["nan", "inf", "bad"])
+def test_bad_match_numbers_fail(tmp_path, value):
+    row = {**match_dict(), "home_team_score": value}
+    path = tmp_path / "matches.csv"
+    write_csv(path, [row])
+    with pytest.raises(ValueError, match="matches.csv:2"):
+        load_matches_csv(str(path))
+
+
+def test_csv_preserves_kickoff_and_rejects_duplicates(tmp_path):
+    path = tmp_path / "matches.csv"
+    write_csv(path, [match_dict()])
+    assert (
+        load_matches_csv(str(path))[0].date.isoformat() == "2024-03-01T19:00:00+11:00"
+    )
+    write_csv(path, [match_dict(), match_dict()])
+    with pytest.raises(ValueError, match="Duplicate"):
+        load_matches_csv(str(path))
+
+
+def test_fixture_outcomes_and_naive_timestamps_fail(tmp_path):
+    path = tmp_path / "fixtures.csv"
+    write_csv(path, [{**fixture_dict(), "home_team_score": "100"}])
+    with pytest.raises(ValueError, match="outcomes"):
+        load_fixtures_csv(str(path))
+    with pytest.raises(ValueError, match="timezone offset"):
+        parse_timestamp("2025-03-01T18:00:00")
+    with pytest.raises(ValueError, match="start after"):
+        predict_fixtures([], [fixture()], fixture().kickoff)
+
+
+@pytest.mark.parametrize(
+    "change",
+    [
+        {"predicted_margin": "NaN"},
+        {"home_odds": "1", "away_odds": "2"},
+        {"observed_at": "2025-03-01T18:00:00"},
+    ],
+)
+def test_invalid_market_csv_fails(tmp_path, change):
+    path = tmp_path / "market.csv"
+    write_csv(
+        path,
+        [
+            {
+                "match_id": "future",
+                "observed_at": "2025-03-01T18:00:00+11:00",
+                "predicted_margin": "4.5",
+                **change,
+            }
+        ],
+    )
+    with pytest.raises(ValueError, match="market.csv:2"):
+        load_market_csv(str(path))
+
+
+def test_duplicate_quotes_and_unknown_match_ids_fail():
+    target = fixture()
+    quote = MarketQuote("future", target.kickoff - timedelta(hours=1), 4.5)
+    with pytest.raises(ValueError, match="Duplicate"):
+        predict_fixtures([], [target], quote.observed_at, [quote, quote])
+    with pytest.raises(ValueError, match="unknown match ID"):
+        predict_fixtures(
+            [], [target], quote.observed_at, [replace(quote, match_id="unknown")]
+        )
+    with pytest.raises(ValueError, match="Untimed"):
+        predict_fixtures(
+            [], [target], quote.observed_at, [replace(quote, observed_at=None)]
+        )
+
+
+def test_workbook_requires_explicit_benchmark_and_reports_missing_margin(tmp_path):
+    path = tmp_path / "market.xlsx"
     frame = pd.DataFrame(
         [
             {
-                "Date": "2025-09-27",
-                "Home Team": "Brisbane",
-                "Away Team": "GWS Giants",
-                "Home Line Close": -4.5,
-                "Home Odds": 1.7,
-                "Away Odds": 2.1,
+                "Date": "2024-03-01",
+                "Home Team": "A",
+                "Away Team": "B",
+                "Home Line Close": None,
+                "Home Odds": 2,
+                "Away Odds": 2,
             }
         ]
     )
-    with pd.ExcelWriter(xlsx_path, engine="openpyxl") as writer:
-        frame.to_excel(writer, sheet_name="Data", index=False, startrow=1)
+    with pd.ExcelWriter(path) as writer:
+        frame.to_excel(writer, sheet_name="Data", startrow=1, index=False)
+    with pytest.raises(ValueError, match="closing-line-benchmark"):
+        load_market_xlsx(str(path), [match()])
+    quotes = load_market_xlsx(str(path), [match()], closing_line_benchmark=True)
+    rows = walk_forward_predictions([match()], 0, quotes, closing_line_benchmark=True)
+    assert rows[2].predicted_margin is None
+    assert rows[2].market_status == "missing_margin"
+    assert rows[-1].used_fallback
 
-    market = load_market_xlsx(str(xlsx_path))
-    key = (pd.Timestamp("2025-09-27").date(), "Brisbane Lions", "Greater Western Sydney")
-    assert key in market
-    assert market[key]["home_line_close"] == -4.5
+
+def test_cli_outputs_and_provenance(tmp_path):
+    history, future, quotes = (
+        tmp_path / "history.csv",
+        tmp_path / "fixtures.csv",
+        tmp_path / "quotes.csv",
+    )
+    write_csv(history, [match_dict()])
+    write_csv(future, [fixture_dict()])
+    write_csv(
+        quotes,
+        [
+            {
+                "match_id": "future",
+                "observed_at": "2025-03-01T17:00:00+11:00",
+                "predicted_margin": "4.5",
+            }
+        ],
+    )
+    output = tmp_path / "live"
+    predict_main(
+        [
+            "--matches-csv",
+            str(history),
+            "--fixtures-csv",
+            str(future),
+            "--market-csv",
+            str(quotes),
+            "--as-of",
+            "2025-03-01T18:00:00+11:00",
+            "--output-dir",
+            str(output),
+        ]
+    )
+    with (output / "fixture_predictions.csv").open() as source:
+        rows = list(csv.DictReader(source))
+    assert len(rows) == 4
+    assert rows[-1]["predicted_margin"] == "4.5"
+    assert rows[-1]["actual_margin"] == ""
+    metadata = json.loads((output / "metadata.json").read_text())
+    assert len(metadata["inputs"]) == 3
+    assert all(len(item["sha256"]) == 64 for item in metadata["inputs"])
+    assert metadata["source_hashes"]["src/mae_model/sequential_margin.py"]
+    assert metadata["common_market_matches"] == 1
+    assert metadata["configuration"]["default_market_weight"] == 1.0
+    assert metadata["season_weights"][0]["market_weight"] == 1.0
+    assert isinstance(metadata["git_dirty"], bool)
+    backtest_main(
+        [
+            "--matches-csv",
+            str(history),
+            "--min-train-years",
+            "0",
+            "--output-dir",
+            str(tmp_path / "backtest"),
+        ]
+    )
+    assert (tmp_path / "backtest" / "mae_summary.csv").exists()
 
 
-def test_walk_forward_adds_market_only_and_residual_models(tmp_path):
-    matches_path = tmp_path / "matches.csv"
-    players_path = tmp_path / "players.csv"
-    _write_synthetic_matches(matches_path)
-    _write_synthetic_lineups(players_path)
+def test_missing_input_and_untimed_live_cli_fail_without_output(tmp_path):
+    output = tmp_path / "failed"
+    with pytest.raises(SystemExit) as error:
+        backtest_main(
+            ["--matches-csv", str(tmp_path / "absent.csv"), "--output-dir", str(output)]
+        )
+    assert error.value.code == 2
+    assert not output.exists()
+    with pytest.raises(SystemExit):
+        predict_main(
+            [
+                "--fixtures-csv",
+                "unused",
+                "--as-of",
+                "2025-03-01T18:00:00+11:00",
+                "--market-xlsx",
+                "unused.xlsx",
+                "--closing-line-benchmark",
+            ]
+        )
 
-    matches = load_matches_csv(str(matches_path))
-    lineups = load_lineups_csv(str(players_path))
-    preds = walk_forward_predictions(matches, lineups, min_train_years=1)
-    model_names = {row.model_name for row in preds}
-    assert "market_only" in model_names
-    assert "market_residual_corrector" in model_names
+
+def test_pure_replay_does_not_change_inputs():
+    history = [match()]
+    target = fixture()
+    request = PredictionRequest(target, target.kickoff - timedelta(hours=1))
+    first = replay_predictions(history, [request])
+    assert first == replay_predictions(history, [request])
+    assert history == [match()]
+
+
+def test_new_team_forecast_does_not_change_when_zero_residual_result_starts_season():
+    prior = match()
+    zero_result = replace(
+        match("zero", year=2025), home_score=79.7098, away_score=72.2902
+    )
+    target = fixture("cold", year=2025, day=3, home="C", away="A")
+    before = predict_fixtures(
+        [prior, zero_result], [target], stamp("2025-03-01T18:00:00+11:00")
+    )
+    after = predict_fixtures(
+        [prior, zero_result], [target], stamp("2025-03-02T01:00:00+11:00")
+    )
+    assert margins(before)["team_only"] == pytest.approx(5.2902)
+    assert margins(after)["team_only"] == pytest.approx(5.2902)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "home_behinds",
+        "away_behinds",
+        "home_scoring_shots",
+        "away_scoring_shots",
+        "result_available_at",
+    ],
+)
+def test_fixture_rejects_all_result_columns(tmp_path, field):
+    path = tmp_path / "fixtures.csv"
+    write_csv(path, [{**fixture_dict(), field: "1"}])
+    with pytest.raises(ValueError, match="outcomes"):
+        load_fixtures_csv(str(path))
+
+
+def test_missing_line_with_invalid_workbook_odds_has_diagnostic(tmp_path):
+    path = tmp_path / "market.xlsx"
+    frame = pd.DataFrame(
+        [
+            {
+                "Date": "2024-03-01",
+                "Home Team": "A",
+                "Away Team": "B",
+                "Home Line Close": None,
+                "Home Odds": 1,
+                "Away Odds": 21,
+            }
+        ]
+    )
+    with pd.ExcelWriter(path) as writer:
+        frame.to_excel(writer, sheet_name="Data", startrow=1, index=False)
+    quotes = load_market_xlsx(str(path), [match()], closing_line_benchmark=True)
+    assert quotes[0].predicted_margin is None
+    assert quotes[0].home_probability is None
+    assert quotes[0].validation_note == "invalid_odds_without_margin"
+
+
+def test_bad_empty_csv_headers_fail(tmp_path):
+    path = tmp_path / "bad.csv"
+    path.write_text("wrong,headers\n")
+    with pytest.raises(ValueError, match="missing CSV columns"):
+        load_market_csv(str(path))
+
+
+def test_recorded_benchmark_matches_supplied_data():
+    root = Path(__file__).resolve().parents[1]
+    history = load_matches_csv(str(root / "src/outputs/afl_data.csv"))
+    quotes = load_market_xlsx(
+        str(root / "src/outputs/afl_betting_history.xlsx"),
+        history,
+        closing_line_benchmark=True,
+    )
+    rows = walk_forward_predictions(
+        history, market_quotes=quotes, closing_line_benchmark=True
+    )
+    summary = {
+        row["model_name"]: row
+        for row in summarize_predictions(rows)
+        if row["year"] == "ALL" and row["scope"] == "common_market"
+    }
+    assert {row["num_games"] for row in summary.values()} == {2258}
+    assert summary["market_only"]["mae_margin"] == pytest.approx(26.646590)
+    assert summary["market_scoring_blend"]["mae_margin"] == pytest.approx(26.569416)
