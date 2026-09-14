@@ -133,3 +133,33 @@ uv run python -m src.mae_model.build_match_context \
 The export marks the weather source. Missing attendance forecasts stay empty. The shared venue table resolves historical names and sponsor aliases. Unknown venues remain missing and produce a diagnostic.
 
 The original historical data source is [the AFL statistics dataset](https://www.kaggle.com/datasets/stoney71/aflstats). Match and player scraping tools remain available under `src/scrape_afl`.
+
+## Earlier match history for research
+
+[AFL Tables season scores](https://afltables.com/afl/seas/season_idx.html) start in 1897. The importer reads one page per season. It keeps the source match IDs, team names, dates, local times, venues, goals, behinds, and scores. It checks each score, all source match IDs, and the regular-season totals. Cached pages and CSV hashes support repeat checks.
+
+```sh
+uv run python -m src.scrape_afl.season_scores \
+  --first-year 1897 --last-year 2011 \
+  --output-dir .context/history-expansion
+uv run python -m src.scrape_afl.build_history_input \
+  --history-csv .context/history-expansion/season_scores.csv \
+  --current-csv src/outputs/afl_data.csv \
+  --output-csv .context/history-expansion/afl_data_1897_2025.csv
+```
+
+The combined research file contains 16,838 matches. The 2,879 current rows remain unchanged. Fitzroy, Brisbane Bears, and University remain separate clubs. The current team-name aliases still apply when the model reads the file.
+
+The builder uses named venue timezones. Unknown times or timezones stop the build. Most results use the existing next-local-midnight assumption. The 1996 interrupted match uses midnight after its completion day. The 2006 siren dispute uses the verified ruling time. The 1900 result changed after a protest. Its ruling date is unverified, so the research file defers that corrected result until the next season. The manifest lists these assumptions and their sources. These pages are not an archive of information available before each match.
+
+To repeat the source and 2012 overlap checks, save the overlap page and run the verifier. All 207 overlap matches must match the current CSV.
+
+```sh
+curl --fail --output .context/history-expansion/cache/2012.html \
+  https://afltables.com/afl/seas/2012.html
+uv run python -m src.scrape_afl.verify_season_import \
+  --output-dir .context/history-expansion \
+  --current-csv src/outputs/afl_data.csv
+```
+
+Keep evaluation on the original match IDs. With the complete history starting in 1897, use `--min-train-years 118` to keep the first evaluation season at 2015. The default match data remains unchanged. Tests with longer rating history slightly increased development MAE.
