@@ -186,7 +186,9 @@ The 2012 to 2025 source audit found 2,879 matches, 128,800 player rows, and 1,82
 | 2023 to 2024 validation | 26.2681 | 26.2368 | 0.0314 |
 | 2025 target | 26.3481 | 26.3384 | 0.0096 |
 
-The source CSV hash for this test was `cab47f144922f8f58f39dfc7fd0d7f1792bf6e8bfb4e1d2f6d2101da5e293393`. The 2025 result did not beat Wheelo's 25.8449 MAE. The official rating signal is useful across the longer history, but it does not close the 2025 gap by itself.
+The source CSV hash for this test was `cab47f144922f8f58f39dfc7fd0d7f1792bf6e8bfb4e1d2f6d2101da5e293393`. The 2025 result did not beat Wheelo's 25.8449 MAE. The official rating signal is useful across the longer history, but it does not close the 2025 gap by itself. It improved 87 of the 216 matches, made 97 worse, and did not change 32. A paired bootstrap gave a 95% interval from -0.0751 to +0.0956 MAE for the improvement. This interval includes zero, so the 2025 gain is not reliable by itself.
+
+The source does not give publication timestamps for Rating Points. The importer assumes that they became available with the repository match result. The final historical player list is also treated as the lineup that was known at kickoff. Use these results only with those two timing assumptions.
 
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 

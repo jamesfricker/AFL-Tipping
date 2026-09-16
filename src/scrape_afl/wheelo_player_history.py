@@ -368,7 +368,7 @@ def build_wheelo_player_history(
             row.source_time_on_ground > 100 for row in all_appearances
         ),
         "time_on_ground_policy": "Finite source values above 100 are capped at 100 for the existing percent-played boundary.",
-        "availability_policy": "Historical ratings become available with the repository match result.",
+        "availability_policy": "Historical ratings are assumed available with the repository match result because the source has no publication timestamps.",
         "lineup_policy": "All 22 or 23 source player identities are assumed final at kickoff.",
         "excluded_fields": ["EstimatedRating", "season summary estimates"],
         "join_fields": ["year", "local_date", "unordered_team_pair"],
