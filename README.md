@@ -58,7 +58,7 @@ uv run python -m src.mae_model.run_backtest \
   --output-dir reports_players
 ```
 
-The command adds one `player_lineup` row for each `market_scoring_blend` row. The four control rows stay unchanged. Player history starts in 2018. Earlier predictions equal the control margin.
+The command adds one `player_lineup` row for each `market_scoring_blend` row. The four control rows stay unchanged. Player history covers 2012 to 2025. The scored comparison starts in 2015, after three training seasons.
 
 Historical final selections contain player identity only. The model assumes that these selections are available at kickoff. Player backtests therefore require `--lead-hours 0`. This assumption does not establish which players were known before kickoff.
 
@@ -141,6 +141,18 @@ A correction requires a material rating change or a material replacement gap for
 
 Player statistics enter after the match result becomes available. An optional `statistics_available_at` column must not precede result availability. The player update waits until every player row for that match is available. Current-match statistics cannot change that match's forecast.
 
+The tracked player file contains 128,800 rows from 5,758 team selections. The checked builder added the 2012 to 2017 history from AFL Tables. It requires 22 unique players for each team, checks the match identity and score, rejects conflicting player rows, and records all source hashes. It can restart from its page cache.
+
+```sh
+uv run python -m src.scrape_afl.player_history \
+  --matches-csv src/outputs/afl_data.csv \
+  --existing-players-csv src/outputs/afl_player_stats.csv \
+  --first-year 2012 --last-year 2017 \
+  --output-dir .context/player-history
+```
+
+The source manifest is [stored with the player file](src/outputs/afl_player_stats_manifest.json). A pre-season form test used official player statistics from 2013 to 2025. Its best setting reduced overall MAE by 0.0001 points, but only five of eleven seasons improved or stayed equal. The model does not use this input.
+
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 
 Eligible decimal odds can provide a market implied probability after removal of the bookmaker margin. This value is separate from the blend's margin prediction. The model does not claim a calibrated win probability for its internal or blended margins.
@@ -151,7 +163,7 @@ The current closing-line benchmark scores 2,258 matches from 2015 to 2025:
 
 | Model | Overall MAE | 2024 MAE | 2025 MAE |
 | --- | ---: | ---: | ---: |
-| `player_lineup` | 26.5383 | 26.6201 | 25.9307 |
+| `player_lineup` | 26.4878 | 26.6033 | 25.8361 |
 | `market_only` | 26.6466 | 26.8519 | 26.1944 |
 | `market_scoring_blend` | 26.5694 | 26.6256 | 26.0380 |
 | `scoring_shots` | 27.2709 | 26.8564 | 26.6307 |
