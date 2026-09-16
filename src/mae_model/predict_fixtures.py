@@ -17,8 +17,13 @@ from .player_margin import (
     replay_player_predictions,
 )
 from .reporting import write_metadata
+from .selected_team_margin import (
+    SelectedTeamConfig,
+    replay_selected_team_predictions,
+)
 from .sequential_margin import (
     predict_fixtures,
+    walk_forward_predictions,
     write_prediction_rows,
 )
 
@@ -87,6 +92,9 @@ def main(argv=None):
         )
     hybrid_config = None
     hybrid_diagnostics = None
+    selected_team_config = None
+    selected_team_diagnostics = None
+    selected_team_fits = None
     player_config = None
     player_diagnostics = None
     try:
@@ -124,19 +132,52 @@ def main(argv=None):
                 official_lineups = load_lineup_snapshots_csv(
                     args.official_player_lineups_csv, fixtures
                 )
+                outcome_history = PlayerHistory(appearances, lineups)
+                official_history = PlayerHistory(
+                    official_appearances, official_lineups
+                )
                 player_rows, hybrid_diagnostics = replay_hybrid_player_predictions(
                     matches,
                     predictions,
-                    PlayerHistory(appearances, lineups),
-                    PlayerHistory(official_appearances, official_lineups),
+                    outcome_history,
+                    official_history,
                     hybrid_config,
                 )
+                historical_controls = walk_forward_predictions(matches, 3)
+                historical_hybrid, _ = replay_hybrid_player_predictions(
+                    matches,
+                    historical_controls,
+                    PlayerHistory(appearances, []),
+                    PlayerHistory(official_appearances, []),
+                    hybrid_config,
+                )
+                selected_team_config = SelectedTeamConfig()
+                selected_all, selected_diagnostics_all, selected_team_fits = (
+                    replay_selected_team_predictions(
+                        matches,
+                        historical_controls + predictions,
+                        historical_hybrid + player_rows,
+                        official_history,
+                        selected_team_config,
+                    )
+                )
+                fixture_ids = {fixture.match_id for fixture in fixtures}
+                selected_team_rows = [
+                    row for row in selected_all if row.match_id in fixture_ids
+                ]
+                selected_team_diagnostics = [
+                    row
+                    for row in selected_diagnostics_all
+                    if row.match_id in fixture_ids
+                ]
                 player_config = None
             else:
                 player_rows, player_diagnostics = replay_player_predictions(
                     matches, predictions, appearances, lineups, player_config
                 )
             predictions.extend(player_rows)
+            if args.official_player_stats_csv:
+                predictions.extend(selected_team_rows)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
     output = Path(args.output_dir)
@@ -170,6 +211,9 @@ def main(argv=None):
         player_diagnostics=player_diagnostics,
         hybrid_config=hybrid_config,
         hybrid_diagnostics=hybrid_diagnostics,
+        selected_team_config=selected_team_config,
+        selected_team_diagnostics=selected_team_diagnostics,
+        selected_team_fits=selected_team_fits,
     )
     print(f"Wrote predictions for {len(fixtures)} fixtures to {output}")
 

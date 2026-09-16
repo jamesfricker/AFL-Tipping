@@ -28,6 +28,23 @@ The hybrid improves 9 of 11 seasons against `team_only`. It is 0.016743 points w
 
 The 2025 improvement against the official-only model is 0.216222 points. A paired bootstrap with 100,000 samples and seed `20260916` gave a 95% interval from 0.0050 to 0.4272 points.
 
+## Accepted selected-team strength model
+
+The lineup-change model ignores the full strength of a stable selected team. The selected-team model estimates each named player's next Rating Points. It uses the preceding 20 games and a 10-game league prior. It then fits the team forecast, the hybrid lineup change, and the difference between the two selected-team totals.
+
+The annual fit uses only earlier seasons. The configuration maximizes the smaller gain across development and validation. This rule does not use the 2025 result.
+
+| Evaluation set | Hybrid player MAE | Selected-team MAE | Improvement |
+| --- | ---: | ---: | ---: |
+| 2015 to 2022 development | 27.596697 | 27.316967 | 0.279730 |
+| 2023 to 2024 validation | 26.107115 | 25.829883 | 0.277232 |
+| 2025 descriptive target | 26.122201 | 25.396387 | 0.725814 |
+| 2015 to 2025 | 27.170661 | 26.848736 | 0.321925 |
+
+The 2025 result is 0.448521 points lower than Wheelo's matched MAE of 25.844907. The paired interval for that difference includes zero. The model does not have a reliable lead from one season.
+
+The full-lineup design also tested annual weight updates during a season, fixed substitute weights, role-group totals, star and depth totals, and coaches-vote totals. None improved both development and validation against the selected configuration.
+
 ## Rejected tests
 
 | Test | Result |

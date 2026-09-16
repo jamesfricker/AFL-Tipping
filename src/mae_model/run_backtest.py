@@ -15,6 +15,10 @@ from .player_margin import (
     replay_player_predictions,
 )
 from .reporting import write_metadata
+from .selected_team_margin import (
+    SelectedTeamConfig,
+    replay_selected_team_predictions,
+)
 from .sequential_margin import (
     summarize_predictions,
     walk_forward_predictions,
@@ -92,6 +96,9 @@ def main(argv=None):
         )
     hybrid_config = None
     hybrid_diagnostics = None
+    selected_team_config = None
+    selected_team_diagnostics = None
+    selected_team_fits = None
     player_config = None
     player_diagnostics = None
     try:
@@ -135,12 +142,28 @@ def main(argv=None):
                     args.official_player_stats_csv, matches
                 )
                 official_lineups = []
+                outcome_history = PlayerHistory(appearances, lineups)
+                official_history = PlayerHistory(
+                    official_appearances, official_lineups
+                )
                 player_rows, hybrid_diagnostics = replay_hybrid_player_predictions(
                     matches,
                     predictions,
-                    PlayerHistory(appearances, lineups),
-                    PlayerHistory(official_appearances, official_lineups),
+                    outcome_history,
+                    official_history,
                     hybrid_config,
+                )
+                selected_team_config = SelectedTeamConfig()
+                (
+                    selected_team_rows,
+                    selected_team_diagnostics,
+                    selected_team_fits,
+                ) = replay_selected_team_predictions(
+                    matches,
+                    predictions,
+                    player_rows,
+                    official_history,
+                    selected_team_config,
                 )
                 player_config = None
             else:
@@ -148,6 +171,8 @@ def main(argv=None):
                     matches, predictions, appearances, lineups, player_config
                 )
             predictions.extend(player_rows)
+            if args.official_player_stats_csv:
+                predictions.extend(selected_team_rows)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
     summary = summarize_predictions(predictions)
@@ -181,6 +206,9 @@ def main(argv=None):
         player_diagnostics=player_diagnostics,
         hybrid_config=hybrid_config,
         hybrid_diagnostics=hybrid_diagnostics,
+        selected_team_config=selected_team_config,
+        selected_team_diagnostics=selected_team_diagnostics,
+        selected_team_fits=selected_team_fits,
     )
     for row in summary:
         if row["year"] == "ALL" and row["scope"] == "all_matches":

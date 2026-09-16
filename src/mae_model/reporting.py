@@ -22,6 +22,9 @@ def write_metadata(
     player_diagnostics=None,
     hybrid_config=None,
     hybrid_diagnostics=None,
+    selected_team_config=None,
+    selected_team_diagnostics=None,
+    selected_team_fits=None,
 ):
     root = Path(__file__).resolve().parents[2]
     revision = subprocess.run(
@@ -222,6 +225,51 @@ def write_metadata(
                         "official_correction": row.official.correction,
                         "outcome_status": row.outcome.status,
                         "official_status": row.official.status,
+                    }
+                )
+    if selected_team_config is not None:
+        data["selected_team_model"] = {
+            "configuration": asdict(selected_team_config),
+            "prediction_rule": (
+                "Annual robust fit of team strength, hybrid lineup change, "
+                "and the selected teams' prior Player Rating Points"
+            ),
+            "status_counts": dict(
+                Counter(row.status for row in selected_team_diagnostics)
+            ),
+            "annual_fits": [asdict(row) for row in selected_team_fits],
+            "historical_lineups": (
+                "Final player identity assumed available at kickoff only"
+            ),
+            "live_lineups": (
+                "Latest complete official-player snapshot observed by the deadline"
+            ),
+            "player_statistics": (
+                "Only Rating Points from completed earlier matches enter a forecast"
+            ),
+        }
+        fields = [
+            "match_id",
+            "cutoff",
+            "status",
+            "home_rating",
+            "away_rating",
+            "rating_difference",
+        ]
+        with (Path(output_dir) / "selected_team_diagnostics.csv").open(
+            "w", newline=""
+        ) as target:
+            writer = csv.DictWriter(target, fieldnames=fields)
+            writer.writeheader()
+            for row in selected_team_diagnostics:
+                writer.writerow(
+                    {
+                        "match_id": row.match_id,
+                        "cutoff": row.cutoff.isoformat(),
+                        "status": row.status,
+                        "home_rating": row.home_rating,
+                        "away_rating": row.away_rating,
+                        "rating_difference": row.rating_difference,
                     }
                 )
     (Path(output_dir) / "metadata.json").write_text(json.dumps(data, indent=2) + "\n")

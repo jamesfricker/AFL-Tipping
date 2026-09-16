@@ -1,8 +1,8 @@
 # AFL Tipping
 
-Predict AFL margins with team ratings, scoring-shot ratings, market prices, and one simple market blend.
+Predict AFL margins with team ratings, scoring-shot ratings, player ratings, market prices, and one simple market blend.
 
-The four control models use no player data. An optional player model adds a small correction for team-selection changes. No model uses observed weather.
+The four control models use no player data. The optional player models measure selection changes and the full strength of each selected team. No model uses observed weather.
 
 ## Install and test
 
@@ -126,6 +126,8 @@ Use the same `player_ref` values as the player match file. Player names do not i
 | `market_only` | The eligible market margin, without correction. |
 | `market_scoring_blend` | A convex blend of the market margin and scoring-shot prediction. |
 | `player_lineup` | An optional correction to the blend for material selection changes. |
+| `player_hybrid` | The market-free team forecast plus two independent lineup-change corrections. |
+| `selected_team_strength` | A market-free annual fit of team strength, lineup change, and the selected players' prior Rating Points. |
 
 The blend fits one market weight from the preceding five seasons. It selects from 0 to 1 in steps of 0.02. Weight 1 gives the market-only prediction. Equal errors favour the larger market weight. Insufficient history also selects weight 1.
 
@@ -207,6 +209,17 @@ The hybrid model improves MAE in 9 of 11 seasons when it is compared with `team_
 
 The 2025 result remains 0.2773 points behind Wheelo. The improvement against the official-only player model was 0.2162 points. A paired bootstrap gave a 95% interval from 0.0050 to 0.4272 points. The 2025 season was inspected during earlier work, so it is not an untouched test set.
 
+The same command also produces `selected_team_strength`. This model forecasts every selected player's next Rating Points from the preceding 20 games. It shrinks each player toward the league mean with a 10-game prior. A robust annual fit combines the selected-team total with the team forecast and the hybrid lineup change. The fit uses earlier seasons only.
+
+| Evaluation set | Hybrid player MAE | Selected-team MAE | Improvement |
+| --- | ---: | ---: | ---: |
+| 2015 to 2022 development | 27.5967 | 27.3170 | 0.2797 |
+| 2023 to 2024 validation | 26.1071 | 25.8299 | 0.2772 |
+| 2025 descriptive target | 26.1222 | 25.3964 | 0.7258 |
+| 2015 to 2025 | 27.1707 | 26.8487 | 0.3219 |
+
+The selected-team model beats Wheelo's matched 2025 MAE of 25.8449 by 0.4485 points. A paired bootstrap against Wheelo has a 95% interval from -0.5791 to 1.4628 points. One season does not establish a reliable lead. The paired 2025 gain against `player_hybrid` has a 95% interval from 0.0009 to 1.4604 points.
+
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 
 Eligible decimal odds can provide a market implied probability after removal of the bookmaker margin. This value is separate from the blend's margin prediction. The model does not claim a calibrated win probability for its internal or blended margins.
@@ -217,6 +230,7 @@ The current closing-line benchmark scores 2,258 matches from 2015 to 2025:
 
 | Model | Overall MAE | 2024 MAE | 2025 MAE |
 | --- | ---: | ---: | ---: |
+| `selected_team_strength` | 26.8487 | 26.7014 | 25.3964 |
 | `player_lineup` | 26.4878 | 26.6033 | 25.8361 |
 | `market_only` | 26.6466 | 26.8519 | 26.1944 |
 | `market_scoring_blend` | 26.5694 | 26.6256 | 26.0380 |

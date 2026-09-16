@@ -240,7 +240,7 @@ def test_backtest_command_records_both_sources_and_components(tmp_path):
     )
     with (added / "walk_forward_predictions.csv").open() as source:
         rows = list(csv.DictReader(source))
-    assert rows[-1]["model_name"] == "player_hybrid"
+    assert rows[-1]["model_name"] == "selected_team_strength"
     metadata = json.loads((added / "metadata.json").read_text())
     assert len(metadata["inputs"]) == 3
     config = metadata["hybrid_player_model"]["configuration"]
@@ -258,6 +258,12 @@ def test_backtest_command_records_both_sources_and_components(tmp_path):
     assert float(diagnostics[-1]["correction"]) < float(
         diagnostics[-1]["outcome_correction"]
     )
+    assert metadata["selected_team_model"]["status_counts"] == {
+        "insufficient_training": 13
+    }
+    with (added / "selected_team_diagnostics.csv").open() as source:
+        selected_diagnostics = list(csv.DictReader(source))
+    assert selected_diagnostics[-1]["status"] == "insufficient_training"
     base_metadata = json.loads((base / "metadata.json").read_text())
     assert "hybrid_player_model" not in base_metadata
     assert not any(
@@ -404,7 +410,7 @@ def test_live_command_uses_separate_lineup_ids_and_matches_historical_margin(tmp
     )
     with (output / "fixture_predictions.csv").open() as source:
         rows = list(csv.DictReader(source))
-    assert rows[-1]["model_name"] == "player_hybrid"
+    assert rows[-1]["model_name"] == "selected_team_strength"
     assert float(rows[-1]["predicted_margin"]) == pytest.approx(
         historical[-1].predicted_margin, abs=0.0001
     )
