@@ -488,9 +488,7 @@ def replay_player_predictions(
         home_ids, away_ids = selection(fixture, stamp)
         forecast = None
         correction = 0.0
-        if row.year < 2018:
-            status = "insufficient_history"
-        elif not home_ids or not away_ids:
+        if not home_ids or not away_ids:
             status = "no_lineup"
         elif any(
             len(references[team]) < config.minimum_reference_lineups

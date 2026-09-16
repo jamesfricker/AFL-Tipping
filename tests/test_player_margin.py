@@ -156,10 +156,21 @@ def test_missing_lineup_returns_exact_control_margin():
     assert diagnostic.status == "no_lineup"
 
 
-def test_pre_2018_rows_return_exact_control_margin():
+def test_pre_2018_rows_can_receive_a_correction_with_sufficient_history():
     matches, appearances = sample_history(year=2017)
     row, diagnostic = target_result(matches, appearances)
     control = walk_forward_predictions(matches, 0)[-1]
+
+    assert diagnostic.status == "adjusted"
+    assert diagnostic.correction < 0
+    assert row.predicted_margin < control.predicted_margin
+
+
+def test_pre_2018_rows_return_exact_control_margin_without_sufficient_history():
+    matches, appearances = sample_history(count=3, year=2017)
+    row, diagnostic = target_result(matches, appearances)
+    control = walk_forward_predictions(matches, 0)[-1]
+
     assert row == replace(control, model_name="player_lineup", used_fallback=True)
     assert diagnostic.status == "insufficient_history"
 
