@@ -63,7 +63,6 @@ def sample_history(count=13, *, year=2019, missing_leader=True):
                         match.match_id,
                         team,
                         PlayerId(identity),
-                        "Same name",
                         match.available_at,
                         100 if identity == "A0" else 20,
                         PlayerStats(
@@ -211,13 +210,6 @@ def test_duplicate_updates_are_idempotent_and_changed_sources_fail():
         )
 
 
-def test_player_names_do_not_merge_different_player_references():
-    matches, appearances = sample_history()
-    renamed = [replace(row, player_name=row.player_id) for row in appearances]
-    assert player_replay(matches, appearances) == player_replay(matches, renamed)
-    assert target_result(matches, appearances)[1].lineup.home.missing_leader == "A0"
-
-
 def test_live_and_historical_paths_agree_before_the_target_result():
     matches, appearances = sample_history()
     historical, historical_diagnostic = target_result(matches, appearances)
@@ -332,7 +324,7 @@ def appearance_csv(row):
         "match_id": row.match_id,
         "team_name": row.team,
         "player_ref": row.player_id,
-        "player_name": row.player_name,
+        "player_name": "Same name",
         "percent_played": row.percent_played,
         "kicks": row.stats.kicks,
         "tackles": row.stats.tackles,
@@ -346,6 +338,12 @@ def test_player_csv_boundary_checks_and_ignores_brownlow_votes(tmp_path):
     source = appearance_csv(appearances[0])
     write_csv(path, [{**source, "brownlow_votes": "future-value"}])
     assert load_player_matches_csv(str(path), matches) == [appearances[0]]
+    second = appearance_csv(appearances[1])
+    write_csv(path, [source, second])
+    assert {row.player_id for row in load_player_matches_csv(str(path), matches)} == {
+        appearances[0].player_id,
+        appearances[1].player_id,
+    }
     write_csv(path, [source, source])
     assert load_player_matches_csv(str(path), matches) == [appearances[0]]
     for change, error in [
@@ -485,7 +483,7 @@ def test_live_command_writes_player_rows_for_complete_timed_selections(tmp_path)
                 "match_id": row.match_id,
                 "team_name": row.team,
                 "player_ref": row.player_id,
-                "player_name": row.player_name,
+                "player_name": "Same name",
                 "observed_at": cutoff.isoformat(),
             }
             for row in appearances

@@ -1,5 +1,3 @@
-"""Player corrections with dated selections and result-gated player history."""
-
 import math
 from collections import Counter, defaultdict, deque
 from dataclasses import dataclass, replace
@@ -43,7 +41,6 @@ class PlayerMatch:
     match_id: str
     team: str
     player_id: PlayerId
-    player_name: str
     statistics_available_at: datetime
     percent_played: float
     stats: PlayerStats
@@ -64,15 +61,12 @@ class PlayerState:
     experience: float = 0.0
     career_performance: float = 0.0
     recent_performance: float = 0.0
-    last_appearance: datetime | None = None
-    last_team: str | None = None
 
 
 @dataclass(frozen=True)
 class TeamLineupForecast:
     rating_change: float
     form_change: float
-    experience_change: float
     coverage: float
     missing_leader: PlayerId | None
     missing_leader_gap: float
@@ -84,7 +78,6 @@ class LineupForecast:
     away: TeamLineupForecast
     rating_change_difference: float
     form_change_difference: float
-    has_material_change: bool
 
 
 @dataclass(frozen=True)
@@ -152,7 +145,7 @@ def _deduplicate(items, key, description):
 def load_player_matches_csv(path: str, matches: list[MatchRow]) -> list[PlayerMatch]:
     history = {match.match_id: match for match in matches}
     appearances = []
-    required = ("match_id", "team_name", "player_ref", "player_name", "percent_played")
+    required = ("match_id", "team_name", "player_ref", "percent_played")
     for line, row in _csv_rows(path, required):
         try:
             match_id = row["match_id"].strip()
@@ -183,7 +176,6 @@ def load_player_matches_csv(path: str, matches: list[MatchRow]) -> list[PlayerMa
                     match_id,
                     team,
                     PlayerId(player_id),
-                    row["player_name"],
                     available,
                     percent,
                     stats,
@@ -290,8 +282,6 @@ def _team_forecast(selected, references, states, config):
         - average(
             regular, lambda item: item.recent_performance - item.career_performance
         ),
-        average(selected, lambda item: item.experience)
-        - average(regular, lambda item: item.experience),
         sum(
             state(player).experience >= config.minimum_player_games
             for player in selected
@@ -483,8 +473,6 @@ def replay_player_predictions(
                         + config.form_rate * (performance - prior.recent_performance)
                         if prior.experience
                         else performance,
-                        stamp,
-                        team,
                     )
             states.update(updated)
             for team, selected in zip(
@@ -525,7 +513,6 @@ def replay_player_predictions(
                 away,
                 home.rating_change - away.rating_change,
                 home.form_change - away.form_change,
-                material,
             )
             if min(home.coverage, away.coverage) < config.minimum_coverage:
                 status = "low_coverage"
