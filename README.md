@@ -2,7 +2,7 @@
 
 Predict AFL margins with team ratings, scoring-shot ratings, market prices, and one simple market blend.
 
-The model does not use lineup statistics, actual weather, form corrections, or stacked residual models. These inputs and correction layers did not show a reliable gain in the model investigation.
+The four control models use no player data. An optional player model adds a small correction for team-selection changes. No model uses observed weather.
 
 ## Install and test
 
@@ -45,6 +45,25 @@ uv run python -m src.mae_model.run_backtest \
 
 The model uses results available by each prediction deadline. If the match history has no result publication time, it uses the next local midnight. The report records this assumption. Matches on the same local date cannot use each other's results under this rule.
 
+## Compare player selections
+
+To add the player model to the historical comparison, supply the player match file:
+
+```sh
+uv run python -m src.mae_model.run_backtest \
+  --closing-line-benchmark \
+  --market-xlsx src/outputs/afl_betting_history.xlsx \
+  --player-stats-csv src/outputs/afl_player_stats.csv \
+  --player-signal rating \
+  --output-dir reports_players
+```
+
+The command adds one `player_lineup` row for each `market_scoring_blend` row. The four control rows stay unchanged. Player history starts in 2018. Earlier predictions equal the control margin.
+
+Historical final selections contain player identity only. The model assumes that these selections are available at kickoff. Player backtests therefore require `--lead-hours 0`. This assumption does not establish which players were known before kickoff.
+
+`--player-signal` accepts `rating`, `form`, `missing_leader`, or `rating_form`. The default is `rating`. Reports record the selected signal, fixed weights, fallback counts, and missing regular players. `player_diagnostics.csv` gives one diagnostic row per prediction.
+
 ## Predict future fixtures
 
 Create a fixture CSV with these columns:
@@ -85,6 +104,19 @@ The live command does not accept untimed workbook prices. It excludes prices rec
 
 Live prediction and historical evaluation use the same replay procedure. You do not call rating updates yourself. You do not insert zero scores for future fixtures. Season preparation occurs inside the shared procedure.
 
+### Add dated player selections
+
+For live player predictions, supply both `--player-stats-csv` and `--lineups-csv`. Add these options to the fixture command above. The lineup file has one row per selected player:
+
+```csv
+match_id,team_name,player_ref,player_name,observed_at
+example-2026,Sydney,../../players/I/Isaac_Heeney.html,Isaac Heeney,2026-10-01T16:00:00+10:00
+```
+
+Each team snapshot must contain 22 or 23 unique player references with the same observation time. Include a complete snapshot for each team. The model selects the latest complete snapshot observed at or before `--as-of`. A later or incomplete snapshot cannot supply a forecast. Missing selections return the exact control margin.
+
+Use the same `player_ref` values as the player match file. Player names do not identify players. New players can appear in a selection, but at least 80 percent of each selected team must have five completed player games.
+
 ## Model rules
 
 | Output | Method |
@@ -93,12 +125,21 @@ Live prediction and historical evaluation use the same replay procedure. You do 
 | `scoring_shots` | Sequential shot-volume ratings with historical points per shot. |
 | `market_only` | The eligible market margin, without correction. |
 | `market_scoring_blend` | A convex blend of the market margin and scoring-shot prediction. |
+| `player_lineup` | An optional correction to the blend for material selection changes. |
 
 The blend fits one market weight from the preceding five seasons. It selects from 0 to 1 in steps of 0.02. Weight 1 gives the market-only prediction. Equal errors favour the larger market weight. Insufficient history also selects weight 1.
 
 The weight stays fixed during the target season. Its fitting cutoff is 1 January at 00:00 in Australia/Sydney, or the request deadline if earlier. Earlier training prices must also pass their own historical prediction deadlines.
 
-The model does not fit residual corrections, correction limits, or a calibration stack. The target season is excluded from weight fitting. Historical comparisons for 2024 and 2025 are not untouched tests because earlier model development used those results.
+The control models do not fit residual corrections, correction limits, or a calibration stack. The target season is excluded from weight fitting. Historical comparisons for 2024 and 2025 are not untouched tests because earlier model development used those results.
+
+The player model compares the selection with regular players from the team's last six completed selections. A regular player appeared in at least half of those selections. The model requires at least three completed selections. It reports the highest reliably rated absent regular and the rating gap to the selected-team median.
+
+Player impact ratings use match outcomes and each player's share of team game time. Forecasts reduce ratings with little player history. Recent form is a fast exponential mean of a fixed box-score score, less a slower career mean. The score uses kicks, handballs, marks, goals, behinds, hit-outs, tackles, clearances, contested possessions, goal assists, and clangers. It divides by at least 50 percent game time. It excludes Brownlow votes. Metadata records all weights.
+
+A correction requires a material rating change or a material replacement gap for an absent regular. The correction limit is four points. The default rating weight is 1.0. The form weight is 0.10. These weights are fixed. The model does not fit them to the target season.
+
+Player statistics enter after the match result becomes available. An optional `statistics_available_at` column must not precede result availability. The player update waits until every player row for that match is available. Current-match statistics cannot change that match's forecast.
 
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 

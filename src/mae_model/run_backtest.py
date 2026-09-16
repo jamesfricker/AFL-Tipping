@@ -6,6 +6,11 @@ from .data import (
     load_market_xlsx,
     load_matches_csv,
 )
+from .player_margin import (
+    PlayerModelConfig,
+    load_player_matches_csv,
+    replay_player_predictions,
+)
 from .reporting import write_metadata
 from .sequential_margin import (
     summarize_predictions,
@@ -17,7 +22,7 @@ from .sequential_margin import (
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        description="Replay four AFL margin models in time order."
+        description="Replay AFL margin models in time order."
     )
     parser.add_argument("--matches-csv", default="src/outputs/afl_data.csv")
     market = parser.add_mutually_exclusive_group()
@@ -36,6 +41,12 @@ def main(argv=None):
         help="Prediction deadline in hours before each kickoff.",
     )
     parser.add_argument("--min-train-years", type=int, default=3)
+    parser.add_argument("--player-stats-csv")
+    parser.add_argument(
+        "--player-signal",
+        default="rating",
+        choices=("rating", "form", "missing_leader", "rating_form"),
+    )
     parser.add_argument("--output-dir", default="reports")
     args = parser.parse_args(argv)
     if args.closing_line_benchmark != bool(args.market_xlsx):
@@ -44,6 +55,12 @@ def main(argv=None):
         parser.error(
             "Closing benchmark cannot represent an earlier deadline; lead-hours must be 0"
         )
+    if args.player_stats_csv and args.lead_hours != 0:
+        parser.error(
+            "Historical player lineups are known only at kickoff; lead-hours must be 0"
+        )
+    player_config = None
+    player_diagnostics = None
     try:
         matches = load_matches_csv(args.matches_csv)
         if not matches:
@@ -62,6 +79,14 @@ def main(argv=None):
         )
         if not predictions:
             raise ValueError("No matches remain after the training period")
+        if args.player_stats_csv:
+            player_config = PlayerModelConfig(signal=args.player_signal)
+            appearances = load_player_matches_csv(args.player_stats_csv, matches)
+            lineups = []
+            player_rows, player_diagnostics = replay_player_predictions(
+                matches, predictions, appearances, lineups, player_config
+            )
+            predictions.extend(player_rows)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
     summary = summarize_predictions(predictions)
@@ -70,9 +95,25 @@ def main(argv=None):
     write_prediction_rows(str(output / "walk_forward_predictions.csv"), predictions)
     write_summary_rows(str(output / "mae_summary.csv"), summary)
     paths = [
-        path for path in (args.matches_csv, args.market_csv, args.market_xlsx) if path
+        path
+        for path in (
+            args.matches_csv,
+            args.market_csv,
+            args.market_xlsx,
+            args.player_stats_csv,
+        )
+        if path
     ]
-    write_metadata(output, paths, predictions, matches, vars(args), quotes)
+    write_metadata(
+        output,
+        paths,
+        predictions,
+        matches,
+        vars(args),
+        quotes,
+        player_config=player_config,
+        player_diagnostics=player_diagnostics,
+    )
     for row in summary:
         if row["year"] == "ALL" and row["scope"] == "all_matches":
             print(

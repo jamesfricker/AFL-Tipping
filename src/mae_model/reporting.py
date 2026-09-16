@@ -1,14 +1,26 @@
+import csv
 import hashlib
 import json
 import subprocess
 from collections import Counter
+from dataclasses import asdict
 from datetime import UTC, datetime
 from pathlib import Path
 
 from .sequential_margin import MODEL_CONFIG
 
 
-def write_metadata(output_dir, input_paths, rows, matches, config, quotes):
+def write_metadata(
+    output_dir,
+    input_paths,
+    rows,
+    matches,
+    config,
+    quotes,
+    *,
+    player_config=None,
+    player_diagnostics=None,
+):
     root = Path(__file__).resolve().parents[2]
     revision = subprocess.run(
         ["git", "rev-parse", "HEAD"],
@@ -91,4 +103,67 @@ def write_metadata(output_dir, input_paths, rows, matches, config, quotes):
         "tip_rule": "Predicted and actual margins must have the same sign. A draw is correct only for a zero predicted margin.",
         "evaluation_note": "Historical results describe this dataset. Previously inspected seasons are not an untouched test.",
     }
+    if player_config is not None:
+        data["player_model"] = {
+            "configuration": asdict(player_config),
+            "status_counts": dict(Counter(row.status for row in player_diagnostics)),
+            "fallback_count": sum(
+                row.status != "adjusted" for row in player_diagnostics
+            ),
+            "historical_lineups": "Final player identity assumed available at kickoff only",
+            "live_lineups": "Latest complete 22-or-23-player snapshot observed by the deadline",
+            "player_statistics": "The player result event waits for the match result and all player rows for that match",
+            "rating": "Outcome logistic with a 400-point scale; exposure-weighted update; reliability shrinkage at forecast",
+            "form": "Fixed box-score score per at least 50 percent game time; recent EMA minus career EMA",
+            "career_form_rate": 0.05,
+            "performance_weights": {
+                "kicks": 3,
+                "handballs": 2,
+                "marks": 3,
+                "goals": 6,
+                "behinds": 1,
+                "hit_outs": 1,
+                "tackles": 4,
+                "clearances": 3,
+                "contested_possessions": 0.5,
+                "goal_assists": 3,
+                "clangers": -3,
+            },
+        }
+        fields = [
+            "match_id",
+            "cutoff",
+            "status",
+            "correction",
+            "home_missing_leader",
+            "away_missing_leader",
+            "home_missing_leader_gap",
+            "away_missing_leader_gap",
+            "rating_change_difference",
+            "form_change_difference",
+        ]
+        with (Path(output_dir) / "player_diagnostics.csv").open(
+            "w", newline=""
+        ) as target:
+            writer = csv.DictWriter(target, fieldnames=fields)
+            writer.writeheader()
+            for row in player_diagnostics:
+                diagnostic = {
+                    "match_id": row.match_id,
+                    "cutoff": row.cutoff.isoformat(),
+                    "status": row.status,
+                    "correction": row.correction,
+                }
+                if row.lineup is not None:
+                    diagnostic.update(
+                        {
+                            "home_missing_leader": row.lineup.home.missing_leader,
+                            "away_missing_leader": row.lineup.away.missing_leader,
+                            "home_missing_leader_gap": row.lineup.home.missing_leader_gap,
+                            "away_missing_leader_gap": row.lineup.away.missing_leader_gap,
+                            "rating_change_difference": row.lineup.rating_change_difference,
+                            "form_change_difference": row.lineup.form_change_difference,
+                        }
+                    )
+                writer.writerow(diagnostic)
     (Path(output_dir) / "metadata.json").write_text(json.dumps(data, indent=2) + "\n")
