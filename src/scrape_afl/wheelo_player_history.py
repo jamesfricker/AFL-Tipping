@@ -1,5 +1,3 @@
-"""Build a checked player-match history from Wheelo's public match files."""
-
 from __future__ import annotations
 
 import argparse
