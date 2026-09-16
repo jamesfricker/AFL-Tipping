@@ -422,7 +422,7 @@ def test_backtest_command_preserves_control_file_and_records_player_provenance(
     )
     metadata = json.loads((added / "metadata.json").read_text())
     assert len(metadata["inputs"]) == 2
-    assert metadata["player_model"]["configuration"]["signal"] == "rating"
+    assert metadata["player_model"]["configuration"]["signal"] == "rating_form"
     assert metadata["player_model"]["status_counts"]["adjusted"] == 1
     assert (added / "player_diagnostics.csv").is_file()
     assert "player_model" not in json.loads((base / "metadata.json").read_text())

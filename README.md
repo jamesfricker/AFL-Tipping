@@ -54,7 +54,7 @@ uv run python -m src.mae_model.run_backtest \
   --closing-line-benchmark \
   --market-xlsx src/outputs/afl_betting_history.xlsx \
   --player-stats-csv src/outputs/afl_player_stats.csv \
-  --player-signal rating \
+  --player-signal rating_form \
   --output-dir reports_players
 ```
 
@@ -62,7 +62,7 @@ The command adds one `player_lineup` row for each `market_scoring_blend` row. Th
 
 Historical final selections contain player identity only. The model assumes that these selections are available at kickoff. Player backtests therefore require `--lead-hours 0`. This assumption does not establish which players were known before kickoff.
 
-`--player-signal` accepts `rating`, `form`, `missing_leader`, or `rating_form`. The default is `rating`. Reports record the selected signal, fixed weights, fallback counts, and missing regular players. `player_diagnostics.csv` gives one diagnostic row per prediction.
+`--player-signal` accepts `rating`, `form`, `missing_leader`, or `rating_form`. The default is `rating_form`. Reports record the selected signal, fixed weights, fallback counts, and missing regular players. `player_diagnostics.csv` gives one diagnostic row per prediction.
 
 ## Predict future fixtures
 
@@ -133,11 +133,11 @@ The weight stays fixed during the target season. Its fitting cutoff is 1 January
 
 The control models do not fit residual corrections, correction limits, or a calibration stack. The target season is excluded from weight fitting. Historical comparisons for 2024 and 2025 are not untouched tests because earlier model development used those results.
 
-The player model compares the selection with regular players from the team's last six completed selections. A regular player appeared in at least half of those selections. The model requires at least three completed selections. It reports the highest reliably rated absent regular and the rating gap to the selected-team median.
+The player model compares the selection with regular players from the team's last four completed selections. A regular player appeared in at least half of those selections. The model requires at least three completed selections. It reports the highest reliably rated absent regular and the rating gap to the selected-team median.
 
 Player impact ratings use match outcomes and each player's share of team game time. Forecasts reduce ratings with little player history. Recent form is a fast exponential mean of a fixed box-score score, less a slower career mean. The score uses kicks, handballs, marks, goals, behinds, hit-outs, tackles, clearances, contested possessions, goal assists, and clangers. It divides by at least 50 percent game time. It excludes Brownlow votes. Metadata records all weights.
 
-A correction requires a material rating change or a material replacement gap for an absent regular. The correction limit is four points. The default rating weight is 1.0. The form weight is 0.10. These weights are fixed. The model does not fit them to the target season.
+A correction requires a material rating change or a material replacement gap for an absent regular. The correction limit is four points. The default rating weight is 1.0. The form weight is 0.20. These weights are fixed. The model does not fit them to the target season.
 
 Player statistics enter after the match result becomes available. An optional `statistics_available_at` column must not precede result availability. The player update waits until every player row for that match is available. Current-match statistics cannot change that match's forecast.
 
@@ -151,12 +151,13 @@ The current closing-line benchmark scores 2,258 matches from 2015 to 2025:
 
 | Model | Overall MAE | 2024 MAE | 2025 MAE |
 | --- | ---: | ---: | ---: |
+| `player_lineup` | 26.5383 | 26.6201 | 25.9307 |
 | `market_only` | 26.6466 | 26.8519 | 26.1944 |
 | `market_scoring_blend` | 26.5694 | 26.6256 | 26.0380 |
 | `scoring_shots` | 27.2709 | 26.8564 | 26.6307 |
 | `team_only` | 27.3178 | 26.4834 | 26.3481 |
 
-The blend's small historical gain does not establish a future gain. See [the full summary](reports/mae_summary.csv) and [run metadata](reports/metadata.json). The prediction CSV is generated locally and is not tracked in Git.
+The player model's small historical gain does not establish a future gain. See [the full summary](reports/mae_summary.csv) and [run metadata](reports/metadata.json). The prediction CSV is generated locally and is not tracked in Git.
 
 The old `reports_baseline` and `reports_rethink` outputs are retired. Their results describe earlier code, including an invalid result affected by outcome leakage. The old generated `afl_match_context.csv` is also retired. Git history retains those files. Current results belong in `reports` and include their metadata.
 

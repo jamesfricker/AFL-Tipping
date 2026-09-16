@@ -44,7 +44,7 @@ def main(argv=None):
     parser.add_argument("--player-stats-csv")
     parser.add_argument(
         "--player-signal",
-        default="rating",
+        default="rating_form",
         choices=("rating", "form", "missing_leader", "rating_form"),
     )
     parser.add_argument("--output-dir", default="reports")

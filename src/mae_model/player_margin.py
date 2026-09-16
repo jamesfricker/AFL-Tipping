@@ -104,19 +104,19 @@ class PlayerDiagnostic:
 
 @dataclass(frozen=True)
 class PlayerModelConfig:
-    signal: PlayerSignal = "rating"
+    signal: PlayerSignal = "rating_form"
     control_model_name: str = "market_scoring_blend"
-    reference_lineups: int = 6
+    reference_lineups: int = 4
     minimum_reference_lineups: int = 3
     minimum_coverage: float = 0.80
     minimum_player_games: float = 5.0
     rating_rate: float = 24.0
-    rating_prior_games: float = 12.0
+    rating_prior_games: float = 6.0
     form_rate: float = 0.25
     material_change: float = 0.75
     correction_cap: float = 4.0
     rating_weight: float = 1.0
-    form_weight: float = 0.10
+    form_weight: float = 0.20
 
     def __post_init__(self):
         if self.signal not in ("rating", "form", "missing_leader", "rating_form"):
