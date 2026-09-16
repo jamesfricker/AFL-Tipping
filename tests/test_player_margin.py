@@ -101,6 +101,50 @@ def test_current_match_statistics_do_not_change_its_forecast():
     assert before[1].correction < 0
 
 
+def test_current_match_official_rating_does_not_change_its_forecast():
+    matches, appearances = sample_history()
+    rated = [replace(row, official_rating_points=10.0) for row in appearances]
+    config = PlayerModelConfig(
+        control_model_name="team_only",
+        measurement="official_points",
+        signal="rating_form",
+        material_change=0,
+    )
+    before = target_result(matches, rated, config=config)
+    changed = [
+        replace(row, official_rating_points=10000.0)
+        if row.match_id == matches[-1].match_id
+        else row
+        for row in rated
+    ]
+
+    assert before == target_result(matches, changed, config=config)
+
+
+def test_official_rating_state_follows_player_to_new_team():
+    matches, appearances = sample_history(missing_leader=False)
+    rated = []
+    for row in appearances:
+        index = int(row.match_id[1:])
+        player_id = row.player_id
+        if index <= 10 and player_id == "A0":
+            player_id = PlayerId("traveller")
+        elif index >= 11 and player_id == "B0":
+            player_id = PlayerId("traveller")
+        rated.append(replace(row, player_id=player_id, official_rating_points=15.0))
+    config = PlayerModelConfig(
+        control_model_name="team_only",
+        measurement="official_points",
+        signal="rating",
+        material_change=0,
+    )
+
+    _, diagnostic = target_result(matches, rated, config=config)
+
+    assert diagnostic.lineup is not None
+    assert diagnostic.lineup.away.coverage == 1.0
+
+
 def test_future_statistics_results_and_lineups_do_not_change_prior_forecasts():
     matches, appearances = sample_history(14)
     controls = walk_forward_predictions(matches[:-1], 0)
@@ -373,6 +417,19 @@ def test_player_csv_boundary_checks_and_ignores_brownlow_votes(tmp_path):
             load_player_matches_csv(str(path), matches)
 
 
+def test_player_csv_accepts_negative_and_blank_official_ratings(tmp_path):
+    matches, appearances = sample_history(1)
+    path = tmp_path / "players.csv"
+    first = {**appearance_csv(appearances[0]), "official_rating_points": "-2.5"}
+    second = {**appearance_csv(appearances[1]), "official_rating_points": ""}
+    write_csv(path, [first, second])
+
+    loaded = load_player_matches_csv(str(path), matches)
+
+    assert loaded[0].official_rating_points == -2.5
+    assert loaded[1].official_rating_points is None
+
+
 def test_lineup_csv_requires_dated_unique_identity(tmp_path):
     matches, _ = sample_history(1)
     target = matches[0].fixture
@@ -435,6 +492,47 @@ def test_backtest_command_preserves_control_file_and_records_player_provenance(
     assert metadata["player_model"]["status_counts"]["adjusted"] == 1
     assert (added / "player_diagnostics.csv").is_file()
     assert "player_model" not in json.loads((base / "metadata.json").read_text())
+
+
+def test_backtest_command_records_official_rating_configuration(tmp_path):
+    matches, appearances = sample_history()
+    history = tmp_path / "history.csv"
+    players = tmp_path / "players.csv"
+    output = tmp_path / "official"
+    write_csv(history, [match_csv(match) for match in matches])
+    write_csv(
+        players,
+        [
+            {**appearance_csv(row), "official_rating_points": 10}
+            for row in appearances
+        ],
+    )
+
+    backtest_main(
+        [
+            "--matches-csv",
+            str(history),
+            "--min-train-years",
+            "0",
+            "--player-stats-csv",
+            str(players),
+            "--player-measurement",
+            "official_points",
+            "--player-control",
+            "team_only",
+            "--player-rating-prior-games",
+            "12",
+            "--output-dir",
+            str(output),
+        ]
+    )
+
+    config = json.loads((output / "metadata.json").read_text())["player_model"][
+        "configuration"
+    ]
+    assert config["measurement"] == "official_points"
+    assert config["control_model_name"] == "team_only"
+    assert config["rating_prior_games"] == 12
 
 
 def test_live_command_requires_both_player_inputs_and_backtest_requires_kickoff(

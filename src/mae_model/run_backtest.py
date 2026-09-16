@@ -47,6 +47,21 @@ def main(argv=None):
         default="rating_form",
         choices=("rating", "form", "missing_leader", "rating_form"),
     )
+    parser.add_argument(
+        "--player-measurement",
+        default="outcome_fantasy",
+        choices=(
+            "outcome_fantasy",
+            "official_points",
+            "official_points_per_time",
+        ),
+    )
+    parser.add_argument(
+        "--player-control",
+        default="market_scoring_blend",
+        choices=("team_only", "scoring_shots", "market_scoring_blend"),
+    )
+    parser.add_argument("--player-rating-prior-games", type=float, default=6.0)
     parser.add_argument("--output-dir", default="reports")
     args = parser.parse_args(argv)
     if args.closing_line_benchmark != bool(args.market_xlsx):
@@ -80,7 +95,12 @@ def main(argv=None):
         if not predictions:
             raise ValueError("No matches remain after the training period")
         if args.player_stats_csv:
-            player_config = PlayerModelConfig(signal=args.player_signal)
+            player_config = PlayerModelConfig(
+                signal=args.player_signal,
+                measurement=args.player_measurement,
+                control_model_name=args.player_control,
+                rating_prior_games=args.player_rating_prior_games,
+            )
             appearances = load_player_matches_csv(args.player_stats_csv, matches)
             lineups = []
             player_rows, player_diagnostics = replay_player_predictions(

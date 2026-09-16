@@ -104,6 +104,7 @@ def write_metadata(
         "evaluation_note": "Historical results describe this dataset. Previously inspected seasons are not an untouched test.",
     }
     if player_config is not None:
+        official = player_config.measurement != "outcome_fantasy"
         data["player_model"] = {
             "configuration": asdict(player_config),
             "status_counts": dict(Counter(row.status for row in player_diagnostics)),
@@ -113,8 +114,16 @@ def write_metadata(
             "historical_lineups": "Final player identity assumed available at kickoff only",
             "live_lineups": "Latest complete 22-or-23-player snapshot observed by the deadline",
             "player_statistics": "The player result event waits for the match result and all player rows for that match",
-            "rating": "Outcome logistic with a 400-point scale; exposure-weighted update; reliability shrinkage at forecast",
-            "form": "Fixed box-score score per at least 50 percent game time; recent EMA minus career EMA",
+            "rating": (
+                "Prior official Rating Points slow mean with reliability shrinkage"
+                if official
+                else "Outcome logistic with a 400-point scale; exposure-weighted update; reliability shrinkage at forecast"
+            ),
+            "form": (
+                "Prior official Rating Points recent mean minus slow mean"
+                if official
+                else "Fixed box-score score per at least 50 percent game time; recent EMA minus career EMA"
+            ),
             "career_form_rate": 0.05,
             "performance_weights": {
                 "kicks": 3,
@@ -130,6 +139,8 @@ def write_metadata(
                 "clangers": -3,
             },
         }
+        if official:
+            data["player_model"].pop("performance_weights")
         fields = [
             "match_id",
             "cutoff",

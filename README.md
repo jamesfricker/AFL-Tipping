@@ -153,6 +153,41 @@ uv run python -m src.scrape_afl.player_history \
 
 The source manifest is [stored with the player file](src/outputs/afl_player_stats_manifest.json). A pre-season form test used official player statistics from 2013 to 2025. Its best setting reduced overall MAE by 0.0001 points, but only five of eleven seasons improved or stayed equal. The model does not use this input.
 
+### Test official Player Ratings
+
+Build the historical player file from Wheelo's public match data:
+
+```sh
+uv run python -m src.scrape_afl.wheelo_player_history \
+  --first-year 2012 --last-year 2025 \
+  --output-dir .context/wheelo-player-history
+```
+
+The importer joins matches with the year, the local date, and the two team names. It does not use scores for the join. It stores each source body by its SHA-256 hash and checks cached bodies on later runs. The output uses `wheelo:<WebsiteId>` as `player_ref`, so a club transfer does not create a new player.
+
+Run the selected market-free configuration:
+
+```sh
+uv run python -m src.mae_model.run_backtest \
+  --player-stats-csv .context/wheelo-player-history/afl_player_ratings.csv \
+  --player-measurement official_points \
+  --player-control team_only \
+  --player-rating-prior-games 12 \
+  --output-dir .context/official-player-backtest
+```
+
+This configuration uses only Rating Points from completed earlier matches. It uses the final 22-player or 23-player identity list at kickoff. It does not use the current match Rating Points or the current match time on ground.
+
+The 2012 to 2025 source audit found 2,879 matches, 128,800 player rows, and 1,825 player IDs. All player rows had Rating Points. The selected configuration produced these market-free results:
+
+| Evaluation set | `team_only` MAE | Official player MAE | Improvement |
+| --- | ---: | ---: | ---: |
+| 2015 to 2022 development | 27.7295 | 27.6678 | 0.0617 |
+| 2023 to 2024 validation | 26.2681 | 26.2368 | 0.0314 |
+| 2025 target | 26.3481 | 26.3384 | 0.0096 |
+
+The source CSV hash for this test was `cab47f144922f8f58f39dfc7fd0d7f1792bf6e8bfb4e1d2f6d2101da5e293393`. The 2025 result did not beat Wheelo's 25.8449 MAE. The official rating signal is useful across the longer history, but it does not close the 2025 gap by itself.
+
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 
 Eligible decimal odds can provide a market implied probability after removal of the bookmaker margin. This value is separate from the blend's margin prediction. The model does not claim a calibrated win probability for its internal or blended margins.

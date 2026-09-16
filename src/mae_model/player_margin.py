@@ -19,6 +19,9 @@ from .sequential_margin import PredictionRow
 
 PlayerId = NewType("PlayerId", str)
 PlayerSignal = Literal["rating", "form", "missing_leader", "rating_form"]
+PlayerMeasurement = Literal[
+    "outcome_fantasy", "official_points", "official_points_per_time"
+]
 
 
 @dataclass(frozen=True)
@@ -44,6 +47,7 @@ class PlayerMatch:
     statistics_available_at: datetime
     percent_played: float
     stats: PlayerStats
+    official_rating_points: float | None = None
 
 
 @dataclass(frozen=True)
@@ -61,6 +65,9 @@ class PlayerState:
     experience: float = 0.0
     career_performance: float = 0.0
     recent_performance: float = 0.0
+    official_games: int = 0
+    official_average: float = 0.0
+    official_recent: float = 0.0
 
 
 @dataclass(frozen=True)
@@ -98,6 +105,7 @@ class PlayerDiagnostic:
 @dataclass(frozen=True)
 class PlayerModelConfig:
     signal: PlayerSignal = "rating_form"
+    measurement: PlayerMeasurement = "outcome_fantasy"
     control_model_name: str = "market_scoring_blend"
     reference_lineups: int = 4
     minimum_reference_lineups: int = 3
@@ -106,6 +114,7 @@ class PlayerModelConfig:
     rating_rate: float = 24.0
     rating_prior_games: float = 6.0
     form_rate: float = 0.25
+    official_average_rate: float = 0.05
     material_change: float = 0.75
     correction_cap: float = 4.0
     rating_weight: float = 1.0
@@ -114,9 +123,19 @@ class PlayerModelConfig:
     def __post_init__(self):
         if self.signal not in ("rating", "form", "missing_leader", "rating_form"):
             raise ValueError(f"Unknown player signal: {self.signal}")
+        if self.measurement not in (
+            "outcome_fantasy",
+            "official_points",
+            "official_points_per_time",
+        ):
+            raise ValueError(f"Unknown player measurement: {self.measurement}")
         if not 1 <= self.minimum_reference_lineups <= self.reference_lineups:
             raise ValueError("Player reference counts must be positive and ordered")
-        if not 0 <= self.minimum_coverage <= 1 or not 0.05 < self.form_rate <= 1:
+        if (
+            not 0 <= self.minimum_coverage <= 1
+            or not 0.05 < self.form_rate <= 1
+            or not 0 < self.official_average_rate <= 1
+        ):
             raise ValueError("Invalid player coverage or form rate")
         for name in (
             "minimum_player_games",
@@ -171,6 +190,12 @@ def load_player_matches_csv(path: str, matches: list[MatchRow]) -> list[PlayerMa
                     for name in PlayerStats.__dataclass_fields__
                 }
             )
+            official_value = row.get("official_rating_points", "").strip()
+            official_rating = (
+                _number(official_value, "official_rating_points")
+                if official_value
+                else None
+            )
             appearances.append(
                 PlayerMatch(
                     match_id,
@@ -179,6 +204,7 @@ def load_player_matches_csv(path: str, matches: list[MatchRow]) -> list[PlayerMa
                     available,
                     percent,
                     stats,
+                    official_rating,
                 )
             )
         except (TypeError, ValueError) as exc:
@@ -242,10 +268,30 @@ def derive_historical_lineups(
 
 
 def _rating(state, config):
+    if config.measurement != "outcome_fantasy":
+        return (
+            state.official_average
+            * state.official_games
+            / (state.official_games + config.rating_prior_games)
+        )
     return (
         state.impact_rating
         * state.experience
         / (state.experience + config.rating_prior_games)
+    )
+
+
+def _form(state, config):
+    if config.measurement != "outcome_fantasy":
+        return state.official_recent - state.official_average
+    return state.recent_performance - state.career_performance
+
+
+def _experience(state, config):
+    return (
+        state.official_games
+        if config.measurement != "outcome_fantasy"
+        else state.experience
     )
 
 
@@ -265,7 +311,7 @@ def _team_forecast(selected, references, states, config):
         player
         for player in regular
         if player not in selected
-        and state(player).experience >= config.minimum_player_games
+        and _experience(state(player), config) >= config.minimum_player_games
     ]
     leader = max(
         absent,
@@ -276,14 +322,10 @@ def _team_forecast(selected, references, states, config):
     return TeamLineupForecast(
         average(selected, lambda item: _rating(item, config))
         - average(regular, lambda item: _rating(item, config)),
-        average(
-            selected, lambda item: item.recent_performance - item.career_performance
-        )
-        - average(
-            regular, lambda item: item.recent_performance - item.career_performance
-        ),
+        average(selected, lambda item: _form(item, config))
+        - average(regular, lambda item: _form(item, config)),
         sum(
-            state(player).experience >= config.minimum_player_games
+            _experience(state(player), config) >= config.minimum_player_games
             for player in selected
         )
         / len(selected),
@@ -308,6 +350,24 @@ def _performance(appearance):
         - 3 * stats.clangers
     )
     return value / max(0.5, appearance.percent_played / 100)
+
+
+def _update_official_rating(state, appearance, config):
+    value = appearance.official_rating_points
+    if value is None:
+        return state.official_games, state.official_average, state.official_recent
+    if config.measurement == "official_points_per_time":
+        value /= max(0.5, appearance.percent_played / 100)
+    games = state.official_games + 1
+    if state.official_games == 0:
+        return games, value, value
+    average = state.official_average + config.official_average_rate * (
+        value - state.official_average
+    )
+    recent = state.official_recent + config.form_rate * (
+        value - state.official_recent
+    )
+    return games, average, recent
 
 
 def replay_player_predictions(
@@ -453,6 +513,7 @@ def replay_player_predictions(
                 for appearance in team_rows:
                     prior = states.get(appearance.player_id, PlayerState())
                     performance = _performance(appearance)
+                    official = _update_official_rating(prior, appearance, config)
                     change = (
                         side
                         * config.rating_rate
@@ -473,6 +534,7 @@ def replay_player_predictions(
                         + config.form_rate * (performance - prior.recent_performance)
                         if prior.experience
                         else performance,
+                        *official,
                     )
             states.update(updated)
             for team, selected in zip(
