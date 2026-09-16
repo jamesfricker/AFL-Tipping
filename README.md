@@ -190,6 +190,23 @@ The source CSV hash for this test was `cab47f144922f8f58f39dfc7fd0d7f1792bf6e8bf
 
 The source does not give publication timestamps for Rating Points. The importer assumes that they became available with the repository match result. The final historical player list is also treated as the lineup that was known at kickoff. Use these results only with those two timing assumptions.
 
+### Combine both player signals
+
+The outcome and official player models use different player IDs and different evidence. The hybrid model keeps both histories separate. It adds both lineup corrections to `team_only`.
+
+```sh
+uv run python -m src.mae_model.run_backtest \
+  --player-stats-csv src/outputs/afl_player_stats.csv \
+  --official-player-stats-csv .context/wheelo-player-history/afl_player_ratings.csv \
+  --player-control team_only \
+  --official-player-rating-prior-games 12 \
+  --output-dir .context/hybrid-player-backtest
+```
+
+The hybrid model improves MAE in 9 of 11 seasons when it is compared with `team_only`. The 2025 MAE is 26.1222. Overall MAE from 2015 to 2025 is 27.1707. The two regressions are 0.0167 points in 2017 and 0.0296 points in 2021.
+
+The 2025 result remains 0.2773 points behind Wheelo. The improvement against the official-only player model was 0.2162 points. A paired bootstrap gave a 95% interval from 0.0050 to 0.4272 points. The 2025 season was inspected during earlier work, so it is not an untouched test set.
+
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 
 Eligible decimal odds can provide a market implied probability after removal of the bookmaker margin. This value is separate from the blend's margin prediction. The model does not claim a calibrated win probability for its internal or blended margins.

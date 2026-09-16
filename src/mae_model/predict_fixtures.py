@@ -8,9 +8,12 @@ from .data import (
     parse_timestamp,
 )
 from .player_margin import (
+    HybridPlayerConfig,
+    PlayerHistory,
     PlayerModelConfig,
     load_lineup_snapshots_csv,
     load_player_matches_csv,
+    replay_hybrid_player_predictions,
     replay_player_predictions,
 )
 from .reporting import write_metadata
@@ -39,7 +42,12 @@ def main(argv=None):
         help="Historical training deadline in hours before kickoff.",
     )
     parser.add_argument("--player-stats-csv")
+    parser.add_argument("--official-player-stats-csv")
+    parser.add_argument(
+        "--official-player-rating-prior-games", type=float, default=12.0
+    )
     parser.add_argument("--lineups-csv")
+    parser.add_argument("--official-player-lineups-csv")
     parser.add_argument(
         "--player-signal",
         default="rating_form",
@@ -64,6 +72,21 @@ def main(argv=None):
     args = parser.parse_args(argv)
     if bool(args.player_stats_csv) != bool(args.lineups_csv):
         parser.error("Use --player-stats-csv and --lineups-csv together")
+    if args.official_player_stats_csv and (
+        not args.player_stats_csv
+        or args.player_measurement != "outcome_fantasy"
+        or args.player_control != "team_only"
+    ):
+        parser.error(
+            "Hybrid predictions require --player-stats-csv, "
+            "--player-measurement outcome_fantasy, and --player-control team_only"
+        )
+    if bool(args.official_player_stats_csv) != bool(args.official_player_lineups_csv):
+        parser.error(
+            "Use --official-player-stats-csv and --official-player-lineups-csv together"
+        )
+    hybrid_config = None
+    hybrid_diagnostics = None
     player_config = None
     player_diagnostics = None
     try:
@@ -85,9 +108,34 @@ def main(argv=None):
             )
             appearances = load_player_matches_csv(args.player_stats_csv, matches)
             lineups = load_lineup_snapshots_csv(args.lineups_csv, fixtures)
-            player_rows, player_diagnostics = replay_player_predictions(
-                matches, predictions, appearances, lineups, player_config
-            )
+            if args.official_player_stats_csv:
+                hybrid_config = HybridPlayerConfig(
+                    outcome=player_config,
+                    official=PlayerModelConfig(
+                        signal=args.player_signal,
+                        measurement="official_points",
+                        control_model_name="team_only",
+                        rating_prior_games=args.official_player_rating_prior_games,
+                    ),
+                )
+                official_appearances = load_player_matches_csv(
+                    args.official_player_stats_csv, matches
+                )
+                official_lineups = load_lineup_snapshots_csv(
+                    args.official_player_lineups_csv, fixtures
+                )
+                player_rows, hybrid_diagnostics = replay_hybrid_player_predictions(
+                    matches,
+                    predictions,
+                    PlayerHistory(appearances, lineups),
+                    PlayerHistory(official_appearances, official_lineups),
+                    hybrid_config,
+                )
+                player_config = None
+            else:
+                player_rows, player_diagnostics = replay_player_predictions(
+                    matches, predictions, appearances, lineups, player_config
+                )
             predictions.extend(player_rows)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
@@ -101,7 +149,9 @@ def main(argv=None):
             args.fixtures_csv,
             args.market_csv,
             args.player_stats_csv,
+            args.official_player_stats_csv,
             args.lineups_csv,
+            args.official_player_lineups_csv,
         )
         if path
     ]
@@ -110,10 +160,16 @@ def main(argv=None):
         paths,
         predictions,
         matches,
-        vars(args),
+        {
+            key: value
+            for key, value in vars(args).items()
+            if args.official_player_stats_csv or not key.startswith("official_player_")
+        },
         quotes,
         player_config=player_config,
         player_diagnostics=player_diagnostics,
+        hybrid_config=hybrid_config,
+        hybrid_diagnostics=hybrid_diagnostics,
     )
     print(f"Wrote predictions for {len(fixtures)} fixtures to {output}")
 

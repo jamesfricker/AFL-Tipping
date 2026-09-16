@@ -20,6 +20,8 @@ def write_metadata(
     *,
     player_config=None,
     player_diagnostics=None,
+    hybrid_config=None,
+    hybrid_diagnostics=None,
 ):
     root = Path(__file__).resolve().parents[2]
     revision = subprocess.run(
@@ -177,4 +179,49 @@ def write_metadata(
                         }
                     )
                 writer.writerow(diagnostic)
+    if hybrid_config is not None:
+        data["hybrid_player_model"] = {
+            "configuration": asdict(hybrid_config),
+            "prediction_rule": "team_only + outcome correction + official correction",
+            "component_weights": {"outcome": 1.0, "official": 1.0},
+            "final_correction_cap": None,
+            "status_counts": {
+                component: dict(
+                    Counter(
+                        getattr(row, component).status for row in hybrid_diagnostics
+                    )
+                )
+                for component in ("outcome", "official")
+            },
+            "historical_lineups": "Final player identity assumed available at kickoff only",
+            "live_lineups": "Each source uses its latest complete snapshot observed by the deadline",
+            "player_statistics": "Each source waits for the match result and all its player rows for that match",
+            "identity": "Player histories and lineup IDs remain separate for each source",
+        }
+        fields = [
+            "match_id",
+            "cutoff",
+            "correction",
+            "outcome_correction",
+            "official_correction",
+            "outcome_status",
+            "official_status",
+        ]
+        with (Path(output_dir) / "hybrid_player_diagnostics.csv").open(
+            "w", newline=""
+        ) as target:
+            writer = csv.DictWriter(target, fieldnames=fields)
+            writer.writeheader()
+            for row in hybrid_diagnostics:
+                writer.writerow(
+                    {
+                        "match_id": row.match_id,
+                        "cutoff": row.cutoff.isoformat(),
+                        "correction": row.correction,
+                        "outcome_correction": row.outcome.correction,
+                        "official_correction": row.official.correction,
+                        "outcome_status": row.outcome.status,
+                        "official_status": row.official.status,
+                    }
+                )
     (Path(output_dir) / "metadata.json").write_text(json.dumps(data, indent=2) + "\n")

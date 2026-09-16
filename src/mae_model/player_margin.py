@@ -151,6 +151,41 @@ class PlayerModelConfig:
             raise ValueError("rating_prior_games must be positive")
 
 
+@dataclass(frozen=True)
+class PlayerHistory:
+    appearances: list[PlayerMatch]
+    lineups: list[LineupSnapshot]
+
+
+@dataclass(frozen=True)
+class HybridPlayerConfig:
+    outcome: PlayerModelConfig
+    official: PlayerModelConfig
+
+    def __post_init__(self):
+        if self.outcome.measurement != "outcome_fantasy":
+            raise ValueError("Hybrid outcome history requires outcome_fantasy")
+        if self.official.measurement not in (
+            "official_points",
+            "official_points_per_time",
+        ):
+            raise ValueError("Hybrid official history requires official ratings")
+        if any(
+            config.control_model_name != "team_only"
+            for config in (self.outcome, self.official)
+        ):
+            raise ValueError("Hybrid player components require team_only controls")
+
+
+@dataclass(frozen=True)
+class HybridPlayerDiagnostic:
+    match_id: str
+    cutoff: datetime
+    correction: float
+    outcome: PlayerDiagnostic
+    official: PlayerDiagnostic
+
+
 def _deduplicate(items, key, description):
     seen = {}
     for item in items:
@@ -614,3 +649,74 @@ def replay_player_predictions(
     return [outputs[index] for index in range(len(controls))], [
         diagnostics[index] for index in range(len(controls))
     ]
+
+
+def combine_player_predictions(
+    control_rows: list[PredictionRow],
+    outcome_diagnostics: list[PlayerDiagnostic],
+    official_diagnostics: list[PlayerDiagnostic],
+) -> tuple[list[PredictionRow], list[HybridPlayerDiagnostic]]:
+    def index_by_key(rows):
+        indexed = {}
+        for row in rows:
+            key = (row.match_id, row.cutoff)
+            if key in indexed:
+                raise ValueError(f"Duplicate hybrid prediction key: {key}")
+            indexed[key] = row
+        return indexed
+
+    controls = index_by_key(
+        row for row in control_rows if row.model_name == "team_only"
+    )
+    outcomes = index_by_key(outcome_diagnostics)
+    officials = index_by_key(official_diagnostics)
+    if controls.keys() != outcomes.keys() or controls.keys() != officials.keys():
+        raise ValueError("Hybrid prediction keys must match by match_id and cutoff")
+    rows = []
+    diagnostics = []
+    for key, control in controls.items():
+        outcome, official = outcomes[key], officials[key]
+        correction = outcome.correction + official.correction
+        margin = control.predicted_margin
+        if margin is not None:
+            margin += correction
+        rows.append(
+            replace(
+                control,
+                model_name="player_hybrid",
+                predicted_margin=margin,
+                abs_error=abs(control.actual_margin - margin)
+                if control.actual_margin is not None and margin is not None
+                else None,
+                used_fallback=control.used_fallback
+                or not any(
+                    component.status == "adjusted" for component in (outcome, official)
+                ),
+            )
+        )
+        diagnostics.append(HybridPlayerDiagnostic(*key, correction, outcome, official))
+    return rows, diagnostics
+
+
+def replay_hybrid_player_predictions(
+    matches: list[MatchRow],
+    control_rows: list[PredictionRow],
+    outcome_history: PlayerHistory,
+    official_history: PlayerHistory,
+    config: HybridPlayerConfig,
+) -> tuple[list[PredictionRow], list[HybridPlayerDiagnostic]]:
+    _, outcome = replay_player_predictions(
+        matches,
+        control_rows,
+        outcome_history.appearances,
+        outcome_history.lineups,
+        config.outcome,
+    )
+    _, official = replay_player_predictions(
+        matches,
+        control_rows,
+        official_history.appearances,
+        official_history.lineups,
+        config.official,
+    )
+    return combine_player_predictions(control_rows, outcome, official)
