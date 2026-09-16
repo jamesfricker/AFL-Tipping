@@ -5,5 +5,6 @@ geckodriver.log
 .venv
 *.pyc
 reports*/walk_forward_predictions.csv
+reports*/player_diagnostics.csv
 predictions/
 src/outputs/afl_match_context.csv
