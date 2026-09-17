@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-09-17T03:35:44.354365+00:00",
-  "git_revision": "8f86dfaaeb37b2bb1c8da3622720d7f98eebd583",
-  "git_dirty": true,
+  "created_at": "2026-09-17T03:40:08.318103+00:00",
+  "git_revision": "302581c1c475101fdfeab384524fb89ceb4a602e",
+  "git_dirty": false,
   "configuration": {
     "team_base_score": 76.0,
     "team_home_advantage": 3.0,
@@ -51,7 +51,7 @@
     "src/mae_model/data.py": "4a4a23845b34f7a0af222850de5e75ccd94f24d6d82bd47c819e778d194e8251",
     "src/mae_model/player_margin.py": "2d62ec17a7c31a0e1d508cea0556269cfa88c5e7d68af81fdf856cc51584dc9c",
     "src/mae_model/predict_fixtures.py": "d3c35c45c5ffab5f04f6b972e35b53453bdc4b814bf2ab27f3af9127a6be5572",
-    "src/mae_model/preseason_challenger.py": "e8c069d912bf5f24edd25a0f980453a4fd5609163a9d34e62023ac6525dc9b06",
+    "src/mae_model/preseason_challenger.py": "61df9e718899566e5d4012c8e0be5d61c37ca686f87f5f9167437201fa9a252c",
     "src/mae_model/reporting.py": "58848020646f3c071dcb21a8339afc15915e5ad5cc7350b80360bef7f142fe9a",
     "src/mae_model/run_backtest.py": "7a81fa361f9a96fdd6bb1fb61cd43f6d87f78091b5b02d44781ecabc50d27a14",
     "src/mae_model/selected_team_margin.py": "26aac38d5d6f17bdfddae06963a199053975f2d0756ac73902bd3cf6d1a07981",
