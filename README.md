@@ -4,6 +4,12 @@ Predict AFL margins with team ratings, scoring-shot ratings, player ratings, mar
 
 The four control models use no player data. The optional player models measure selection changes and the full strength of each selected team. No model uses observed weather.
 
+An optional market-free challenger uses official preseason scoring-shot
+results with two chronological team forecasts. On the inspected 2026 season,
+its Squiggle-score MAE is 24.7404. Wheelo Ratings has an MAE of 24.8168. See the
+[full experiment](research/preseason_challenger/README.md) for the validation
+result and limits.
+
 ## Install and test
 
 ```sh
@@ -19,6 +25,16 @@ Run the internal models without market inputs:
 
 ```sh
 uv run python -m src.mae_model.run_backtest --output-dir reports
+```
+
+Add the preseason challenger with an official preseason result file:
+
+```sh
+uv run python -m src.mae_model.run_backtest \
+  --matches-csv research/preseason_challenger/data/afl_data_2012_2026.csv \
+  --preseason-results-csv \
+    research/preseason_challenger/data/afl_preseason_results_2013_2026.csv \
+  --output-dir research/preseason_challenger/results/run
 ```
 
 The supplied workbook has closing lines without publication times. To use it, select the historical closing-line benchmark explicitly:
@@ -96,6 +112,9 @@ uv run python -m src.mae_model.predict_fixtures \
   --output-dir predictions
 ```
 
+Add `--preseason-results-csv` to this command to produce the market-free
+`preseason_structural_challenger` forecast.
+
 For live prediction, `--as-of` sets the deadline for the requested fixtures. `--lead-hours` sets the deadline used for historical blend-training examples. Keep this historical rule consistent with your competition's prediction time.
 
 If you have no market prices, omit `--market-csv`. The blend then uses scoring-shot predictions. The market-only prediction stays empty. The output records the fallback.
@@ -129,6 +148,7 @@ Use the same `player_ref` values as the player match file. Player names do not i
 | `player_hybrid` | The market-free team forecast plus two independent lineup-change corrections. |
 | `selected_team_strength` | A market-free annual fit of team strength, lineup change, and the selected players' prior Rating Points. |
 | `conservative_selected_team` | A fixed blend of 70 percent selected-team strength and 30 percent scoring-shot strength. |
+| `preseason_structural_challenger` | A fixed blend of two team forecasts, official preseason scoring-shot form through round 8, and a large-margin calibration. |
 
 The blend fits one market weight from the preceding five seasons. It selects from 0 to 1 in steps of 0.02. Weight 1 gives the market-only prediction. Equal errors favour the larger market weight. Insufficient history also selects weight 1.
 

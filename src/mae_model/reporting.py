@@ -285,4 +285,42 @@ def write_metadata(
                 "The fixed weight minimized 2015-2022 MAE on a 0.05 grid."
             ),
         }
+    if config.get("preseason_results_csv"):
+        from .preseason_challenger import (
+            MOSHBODS_CONFIG,
+            PRESEASON_CAP,
+            PRESEASON_LAST_ROUND,
+            PRESEASON_SHOT_VALUE,
+            PRESEASON_WEIGHT,
+            STRUCTURE_CONFIG,
+            TAIL_SLOPE,
+            TAIL_THRESHOLD,
+        )
+
+        data["preseason_structural_challenger"] = {
+            "configuration": {
+                "moshbods": MOSHBODS_CONFIG,
+                "published_structure": STRUCTURE_CONFIG,
+                "structural_weights": [0.5, 0.5],
+                "shot_value": PRESEASON_SHOT_VALUE,
+                "preseason_cap": PRESEASON_CAP,
+                "preseason_weight": PRESEASON_WEIGHT,
+                "preseason_last_round": PRESEASON_LAST_ROUND,
+                "tail_threshold": TAIL_THRESHOLD,
+                "tail_slope": TAIL_SLOPE,
+            },
+            "prediction_rule": (
+                "Blend two sequential team forecasts. Add the capped official "
+                "preseason scoring-shot difference through round 8. Expand "
+                "predicted margins above 40 points."
+            ),
+            "timing": (
+                "A preseason result enters only when its kickoff is earlier "
+                "than the regular-season match kickoff."
+            ),
+            "selection": (
+                "Team-model and preseason settings minimize 2015-2022 MAE. "
+                "The 2023-2024 period is validation."
+            ),
+        }
     (Path(output_dir) / "metadata.json").write_text(json.dumps(data, indent=2) + "\n")

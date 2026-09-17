@@ -1,0 +1,15 @@
+{
+  "frozen_at": "2026-09-17",
+  "sources": [
+    {
+      "path": "squiggle_2026_games.json",
+      "url": "https://api.squiggle.com.au/?q=games&year=2026",
+      "sha256": "b6fa8581fe86a74f202758dc6cfa11937a4fb3824ae0f5b9282c8eaf7aeca135"
+    },
+    {
+      "path": "wheelo_2026_tips.json",
+      "url": "https://api.squiggle.com.au/?q=tips&year=2026&source=26",
+      "sha256": "a03287f5baa2333ca1993fc7a3e66959bd8d0bf39e4525b968ce8303b7a4b69a"
+    }
+  ]
+}

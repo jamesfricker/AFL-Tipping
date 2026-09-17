@@ -111,3 +111,21 @@ Sources:
 - https://api.squiggle.com.au/?q=games&year=2026
 - https://api.squiggle.com.au/?q=tips&year=2026&source=26
 - https://afltables.com/afl/seas/2026.html
+
+## Later preseason challenger
+
+A later experiment added official preseason team scoring-shot results to a
+blend of two structural team forecasts. It also fixed the canonical
+`Kangaroos` key in the team region table. The fixed rule improves the
+development MAE from 27.587261 to 26.790269 and the validation MAE from
+26.411850 to 26.356214.
+
+On the same 215 completed 2026 games, the Squiggle-score challenger MAE is
+24.740376. Wheelo Ratings has an MAE of 24.816791. The numerical gain is
+0.076414 points. Its paired bootstrap 95 percent interval is -1.212016 to
+1.087856, so one season does not show a reliable lead. The wider research
+program inspected 2026 before the final replay.
+
+The model, official preseason data, frozen competitor data, all predictions,
+and comparison evidence are in
+[`research/preseason_challenger`](../research/preseason_challenger/README.md).

@@ -14,6 +14,10 @@ from .player_margin import (
     replay_hybrid_player_predictions,
     replay_player_predictions,
 )
+from .preseason_challenger import (
+    load_preseason_results_csv,
+    replay_preseason_challenger,
+)
 from .reporting import write_metadata
 from .selected_team_margin import (
     ConservativeSelectedTeamConfig,
@@ -52,6 +56,10 @@ def main(argv=None):
     parser.add_argument("--min-train-years", type=int, default=3)
     parser.add_argument("--player-stats-csv")
     parser.add_argument("--official-player-stats-csv")
+    parser.add_argument(
+        "--preseason-results-csv",
+        help="Official preseason results used by the market-free challenger.",
+    )
     parser.add_argument(
         "--official-player-rating-prior-games", type=float, default=12.0
     )
@@ -122,6 +130,16 @@ def main(argv=None):
         )
         if not predictions:
             raise ValueError("No matches remain after the training period")
+        if args.preseason_results_csv:
+            preseason = load_preseason_results_csv(args.preseason_results_csv)
+            predictions.extend(
+                replay_preseason_challenger(
+                    matches,
+                    preseason,
+                    first_prediction_year=min(match.year for match in matches)
+                    + args.min_train_years,
+                )
+            )
         if args.player_stats_csv:
             player_config = PlayerModelConfig(
                 signal=args.player_signal,
@@ -200,6 +218,7 @@ def main(argv=None):
             args.market_xlsx,
             args.player_stats_csv,
             args.official_player_stats_csv,
+            args.preseason_results_csv,
         )
         if path
     ]

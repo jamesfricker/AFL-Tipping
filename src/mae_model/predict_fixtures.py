@@ -16,6 +16,10 @@ from .player_margin import (
     replay_hybrid_player_predictions,
     replay_player_predictions,
 )
+from .preseason_challenger import (
+    load_preseason_results_csv,
+    predict_preseason_challenger,
+)
 from .reporting import write_metadata
 from .selected_team_margin import (
     ConservativeSelectedTeamConfig,
@@ -50,6 +54,10 @@ def main(argv=None):
     )
     parser.add_argument("--player-stats-csv")
     parser.add_argument("--official-player-stats-csv")
+    parser.add_argument(
+        "--preseason-results-csv",
+        help="Official preseason results used by the market-free challenger.",
+    )
     parser.add_argument(
         "--official-player-rating-prior-games", type=float, default=12.0
     )
@@ -110,6 +118,13 @@ def main(argv=None):
         predictions = predict_fixtures(
             matches, fixtures, as_of, quotes, lead_hours=args.lead_hours
         )
+        if args.preseason_results_csv:
+            preseason = load_preseason_results_csv(args.preseason_results_csv)
+            predictions.extend(
+                predict_preseason_challenger(
+                    matches, fixtures, preseason, as_of
+                )
+            )
         if args.player_stats_csv:
             player_config = PlayerModelConfig(
                 signal=args.player_signal,
@@ -205,6 +220,7 @@ def main(argv=None):
             args.official_player_stats_csv,
             args.lineups_csv,
             args.official_player_lineups_csv,
+            args.preseason_results_csv,
         )
         if path
     ]
