@@ -1,0 +1,2 @@
+src/outputs/afl_player_stats.csv whitespace=cr-at-eol
+reports/mae_summary.csv whitespace=cr-at-eol

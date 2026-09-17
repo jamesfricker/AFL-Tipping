@@ -1,0 +1,196 @@
+{
+  "created_at": "2026-09-16T01:19:33.168016+00:00",
+  "git_revision": "dffc6ac95112d35872b29a214eaa5f80207b8e46",
+  "git_dirty": false,
+  "configuration": {
+    "team_base_score": 76.0,
+    "team_home_advantage": 3.0,
+    "team_attack_rate": 0.05,
+    "team_defense_rate": 0.08,
+    "team_carryover": 0.78,
+    "base_scoring_shots": 26.0,
+    "home_advantage_shots": 1.0,
+    "shot_rate": 0.07,
+    "shot_carryover": 0.85,
+    "shot_residual_cap": 12.0,
+    "conversion_window_team_games": 500,
+    "initial_points_per_shot": 4.85,
+    "minimum_expected_shots": 8.0,
+    "missing_shots_points_per_shot": 5.0,
+    "blend_window_years": 5,
+    "minimum_blend_games": 120,
+    "market_weight_step": 0.02,
+    "default_market_weight": 1.0,
+    "matches_csv": "src/outputs/afl_data.csv",
+    "market_csv": null,
+    "market_xlsx": "src/outputs/afl_betting_history.xlsx",
+    "closing_line_benchmark": true,
+    "lead_hours": 0.0,
+    "min_train_years": 3,
+    "player_stats_csv": "src/outputs/afl_player_stats.csv",
+    "player_signal": "rating_form",
+    "output_dir": "reports"
+  },
+  "inputs": [
+    {
+      "path": "/Users/jamesfricker/conductor/workspaces/AFL-Tipping/fuquay-varina/src/outputs/afl_data.csv",
+      "sha256": "cbf9a4a7d60e8b60d1fc50da83fb822bd77292949e6ba895e632a9f7d30a8910"
+    },
+    {
+      "path": "/Users/jamesfricker/conductor/workspaces/AFL-Tipping/fuquay-varina/src/outputs/afl_betting_history.xlsx",
+      "sha256": "a81654dbe3b6ab7d7edbc1a5970dadfbb54a766f253bf98e8e01381062815538"
+    },
+    {
+      "path": "/Users/jamesfricker/conductor/workspaces/AFL-Tipping/fuquay-varina/src/outputs/afl_player_stats.csv",
+      "sha256": "c8fa8bdeade07a3f00f9fcfa5dbce23a7b28a816e9ff9f977414c43a186517bf"
+    }
+  ],
+  "source_hashes": {
+    "src/mae_model/__init__.py": "74a27bc6d6a17d3f2b412a0cb8ccf27699fe7c071fe13d6de298704e5f9bed67",
+    "src/mae_model/build_match_context.py": "e2daa5b3fff99d0f25f724def14efdf292812459cd8550c585e76147e5f16e98",
+    "src/mae_model/data.py": "4a4a23845b34f7a0af222850de5e75ccd94f24d6d82bd47c819e778d194e8251",
+    "src/mae_model/player_margin.py": "bf13acfed16179d2993d264e6bfe24737ceaef2a267b6d28383eff6dfa103531",
+    "src/mae_model/predict_fixtures.py": "2eba02ea5f0cc5f40a2b8c9ee9cd4a4fe6fc2b268a36358cdc2e2ea75dc60587",
+    "src/mae_model/reporting.py": "87af91467eab52da848d09c1891f46ee842bdb9475efaad774be2d8e05b96f91",
+    "src/mae_model/run_backtest.py": "a9f829b6dfe2545f8b61218758e1ccc072b13b07e1d0a3cd74d12d4f7e2ecc94",
+    "src/mae_model/sequential_margin.py": "d6198bd6537151aed4c2b692a119837b07536b9365a6949d8a17cc76b523e441",
+    "src/mae_model/venues.py": "d48890115c7b4721edce80a5b3e3bdd03fb295fbc9a5dd1b2f1bea9af7f37245"
+  },
+  "time_assumptions": {
+    "legacy_kickoff": "CSV date and time interpreted in the venue local timezone",
+    "legacy_result": "Available at next local midnight; an assumption, not a verified publication time",
+    "explicit_result": "result_available_at with an explicit timezone offset",
+    "weight_cutoff": "1 January 00:00 Australia/Sydney of target season, or the earlier request cutoff",
+    "market": "Untimed closing benchmark",
+    "historical_training_deadline": "Kickoff minus lead_hours for each earlier match",
+    "live_history": "Ignore result rows whose kickoff is at or after as_of; gate other results by availability"
+  },
+  "market_input_rows": 2879,
+  "market_input_diagnostics": {
+    "invalid_odds_without_margin": 1
+  },
+  "market_input_missing_margins": 209,
+  "history_matches": 2879,
+  "history_result_timing": {
+    "next_local_day": 2879
+  },
+  "history_shot_estimates": 0,
+  "prediction_matches": 2258,
+  "market_status_counts": {
+    "untimed_closing_benchmark": 2258
+  },
+  "common_market_matches": 2258,
+  "fallback_count": 0,
+  "season_weights": [
+    {
+      "year": 2015,
+      "market_weight": 0.94,
+      "training_games": 412,
+      "cutoff": "2015-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2016,
+      "market_weight": 0.92,
+      "training_games": 618,
+      "cutoff": "2016-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2017,
+      "market_weight": 0.92,
+      "training_games": 825,
+      "cutoff": "2017-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2018,
+      "market_weight": 0.88,
+      "training_games": 1032,
+      "cutoff": "2018-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2019,
+      "market_weight": 0.92,
+      "training_games": 1034,
+      "cutoff": "2019-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2020,
+      "market_weight": 0.84,
+      "training_games": 1034,
+      "cutoff": "2020-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2021,
+      "market_weight": 0.82,
+      "training_games": 990,
+      "cutoff": "2021-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2022,
+      "market_weight": 0.72,
+      "training_games": 990,
+      "cutoff": "2022-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2023,
+      "market_weight": 0.72,
+      "training_games": 990,
+      "cutoff": "2023-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2024,
+      "market_weight": 0.68,
+      "training_games": 999,
+      "cutoff": "2024-01-01T00:00:00+11:00"
+    },
+    {
+      "year": 2025,
+      "market_weight": 0.62,
+      "training_games": 1008,
+      "cutoff": "2025-01-01T00:00:00+11:00"
+    }
+  ],
+  "tip_rule": "Predicted and actual margins must have the same sign. A draw is correct only for a zero predicted margin.",
+  "evaluation_note": "Historical results describe this dataset. Previously inspected seasons are not an untouched test.",
+  "player_model": {
+    "configuration": {
+      "signal": "rating_form",
+      "control_model_name": "market_scoring_blend",
+      "reference_lineups": 4,
+      "minimum_reference_lineups": 3,
+      "minimum_coverage": 0.8,
+      "minimum_player_games": 5.0,
+      "rating_rate": 24.0,
+      "rating_prior_games": 6.0,
+      "form_rate": 0.25,
+      "material_change": 0.75,
+      "correction_cap": 4.0,
+      "rating_weight": 1.0,
+      "form_weight": 0.2
+    },
+    "status_counts": {
+      "adjusted": 2177,
+      "low_coverage": 38,
+      "stable_lineup": 43
+    },
+    "fallback_count": 81,
+    "historical_lineups": "Final player identity assumed available at kickoff only",
+    "live_lineups": "Latest complete 22-or-23-player snapshot observed by the deadline",
+    "player_statistics": "The player result event waits for the match result and all player rows for that match",
+    "rating": "Outcome logistic with a 400-point scale; exposure-weighted update; reliability shrinkage at forecast",
+    "form": "Fixed box-score score per at least 50 percent game time; recent EMA minus career EMA",
+    "career_form_rate": 0.05,
+    "performance_weights": {
+      "kicks": 3,
+      "handballs": 2,
+      "marks": 3,
+      "goals": 6,
+      "behinds": 1,
+      "hit_outs": 1,
+      "tackles": 4,
+      "clearances": 3,
+      "contested_possessions": 0.5,
+      "goal_assists": 3,
+      "clangers": -3
+    }
+  }
+}

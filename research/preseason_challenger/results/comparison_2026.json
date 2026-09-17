@@ -1,0 +1,19 @@
+{
+  "games": 215,
+  "mae": {
+    "preseason_structural_challenger": 24.740376346148498,
+    "wheelo_ratings": 24.816790697674417,
+    "scoring_shots": 25.698417803459353
+  },
+  "challenger_minus_wheelo_mae": -0.07641435152591951,
+  "challenger_minus_wheelo_bootstrap_95_interval": [
+    -1.2120157898482515,
+    1.0878559560773073
+  ],
+  "lower_mae": "preseason_structural_challenger",
+  "candidate_selection": "Model settings use 2015-2022 development results. The 2023-2024 seasons are validation. The 2026 season was inspected during the wider research program before this final replay.",
+  "score_source": "Squiggle completed-game scores. The repository differs by one point for Essendon against Port Adelaide on 2026-08-23.",
+  "prediction_csv_sha256": "27f3a00f3e318ff5d6757ead5f0ce8601167a61411b2b5e2366bc4380e78d5d6",
+  "comparison_csv_sha256": "7808584032cd8238e4fbb625e265b441e65c520000de64a50f4e5e2a2e71898c",
+  "wheelo_tips_sha256": "a03287f5baa2333ca1993fc7a3e66959bd8d0bf39e4525b968ce8303b7a4b69a"
+}

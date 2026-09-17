@@ -1,0 +1,23 @@
+{
+  "111519000505": {
+    "result_available_at": "1901-01-01T00:00:00+10:00",
+    "status": "conservative_assumption_after_season",
+    "note": "The result changed after a protest. The exact ruling date is unverified. Defer this corrected result until after the season for research.",
+    "source": "https://www.saints.com.au/news/1226193/pipping-the-eventual-premiers-again-and-again-the-unusual-saints-stat-dating-back-to-1900",
+    "year": 1900
+  },
+  "051519960608": {
+    "result_available_at": "1996-06-12T00:00:00+10:00",
+    "status": "midnight_after_verified_completion_day",
+    "note": "The match started on Saturday 8 June and finished on Tuesday 11 June after a power failure. Assume availability at the next local midnight.",
+    "source": "https://www.saints.com.au/news/72866/on-this-day-lights-out-at-waverley",
+    "year": 1996
+  },
+  "081520060430": {
+    "result_available_at": "2006-05-03T18:08:00+10:00",
+    "status": "verified_ruling_time",
+    "note": "The AFL Commission changed the result after the siren dispute at 6:08 PM on 3 May.",
+    "source": "https://www.afl.com.au/news/94996/memorable-fremantle-moment-sirengate",
+    "year": 2006
+  }
+}

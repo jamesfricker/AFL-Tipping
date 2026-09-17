@@ -1,0 +1,30 @@
+{
+  "source": "https://api.squiggle.com.au/?q=games&year=2026",
+  "source_sha256": "b6fa8581fe86a74f202758dc6cfa11937a4fb3824ae0f5b9282c8eaf7aeca135",
+  "identity_source": "https://afltables.com/afl/seas/2026.html",
+  "identity_source_sha256": "c900a3a0d3f8e8e87f8213ee3cd62d6dd75d26ce3ae5a73a29300f0e2d7d7958",
+  "current_sha256": "cbf9a4a7d60e8b60d1fc50da83fb822bd77292949e6ba895e632a9f7d30a8910",
+  "output_sha256": "f39aa68dd6d4e8099226b8a0b038cb2c330dd6421df7505122cf2a5c3ada024a",
+  "existing_matches": 2879,
+  "shadow_matches": 215,
+  "source_score_differences": [
+    {
+      "game": [
+        "2026-08-23",
+        "Essendon",
+        "Port Adelaide"
+      ],
+      "squiggle": [
+        95,
+        104
+      ],
+      "afl_tables": [
+        95,
+        105
+      ]
+    }
+  ],
+  "total_matches": 3094,
+  "last_completed_game": "2026-09-12 19:35:00",
+  "selection": "complete=100 at the frozen source fetch; no model result was read before this set was built"
+}

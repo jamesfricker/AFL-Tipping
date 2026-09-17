@@ -1,0 +1,110 @@
+{
+  "source": "Official AFL API, competitionId 2 (AFL Preseason)",
+  "created_at": "2026-09-17T00:00:00+10:00",
+  "rows": 242,
+  "excluded_without_scores": 11,
+  "first_year": 2013,
+  "last_year": 2026,
+  "csv_sha256": "42e1bb4bbbd2eb11e242d2ae19a9722806848edcfb3fdb139a57ab78549c64ac",
+  "score_rule": "The model uses goals plus behinds as scoring shots. It does not use totalScore, because old competitions used super goals.",
+  "seasons": [
+    {
+      "year": 2013,
+      "competition_season_id": 3,
+      "competition_season_provider_id": "CD_S2013101",
+      "matches": 37,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=3&pageSize=1000"
+    },
+    {
+      "year": 2014,
+      "competition_season_id": 6,
+      "competition_season_provider_id": "CD_S2014101",
+      "matches": 17,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=6&pageSize=1000"
+    },
+    {
+      "year": 2015,
+      "competition_season_id": 8,
+      "competition_season_provider_id": "CD_S2015101",
+      "matches": 27,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=8&pageSize=1000"
+    },
+    {
+      "year": 2016,
+      "competition_season_id": 10,
+      "competition_season_provider_id": "CD_S2016101",
+      "matches": 26,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=10&pageSize=1000"
+    },
+    {
+      "year": 2017,
+      "competition_season_id": 12,
+      "competition_season_provider_id": "CD_S2017101",
+      "matches": 27,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=12&pageSize=1000"
+    },
+    {
+      "year": 2018,
+      "competition_season_id": 15,
+      "competition_season_provider_id": "CD_S2018101",
+      "matches": 18,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=15&pageSize=1000"
+    },
+    {
+      "year": 2019,
+      "competition_season_id": 17,
+      "competition_season_provider_id": "CD_S2019101",
+      "matches": 18,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=17&pageSize=1000"
+    },
+    {
+      "year": 2020,
+      "competition_season_id": 21,
+      "competition_season_provider_id": "CD_S2020101",
+      "matches": 18,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=21&pageSize=1000"
+    },
+    {
+      "year": 2021,
+      "competition_season_id": 33,
+      "competition_season_provider_id": "CD_S2021101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=33&pageSize=1000"
+    },
+    {
+      "year": 2022,
+      "competition_season_id": 44,
+      "competition_season_provider_id": "CD_S2022101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=44&pageSize=1000"
+    },
+    {
+      "year": 2023,
+      "competition_season_id": 53,
+      "competition_season_provider_id": "CD_S2023101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=53&pageSize=1000"
+    },
+    {
+      "year": 2024,
+      "competition_season_id": 63,
+      "competition_season_provider_id": "CD_S2024101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=63&pageSize=1000"
+    },
+    {
+      "year": 2025,
+      "competition_season_id": 74,
+      "competition_season_provider_id": "CD_S2025101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=74&pageSize=1000"
+    },
+    {
+      "year": 2026,
+      "competition_season_id": 87,
+      "competition_season_provider_id": "CD_S2026101",
+      "matches": 9,
+      "source_url": "https://aflapi.afl.com.au/afl/v2/matches?competitionId=2&compSeasonId=87&pageSize=1000"
+    }
+  ]
+}
