@@ -128,6 +128,7 @@ Use the same `player_ref` values as the player match file. Player names do not i
 | `player_lineup` | An optional correction to the blend for material selection changes. |
 | `player_hybrid` | The market-free team forecast plus two independent lineup-change corrections. |
 | `selected_team_strength` | A market-free annual fit of team strength, lineup change, and the selected players' prior Rating Points. |
+| `conservative_selected_team` | A fixed blend of 70 percent selected-team strength and 30 percent scoring-shot strength. |
 
 The blend fits one market weight from the preceding five seasons. It selects from 0 to 1 in steps of 0.02. Weight 1 gives the market-only prediction. Equal errors favour the larger market weight. Insufficient history also selects weight 1.
 
@@ -220,6 +221,8 @@ The same command also produces `selected_team_strength`. This model forecasts ev
 
 The selected-team model beats Wheelo's matched 2025 MAE of 25.8449 by 0.4485 points. A paired bootstrap against Wheelo has a 95% interval from -0.5791 to 1.4628 points. One season does not establish a reliable lead. The paired 2025 gain against `player_hybrid` has a 95% interval from 0.0009 to 1.4604 points.
 
+The command also produces `conservative_selected_team`. Its fixed 70 percent selected-team weight had the lowest 2015 to 2022 MAE on a 0.05 grid. It improves development MAE from 27.3170 to 27.2113 and validation MAE from 25.8299 to 25.8074. On the later 2026 shadow set, it improves MAE from 26.6399 to 26.0971. It makes the inspected 2025 result worse, from 25.3964 to 25.5541. See [the full shadow-test note](agent_notes/2026-09-17-mae-hillclimb-and-2026-shadow.md).
+
 Mean absolute error, or MAE, measures margin error in points. Lower values are better. Correct-tip percentage measures winner selection. A draw counts as correct only when the predicted margin is zero. These measures can rank models differently.
 
 Eligible decimal odds can provide a market implied probability after removal of the bookmaker margin. This value is separate from the blend's margin prediction. The model does not claim a calibrated win probability for its internal or blended margins.
@@ -230,6 +233,7 @@ The current closing-line benchmark scores 2,258 matches from 2015 to 2025:
 
 | Model | Overall MAE | 2024 MAE | 2025 MAE |
 | --- | ---: | ---: | ---: |
+| `conservative_selected_team` | 26.7841 | 26.5424 | 25.5541 |
 | `selected_team_strength` | 26.8487 | 26.7014 | 25.3964 |
 | `player_lineup` | 26.4878 | 26.6033 | 25.8361 |
 | `market_only` | 26.6466 | 26.8519 | 26.1944 |

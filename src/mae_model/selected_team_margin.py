@@ -34,6 +34,19 @@ class SelectedTeamConfig:
 
 
 @dataclass(frozen=True)
+class ConservativeSelectedTeamConfig:
+    selected_team_weight: float = 0.7
+
+    def __post_init__(self):
+        weight = _number(
+            self.selected_team_weight, "selected_team_weight", minimum=0
+        )
+        if weight > 1:
+            raise ValueError("Selected-team weight must be at most 1")
+        object.__setattr__(self, "selected_team_weight", weight)
+
+
+@dataclass(frozen=True)
 class SelectedTeamDiagnostic:
     match_id: str
     cutoff: datetime
@@ -367,3 +380,50 @@ def replay_selected_team_predictions(
         [diagnostics[key] for key in ordered_keys],
         fits,
     )
+
+
+def replay_conservative_selected_team_predictions(
+    selected_rows: list[PredictionRow],
+    scoring_rows: list[PredictionRow],
+    config: ConservativeSelectedTeamConfig | None = None,
+) -> list[PredictionRow]:
+    config = config or ConservativeSelectedTeamConfig()
+    selected = _prediction_index(selected_rows, "selected_team_strength")
+    scoring = _prediction_index(scoring_rows, "scoring_shots")
+    if selected.keys() != scoring.keys():
+        raise ValueError("Selected-team and scoring prediction keys must match")
+    weight = config.selected_team_weight
+    output = []
+    for key, selected_row in selected.items():
+        scoring_row = scoring[key]
+        if (
+            selected_row.predicted_margin is None
+            or scoring_row.predicted_margin is None
+        ):
+            raise ValueError("Conservative model requires two finite predictions")
+        selected_margin = _number(
+            selected_row.predicted_margin, "selected_team_prediction"
+        )
+        scoring_margin = _number(
+            scoring_row.predicted_margin, "scoring_shots_prediction"
+        )
+        margin = (
+            weight * selected_margin
+            + (1 - weight) * scoring_margin
+        )
+        output.append(
+            replace(
+                selected_row,
+                model_name="conservative_selected_team",
+                predicted_margin=margin,
+                abs_error=(
+                    abs(selected_row.actual_margin - margin)
+                    if selected_row.actual_margin is not None
+                    else None
+                ),
+                used_fallback=(
+                    selected_row.used_fallback or scoring_row.used_fallback
+                ),
+            )
+        )
+    return output

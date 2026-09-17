@@ -113,7 +113,7 @@ def test_rejects_incomplete_team(monkeypatch, tmp_path):
     _responses(monkeypatch, str(soup))
     output_dir = tmp_path / "history"
 
-    with pytest.raises(ValueError, match="expected 22 unique players per team"):
+    with pytest.raises(ValueError, match="expected 22 or 23 unique players per team"):
         player_history.build_player_history(
             matches_csv=matches,
             existing_players_csv=players,
@@ -123,6 +123,30 @@ def test_rejects_incomplete_team(monkeypatch, tmp_path):
 
     assert not (output_dir / "players.csv").exists()
     assert not (output_dir / "manifest.json").exists()
+
+
+def test_accepts_23_player_teams(monkeypatch, tmp_path):
+    matches, players = _inputs(tmp_path)
+    soup = BeautifulSoup(
+        Path("tests/test_data/afl_tables_match.html").read_text(), "html.parser"
+    )
+    for _, table in scrape_tables._get_match_stat_tables(soup):
+        body = table.find("tbody")
+        extra = BeautifulSoup(str(body.find("tr")), "html.parser").find("tr")
+        player = extra.find("a")
+        player["href"] = player["href"].replace(".html", "_Extra.html")
+        player.string = f"{player.get_text()} Extra"
+        body.append(extra)
+    _responses(monkeypatch, str(soup))
+
+    result = player_history.build_player_history(
+        matches_csv=matches,
+        existing_players_csv=players,
+        seasons=range(2012, 2013),
+        work_dir=tmp_path / "history",
+    )
+
+    assert result.added_players == 46
 
 
 def test_date_identity_allows_an_unpadded_day():

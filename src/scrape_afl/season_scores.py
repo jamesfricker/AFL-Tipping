@@ -29,7 +29,9 @@ def parse_season_scores(html: bytes | str, year: int) -> tuple[list[dict], dict]
     source_regular_games = None
     for element in soup.find_all(["b", "table"]):
         if element.name == "b":
-            label = element.get_text(" ", strip=True)
+            label = " ".join(
+                element.find_all(string=True, recursive=False)
+            ).strip()
             if ROUND_PATTERN.fullmatch(label):
                 current_round = label.removeprefix("Round ")
             continue

@@ -50,6 +50,16 @@ def test_local_time_precedes_eastern_time_in_parentheses():
     assert rows[0]["away_team_score"] == 100
 
 
+def test_round_heading_can_include_a_notes_link():
+    html = sample(2012).replace(
+        "Round 1", 'Round 1<a href="/afl/notes.html"> arbitrary link text</a>', 1
+    )
+
+    rows, _ = parse_season_scores(html, 2012)
+
+    assert rows[0]["round"] == "1"
+
+
 def test_unknown_start_time_stays_unknown():
     rows, check = parse_season_scores(sample().replace("3:00 PM", ""), 1897)
     assert rows[0]["time"] == ""

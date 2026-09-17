@@ -16,7 +16,9 @@ from .player_margin import (
 )
 from .reporting import write_metadata
 from .selected_team_margin import (
+    ConservativeSelectedTeamConfig,
     SelectedTeamConfig,
+    replay_conservative_selected_team_predictions,
     replay_selected_team_predictions,
 )
 from .sequential_margin import (
@@ -97,6 +99,7 @@ def main(argv=None):
     hybrid_config = None
     hybrid_diagnostics = None
     selected_team_config = None
+    conservative_selected_team_config = None
     selected_team_diagnostics = None
     selected_team_fits = None
     player_config = None
@@ -165,6 +168,14 @@ def main(argv=None):
                     official_history,
                     selected_team_config,
                 )
+                conservative_selected_team_config = ConservativeSelectedTeamConfig()
+                conservative_selected_team_rows = (
+                    replay_conservative_selected_team_predictions(
+                        selected_team_rows,
+                        predictions,
+                        conservative_selected_team_config,
+                    )
+                )
                 player_config = None
             else:
                 player_rows, player_diagnostics = replay_player_predictions(
@@ -173,6 +184,7 @@ def main(argv=None):
             predictions.extend(player_rows)
             if args.official_player_stats_csv:
                 predictions.extend(selected_team_rows)
+                predictions.extend(conservative_selected_team_rows)
     except (OSError, ValueError) as exc:
         parser.error(str(exc))
     summary = summarize_predictions(predictions)
@@ -209,6 +221,7 @@ def main(argv=None):
         selected_team_config=selected_team_config,
         selected_team_diagnostics=selected_team_diagnostics,
         selected_team_fits=selected_team_fits,
+        conservative_selected_team_config=conservative_selected_team_config,
     )
     for row in summary:
         if row["year"] == "ALL" and row["scope"] == "all_matches":

@@ -25,6 +25,7 @@ def write_metadata(
     selected_team_config=None,
     selected_team_diagnostics=None,
     selected_team_fits=None,
+    conservative_selected_team_config=None,
 ):
     root = Path(__file__).resolve().parents[2]
     revision = subprocess.run(
@@ -272,4 +273,16 @@ def write_metadata(
                         "rating_difference": row.rating_difference,
                     }
                 )
+    if conservative_selected_team_config is not None:
+        weight = conservative_selected_team_config.selected_team_weight
+        data["conservative_selected_team_model"] = {
+            "configuration": asdict(conservative_selected_team_config),
+            "prediction_rule": (
+                f"{weight:.1f} * selected_team_strength + "
+                f"{1 - weight:.1f} * scoring_shots"
+            ),
+            "selection": (
+                "The fixed weight minimized 2015-2022 MAE on a 0.05 grid."
+            ),
+        }
     (Path(output_dir) / "metadata.json").write_text(json.dumps(data, indent=2) + "\n")

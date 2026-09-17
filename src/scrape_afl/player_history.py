@@ -284,10 +284,10 @@ def _check_match_players(
         by_team[team].append(checked)
 
     counts = {team: len(rows) for team, rows in by_team.items()}
-    if any(count != 22 for count in counts.values()):
+    if any(count not in (22, 23) for count in counts.values()):
         raise ValueError(
-            f"{expected.match_id} at {source_url}: expected 22 unique players per team, "
-            f"got {counts}"
+            f"{expected.match_id} at {source_url}: expected 22 or 23 unique players "
+            f"per team, got {counts}"
         )
     players = tuple(by_team[expected.home_team] + by_team[expected.away_team])
     return _CheckedMatchPlayers(expected.match_id, source_url, players)
@@ -499,7 +499,7 @@ def build_player_history(
         "collected_matches_by_season": collected_by_season,
         "missing_match_ids": [],
         "extra_match_ids": [],
-        "players_per_team": 22,
+        "players_per_team": [22, 23],
         "collected_player_rows": len(added_rows),
         "existing_player_rows": len(existing_rows),
         "merged_player_rows": len(merged_rows),

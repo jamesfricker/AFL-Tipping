@@ -6,7 +6,9 @@ import pytest
 from src.mae_model.data import MatchRow
 from src.mae_model.player_margin import PlayerHistory, PlayerId, PlayerMatch, PlayerStats
 from src.mae_model.selected_team_margin import (
+    ConservativeSelectedTeamConfig,
     SelectedTeamConfig,
+    replay_conservative_selected_team_predictions,
     replay_selected_team_predictions,
 )
 from src.mae_model.sequential_margin import walk_forward_predictions
@@ -130,3 +132,44 @@ def test_same_season_result_does_not_refit_frozen_weights():
     )
     assert rows[-1].predicted_margin == pytest.approx(-7.1833595084)
     assert changed_rows[-1].predicted_margin == rows[-1].predicted_margin
+
+
+def test_conservative_model_blends_selected_team_and_scoring_predictions():
+    matches, appearances, controls, hybrids = selected_history()
+    selected, _, _ = selected_replay(matches, appearances, controls, hybrids)
+    scoring = [
+        row
+        for row in walk_forward_predictions(matches, 0)
+        if row.model_name == "scoring_shots"
+    ]
+
+    rows = replay_conservative_selected_team_predictions(
+        selected,
+        scoring,
+        ConservativeSelectedTeamConfig(selected_team_weight=0.7),
+    )
+
+    expected = 0.7 * selected[-1].predicted_margin + 0.3 * scoring[-1].predicted_margin
+    assert rows[-1].model_name == "conservative_selected_team"
+    assert rows[-1].predicted_margin == pytest.approx(expected)
+    assert rows[-1].abs_error == pytest.approx(abs(rows[-1].actual_margin - expected))
+
+
+def test_conservative_model_rejects_a_nonfinite_prediction():
+    matches, appearances, controls, hybrids = selected_history()
+    selected, _, _ = selected_replay(matches, appearances, controls, hybrids)
+    scoring = [
+        row
+        for row in walk_forward_predictions(matches, 0)
+        if row.model_name == "scoring_shots"
+    ]
+    scoring[0] = replace(scoring[0], predicted_margin=float("nan"))
+
+    with pytest.raises(ValueError, match="must be finite"):
+        replay_conservative_selected_team_predictions(selected, scoring)
+
+
+def test_conservative_model_normalizes_a_numeric_weight():
+    config = ConservativeSelectedTeamConfig(selected_team_weight="0.7")
+
+    assert config.selected_team_weight == 0.7
