@@ -95,6 +95,13 @@ correction.
 175 tests passed
 ```
 
+The final backtest ran from clean model commit
+`f4b636eeeb519e7388ea964e4483c3f49a47461e`. Its metadata records
+`git_dirty: false`. The prediction CSV SHA-256 is
+`d986184347f22f2e5e05e0efc084ee2b7522bee955e4d92a3119d01401236f61`.
+The `selected_team_margin.py` SHA-256 is
+`26aac38d5d6f17bdfddae06963a199053975f2d0756ac73902bd3cf6d1a07981`.
+
 The model rules use only information from completed earlier matches and the final
 participants at kickoff. They do not use betting odds or competitor predictions.
 
